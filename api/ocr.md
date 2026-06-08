@@ -1,8 +1,8 @@
-# 光学字符识别 (OCR)
+# OCR
 
-ocr 模块用于识别图像中的文本.
+The `ocr` module is used for recognizing text in images.
 
-AutoJs6 的 OCR 特性是基于 [Google ML Kit](https://developers.google.com/ml-kit?hl=zh-cn) 的 [文字识别 API](https://developers.google.com/ml-kit/vision/text-recognition/android?hl=zh-cn) 及 [Baidu PaddlePaddle](https://www.paddlepaddle.org.cn/) 的 [Paddle Lite](https://github.com/PaddlePaddle/Paddle-Lite) 实现的.
+AutoJs6's OCR feature is implemented based on [Google ML Kit](https://developers.google.com/ml-kit?hl=en) 's [Text Recognition API](https://developers.google.com/ml-kit/vision/text-recognition/android?hl=en) and [Baidu PaddlePaddle](https://www.paddlepaddle.org.cn/)'s [Paddle Lite](https://github.com/PaddlePaddle/Paddle-Lite).
 
 ---
 
@@ -12,7 +12,7 @@ AutoJs6 的 OCR 特性是基于 [Google ML Kit](https://developers.google.com/ml
 
 ## [@] ocr
 
-ocr 可作为全局对象使用:
+`ocr` can be used as a global object:
 
 ```js
 typeof ocr; // "function"
@@ -24,12 +24,12 @@ typeof ocr.recognizeText; // "function"
 
 **`6.4.0`** **`Overload [1-2]/9`**
 
-- **[ options ]** { [OcrOptions](ocrOptionsType) } - OCR 识别选项
+- **[ options ]** { [OcrOptions](ocrOptionsType) } - OCR recognition options
 - <ins>**returns**</ins> { [string](dataTypes#string)[[]](dataTypes#array) }
 
-识别当前屏幕截图中包含的所有文本, 返回文本数组.
+Recognizes all text contained in the current screen screenshot and returns an array of text strings.
 
-`ocr()` 相当于以下代码的整合:
+`ocr()` is equivalent to the following combined code:
 
 ```js
 images.requestScreenCapture();
@@ -37,18 +37,18 @@ let img = images.captureScreen();
 ocr(img);
 ```
 
-同时也是 [ocr.recognizeText(options?)](#m-recognizetext) 的别名方法.
+It is also an alias for [ocr.recognizeText(options?)](#m-recognizetext).
 
 ### ocr(region)
 
 **`6.4.0`** **`Overload 3/9`**
 
-- **region** { [OmniRegion](omniTypes#omniregion) } - OCR 识别区域
+- **region** { [OmniRegion](omniTypes#omniregion) } - OCR recognition region
 - <ins>**returns**</ins> { [string](dataTypes#string)[[]](dataTypes#array) }
 
-识别当前屏幕截图指定区域内包含的所有文本, 返回文本数组.
+Recognizes all text contained in the specified region of the current screen screenshot and returns an array of text strings.
 
-`ocr(region)` 相当于以下代码的整合:
+`ocr(region)` is equivalent to the following combined code:
 
 ```js
 images.requestScreenCapture();
@@ -56,35 +56,35 @@ let img = images.captureScreen();
 ocr(img, region);
 ```
 
-同时也是 [ocr({ region: region })](#-ocr) 的便捷方法,
+It is also a convenience method for [ocr({ region: region })](#-ocr),
 
-以及 [ocr.recognizeText(region)](#m-recognizetext) 的别名方法.
+and an alias for [ocr.recognizeText(region)](#m-recognizetext).
 
-关于 OCR 区域参数 `region` 的更多用法, 参阅 [OcrOptions#region](ocrOptionsType#p-region) 小节.
+For more usage of the OCR region parameter `region`, see the [OcrOptions#region](ocrOptionsType#p-region) section.
 
 ### ocr(img, options?)
 
 **`6.3.0`** **`Overload [4-5]/9`**
 
-- **img** { [ImageWrapper](imageWrapperType) } - 包装图像对象
-- **[ options ]** { [OcrOptions](ocrOptionsType) } - OCR 识别选项
+- **img** { [ImageWrapper](imageWrapperType) } - Wrapped image object
+- **[ options ]** { [OcrOptions](ocrOptionsType) } - OCR recognition options
 - <ins>**returns**</ins> { [string](dataTypes#string)[[]](dataTypes#array) }
 
-识别图像包含的所有文本, 返回文本数组.
+Recognizes all text contained in the image and returns an array of text strings.
 
-[ocr.recognizeText(img, options?)](#m-recognizetext) 的别名方法.
+Alias for [ocr.recognizeText(img, options?)](#m-recognizetext).
 
 ```js
-/* 申请屏幕截图权限. */
+/* Request screen capture permission. */
 images.requestScreenCapture();
 
-/* 截屏并获取包装图像对象. */
+/* Capture the screen and obtain the wrapped image object. */
 let img = images.captureScreen();
 
-/* OCR 识别并获取结果, 结果为字符串数组. */
+/* Perform OCR recognition and get the result as a string array. */
 let results = ocr(img);
 
-/* 结果过滤, 筛选出文本中可部分匹配 "app" 的结果, 如 "apple", "disappear" 等. */
+/* Filter results: select texts that partially match "app", such as "apple", "disappear", etc. */
 results.filter(text => text.includes('app'));
 ```
 
@@ -92,72 +92,72 @@ results.filter(text => text.includes('app'));
 
 **`6.3.0`** **`Overload 6/9`**
 
-- **img** { [ImageWrapper](imageWrapperType) } - 包装图像对象
-- **region** { [OmniRegion](omniTypes#omniregion) } - OCR 识别区域
+- **img** { [ImageWrapper](imageWrapperType) } - Wrapped image object
+- **region** { [OmniRegion](omniTypes#omniregion) } - OCR recognition region
 - <ins>**returns**</ins> { [string](dataTypes#string)[[]](dataTypes#array) }
 
-识别指定区域内图像包含的所有文本, 返回文本数组.
+Recognizes all text contained in the specified region of the image and returns an array of text strings.
 
-[ocr(img, { region: region })](#-ocr) 的便捷方法.
+Convenience method for [ocr(img, { region: region })](#-ocr).
 
-[ocr.recognizeText(img, region)](#m-recognizetext) 的别名方法.
+Alias for [ocr.recognizeText(img, region)](#m-recognizetext).
 
 ```js
-/* 申请屏幕截图权限. */
+/* Request screen capture permission. */
 images.requestScreenCapture();
 
-/* 截屏并获取包装图像对象. */
+/* Capture the screen and obtain the wrapped image object. */
 let img = images.captureScreen();
 
-/* 在区域 [ 0, 0, 100, 150 ] 内进行 OCR 识别并获取结果, 结果为字符串数组. */
-let results = ocr(img, [ 0, 0, 100, 150 ]);
+/* Perform OCR recognition within the region [0, 0, 100, 150] and get the result as a string array. */
+let results = ocr(img, [0, 0, 100, 150]);
 
-/* 结果过滤, 筛选出文本中可部分匹配 "app" 的结果, 如 "apple", "disappear" 等. */
-results.filter(text => text.includes('app')); 
+/* Filter results: select texts that partially match "app", such as "apple", "disappear", etc. */
+results.filter(text => text.includes('app'));
 ```
 
-关于 OCR 区域参数 `region` 的更多用法, 参阅 [OcrOptions#region](ocrOptionsType#p-region) 小节.
+For more usage of the OCR region parameter `region`, see the [OcrOptions#region](ocrOptionsType#p-region) section.
 
 ### ocr(imgPath, options?)
 
 **`6.3.0`** **`Overload [7-8]/9`**
 
-- **imgPath** { [string](dataTypes#string) } - 图像路径
-- **[ options ]** { [OcrOptions](ocrOptionsType) } - OCR 识别选项
+- **imgPath** { [string](dataTypes#string) } - Image path
+- **[ options ]** { [OcrOptions](ocrOptionsType) } - OCR recognition options
 - <ins>**returns**</ins> { [string](dataTypes#string)[[]](dataTypes#array) }
 
-识别指定路径对应图像包含的所有文本, 返回文本数组.
+Recognizes all text contained in the image at the specified path and returns an array of text strings.
 
-当指定路径无法解析为包装图像对象时, 将抛出 `TypeError` 异常.
+If the specified path cannot be resolved to a wrapped image object, a `TypeError` exception will be thrown.
 
-[ocr.recognizeText(imgPath, options?)](#m-recognizetext) 的别名方法.
+Alias for [ocr.recognizeText(imgPath, options?)](#m-recognizetext).
 
 ```js
-ocr('./picture.jpg'); /* 获取本地图像文件中的所有文本. */
+ocr('./picture.jpg'); /* Get all text from the local image file. */
 ```
 
 ### ocr(imgPath, region)
 
 **`6.3.0`** **`Overload 9/9`**
 
-- **imgPath** { [string](dataTypes#string) } - 图像路径
-- **region** { [OmniRegion](omniTypes#omniregion) } - OCR 识别区域
+- **imgPath** { [string](dataTypes#string) } - Image path
+- **region** { [OmniRegion](omniTypes#omniregion) } - OCR recognition region
 - <ins>**returns**</ins> { [string](dataTypes#string)[[]](dataTypes#array) }
 
-识别指定路径对应图像在指定区域内包含的所有文本, 返回文本数组.
+Recognizes all text contained in the specified region of the image at the given path and returns an array of text strings.
 
-当指定路径无法解析为包装图像对象时, 将抛出 `TypeError` 异常.
+If the specified path cannot be resolved to a wrapped image object, a `TypeError` exception will be thrown.
 
-[ocr(imgPath, { region: region })](#-ocr) 的便捷方法.
+Convenience method for [ocr(imgPath, { region: region })](#-ocr).
 
-[ocr.recognizeText(imgPath, region)](#m-recognizetext) 的别名方法.
+Alias for [ocr.recognizeText(imgPath, region)](#m-recognizetext).
 
 ```js
-/* 获取本地图像文件在区域 [ 0, 0, 100, 150 ] 内的所有文本. */
-ocr('./picture.jpg', [ 0, 0, 100, 150 ]);
+/* Get all text from the local image file within the region [0, 0, 100, 150]. */
+ocr('./picture.jpg', [0, 0, 100, 150]);
 ```
 
-关于 OCR 区域参数 `region` 的更多用法, 参阅 [OcrOptions#region](ocrOptionsType#p-region) 小节.
+For more usage of the OCR region parameter `region`, see the [OcrOptions#region](ocrOptionsType#p-region) section.
 
 ## [p] mode
 

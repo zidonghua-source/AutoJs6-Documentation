@@ -1,32 +1,32 @@
-# 线程 (Threads)
+# Threads
 
 ---
 
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
+<p style="font: italic 1em sans-serif; color: #78909C">This chapter is pending supplementation or improvement...</p>
 <p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
 
 ---
 
-threads模块提供了多线程支持, 可以启动新线程来运行脚本.
+The `threads` module provides multi-threading support, allowing you to start new threads to run scripts.
 
-脚本主线程会等待所有子线程执行完成后才停止执行, 因此如果子线程中有死循环, 请在必要的时候调用`exit()`来直接停止脚本或`threads.shutDownAll()`来停止所有子线程.
+The main script thread waits for all child threads to finish before stopping. Therefore, if a child thread contains an infinite loop, make sure to call `exit()` to stop the script directly or `threads.shutDownAll()` to stop all child threads when necessary.
 
-通过`threads.start()`启动的所有线程会在脚本被强制停止时自动停止.
+All threads started with `threads.start()` will automatically stop when the script is forcibly terminated.
 
-由于JavaScript自身没有多线程的支持, 因此您可能会遇到意料之外的问题.
+Because JavaScript itself does not have built-in multi-threading support, you may encounter unexpected issues.
 
 ## threads.start(action)
 
-* `action` {Function} 要在新线程执行的函数
-* 返回 [Thread](#threads_thread)
+* `action` {Function} The function to execute in the new thread
+* Returns [Thread](#threads_thread)
 
-启动一个新线程并执行action.
+Starts a new thread and executes the given `action`.
 
-例如:
+Example:
 
-```
+```js
 threads.start(function(){
-    //在新线程执行的代码
+    // Code to run in the new thread
     while(true){
         log("子线程");
     }

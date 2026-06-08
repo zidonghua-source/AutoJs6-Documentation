@@ -4,13 +4,13 @@
     {
       "textRaw": "Shell",
       "name": "shell",
-      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<p>shell即Unix Shell, 在类Unix系统提供与操作系统交互的一系列命令.</p>\n<p>很多程序可以用来执行shell命令, 例如终端模拟器.</p>\n<p>在Auto.js大致等同于用adb执行命令&quot;adb shell&quot;. 其实现包括两种方式：</p>\n<ul>\n<li>通过<code>java.lang.Runtime.exec</code>执行(shell, Tap, Home等函数)</li>\n<li>通过内嵌终端模拟器执行(RootAutomator, Shell等对象)</li>\n</ul>\n",
+      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">This section is to be supplemented or improved...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<p>Shell refers to Unix Shell, which provides a series of commands for interacting with the operating system on Unix-like systems.</p>\n<p>Many programs can be used to execute shell commands, such as terminal emulators.</p>\n<p>In Auto.js, it is roughly equivalent to executing the command &quot;adb shell&quot; via adb. There are two implementation methods:</p>\n<ul>\n<li>Execution via <code>java.lang.Runtime.exec</code> (functions such as shell, Tap, Home, etc.)</li>\n<li>Execution via the built-in terminal emulator (RootAutomator, Shell objects, etc.)</li>\n</ul>\n",
       "type": "module",
       "displayName": "Shell"
     },
     {
-      "textRaw": "shell函数",
-      "name": "shell函数",
+      "textRaw": "shell function",
+      "name": "shell_function",
       "methods": [
         {
           "textRaw": "shell(cmd[, root])",
@@ -20,16 +20,16 @@
             {
               "params": [
                 {
-                  "textRaw": "cmd {string} 要执行的命令 ",
+                  "textRaw": "cmd {string} The command to execute ",
                   "name": "cmd",
                   "type": "string",
-                  "desc": "要执行的命令"
+                  "desc": "The command to execute"
                 },
                 {
-                  "textRaw": "root {Boolean} 是否以root权限运行, 默认为false. ",
+                  "textRaw": "root {Boolean} Whether to run with root privileges, default is false. ",
                   "name": "root",
                   "type": "Boolean",
-                  "desc": "是否以root权限运行, 默认为false.",
+                  "desc": "Whether to run with root privileges, default is false.",
                   "optional": true
                 }
               ]
@@ -46,16 +46,16 @@
               ]
             }
           ],
-          "desc": "<p>一次性执行命令cmd, 并返回命令的执行结果. 返回对象的其属性如下:</p>\n<ul>\n<li>code {number} 返回码. 执行成功时为0, 失败时为非0的数字.</li>\n<li>result {string} 运行结果(stdout输出结果)</li>\n<li>error {string} 运行的错误信息(stderr输出结果). 例如执行需要root权限的命令但没有授予root权限会返回错误信息&quot;Permission denied&quot;.</li>\n</ul>\n<p>示例(强制停止微信) ：</p>\n<pre><code>var result = shell(&quot;am force-stop com.tencent.mm&quot;, true);\nlog(result);\nconsole.show();\nif(result.code == 0){\n  toast(&quot;执行成功&quot;);\n}else{\n  toast(&quot;执行失败！请到控制台查看错误信息&quot;);\n}\n</code></pre>"
+          "desc": "<p>Executes the command cmd once and returns the execution result. The returned object has the following properties:</p>\n<ul>\n<li>code {number} Return code. 0 on success, non-zero on failure.</li>\n<li>result {string} Execution result (stdout output)</li>\n<li>error {string} Error information from execution (stderr output). For example, if a command requiring root privileges is executed without granting root access, it returns the error &quot;Permission denied&quot;.</li>\n</ul>\n<p>Example (force stop WeChat):</p>\n<pre><code>var result = shell(&quot;am force-stop com.tencent.mm&quot;, true);\nlog(result);\nconsole.show();\nif(result.code == 0){\n  toast(&quot;Execution succeeded&quot;);\n}else{\n  toast(&quot;Execution failed! Please check the error information in the console&quot;);\n}\n</code></pre>"
         }
       ],
       "type": "module",
-      "displayName": "shell函数"
+      "displayName": "shell function"
     },
     {
       "textRaw": "Shell",
       "name": "shell",
-      "desc": "<p>shell函数通过用来一次性执行单条命令并获取结果. 如果有多条命令需要执行, 用Shell对象的效率更高. 这是因为, 每次运行shell函数都会打开一个单独的shell进程并在运行结束后关闭他, 这个过程需要一定的时间；而Shell对象自始至终使用同一个shell进程.</p>\n",
+      "desc": "<p>The shell function is used to execute a single command once and obtain the result. If multiple commands need to be executed, using a Shell object is more efficient. This is because each call to the shell function opens a separate shell process and closes it after execution, which takes some time; whereas the Shell object uses the same shell process from start to finish.</p>\n",
       "ctors": [
         {
           "textRaw": "new Shell(root)",
@@ -65,10 +65,10 @@
             {
               "params": [
                 {
-                  "textRaw": "root {Boolean} 是否以root权限运行一个shell进程, 默认为false. 这将会影响其后使用该Shell对象执行的命令的权限 ",
+                  "textRaw": "root {Boolean} Whether to run a shell process with root privileges, default is false. This will affect the privileges of commands executed later using this Shell object. ",
                   "name": "root",
                   "type": "Boolean",
-                  "desc": "是否以root权限运行一个shell进程, 默认为false. 这将会影响其后使用该Shell对象执行的命令的权限"
+                  "desc": "Whether to run a shell process with root privileges, default is false. This will affect the privileges of commands executed later using this Shell object."
                 }
               ]
             },
@@ -80,7 +80,7 @@
               ]
             }
           ],
-          "desc": "<p>Shell对象的&quot;构造函数&quot;.</p>\n<pre><code>var sh = new Shell(true);\n//强制停止微信\nsh.exec(&quot;am force-stop com.tencent.mm&quot;);\nsh.exit();\n</code></pre>"
+          "desc": "<p>The &quot;constructor&quot; of the Shell object.</p>\n<pre><code>var sh = new Shell(true);\n// Force stop WeChat\nsh.exec(&quot;am force-stop com.tencent.mm&quot;);\nsh.exit();\n</code></pre>"
         }
       ],
       "methods": [
@@ -92,10 +92,10 @@
             {
               "params": [
                 {
-                  "textRaw": "`cmd` {string} 要执行的命令 ",
+                  "textRaw": "`cmd` {string} The command to execute ",
                   "name": "cmd",
                   "type": "string",
-                  "desc": "要执行的命令"
+                  "desc": "The command to execute"
                 }
               ]
             },
@@ -107,13 +107,13 @@
               ]
             }
           ],
-          "desc": "<p>执行命令cmd. 该函数不会返回任何值.</p>\n<p>注意, 命令执行是&quot;异步&quot;的、非阻塞的. 也就是不会等待命令完成后才继续向下执行.</p>\n<p>尽管这样的设计使用起来有很多不便之处, 但受限于终端模拟器, 暂时没有解决方式；如果后续能找到解决方案, 则将提供<code>Shell.execAndWaitFor</code>函数.</p>\n"
+          "desc": "<p>Executes the command cmd. This function does not return any value.</p>\n<p>Note that command execution is &quot;asynchronous&quot; and non-blocking. That is, it will not wait for the command to complete before continuing to the next line.</p>\n<p>Although this design is somewhat inconvenient to use, it is limited by the terminal emulator and there is currently no solution. If a solution is found in the future, a <code>Shell.execAndWaitFor</code> function will be provided.</p>\n"
         },
         {
           "textRaw": "Shell.exit()",
           "type": "method",
           "name": "exit",
-          "desc": "<p>直接退出shell. 正在执行的命令会被强制退出.</p>\n",
+          "desc": "<p>Exits the shell directly. Any currently executing command will be forcibly terminated.</p>\n",
           "signatures": [
             {
               "params": []
@@ -124,7 +124,7 @@
           "textRaw": "Shell.exitAndWaitFor()",
           "type": "method",
           "name": "exitAndWaitFor",
-          "desc": "<p>执行&quot;exit&quot;命令并等待执行命令执行完成、退出shell.</p>\n<p>此函数会执行exit命令来正常退出shell.</p>\n",
+          "desc": "<p>Executes the &quot;exit&quot; command and waits for the command to finish executing and for the shell to exit.</p>\n<p>This function executes the exit command to exit the shell normally.</p>\n",
           "signatures": [
             {
               "params": []
@@ -139,10 +139,10 @@
             {
               "params": [
                 {
-                  "textRaw": "callback {Object} 回调函数 ",
+                  "textRaw": "callback {Object} Callback function ",
                   "name": "callback",
                   "type": "Object",
-                  "desc": "回调函数"
+                  "desc": "Callback function"
                 }
               ]
             },
@@ -154,117 +154,110 @@
               ]
             }
           ],
-          "desc": "<p>设置该Shell的回调函数, 以便监听Shell的输出. 可以包括以下属性：</p>\n<ul>\n<li>onOutput {Function} 每当shell有新的输出时便会调用该函数. 其参数是一个字符串.</li>\n<li>onNewLine {Function} 每当shell有新的一行输出时便会调用该函数. 其参数是一个字符串(不包括最后的换行符).</li>\n</ul>\n<p>例如:</p>\n<pre><code>var sh = new Shell();\nsh.setCallback({\n    onNewLine: function(line){\n        //有新的一行输出时打印到控制台\n        log(line);\n    }\n})\nwhile(true){\n    //循环输入命令\n    var cmd = dialogs.rawInput(&quot;请输入要执行的命令, 输入exit退出&quot;);\n    if(cmd == &quot;exit&quot;){\n        break;\n    }\n    //执行命令\n    sh.exec(cmd);\n}\nsh.exit();\n</code></pre>"
+          "desc": "<p>Sets the callback function for this Shell to monitor the Shell&#39;s output. It can include the following properties:</p>\n<ul>\n<li>onOutput {Function} Called whenever the shell has new output. Its parameter is a string.</li>\n<li>onNewLine {Function} Called whenever the shell has a new line of output. Its parameter is a string (without the trailing newline).</li>\n</ul>\n<p>Example:</p>\n<pre><code>var sh = new Shell();\nsh.setCallback({\n    onNewLine: function(line){\n        // Print new lines of output to the console\n        log(line);\n    }\n})\nwhile(true){\n    // Loop to input commands\n    var cmd = dialogs.rawInput(&quot;Please enter the command to execute, type exit to quit&quot;);\n    if(cmd == &quot;exit&quot;){\n        break;\n    }\n    // Execute command\n    sh.exec(cmd);\n}\nsh.exit();\n</code></pre>"
         }
       ],
       "type": "module",
       "displayName": "Shell"
     },
     {
-      "textRaw": "附录: shell命令简介",
-      "name": "附录:_shell命令简介",
-      "desc": "<p>以下关于shell命令的资料来自<a href=\"https://developer.android.com/studio/command-line/adb.html#shellcommands/\">AndroidStudio用户指南：Shell命令</a>.</p>\n",
+      "textRaw": "Appendix: Brief Introduction to Shell Commands",
+      "name": "appendix:_brief_introduction_to_shell_commands",
+      "desc": "<p>The following information about shell commands comes from the <a href=\"https://developer.android.com/studio/command-line/adb.html#shellcommands/\">Android Studio User Guide: Shell Commands</a>.</p>\n",
       "modules": [
         {
-          "textRaw": "am命令",
-          "name": "am命令",
-          "desc": "<p>am命令即Activity Manager命令, 用于管理应用程序活动、服务等.</p>\n<p><strong>以下命令均以&quot;am &quot;开头, 例如<code>shell(&#39;am start -p com.tencent.mm&#39;);</code>(启动微信)</strong></p>\n",
+          "textRaw": "am command",
+          "name": "am_command",
+          "desc": "<p>The am command is the Activity Manager command, used to manage application activities, services, etc.</p>\n<p><strong>All the following commands start with &quot;am &quot;, for example <code>shell(&#39;am start -p com.tencent.mm&#39;);</code> (launch WeChat)</strong></p>\n",
           "modules": [
             {
               "textRaw": "start [options] intent",
               "name": "start_[options]_intent",
-              "desc": "<p>启动 intent 指定的 Activity(应用程序活动).<br>请参阅 <a href=\"#shell_intent\">intent 参数的规范</a>.</p>\n<p>选项包括：</p>\n<ul>\n<li>-D：启用调试.</li>\n<li>-W：等待启动完成.</li>\n<li>--start-profiler file：启动分析器并将结果发送到 file.</li>\n<li>-P file：类似于 --start-profiler, 但当应用进入空闲状态时分析停止.</li>\n<li>-R count：重复 Activity 启动 count 次数. 在每次重复前, 将完成顶部 Activity.</li>\n<li>-S：启动 Activity 前强行停止目标应用.</li>\n<li>--opengl-trace：启用 OpenGL 函数的跟踪.</li>\n<li>--user user_id | current：指定要作为哪个用户运行；如果未指定, 则作为当前用户运行.</li>\n</ul>\n",
+              "desc": "<p>Starts the Activity (application activity) specified by the intent.<br>See <a href=\"#shell_intent\">Intent parameter specification</a>.</p>\n<p>Options include:</p>\n<ul>\n<li>-D: Enable debugging.</li>\n<li>-W: Wait for the launch to complete.</li>\n<li>--start-profiler file: Start the profiler and send results to file.</li>\n<li>-P file: Similar to --start-profiler, but profiling stops when the app becomes idle.</li>\n<li>-R count: Repeat Activity launch count times. Before each repetition, finish the top Activity.</li>\n<li>-S: Force stop the target app before starting the Activity.</li>\n<li>--opengl-trace: Enable OpenGL function tracing.</li>\n<li>--user user_id | current: Specify which user to run as; if not specified, run as the current user.</li>\n</ul>\n",
               "type": "module",
               "displayName": "start [options] intent"
             },
             {
               "textRaw": "startservice [options] intent",
               "name": "startservice_[options]_intent",
-              "desc": "<p>启动 intent 指定的 Service(服务).<br>请参阅 <a href=\"#shell_intent\">intent 参数的规范</a>.<br>选项包括：</p>\n<ul>\n<li>--user user_id | current：指定要作为哪个用户运行；如果未指定, 则作为当前用户运行.</li>\n</ul>\n",
+              "desc": "<p>Starts the Service specified by the intent.<br>See <a href=\"#shell_intent\">Intent parameter specification</a>.<br>Options include:</p>\n<ul>\n<li>--user user_id | current: Specify which user to run as; if not specified, run as the current user.</li>\n</ul>\n",
               "type": "module",
               "displayName": "startservice [options] intent"
             },
             {
               "textRaw": "force-stop package",
               "name": "force-stop_package",
-              "desc": "<p>强行停止与 package（<a href=\"#应用包名\">应用包名</a>）关联的所有应用.</p>\n",
+              "desc": "<p>Force stops all applications associated with the package (<a href=\"#application-package-name\">application package name</a>).</p>\n",
               "type": "module",
               "displayName": "force-stop package"
             },
             {
               "textRaw": "kill [options] package",
               "name": "kill_[options]_package",
-              "desc": "<p>终止与 package（<a href=\"#应用包名\">应用包名</a>）关联的所有进程. 此命令仅终止可安全终止且不会影响用户体验的进程.<br>选项包括：</p>\n<ul>\n<li>--user user_id | all | current：指定将终止其进程的用户；如果未指定, 则终止所有用户的进程.</li>\n</ul>\n",
+              "desc": "<p>Terminates all processes associated with the package (<a href=\"#application-package-name\">application package name</a>). This command only terminates processes that can be safely terminated without affecting the user experience.<br>Options include:</p>\n<ul>\n<li>--user user_id | all | current: Specify the user whose processes will be terminated; if not specified, terminate processes for all users.</li>\n</ul>\n",
               "type": "module",
               "displayName": "kill [options] package"
             },
             {
               "textRaw": "kill-all",
               "name": "kill-all",
-              "desc": "<p>终止所有后台进程.</p>\n",
+              "desc": "<p>Terminates all background processes.</p>\n",
               "type": "module",
               "displayName": "kill-all"
             },
             {
               "textRaw": "broadcast [options] intent",
               "name": "broadcast_[options]_intent",
-              "desc": "<p>发出广播 intent.\n请参阅 <a href=\"#shell_intent\">intent 参数的规范</a>.</p>\n<p>选项包括：</p>\n<ul>\n<li>[--user user_id | all | current]：指定要发送到的用户；如果未指定, 则发送到所有用户.</li>\n</ul>\n",
+              "desc": "<p>Sends a broadcast intent.\nSee <a href=\"#shell_intent\">Intent parameter specification</a>.</p>\n<p>Options include:</p>\n<ul>\n<li>[--user user_id | all | current]: Specify the user to send to; if not specified, send to all users.</li>\n</ul>\n",
               "type": "module",
               "displayName": "broadcast [options] intent"
             },
             {
               "textRaw": "instrument [options] component",
               "name": "instrument_[options]_component",
-              "desc": "<p>使用 Instrumentation 实例启动监控. 通常, 目标 component 是表单 test_package/runner_class.<br>选项包括：</p>\n<ul>\n<li>-r：输出原始结果（否则对 report_key_streamresult 进行解码）. 与 [-e perf true] 结合使用以生成性能测量的原始输出.</li>\n<li>-e name value：将参数 name 设为 value. 对于测试运行器, 通用表单为 -e testrunner_flag value[,value...].</li>\n<li>-p file：将分析数据写入 file.</li>\n<li>-w：先等待仪器完成, 然后再返回. 测试运行器需要使用此选项.</li>\n<li>--no-window-animation：运行时关闭窗口动画.</li>\n<li>--user user_id | current：指定仪器在哪个用户中运行；如果未指定, 则在当前用户中运行.</li>\n<li>profile start process file 启动 process 的分析器, 将结果写入 file.</li>\n<li>profile stop process 停止 process 的分析器.</li>\n</ul>\n",
+              "desc": "<p>Start monitoring using an Instrumentation instance. Typically, the target component is of the form test_package/runner_class.<br>Options include:</p>\n<ul>\n<li>-r: Output raw results (otherwise decode report_key_streamresult). Use with [-e perf true] to generate raw output for performance measurements.</li>\n<li>-e name value: Set the parameter name to value. For test runners, the general form is -e testrunner_flag value[,value...].</li>\n<li>-p file: Write profiling data to file.</li>\n<li>-w: Wait for instrumentation to complete before returning. Test runners must use this option.</li>\n<li>--no-window-animation: Disable window animations at runtime.</li>\n<li>--user user_id | current: Specify the user in which the instrumentation runs; if not specified, run in the current user.</li>\n<li>profile start process file: Start the profiler for process and write results to file.</li>\n<li>profile stop process: Stop the profiler for process.</li>\n</ul>\n",
               "type": "module",
               "displayName": "instrument [options] component"
             },
             {
               "textRaw": "dumpheap [options] process file",
               "name": "dumpheap_[options]_process_file",
-              "desc": "<p>转储 process 的堆, 写入 file.</p>\n<p>选项包括：</p>\n<ul>\n<li>--user [user_id|current]：提供进程名称时, 指定要转储的进程用户；如果未指定, 则使用当前用户.</li>\n<li>-n：转储原生堆, 而非托管堆.</li>\n<li>set-debug-app [options] package 将应用 package 设为调试.</li>\n</ul>\n<p>选项包括：</p>\n<ul>\n<li>-w：应用启动时等待调试程序.</li>\n<li>--persistent：保留此值.</li>\n<li>clear-debug-app 使用 set-debug-app 清除以前针对调试用途设置的软件包.</li>\n</ul>\n",
+              "desc": "<p>Dump the heap of process and write it to file.</p>\n<p>Options include:</p>\n<ul>\n<li>--user [user_id|current]: When a process name is provided, specify the user of the process to dump; if not specified, use the current user.</li>\n<li>-n: Dump the native heap instead of the managed heap.</li>\n<li>set-debug-app [options] package: Set the application package as debuggable.</li>\n</ul>\n<p>Options include:</p>\n<ul>\n<li>-w: Wait for the debugger when the app starts.</li>\n<li>--persistent: Retain this value.</li>\n<li>clear-debug-app: Use set-debug-app to clear previously set packages for debugging purposes.</li>\n</ul>\n",
               "type": "module",
               "displayName": "dumpheap [options] process file"
             },
             {
-              "textRaw": "monitor [options]    启动对崩溃或 ANR 的监控.",
-              "name": "monitor_[options]_启动对崩溃或_anr_的监控.",
-              "desc": "<p>选项包括：</p>\n<ul>\n<li>--gdb：在崩溃/ANR 时在给定端口上启动 gdbserv.</li>\n</ul>\n",
-              "type": "module",
-              "displayName": "monitor [options]    启动对崩溃或 ANR 的监控."
-            },
-            {
               "textRaw": "screen-compat {on|off} package",
               "name": "screen-compat_{on|off}_package",
-              "desc": "<p>控制 package 的屏幕兼容性模式.</p>\n",
+              "desc": "<p>Control the screen compatibility mode of package.</p>\n",
               "type": "module",
               "displayName": "screen-compat {on|off} package"
             },
             {
               "textRaw": "display-density dpi",
               "name": "display-density_dpi",
-              "desc": "<p>替换模拟器/设备显示密度. 此命令对于在不同密度的屏幕上测试您的应用非常有用, 它支持使用低密度屏幕在高密度环境环境上进行测试（反之亦然）.<br>示例：</p>\n<pre><code>shell(&quot;am display-density 480&quot;, true);\n</code></pre>",
+              "desc": "<p>Override the emulator/device display density. This command is very useful for testing your app on screens of different densities; it supports using a low-density screen to test in a high-density environment (and vice versa).<br>Example:</p>\n<pre><code>shell(&quot;am display-density 480&quot;, true);\n</code></pre>",
               "type": "module",
               "displayName": "display-density dpi"
             },
             {
               "textRaw": "to-uri intent",
               "name": "to-uri_intent",
-              "desc": "<p>将给定的 intent 规范以 URI 的形式输出.\n请参阅  <a href=\"#shell_intent\">intent 参数的规范</a>.</p>\n",
+              "desc": "<p>Output the given intent specification in URI form.\nSee <a href=\"#shell_intent\">Intent parameter specification</a>.</p>\n",
               "type": "module",
               "displayName": "to-uri intent"
             },
             {
               "textRaw": "to-intent-uri intent",
               "name": "to-intent-uri_intent",
-              "desc": "<p>将给定的 intent 规范以 intent:URI 的形式输出.\n请参阅 intent 参数的规范.</p>\n",
+              "desc": "<p>Output the given intent specification in intent:URI form.\nSee the intent parameter specification.</p>\n",
               "type": "module",
               "displayName": "to-intent-uri intent"
             },
             {
-              "textRaw": "intent参数的规范",
-              "name": "intent参数的规范",
-              "desc": "<p>对于采用 intent 参数的 am 命令, 您可以使用以下选项指定 intent：</p>\n<ul>\n<li>-a action<br>指定 intent 操作, 如“android.intent.action.VIEW”. 此指定只能声明一次.</li>\n<li>-d data_uri<br>指定 intent 数据 URI, 如“content://contacts/people/1”. 此指定只能声明一次.</li>\n<li>-t mime_type<br>指定 intent MIME 类型, 如“image/png”. 此指定只能声明一次.</li>\n<li>-c category<br>指定 intent 类别, 如“android.intent.category.APP_CONTACTS”.</li>\n<li>-n component<br>指定带有软件包名称前缀的组件名称以创建显式 intent, 如“com.example.app/.ExampleActivity”.</li>\n<li>-f flags<br>将标志添加到 setFlags() 支持的 intent.</li>\n<li>--esn extra_key<br>添加一个 null extra. URI intent 不支持此选项.</li>\n<li>-e|--es extra_key extra_string_value<br>添加字符串数据作为键值对.</li>\n<li>--ez extra_key extra_boolean_value<br>添加布尔型数据作为键值对.</li>\n<li>--ei extra_key extra_int_value<br>添加整数型数据作为键值对.</li>\n<li>--el extra_key extra_long_value<br>添加长整型数据作为键值对.</li>\n<li>--ef extra_key extra_float_value<br>添加浮点型数据作为键值对.</li>\n<li>--eu extra_key extra_uri_value<br>添加 URI 数据作为键值对.</li>\n<li>--ecn extra_key extra_component_name_value<br>添加组件名称, 将其作为 ComponentName 对象进行转换和传递.</li>\n<li>--eia extra_key extra_int_value[,extra_int_value...]<br>添加整数数组.</li>\n<li>--ela extra_key extra_long_value[,extra_long_value...]<br>添加长整型数组.</li>\n<li>--efa extra_key extra_float_value[,extra_float_value...]<br>添加浮点型数组.</li>\n<li>--grant-read-uri-permission<br>包含标志 FLAG_GRANT_READ_URI_PERMISSION.</li>\n<li>--grant-write-uri-permission<br>包含标志 FLAG_GRANT_WRITE_URI_PERMISSION.</li>\n<li>--debug-log-resolution<br>包含标志 FLAG_DEBUG_LOG_RESOLUTION.</li>\n<li>--exclude-stopped-packages<br>包含标志 FLAG_EXCLUDE_STOPPED_PACKAGES.</li>\n<li>--include-stopped-packages<br>包含标志 FLAG_INCLUDE_STOPPED_PACKAGES.</li>\n<li>--activity-brought-to-front<br>包含标志 FLAG_ACTIVITY_BROUGHT_TO_FRONT.</li>\n<li>--activity-clear-top<br>包含标志 FLAG_ACTIVITY_CLEAR_TOP.</li>\n<li>--activity-clear-when-task-reset<br>包含标志 FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET.</li>\n<li>--activity-exclude-from-recents<br>包含标志 FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS.</li>\n<li>--activity-launched-from-history<br>包含标志 FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY.</li>\n<li>--activity-multiple-task<br>包含标志 FLAG_ACTIVITY_MULTIPLE_TASK.</li>\n<li>--activity-no-animation<br>包含标志 FLAG_ACTIVITY_NO_ANIMATION.</li>\n<li>--activity-no-history<br>包含标志 FLAG_ACTIVITY_NO_HISTORY.</li>\n<li>--activity-no-user-action<br>包含标志 FLAG_ACTIVITY_NO_USER_ACTION.</li>\n<li>--activity-previous-is-top<br>包含标志 FLAG_ACTIVITY_PREVIOUS_IS_TOP.</li>\n<li>--activity-reorder-to-front<br>包含标志 FLAG_ACTIVITY_REORDER_TO_FRONT.</li>\n<li>--activity-reset-task-if-needed<br>包含标志 FLAG_ACTIVITY_RESET_TASK_IF_NEEDED.</li>\n<li>--activity-single-top<br>包含标志 FLAG_ACTIVITY_SINGLE_TOP.</li>\n<li>--activity-clear-task<br>包含标志 FLAG_ACTIVITY_CLEAR_TASK.</li>\n<li>--activity-task-on-home<br>包含标志 FLAG_ACTIVITY_TASK_ON_HOME.</li>\n<li>--receiver-registered-only<br>包含标志 FLAG_RECEIVER_REGISTERED_ONLY.</li>\n<li>--receiver-replace-pending<br>包含标志 FLAG_RECEIVER_REPLACE_PENDING.</li>\n<li>--selector<br>需要使用 -d 和 -t 选项以设置 intent 数据和类型.</li>\n</ul>\n",
+              "textRaw": "Intent parameter specification",
+              "name": "intent_parameter_specification",
+              "desc": "<p>For am commands that use intent parameters, you can use the following options to specify the intent:</p>\n<ul>\n<li>-a action<br>Specify the intent action, such as “android.intent.action.VIEW”. This can be declared only once.</li>\n<li>-d data_uri<br>Specify the intent data URI, such as “content://contacts/people/1”. This can be declared only once.</li>\n<li>-t mime_type<br>Specify the intent MIME type, such as “image/png”. This can be declared only once.</li>\n<li>-c category<br>Specify the intent category, such as “android.intent.category.APP_CONTACTS”.</li>\n<li>-n component<br>Specify the component name with package name prefix to create an explicit intent, such as “com.example.app/.ExampleActivity”.</li>\n<li>-f flags<br>Add flags to the intent supported by setFlags().</li>\n<li>--esn extra_key<br>Add a null extra. Not supported for URI intents.</li>\n<li>-e|--es extra_key extra_string_value<br>Add string data as a key-value pair.</li>\n<li>--ez extra_key extra_boolean_value<br>Add boolean data as a key-value pair.</li>\n<li>--ei extra_key extra_int_value<br>Add integer data as a key-value pair.</li>\n<li>--el extra_key extra_long_value<br>Add long integer data as a key-value pair.</li>\n<li>--ef extra_key extra_float_value<br>Add float data as a key-value pair.</li>\n<li>--eu extra_key extra_uri_value<br>Add URI data as a key-value pair.</li>\n<li>--ecn extra_key extra_component_name_value<br>Add component name, converted and passed as a ComponentName object.</li>\n<li>--eia extra_key extra_int_value[,extra_int_value...]<br>Add integer array.</li>\n<li>--ela extra_key extra_long_value[,extra_long_value...]<br>Add long integer array.</li>\n<li>--efa extra_key extra_float_value[,extra_float_value...]<br>Add float array.</li>\n<li>--grant-read-uri-permission<br>Include the FLAG_GRANT_READ_URI_PERMISSION flag.</li>\n<li>--grant-write-uri-permission<br>Include the FLAG_GRANT_WRITE_URI_PERMISSION flag.</li>\n<li>--debug-log-resolution<br>Include the FLAG_DEBUG_LOG_RESOLUTION flag.</li>\n<li>--exclude-stopped-packages<br>Include the FLAG_EXCLUDE_STOPPED_PACKAGES flag.</li>\n<li>--include-stopped-packages<br>Include the FLAG_INCLUDE_STOPPED_PACKAGES flag.</li>\n<li>--activity-brought-to-front<br>Include the FLAG_ACTIVITY_BROUGHT_TO_FRONT flag.</li>\n<li>--activity-clear-top<br>Include the FLAG_ACTIVITY_CLEAR_TOP flag.</li>\n<li>--activity-clear-when-task-reset<br>Include the FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET flag.</li>\n<li>--activity-exclude-from-recents<br>Include the FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS flag.</li>\n<li>--activity-launched-from-history<br>Include the FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY flag.</li>\n<li>--activity-multiple-task<br>包含标志 FLAG_ACTIVITY_MULTIPLE_TASK.</li>\n<li>--activity-no-animation<br>包含标志 FLAG_ACTIVITY_NO_ANIMATION.</li>\n<li>--activity-no-history<br>包含标志 FLAG_ACTIVITY_NO_HISTORY.</li>\n<li>--activity-no-user-action<br>包含标志 FLAG_ACTIVITY_NO_USER_ACTION.</li>\n<li>--activity-previous-is-top<br>包含标志 FLAG_ACTIVITY_PREVIOUS_IS_TOP.</li>\n<li>--activity-reorder-to-front<br>包含标志 FLAG_ACTIVITY_REORDER_TO_FRONT.</li>\n<li>--activity-reset-task-if-needed<br>包含标志 FLAG_ACTIVITY_RESET_TASK_IF_NEEDED.</li>\n<li>--activity-single-top<br>包含标志 FLAG_ACTIVITY_SINGLE_TOP.</li>\n<li>--activity-clear-task<br>包含标志 FLAG_ACTIVITY_CLEAR_TASK.</li>\n<li>--activity-task-on-home<br>包含标志 FLAG_ACTIVITY_TASK_ON_HOME.</li>\n<li>--receiver-registered-only<br>包含标志 FLAG_RECEIVER_REGISTERED_ONLY.</li>\n<li>--receiver-replace-pending<br>包含标志 FLAG_RECEIVER_REPLACE_PENDING.</li>\n<li>--selector<br>需要使用 -d 和 -t 选项以设置 intent 数据和类型.</li>\n</ul>\n",
               "modules": [
                 {
                   "textRaw": "URI component package",
@@ -275,18 +268,23 @@
                 }
               ],
               "type": "module",
-              "displayName": "intent参数的规范"
+              "displayName": "Intent parameter specification"
             }
           ],
           "properties": [
             {
+              "textRaw": "monitor [options]",
+              "name": "[options]",
+              "desc": "<p>Start monitoring for crashes or ANRs.</p>\n<p>Options include:</p>\n<ul>\n<li>--gdb: Start gdbserv on the given port during crash/ANR.</li>\n</ul>\n"
+            },
+            {
               "textRaw": "display-size [reset|widthxheight]",
               "name": "[reset|widthxheight]",
-              "desc": "<p>替换模拟器/设备显示尺寸. 此命令对于在不同尺寸的屏幕上测试您的应用非常有用, 它支持使用大屏设备模仿小屏幕分辨率（反之亦然）.<br>示例：</p>\n<pre><code>shell(&quot;am display-size 1280x800&quot;, true);\n\n</code></pre>"
+              "desc": "<p>Override the emulator/device display size. This command is very useful for testing your app on screens of different sizes; it supports using a large-screen device to emulate small-screen resolution (and vice versa).<br>Example:</p>\n<pre><code>shell(&quot;am display-size 1280x800&quot;, true);\n\n</code></pre>"
             }
           ],
           "type": "module",
-          "displayName": "am命令"
+          "displayName": "am command"
         },
         {
           "textRaw": "应用包名",
@@ -487,7 +485,7 @@
         }
       ],
       "type": "module",
-      "displayName": "附录: shell命令简介"
+      "displayName": "Appendix: Brief Introduction to Shell Commands"
     }
   ]
 }

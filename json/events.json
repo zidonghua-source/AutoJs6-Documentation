@@ -1,10 +1,11 @@
 {
   "source": "..\\api\\events.md",
-  "modules": [
+  "events": [
     {
-      "textRaw": "事件监听 (Events)",
-      "name": "事件监听_(events)",
-      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<p>events模块提供了监听手机通知、按键、触摸的接口. 您可以用他配合自动操作函数完成自动化工作.</p>\n<p>events本身是一个<a href=\"#events_eventemitter\">EventEmiiter</a>, 但内置了一些事件、包括按键事件、通知事件、Toast事件等.</p>\n<p>需要注意的是, 事件的处理是单线程的, 并且仍然在原线程执行, 如果脚本主体或者其他事件处理中有耗时操作、轮询等, 则事件将无法得到及时处理（会进入事件队列等待脚本主体或其他事件处理完成才执行）. 例如:</p>\n<pre><code>auto();\nevents.observeNotification();\nevents.on(&#39;toast&#39;, function(t){\n    //这段代码将得不到执行\n    log(t);\n});\nwhile(true){\n    //死循环\n}\n</code></pre>",
+      "textRaw": "Event Listening (Events)",
+      "type": "event",
+      "name": "Listening (Events)",
+      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">This chapter is pending supplementation or improvement...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<p>The <code>events</code> module provides interfaces for listening to phone notifications, key presses, and touches. You can use it together with automation functions to build automated tasks.</p>\n<p><code>events</code> itself is an <a href=\"#events_eventemitter\">EventEmitter</a>, but it comes with several built-in events, including key events, notification events, Toast events, etc.</p>\n<p><strong>Important note</strong>: Event handling is single-threaded and runs on the original thread. If the main script or other event handlers contain long-running operations or polling, events may not be processed in a timely manner (they will queue until the main script or other handlers finish). For example:</p>\n<pre><code>auto();\nevents.observeNotification();\nevents.on(&#39;toast&#39;, function(t){\n    //这段代码将得不到执行\n    log(t);\n});\nwhile(true){\n    //死循环\n}\n</code></pre>",
       "methods": [
         {
           "textRaw": "events.emitter()",
@@ -399,9 +400,10 @@
           "displayName": "事件: 'notification'"
         }
       ],
-      "type": "module",
-      "displayName": "事件监听 (Events)"
-    },
+      "params": []
+    }
+  ],
+  "modules": [
     {
       "textRaw": "Notification",
       "name": "notification",

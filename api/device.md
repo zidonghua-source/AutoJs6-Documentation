@@ -1,27 +1,27 @@
-# 设备 (Device)
+# Device
 
 ---
 
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
+<p style="font: italic 1em sans-serif; color: #78909C">This chapter is pending supplementation or improvement...</p>
 <p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
 
 ---
 
-device模块提供了与设备有关的信息与操作, 例如获取设备宽高, 内存使用率, IMEI, 调整设备亮度、音量等.
+The `device` module provides information and operations related to the device, such as getting screen dimensions, memory usage, IMEI, adjusting screen brightness, volume, etc.
 
-此模块的部分函数, 例如调整音量, 需要"修改系统设置"的权限. 如果没有该权限, 会抛出`SecurityException`并跳转到权限设置界面.
+Some functions in this module (for example, adjusting volume) require the "Modify system settings" permission. If the permission is not granted, a `SecurityException` will be thrown and the user will be redirected to the permission settings screen.
 
 ## device.width
 
 * {number}
 
-设备屏幕分辨率宽度. 例如1080.
+Width of the device screen resolution, for example 1080.
 
 ## device.height
 
 * {number}
 
-设备屏幕分辨率高度. 例如1920.
+Height of the device screen resolution, for example 1920.
 
 ## device.buildId
 
@@ -29,23 +29,21 @@ device模块提供了与设备有关的信息与操作, 例如获取设备宽高
 
 Either a changelist number, or a label like "M4-rc20".
 
-修订版本号, 或者诸如"M4-rc20"的标识.
+Build ID or revision identifier.
 
 ## device.broad
 
 * {string}
 
-The name of the underlying board, like "goldfish".
+The name of the underlying board (e.g. "goldfish").
 
-设备的主板(?)型号.
+Board model of the device.
 
 ## device.brand
 
 * {string}
 
-The consumer-visible brand with which the product/hardware will be associated, if any.
-
-与产品或硬件相关的厂商品牌, 如"Xiaomi", "Huawei"等.
+The consumer-visible brand associated with the product/hardware (e.g. "Xiaomi", "Huawei").
 
 ## device.device
 
@@ -53,7 +51,7 @@ The consumer-visible brand with which the product/hardware will be associated, i
 
 The name of the industrial design.
 
-设备在工业设计中的名称.
+Name of the device in industrial design.
 
 ## device.model
 
@@ -61,7 +59,7 @@ The name of the industrial design.
 
 The end-user-visible name for the end product.
 
-设备型号.
+Device model.
 
 ## device.product
 
@@ -69,7 +67,7 @@ The end-user-visible name for the end product.
 
 The name of the overall product.
 
-整个产品的名称.
+Name of the overall product.
 
 ## device.bootloader
 
@@ -77,7 +75,7 @@ The name of the overall product.
 
 The system bootloader version number.
 
-设备Bootloader的版本.
+Bootloader version of the device.
 
 ## device.hardware
 
@@ -85,7 +83,7 @@ The system bootloader version number.
 
 The name of the hardware (from the kernel command line or /proc).
 
-设备的硬件名称(来自内核命令行或者/proc).
+Hardware name of the device (from kernel command line or /proc).
 
 ## device.fingerprint
 
@@ -93,7 +91,7 @@ The name of the hardware (from the kernel command line or /proc).
 
 A string that uniquely identifies this build. Do not attempt to parse this value.
 
-构建(build)的唯一标识码.
+Unique identifier of the build.
 
 ## device.serial
 
@@ -101,7 +99,7 @@ A string that uniquely identifies this build. Do not attempt to parse this value
 
 A hardware serial number, if available. Alphanumeric only, case-insensitive.
 
-硬件序列号.
+Hardware serial number.
 
 ## device.sdkInt
 
@@ -109,7 +107,7 @@ A hardware serial number, if available. Alphanumeric only, case-insensitive.
 
 The user-visible SDK version of the framework; its possible values are defined in Build.VERSION_CODES.
 
-安卓系统API版本. 例如安卓4.4的sdkInt为19.
+Android API level. For example, Android 4.4 has sdkInt = 19.
 
 ## device.incremental
 
@@ -123,7 +121,7 @@ The internal value used by the underlying source control to represent this build
 
 The user-visible version string. E.g., "1.0" or "3.4b5".
 
-Android系统版本号. 例如"5.0", "7.1.1".
+Android version number. For example "5.0", "7.1.1".
 
 ## device.baseOS
 
@@ -137,7 +135,7 @@ The base OS build the product is based on.
 
 The user-visible security patch level.
 
-安全补丁程序级别.
+Security patch level.
 
 ## device.codename
 
@@ -145,200 +143,200 @@ The user-visible security patch level.
 
 The current development codename, or the string "REL" if this is a release build.
 
-开发代号, 例如发行版是"REL".
+Development codename (e.g. "REL" for release builds).
 
 ## device.getIMEI()
 
 * {string}
 
-返回设备的IMEI.
+Returns the device's IMEI.
 
 ## device.getAndroidId()
 
 * {string}
 
-返回设备的Android ID.
+Returns the device's Android ID.
 
-Android ID为一个用16进制字符串表示的64位整数, 在设备第一次使用时随机生成, 之后不会更改, 除非恢复出厂设置.
+Android ID is a 64-bit integer represented as a hexadecimal string. It is randomly generated the first time the device is used and does not change afterward unless the device is factory reset.
 
 ## device.getMacAddress()
 
 * {string}
 
-返回设备的Mac地址. 该函数需要在有WLAN连接的情况下才能获取, 否则会返回null.
+Returns the device's MAC address. This function requires an active WLAN connection to retrieve it; otherwise, it returns null.
 
-**可能的后续修改**：未来可能增加有root权限的情况下通过root权限获取, 从而在没有WLAN连接的情况下也能返回正确的Mac地址, 因此请勿使用此函数判断WLAN连接.
+**Possible future change**: In the future, root privileges may be used to retrieve the correct MAC address even without a WLAN connection. Therefore, do not rely on this function to determine WLAN connectivity.
 
 ## device.getBrightness()
 
 * {number}
 
-返回当前的(手动)亮度. 范围为0~255.
+Returns the current (manual) brightness. Range is 0~255.
 
 ## device.getBrightnessMode()
 
 * {number}
 
-返回当前亮度模式, 0为手动亮度, 1为自动亮度.
+Returns the current brightness mode: 0 for manual brightness, 1 for automatic brightness.
 
 ## device.setBrightness(b)
 
-* `b` {number} 亮度, 范围0~255
+* `b` {number} Brightness, range 0~255
 
-设置当前手动亮度. 如果当前是自动亮度模式, 该函数不会影响屏幕的亮度.
+Sets the current manual brightness. If the current mode is automatic brightness, this function will not affect the screen brightness.
 
-此函数需要"修改系统设置"的权限. 如果没有该权限, 会抛出SecurityException并跳转到权限设置界面.
+This function requires the "Modify system settings" permission. If the permission is not granted, a `SecurityException` will be thrown and the user will be redirected to the permission settings screen.
 
 ## device.setBrightnessMode(mode)
 
-* `mode` {number} 亮度模式, 0为手动亮度, 1为自动亮度
+* `mode` {number} Brightness mode: 0 for manual, 1 for automatic
 
-设置当前亮度模式.
+Sets the current brightness mode.
 
-此函数需要"修改系统设置"的权限. 如果没有该权限, 会抛出SecurityException并跳转到权限设置界面.
+This function requires the "Modify system settings" permission. If the permission is not granted, a `SecurityException` will be thrown and the user will be redirected to the permission settings screen.
 
 ## device.getMusicVolume()
 
-* {number} 整数值
+* {number} Integer value
 
-返回当前媒体音量.
+Returns the current media volume.
 
 ## device.getNotificationVolume()
 
-* {number} 整数值
+* {number} Integer value
 
-返回当前通知音量.
+Returns the current notification volume.
 
 ## device.getAlarmVolume()
 
-* {number} 整数值
+* {number} Integer value
 
-返回当前闹钟音量.
+Returns the current alarm volume.
 
 ## device.getMusicMaxVolume()
 
-* {number} 整数值
+* {number} Integer value
 
-返回媒体音量的最大值.
+Returns the maximum media volume.
 
 ## device.getNotificationMaxVolume()
 
-* {number} 整数值
+* {number} Integer value
 
-返回通知音量的最大值.
+Returns the maximum notification volume.
 
 ## device.getAlarmMaxVolume()
 
-* {number} 整数值
+* {number} Integer value
 
-返回闹钟音量的最大值.
+Returns the maximum alarm volume.
 
 ## device.setMusicVolume(volume)
 
-* `volume` {number} 音量
+* `volume` {number} Volume
 
-设置当前媒体音量.
+Sets the current media volume.
 
-此函数需要"修改系统设置"的权限. 如果没有该权限, 会抛出SecurityException并跳转到权限设置界面.
+This function requires the "Modify system settings" permission. If the permission is not granted, a `SecurityException` will be thrown and the user will be redirected to the permission settings screen.
 
 ## device.setNotificationVolume(volume)
 
-* `volume` {number} 音量
+* `volume` {number} Volume
 
-设置当前通知音量.
+Sets the current notification volume.
 
-此函数需要"修改系统设置"的权限. 如果没有该权限, 会抛出SecurityException并跳转到权限设置界面.
+This function requires the "Modify system settings" permission. If the permission is not granted, a `SecurityException` will be thrown and the user will be redirected to the permission settings screen.
 
 ## device.setAlarmVolume(volume)
 
-* `volume` {number} 音量
+* `volume` {number} Volume
 
-设置当前闹钟音量.
+Sets the current alarm volume.
 
-此函数需要"修改系统设置"的权限. 如果没有该权限, 会抛出SecurityException并跳转到权限设置界面.
+This function requires the "Modify system settings" permission. If the permission is not granted, a `SecurityException` will be thrown and the user will be redirected to the permission settings screen.
 
 ## device.getBattery()
 
-* {number} 0.0~100.0的浮点数
+* {number} Float between 0.0 and 100.0
 
-返回当前电量百分比.
+Returns the current battery percentage.
 
 ## device.isCharging()
 
 * {boolean}
 
-返回设备是否正在充电.
+Returns whether the device is currently charging.
 
 ## device.getTotalMem()
 
 * {number}
 
-返回设备内存总量, 单位字节(B). 1MB = 1024 * 1024B.
+Returns the total device memory in bytes (B). 1MB = 1024 * 1024B.
 
 ## device.getAvailMem()
 
 * {number}
 
-返回设备当前可用的内存, 单位字节(B).
+Returns the currently available memory in bytes (B).
 
 ## device.isScreenOn()
 
-* 返回 {boolean}
+* Returns {boolean}
 
-返回设备屏幕是否是亮着的. 如果屏幕亮着, 返回`true`; 否则返回`false`.
+Returns whether the device screen is on. Returns `true` if the screen is on; otherwise returns `false`.
 
-需要注意的是, 类似于vivo xplay系列的息屏时钟不属于"屏幕亮着"的情况, 虽然屏幕确实亮着但只能显示时钟而且不可交互, 此时`isScreenOn()`也会返回`false`.
+Note: On devices like the vivo Xplay series, the always-on clock when the screen is off does not count as "screen on". Although the screen is technically on, it only displays the clock and is not interactive. In this case, `isScreenOn()` will also return `false`.
 
 ## device.wakeUp()
 
-唤醒设备. 包括唤醒设备CPU、屏幕等. 可以用来点亮屏幕.
+Wakes up the device, including waking up the CPU, screen, etc. Can be used to turn on the screen.
 
 ## device.wakeUpIfNeeded()
 
-如果屏幕没有点亮, 则唤醒设备.
+Wakes up the device if the screen is not on.
 
 ## device.keepScreenOn([timeout])
 
-* `timeout` {number} 屏幕保持常亮的时间, 单位毫秒. 如果不加此参数, 则一直保持屏幕常亮.
+* `timeout` {number} Duration to keep the screen on, in milliseconds. If not specified, the screen stays on indefinitely.
 
-保持屏幕常亮.
+Keeps the screen on.
 
-此函数无法阻止用户使用锁屏键等正常关闭屏幕, 只能使得设备在无人操作的情况下保持屏幕常亮；同时, 如果此函数调用时屏幕没有点亮, 则会唤醒屏幕.
+This function cannot prevent the user from turning off the screen using the lock screen button or similar. It only keeps the screen on when there is no user interaction. Additionally, if the screen is off when this function is called, it will wake the screen.
 
-在某些设备上, 如果不加参数timeout, 只能在Auto.js的界面保持屏幕常亮, 在其他界面会自动失效, 这是因为设备的省电策略造成的. 因此, 建议使用比较长的时长来代替"一直保持屏幕常亮"的功能, 例如`device.keepScreenOn(3600 * 1000)`.
+On some devices, without the `timeout` parameter, the screen may only stay on within the Auto.js interface and will automatically turn off in other interfaces due to the device's power-saving policy. Therefore, it is recommended to use a long duration instead of "keep screen on indefinitely", for example `device.keepScreenOn(3600 * 1000)`.
 
-可以使用`device.cancelKeepingAwake()`来取消屏幕常亮.
+You can use `device.cancelKeepingAwake()` to cancel the screen-on state.
 
-```
-//一直保持屏幕常亮
+```js
+// Keep screen on indefinitely
 device.keepScreenOn()
 ```
 
 ## device.keepScreenDim([timeout])
 
-* `timeout` {number} 屏幕保持常亮的时间, 单位毫秒. 如果不加此参数, 则一直保持屏幕常亮.
+* `timeout` {number} Duration to keep the screen on, in milliseconds. If not specified, the screen stays on indefinitely.
 
-保持屏幕常亮, 但允许屏幕变暗来节省电量. 此函数可以用于定时脚本唤醒屏幕操作, 不需要用户观看屏幕, 可以让屏幕变暗来节省电量.
+Keeps the screen on but allows it to dim to save power. This function can be used for scheduled scripts that need to wake the screen without requiring the user to watch it, allowing the screen to dim to save battery.
 
-此函数无法阻止用户使用锁屏键等正常关闭屏幕, 只能使得设备在无人操作的情况下保持屏幕常亮；同时, 如果此函数调用时屏幕没有点亮, 则会唤醒屏幕.
+This function cannot prevent the user from turning off the screen using the lock screen button. It only keeps the screen on when there is no user interaction. If the screen is off when called, it will wake the screen.
 
-可以使用`device.cancelKeepingAwake()`来取消屏幕常亮.
+You can use `device.cancelKeepingAwake()` to cancel the screen-on state.
 
 ## device.cancelKeepingAwake()
 
-取消设备保持唤醒状态. 用于取消`device.keepScreenOn()`, `device.keepScreenDim()`等函数设置的屏幕常亮.
+Cancels the device's keep-awake state. Used to cancel screen-on states set by functions like `device.keepScreenOn()` and `device.keepScreenDim()`.
 
 ## device.vibrate(millis)
 
-* `millis` {number} 振动时间, 单位毫秒
+* `millis` {number} Vibration duration in milliseconds
 
-使设备振动一段时间.
+Makes the device vibrate for a period of time.
 
-```
-//振动两秒
+```js
+// Vibrate for two seconds
 device.vibrate(2000);
 ```
 
 ## device.cancelVibration()
 
-如果设备处于振动状态, 则取消振动.
+If the device is currently vibrating, this cancels the vibration.

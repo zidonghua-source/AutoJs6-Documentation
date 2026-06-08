@@ -15,17 +15,31 @@ in_dir = os.path.join('..', 'api')
 out_dir = os.path.join('..', 'docs')
 json_out_dir = os.path.join('..', 'json')
 template = os.path.join('..', 'template.html')
+project_json_path = os.path.join('..', 'project.json')
 
+# Robust version detection (survives different environments)
+version = '6.5.0'  # sensible default
+
+# 1. Try reading from this repo's project.json (most reliable here)
+try:
+    import json
+    with open(project_json_path, 'r', encoding='utf-8') as f:
+        pj = json.load(f)
+    if 'versionName' in pj:
+        version = pj['versionName']
+except Exception:
+    pass
+
+# 2. Legacy support: try the old AutoJs6 version.properties (optional)
 version_file_path = 'D:/idea-projects/AutoJs6/version.properties'
-version_fallback = '6.x'
-
 if os.path.exists(version_file_path):
-    configs = Properties()
-    with open(version_file_path, 'rb') as config_file:
-        configs.load(config_file)
-    version = configs.get('VERSION_NAME').data
-else:
-    version = version_fallback
+    try:
+        configs = Properties()
+        with open(version_file_path, 'rb') as config_file:
+            configs.load(config_file)
+        version = configs.get('VERSION_NAME').data
+    except Exception:
+        pass
 
 
 def process(in_file, out_file, fmt='html'):

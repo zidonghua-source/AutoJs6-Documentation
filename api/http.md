@@ -2,14 +2,14 @@
 
 ---
 
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
+<p style="font: italic 1em sans-serif; color: #78909C">This chapter is pending supplementation or improvement...</p>
 <p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Mar 21, 2023.</p>
 
 ---
 
-http 模块主要用于发送 HTTP 请求, 获取并解析 HTTP 响应.
+The `http` module is mainly used for sending HTTP requests and retrieving/parsing HTTP responses.
 
-> 注: 与 [web](web) 模块不同, web 模块主要用于 WebView 网页的注入及客户端构建.
+> Note: This is different from the [web](web) module, which is primarily for WebView injection and client-side building.
 
 ---
 
@@ -23,15 +23,15 @@ http 模块主要用于发送 HTTP 请求, 获取并解析 HTTP 响应.
 
 **`Overload 1/3`**
 
-- **url** { [string](dataTypes#string) } - 请求的 URL 地址 (默认使用 HTTP 协议)
-- <ins>**returns**</ins> { [HttpResponse](httpResponseType) } - 请求的响应实例
+- **url** { [string](dataTypes#string) } - The URL to request (uses HTTP protocol by default)
+- <ins>**returns**</ins> { [HttpResponse](httpResponseType) } - The response object
 
 ```js
 let response = http.get('www.github.com');
 if (response.statusCode === 200) {
-    console.log('请求成功');
+    console.log('Request successful');
 } else {
-    console.log('请求失败');
+    console.log('Request failed');
 }
 ```
 
@@ -39,28 +39,22 @@ if (response.statusCode === 200) {
 
 **`Overload 2/3`**
 
-- **url** { [string](dataTypes#string) } - 请求的 URL 地址 (默认使用 HTTP 协议)
-- **options** { [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) } - 请求的构建选项
-- <ins>**returns**</ins> { [HttpResponse](httpResponseType) } - 请求的响应实例
+- **url** { [string](dataTypes#string) } - The URL to request (uses HTTP protocol by default)
+- **options** { [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) } - Request builder options
+- <ins>**returns**</ins> { [HttpResponse](httpResponseType) } - The response object
 
 ### get(url, options, callback)
 
 **`Overload 3/3`** **`Async`**
 
-- **url** { [string](dataTypes#string) } - 请求的 URL 地址 (默认使用 HTTP 协议)
-- **options** { [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) } - 请求的构建选项
-- **callback** { [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) } - 请求的响应回调
-- <ins>**returns**</ins> { [HttpResponse](httpResponseType) } - 请求的响应实例
+- **url** { [string](dataTypes#string) } - The URL to request (uses HTTP protocol by default)
+- **options** { [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) } - Request builder options
+- **callback** { Function } - Callback for the response (optional)
+- <ins>**returns**</ins> { [HttpResponse](httpResponseType) } - The response object (if no callback is provided, the request is blocking)
 
+Performs an HTTP GET request to the given URL. If no callback is provided, returns the response when the request completes or fails.
 
-- **url** { [string](dataTypes#string) } - 请求的 URL 地址
-* `options` {Object} 请求选项. 参见[http.request()][].
-* `callback` {Function} 回调函数, 可选, 其参数是一个[Response][]对象. 如果不加回调函数, 则该请求将阻塞、同步地执行.
-
-
-对地址url进行一次HTTP GET 请求. 如果没有回调函数, 则在请求完成或失败时返回此次请求的响应(参见[Response][]).
-
-最简单GET请求如下:
+A basic GET request looks like this:
 
 ```
 console.show();
@@ -69,9 +63,9 @@ log("code = " + r.statusCode);
 log("html = " + r.body.string());
 ```
 
-采用回调形式的GET请求如下：
+A GET request using callback form:
 
-```
+```js
 console.show();
 http.get("www.baidu.com", {}, function(res, err){
 	if(err){
@@ -83,14 +77,14 @@ http.get("www.baidu.com", {}, function(res, err){
 });
 ```
 
-如果要增加HTTP头部信息, 则在options参数中添加, 例如：
+To add HTTP headers, include them in the `options` parameter. For example:
 
-```
+```js
 console.show();
 var r = http.get("www.baidu.com", {
 	headers: {
 		'Accept-Language': 'zh-cn,zh;q=0.5',
-		'User-Agent': 'Mozilla/5.0(Macintosh;IntelMacOSX10_7_0)AppleWebKit/535.11(KHTML,likeGecko)Chrome/17.0.963.56Safari/535.11'
+		'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11'
 	}
 });
 log("code = " + r.statusCode);

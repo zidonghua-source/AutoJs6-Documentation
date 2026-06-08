@@ -1,17 +1,17 @@
-# 事件监听 (Events)
+# Event Listening (Events)
 
 ---
 
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
+<p style="font: italic 1em sans-serif; color: #78909C">This chapter is pending supplementation or improvement...</p>
 <p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
 
 ---
 
-events模块提供了监听手机通知、按键、触摸的接口. 您可以用他配合自动操作函数完成自动化工作.
+The `events` module provides interfaces for listening to phone notifications, key presses, and touches. You can use it together with automation functions to build automated tasks.
 
-events本身是一个[EventEmiiter](#events_eventemitter), 但内置了一些事件、包括按键事件、通知事件、Toast事件等.
+`events` itself is an [EventEmitter](#events_eventemitter), but it comes with several built-in events, including key events, notification events, Toast events, etc.
 
-需要注意的是, 事件的处理是单线程的, 并且仍然在原线程执行, 如果脚本主体或者其他事件处理中有耗时操作、轮询等, 则事件将无法得到及时处理（会进入事件队列等待脚本主体或其他事件处理完成才执行）. 例如:
+**Important note**: Event handling is single-threaded and runs on the original thread. If the main script or other event handlers contain long-running operations or polling, events may not be processed in a timely manner (they will queue until the main script or other handlers finish). For example:
 
 ```
 auto();

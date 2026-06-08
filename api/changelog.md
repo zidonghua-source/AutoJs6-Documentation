@@ -1,83 +1,83 @@
-# 文档更新日志 (Changelog)
+# Documentation Changelog
 
 ## v1.1.8
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/12/01</p>
 
-- `新增` [中文转换 (OpenCC)](https://docs.autojs6.com/#/opencc) 文档
-- `新增` [OpenCCConversion](https://docs.autojs6.com/#/openCCConversionType) 类型
-- `新增` [选择器](https://docs.autojs6.com/#/uiSelectorType) 章节增加 [plus](https://docs.autojs6.com/#/uiObjectType?id=m-plus) / [append](https://docs.autojs6.com/#/uiObjectType?id=m-append) 条目
-- `新增` [控制台 (Console)](https://docs.autojs6.com/#/console) 章节增加 [setTouchable](https://docs.autojs6.com/#/console?id=m-settouchable) 条目
-- `新增` [ConsoleBuildOptions](https://docs.autojs6.com/#/consoleBuildOptionsType) 章节增加 [touchable](https://docs.autojs6.com/#/consoleBuildOptionsType?id=p-touchable) 条目
-- `优化` [光学字符识别 (OCR)](https://docs.autojs6.com/#/ocr) 章节增加 Paddle 工作模式使用提示
-- `优化` 完善 [Shizuku](https://docs.autojs6.com/#/shizuku) 章节
-- `优化` 完善 [选择器](https://docs.autojs6.com/#/uiSelectorType) 章节
+- `New` [Chinese Conversion (OpenCC)](https://docs.autojs6.com/#/opencc) documentation
+- `New` [OpenCCConversion](https://docs.autojs6.com/#/openCCConversionType) type
+- `New` Added [plus](https://docs.autojs6.com/#/uiObjectType?id=m-plus) / [append](https://docs.autojs6.com/#/uiObjectType?id=m-append) entries to the [Selector](https://docs.autojs6.com/#/uiSelectorType) chapter
+- `New` Added [setTouchable](https://docs.autojs6.com/#/console?id=m-settouchable) entry to the [Console](https://docs.autojs6.com/#/console) chapter
+- `New` Added [touchable](https://docs.autojs6.com/#/consoleBuildOptionsType?id=p-touchable) entry to [ConsoleBuildOptions](https://docs.autojs6.com/#/consoleBuildOptionsType)
+- `Improved` Added Paddle working mode usage tips to the [Optical Character Recognition (OCR)](https://docs.autojs6.com/#/ocr) chapter
+- `Improved` Completed the [Shizuku](https://docs.autojs6.com/#/shizuku) chapter
+- `Improved` Completed the [Selector](https://docs.autojs6.com/#/uiSelectorType) chapter
 
 ## v1.1.7
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/10/30</p>
 
-- `新增` [Shizuku](https://docs.autojs6.com/#/shizuku) 文档
-- `新增` [WebSocket](https://docs.autojs6.com/#/websocketType) 文档
-- `新增` [条码 (Barcode)](https://docs.autojs6.com/#/barcode) 文档
-- `新增` [二维码 (QR Code)](https://docs.autojs6.com/#/qrcode) 文档
-- `优化` 完善 [颜色 (Color)](https://docs.autojs6.com/#/color) 章节
-- `优化` 完善 [光学字符识别 (OCR)](https://docs.autojs6.com/#/ocr) 章节
+- `New` [Shizuku](https://docs.autojs6.com/#/shizuku) documentation
+- `New` [WebSocket](https://docs.autojs6.com/#/webSocketType) documentation
+- `New` [Barcode](https://docs.autojs6.com/#/barcode) documentation
+- `New` [QR Code](https://docs.autojs6.com/#/qrcode) documentation
+- `Improved` Completed the [Color](https://docs.autojs6.com/#/color) chapter
+- `Improved` Completed the [Optical Character Recognition (OCR)](https://docs.autojs6.com/#/ocr) chapter
 
 ## v1.1.6
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/07/21</p>
 
-- `优化` 完善 [控件节点](https://docs.autojs6.com/#/uiObjectType) 章节
+- `Improved` Completed the [Control Node](https://docs.autojs6.com/#/uiObjectType) chapter
 
 ## v1.1.5
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/07/06</p>
 
-- `新增` [密文 (Crypto)](https://docs.autojs6.com/#/crypto) 文档
-- `新增` [CryptoCipherOptions](https://docs.autojs6.com/#/cryptoCipherOptionsType) / [CryptoKey](https://docs.autojs6.com/#/cryptoKeyType) / [CryptoKeyPair](https://docs.autojs6.com/#/cryptoKeyPairType) 等类型
-- `修复` floaty 模块 widht 拼写失误 _[`issue #1`](http://docs-project.autojs6.com/issues/1)_
-- `优化` 完善 [Base64](https://docs.autojs6.com/#/base64) 章节
-- `优化` 完善 [颜色 (Color)](https://docs.autojs6.com/#/color) 章节
+- `New` [Cryptography (Crypto)](https://docs.autojs6.com/#/crypto) documentation
+- `New` [CryptoCipherOptions](https://docs.autojs6.com/#/cryptoCipherOptionsType) / [CryptoKey](https://docs.autojs6.com/#/cryptoKeyType) / [CryptoKeyPair](https://docs.autojs6.com/#/cryptoKeyPairType) and other types
+- `Fixed` Spelling error of `widht` in the floaty module _[`issue #1`](http://docs-project.autojs6.com/issues/1)_
+- `Improved` Completed the [Base64](https://docs.autojs6.com/#/base64) chapter
+- `Improved` Completed the [Color](https://docs.autojs6.com/#/color) chapter
 
 ## v1.1.4
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/05/26</p>
 
-- `新增` [console.resetGlobalLogConfig](https://docs.autojs6.com/#/console?id=m-resetgloballogconfig) 文档
-- `新增` [web.newWebSocket](https://docs.autojs6.com/#/web?id=m-newwebsocket) 文档
-- `优化` 完善 [全能类型 (Omnipotent Types)](https://docs.autojs6.com/#/omniTypes) 章节
-- `优化` 完善 [安卓 API 级别 (Android API Level)](https://docs.autojs6.com/#/apiLevel) 章节
+- `New` [console.resetGlobalLogConfig](https://docs.autojs6.com/#/console?id=m-resetgloballogconfig) documentation
+- `New` [web.newWebSocket](https://docs.autojs6.com/#/web?id=m-newwebsocket) documentation
+- `Improved` Completed the [Omnipotent Types](https://docs.autojs6.com/#/omniTypes) chapter
+- `Improved` Completed the [Android API Level](https://docs.autojs6.com/#/apiLevel) chapter
 
 ## v1.1.3
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/04/29</p>
 
-- `新增` [颜色类 (Color)](https://docs.autojs6.com/#/colorType) 文档
-- `新增` [控制台 (Console)](https://docs.autojs6.com/#/console) 文档
-- `新增` [标准化 (Standardization)](https://docs.autojs6.com/#/s13n) 文档
-- `新增` [全能类型 (Omnipotent Types)](https://docs.autojs6.com/#/omniTypes) 文档
-- `新增` [NoticeBuilder](https://docs.autojs6.com/#/noticeBuilderType) / [NoticeChannelOptions](https://docs.autojs6.com/#/noticeChannelOptionsType) / [NoticeOptions](https://docs.autojs6.com/#/noticeOptionsType) 等类型
-- `新增` 示例代码区域增加 Copy 按钮以复制代码内容
-- `新增` 文档中的图片内容支持点击以全屏方式查看
-- `修复` 文档内容中部分图片资源丢失的问题
-- `优化` 生成器根据 properties 文件自动获取 AutoJs6 版本信息
-- `优化` 压缩本地 JavaScript 文件以提升页面加载速度
-- `优化` 本地化字体文件避免网络条件不佳时影响页面加载速度
-- `优化` 部分表格内容强制禁用自动断行以提升阅读体验
-- `优化` 完善 [颜色 (Color)](https://docs.autojs6.com/#/color) 章节
-- `优化` 完善 [消息通知 (Notice)](https://docs.autojs6.com/#/notice) 章节
-- `优化` 完善 [光学字符识别 (OCR)](https://docs.autojs6.com/#/ocr) 章节
+- `New` [Color Class](https://docs.autojs6.com/#/colorType) documentation
+- `New` [Console](https://docs.autojs6.com/#/console) documentation
+- `New` [Standardization](https://docs.autojs6.com/#/s13n) documentation
+- `New` [Omnipotent Types](https://docs.autojs6.com/#/omniTypes) documentation
+- `New` [NoticeBuilder](https://docs.autojs6.com/#/noticeBuilderType) / [NoticeChannelOptions](https://docs.autojs6.com/#/noticeChannelOptionsType) / [NoticeOptions](https://docs.autojs6.com/#/noticeOptionsType) and other types
+- `New` Added Copy button to code example areas to copy code content
+- `New` Images in the documentation can now be clicked for fullscreen viewing
+- `Fixed` Missing image resources in some documentation content
+- `Improved` Generator now automatically retrieves AutoJs6 version information from the properties file
+- `Improved` Minified local JavaScript files to improve page loading speed
+- `Improved` Localized font files to avoid slow page loading under poor network conditions
+- `Improved` Forced disabled automatic line wrapping for some table content to improve reading experience
+- `Improved` Completed the [Color](https://docs.autojs6.com/#/color) chapter
+- `Improved` Completed the [Notice](https://docs.autojs6.com/#/notice) chapter
+- `Improved` Completed the [Optical Character Recognition (OCR)](https://docs.autojs6.com/#/ocr) chapter
 
 ## v1.1.2
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/03/21</p>
 
-- `新增` [光学字符识别 (OCR)](https://docs.autojs6.com/#/ocr) 文档
-- `新增` [消息通知 (Notice)](https://docs.autojs6.com/#/notice) 文档
-- `新增` [HttpRequestHeaders](https://docs.autojs6.com/#/httpRequestHeadersType) / [HttpResponseHeaders](https://docs.autojs6.com/#/httpResponseHeadersType) / [OpenCVRect](https://docs.autojs6.com/#/opencvRectType) 等类型
-- `新增` [通知渠道](https://docs.autojs6.com/#/glossaries?id=通知渠道) / [HTTP 标头](https://docs.autojs6.com/#/glossaries?id=HTTP-标头) / [MIME 类型](https://docs.autojs6.com/#/glossaries?id=MIME-类型) / [HTTP 请求方法](https://docs.autojs6.com/#/glossaries?id=HTTP-请求方法) 等术语
-- `新增` [颜色 (Color)](https://docs.autojs6.com/#/color) 章节增加 [toColorStateList](https://docs.autojs6.com/#/color?id=m-tocolorstatelist) 及 [setPaintColor](https://docs.autojs6.com/#/color?id=m-setpaintcolor) 条目
+- `New` [Optical Character Recognition (OCR)](https://docs.autojs6.com/#/ocr) documentation
+- `New` [Notice](https://docs.autojs6.com/#/notice) documentation
+- `New` [HttpRequestHeaders](https://docs.autojs6.com/#/httpRequestHeadersType) / [HttpResponseHeaders](https://docs.autojs6.com/#/httpResponseHeadersType) / [OpenCVRect](https://docs.autojs6.com/#/opencvRectType) and other types
+- `New` Added terminology entries for [Notification Channels](https://docs.autojs6.com/#/glossaries?id=notification-channel) / [HTTP Headers](https://docs.autojs6.com/#/glossaries?id=http-header) / [MIME Types](https://docs.autojs6.com/#/glossaries?id=mime-type) / [HTTP Request Methods](https://docs.autojs6.com/#/glossaries?id=http-request-method)
+- `New` Added [toColorStateList](https://docs.autojs6.com/#/color?id=m-tocolorstatelist) and [setPaintColor](https://docs.autojs6.com/#/color?id=m-setpaintcolor) entries to the [Color](https://docs.autojs6.com/#/color) chapter
 - `修复` 文档更新日志条目中的链接无效的问题
 - `优化` 完善 [疑难解答 (Q & A)](https://docs.autojs6.com/#/qa) 章节
 

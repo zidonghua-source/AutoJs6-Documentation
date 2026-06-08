@@ -1,6 +1,6 @@
-# Color (颜色类)
+# Color
 
-颜色类 Color 是一个全局类, 用于生成一个颜色实例:
+The `Color` class is a global class used to create a color instance:
 
 ```js
 typeof global.Color; // "function"
@@ -11,15 +11,15 @@ c.getRed(); // 255
 c.getRedDouble(); // 1
 ```
 
-Color 类是对 [colors](color) 模块的一种变式封装, 用于解决 colors 模块冗余嵌套的难题.
+The `Color` class is a variant wrapper around the [colors](color) module, designed to solve the problem of redundant nesting in the colors module.
 
-例如需要对颜色 `hsv(174,100,59)` 设置 `80%` 透明度然后返回其 Hex 代码:
+For example, to set `80%` transparency on the color `hsv(174,100,59)` and then return its Hex code:
 
 ```js
 colors.toHex(colors.setAlpha(colors.hsv(174, 100, 59), 0.8));
 ```
 
-或使用变量拆写形式以增加可读性:
+Or using variable decomposition for better readability:
 
 ```js
 let color = colors.hsv(174, 100, 59);
@@ -27,13 +27,13 @@ let colorWithAlpha = colors.setAlpha(color, 0.8);
 colors.toHex(colorWithAlpha);
 ```
 
-使用 Color 实例进行链式调用, 可使代码更轻量且易读:
+Using a `Color` instance for chained calls makes the code more lightweight and readable:
 
 ```js
 new Color().setHsv(174, 100, 59).setAlpha(0.8).toHex();
 ```
 
-链式拆行形式:
+Chained line-broken form:
 
 ```js
 new Color()
@@ -42,43 +42,43 @@ new Color()
     .toHex();
 ```
 
-> 注: 上述示例仅用于演示, 实际可使用 colors.hsva 或 Color#setHsva 同时设置 HSV 分量与 A 分量.
+> Note: The examples above are for demonstration only. In practice, you can use `colors.hsva` or `Color#setHsva` to set both HSV components and the A (alpha) component at the same time.
 
-Color 实例方法的使用方式与 colors 模块对应方法多数情况是类似的, 因此某些情况下可用于替代 colors 模块.
+Most `Color` instance methods work similarly to their counterparts in the colors module, so they can be used as alternatives to the colors module in many cases.
 
-以 `set` 或 `remove` 为前缀的方法, 通常都会返回 Color 自身类型, 从而支持链式调用, 如 [setAlpha](#m-setalpha), [removeAlpha](#m-removealpha), [setRed](#m-setred), [removeRed](#m-removered), [setHsv](#m-sethsv), [setRgba](#m-setrgba) 等.
+Methods prefixed with `set` or `remove` typically return the `Color` instance itself, enabling chained calls, such as [setAlpha](#m-setalpha), [removeAlpha](#m-removealpha), [setRed](#m-setred), [removeRed](#m-removered), [setHsv](#m-sethsv), [setRgba](#m-setrgba), etc.
 
-为便于使用, Color 类在使用 JavaScript 代码设计时, 支持省略 `new` 关键字的语法形式:
+For convenience, the `Color` class supports omitting the `new` keyword when using JavaScript syntax:
 
 ```js
 new Color('blue');
-Color('blue'); /* 效果同上. */
+Color('blue'); /* Same effect as above. */
 
 new Color().setAlpha(0.5).digest();
-Color().setAlpha(0.5).digest();  /* 结果同上. */
+Color().setAlpha(0.5).digest();  /* Same result as above. */
 ```
 
-需额外留意, Color 类的 `new` 关键字省略, 是 AutoJs6 开发者在编写 Color 类时为便于使用而专门设计的, 并不适用于所有构造器, 详情参阅 JavaScript 语法规范.
+Note that the omission of the `new` keyword for the `Color` class is a special design by the AutoJs6 developers for usability. It does not apply to all constructors. See the JavaScript language specification for details.
 
-> 参阅: [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new) / [Ecma 标准](https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-new-operator)
+> See also: [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) / [Ecma Specification](https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-new-operator)
 
-[colors.build](color#m-build) 也可用于构造一个 Color 实例:
+[colors.build](color#m-build) can also be used to construct a `Color` instance:
 
 ```js
 new Color();
-Color(); /* 同上. */
-colors.build(); /* 同上. */
+Color(); /* Same as above. */
+colors.build(); /* Same as above. */
 
 new Color('green');
-Color('green'); /* 同上 */
-colors.build('green'); /* 同上 */
+Color('green'); /* Same as above */
+colors.build('green'); /* Same as above */
 
 new Color(120, 24, 72, 0.5);
-Color(120, 24, 72, 0.5); /* 同上. */
-colors.build(120, 24, 72, 0.5); /* 同上. */
+Color(120, 24, 72, 0.5); /* Same as above. */
+colors.build(120, 24, 72, 0.5); /* Same as above. */
 ```
 
-本章节后续内容将不再赘述 `colors.build(...)` 的替代语法, 且统一使用省略 `new` 关键字的 Color 实例构造语法, 即 `Color(...)`.
+The rest of this chapter will no longer repeat the alternative syntax using `colors.build(...)`, and will consistently use the `Color(...)` constructor syntax that omits the `new` keyword.
 
 ---
 
@@ -92,23 +92,23 @@ colors.build(120, 24, 72, 0.5); /* 同上. */
 
 **`6.3.0`** **`Global`** **`Overload [1-2]/5`**
 
-- **[ color = `Colors.BLACK` ]** { [ColorHex](dataTypes#colorhex) | [ColorInt](dataTypes#colorint) | [ColorName](dataTypes#colorname) } - 颜色参数
-- <ins>**returns**</ins> { [Color](colorType) } - Color 实例
+- **[ color = `Colors.BLACK` ]** { [ColorHex](dataTypes#colorhex) | [ColorInt](dataTypes#colorint) | [ColorName](dataTypes#colorname) } - Color parameter
+- <ins>**returns**</ins> { [Color](colorType) } - Color instance
 
-构建一个颜色实例, 初始颜色由 `color` 参数指定, 参数省略时默认为 `黑色 (#FF000000)`.
+Constructs a color instance. The initial color is specified by the `color` parameter. If omitted, it defaults to black (#FF000000).
 
 ```js
 Color().toHex(); // #000000
-Color('black').toHex(); /* 同上. */
-Color(0).setAlpha(1).toHex(); /* 同上. */
+Color('black').toHex(); /* Same as above. */
+Color(0).setAlpha(1).toHex(); /* Same as above. */
 
 Color('green').toHex(); // #00FF00
-Color('#00FF00').toHex(); /* 同上. */
-Color().setGreen(255).toHex(); /* 同上. */
-Color('white').removeRed().removeBlue().toHex(); /* 同上. */ 
+Color('#00FF00').toHex(); /* Same as above. */
+Color().setGreen(255).toHex(); /* Same as above. */
+Color('white').removeRed().removeBlue().toHex(); /* Same as above. */ 
 ```
 
-需特别留意, `Color(0)` 返回的不是默认的黑色, 而是 `透明色 (#00000000)`:
+Note that `Color(0)` returns transparent black (#00000000), not the default black:
 
 ```js
 Color(0).toFullHex(); // #00000000
@@ -122,39 +122,39 @@ Color().removeAlpha().toFullHex(); // #00000000
 
 **`6.3.0`** **`Global`** **`Overload [3-4]/5`**
 
-- **red** { [ColorComponent](dataTypes#colorcomponent) } - 颜色分量 - R (red)
-- **green** { [ColorComponent](dataTypes#colorcomponent) } - 颜色分量 - G (green)
-- **blue** { [ColorComponent](dataTypes#colorcomponent) } - 颜色分量 - B (blue)
-- **[ alpha = `1` ]** { [ColorComponent](dataTypes#colorcomponent) } - 颜色分量 - A (alpha)
-- <ins>**returns**</ins> { [Color](colorType) } - Color 实例
+- **red** { [ColorComponent](dataTypes#colorcomponent) } - Color component - R (red)
+- **green** { [ColorComponent](dataTypes#colorcomponent) } - Color component - G (green)
+- **blue** { [ColorComponent](dataTypes#colorcomponent) } - Color component - B (blue)
+- **[ alpha = `1` ]** { [ColorComponent](dataTypes#colorcomponent) } - Color component - A (alpha)
+- <ins>**returns**</ins> { [Color](colorType) } - Color instance
 
-构建一个颜色实例, 初始颜色由多个参数指定, 其中 `alpha` 参数省略时默认为 `1 (100%)`.
+Constructs a color instance. The initial color is specified by multiple parameters. If the `alpha` parameter is omitted, it defaults to `1` (100%).
 
 ```js
-Color(255, 255, 255); /* 白色. */
-Color(0, 0, 255, 0.5); /* 半透明蓝色. */
+Color(255, 255, 255); /* White. */
+Color(0, 0, 255, 0.5); /* Semi-transparent blue. */
 ```
 
-需特别留意, 颜色分量值为 `0` 时不可省略, 如 `Color(255, 0, 0)` 不可省略为 `Color(255)`.
+Note that color component values of `0` cannot be omitted. For example, `Color(255, 0, 0)` cannot be written as `Color(255)`.
 
 ### [c] (themeColor)
 
 **`6.3.0`** **`Global`** **`Overload 5/5`**
 
-- **themeColor** { [ThemeColor](dataTypes#themecolor) } - 主题颜色实例
-- <ins>**returns**</ins> { [Color](colorType) } - Color 实例
+- **themeColor** { [ThemeColor](dataTypes#themecolor) } - Theme color instance
+- <ins>**returns**</ins> { [Color](colorType) } - Color instance
 
-构建一个颜色实例, 初始颜色为 AutoJs6 主题色的 `主色 (Primary Color)`.
+Constructs a color instance using the primary color of the AutoJs6 theme color.
 
 ```js
-Color(autojs.themeColor).toHex(); /* AutoJs6 主题色主色的 Hex 代码. */
+Color(autojs.themeColor).toHex(); /* Hex code of the AutoJs6 theme's primary color. */
 ```
 
-此构造方法相当于 `Color(ThemeColor#getColorPrimary)`.
+This constructor is equivalent to `Color(ThemeColor#getColorPrimary)`.
 
 ```js
 Color(autojs.themeColor.getColorPrimary()).toHex();
-Color(autojs.themeColor).toHex(); /* 效果同上. */
+Color(autojs.themeColor).toHex(); /* Same effect as above. */
 ```
 
 ## [m#] toInt

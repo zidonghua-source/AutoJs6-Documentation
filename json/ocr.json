@@ -2,20 +2,20 @@
   "source": "..\\api\\ocr.md",
   "modules": [
     {
-      "textRaw": "光学字符识别 (OCR)",
-      "name": "光学字符识别_(ocr)",
-      "desc": "<p>ocr 模块用于识别图像中的文本.</p>\n<p>AutoJs6 的 OCR 特性是基于 <a href=\"https://developers.google.com/ml-kit?hl=zh-cn\">Google ML Kit</a> 的 <a href=\"https://developers.google.com/ml-kit/vision/text-recognition/android?hl=zh-cn\">文字识别 API</a> 及 <a href=\"https://www.paddlepaddle.org.cn/\">Baidu PaddlePaddle</a> 的 <a href=\"https://github.com/PaddlePaddle/Paddle-Lite\">Paddle Lite</a> 实现的.</p>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ocr</p>\n\n<hr>\n",
+      "textRaw": "OCR",
+      "name": "ocr",
+      "desc": "<p>The <code>ocr</code> module is used for recognizing text in images.</p>\n<p>AutoJs6&#39;s OCR feature is implemented based on <a href=\"https://developers.google.com/ml-kit?hl=en\">Google ML Kit</a> &#39;s <a href=\"https://developers.google.com/ml-kit/vision/text-recognition/android?hl=en\">Text Recognition API</a> and <a href=\"https://www.paddlepaddle.org.cn/\">Baidu PaddlePaddle</a>&#39;s <a href=\"https://github.com/PaddlePaddle/Paddle-Lite\">Paddle Lite</a>.</p>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ocr</p>\n\n<hr>\n",
       "modules": [
         {
           "textRaw": "[@] ocr",
           "name": "[@]_ocr",
-          "desc": "<p>ocr 可作为全局对象使用:</p>\n<pre><code class=\"lang-js\">typeof ocr; // &quot;function&quot;\ntypeof ocr.detect; // &quot;function&quot;\ntypeof ocr.recognizeText; // &quot;function&quot;\n</code></pre>\n",
+          "desc": "<p><code>ocr</code> can be used as a global object:</p>\n<pre><code class=\"lang-js\">typeof ocr; // &quot;function&quot;\ntypeof ocr.detect; // &quot;function&quot;\ntypeof ocr.recognizeText; // &quot;function&quot;\n</code></pre>\n",
           "methods": [
             {
               "textRaw": "ocr(options?)",
               "type": "method",
               "name": "ocr",
-              "desc": "<p><strong><code>6.4.0</code></strong> <strong><code>Overload [1-2]/9</code></strong></p>\n<ul>\n<li><strong>[ options ]</strong> { <a href=\"ocrOptionsType\">OcrOptions</a> } - OCR 识别选项</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a><a href=\"dataTypes#array\">[]</a> }</li>\n</ul>\n<p>识别当前屏幕截图中包含的所有文本, 返回文本数组.</p>\n<p><code>ocr()</code> 相当于以下代码的整合:</p>\n<pre><code class=\"lang-js\">images.requestScreenCapture();\nlet img = images.captureScreen();\nocr(img);\n</code></pre>\n<p>同时也是 <a href=\"#m-recognizetext\">ocr.recognizeText(options?)</a> 的别名方法.</p>\n",
+              "desc": "<p><strong><code>6.4.0</code></strong> <strong><code>Overload [1-2]/9</code></strong></p>\n<ul>\n<li><strong>[ options ]</strong> { <a href=\"ocrOptionsType\">OcrOptions</a> } - OCR recognition options</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a><a href=\"dataTypes#array\">[]</a> }</li>\n</ul>\n<p>Recognizes all text contained in the current screen screenshot and returns an array of text strings.</p>\n<p><code>ocr()</code> is equivalent to the following combined code:</p>\n<pre><code class=\"lang-js\">images.requestScreenCapture();\nlet img = images.captureScreen();\nocr(img);\n</code></pre>\n<p>It is also an alias for <a href=\"#m-recognizetext\">ocr.recognizeText(options?)</a>.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -30,7 +30,7 @@
               "textRaw": "ocr(region)",
               "type": "method",
               "name": "ocr",
-              "desc": "<p><strong><code>6.4.0</code></strong> <strong><code>Overload 3/9</code></strong></p>\n<ul>\n<li><strong>region</strong> { <a href=\"omniTypes#omniregion\">OmniRegion</a> } - OCR 识别区域</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a><a href=\"dataTypes#array\">[]</a> }</li>\n</ul>\n<p>识别当前屏幕截图指定区域内包含的所有文本, 返回文本数组.</p>\n<p><code>ocr(region)</code> 相当于以下代码的整合:</p>\n<pre><code class=\"lang-js\">images.requestScreenCapture();\nlet img = images.captureScreen();\nocr(img, region);\n</code></pre>\n<p>同时也是 <a href=\"#-ocr\">ocr({ region: region })</a> 的便捷方法,</p>\n<p>以及 <a href=\"#m-recognizetext\">ocr.recognizeText(region)</a> 的别名方法.</p>\n<p>关于 OCR 区域参数 <code>region</code> 的更多用法, 参阅 <a href=\"ocrOptionsType#p-region\">OcrOptions#region</a> 小节.</p>\n",
+              "desc": "<p><strong><code>6.4.0</code></strong> <strong><code>Overload 3/9</code></strong></p>\n<ul>\n<li><strong>region</strong> { <a href=\"omniTypes#omniregion\">OmniRegion</a> } - OCR recognition region</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a><a href=\"dataTypes#array\">[]</a> }</li>\n</ul>\n<p>Recognizes all text contained in the specified region of the current screen screenshot and returns an array of text strings.</p>\n<p><code>ocr(region)</code> is equivalent to the following combined code:</p>\n<pre><code class=\"lang-js\">images.requestScreenCapture();\nlet img = images.captureScreen();\nocr(img, region);\n</code></pre>\n<p>It is also a convenience method for <a href=\"#-ocr\">ocr({ region: region })</a>,</p>\n<p>and an alias for <a href=\"#m-recognizetext\">ocr.recognizeText(region)</a>.</p>\n<p>For more usage of the OCR region parameter <code>region</code>, see the <a href=\"ocrOptionsType#p-region\">OcrOptions#region</a> section.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -45,7 +45,7 @@
               "textRaw": "ocr(img, options?)",
               "type": "method",
               "name": "ocr",
-              "desc": "<p><strong><code>6.3.0</code></strong> <strong><code>Overload [4-5]/9</code></strong></p>\n<ul>\n<li><strong>img</strong> { <a href=\"imageWrapperType\">ImageWrapper</a> } - 包装图像对象</li>\n<li><strong>[ options ]</strong> { <a href=\"ocrOptionsType\">OcrOptions</a> } - OCR 识别选项</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a><a href=\"dataTypes#array\">[]</a> }</li>\n</ul>\n<p>识别图像包含的所有文本, 返回文本数组.</p>\n<p><a href=\"#m-recognizetext\">ocr.recognizeText(img, options?)</a> 的别名方法.</p>\n<pre><code class=\"lang-js\">/* 申请屏幕截图权限. */\nimages.requestScreenCapture();\n\n/* 截屏并获取包装图像对象. */\nlet img = images.captureScreen();\n\n/* OCR 识别并获取结果, 结果为字符串数组. */\nlet results = ocr(img);\n\n/* 结果过滤, 筛选出文本中可部分匹配 &quot;app&quot; 的结果, 如 &quot;apple&quot;, &quot;disappear&quot; 等. */\nresults.filter(text =&gt; text.includes(&#39;app&#39;));\n</code></pre>\n",
+              "desc": "<p><strong><code>6.3.0</code></strong> <strong><code>Overload [4-5]/9</code></strong></p>\n<ul>\n<li><strong>img</strong> { <a href=\"imageWrapperType\">ImageWrapper</a> } - Wrapped image object</li>\n<li><strong>[ options ]</strong> { <a href=\"ocrOptionsType\">OcrOptions</a> } - OCR recognition options</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a><a href=\"dataTypes#array\">[]</a> }</li>\n</ul>\n<p>Recognizes all text contained in the image and returns an array of text strings.</p>\n<p>Alias for <a href=\"#m-recognizetext\">ocr.recognizeText(img, options?)</a>.</p>\n<pre><code class=\"lang-js\">/* Request screen capture permission. */\nimages.requestScreenCapture();\n\n/* Capture the screen and obtain the wrapped image object. */\nlet img = images.captureScreen();\n\n/* Perform OCR recognition and get the result as a string array. */\nlet results = ocr(img);\n\n/* Filter results: select texts that partially match &quot;app&quot;, such as &quot;apple&quot;, &quot;disappear&quot;, etc. */\nresults.filter(text =&gt; text.includes(&#39;app&#39;));\n</code></pre>\n",
               "signatures": [
                 {
                   "params": [
@@ -63,7 +63,7 @@
               "textRaw": "ocr(img, region)",
               "type": "method",
               "name": "ocr",
-              "desc": "<p><strong><code>6.3.0</code></strong> <strong><code>Overload 6/9</code></strong></p>\n<ul>\n<li><strong>img</strong> { <a href=\"imageWrapperType\">ImageWrapper</a> } - 包装图像对象</li>\n<li><strong>region</strong> { <a href=\"omniTypes#omniregion\">OmniRegion</a> } - OCR 识别区域</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a><a href=\"dataTypes#array\">[]</a> }</li>\n</ul>\n<p>识别指定区域内图像包含的所有文本, 返回文本数组.</p>\n<p><a href=\"#-ocr\">ocr(img, { region: region })</a> 的便捷方法.</p>\n<p><a href=\"#m-recognizetext\">ocr.recognizeText(img, region)</a> 的别名方法.</p>\n<pre><code class=\"lang-js\">/* 申请屏幕截图权限. */\nimages.requestScreenCapture();\n\n/* 截屏并获取包装图像对象. */\nlet img = images.captureScreen();\n\n/* 在区域 [ 0, 0, 100, 150 ] 内进行 OCR 识别并获取结果, 结果为字符串数组. */\nlet results = ocr(img, [ 0, 0, 100, 150 ]);\n\n/* 结果过滤, 筛选出文本中可部分匹配 &quot;app&quot; 的结果, 如 &quot;apple&quot;, &quot;disappear&quot; 等. */\nresults.filter(text =&gt; text.includes(&#39;app&#39;)); \n</code></pre>\n<p>关于 OCR 区域参数 <code>region</code> 的更多用法, 参阅 <a href=\"ocrOptionsType#p-region\">OcrOptions#region</a> 小节.</p>\n",
+              "desc": "<p><strong><code>6.3.0</code></strong> <strong><code>Overload 6/9</code></strong></p>\n<ul>\n<li><strong>img</strong> { <a href=\"imageWrapperType\">ImageWrapper</a> } - Wrapped image object</li>\n<li><strong>region</strong> { <a href=\"omniTypes#omniregion\">OmniRegion</a> } - OCR recognition region</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a><a href=\"dataTypes#array\">[]</a> }</li>\n</ul>\n<p>Recognizes all text contained in the specified region of the image and returns an array of text strings.</p>\n<p>Convenience method for <a href=\"#-ocr\">ocr(img, { region: region })</a>.</p>\n<p>Alias for <a href=\"#m-recognizetext\">ocr.recognizeText(img, region)</a>.</p>\n<pre><code class=\"lang-js\">/* Request screen capture permission. */\nimages.requestScreenCapture();\n\n/* Capture the screen and obtain the wrapped image object. */\nlet img = images.captureScreen();\n\n/* Perform OCR recognition within the region [0, 0, 100, 150] and get the result as a string array. */\nlet results = ocr(img, [0, 0, 100, 150]);\n\n/* Filter results: select texts that partially match &quot;app&quot;, such as &quot;apple&quot;, &quot;disappear&quot;, etc. */\nresults.filter(text =&gt; text.includes(&#39;app&#39;));\n</code></pre>\n<p>For more usage of the OCR region parameter <code>region</code>, see the <a href=\"ocrOptionsType#p-region\">OcrOptions#region</a> section.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -81,7 +81,7 @@
               "textRaw": "ocr(imgPath, options?)",
               "type": "method",
               "name": "ocr",
-              "desc": "<p><strong><code>6.3.0</code></strong> <strong><code>Overload [7-8]/9</code></strong></p>\n<ul>\n<li><strong>imgPath</strong> { <a href=\"dataTypes#string\">string</a> } - 图像路径</li>\n<li><strong>[ options ]</strong> { <a href=\"ocrOptionsType\">OcrOptions</a> } - OCR 识别选项</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a><a href=\"dataTypes#array\">[]</a> }</li>\n</ul>\n<p>识别指定路径对应图像包含的所有文本, 返回文本数组.</p>\n<p>当指定路径无法解析为包装图像对象时, 将抛出 <code>TypeError</code> 异常.</p>\n<p><a href=\"#m-recognizetext\">ocr.recognizeText(imgPath, options?)</a> 的别名方法.</p>\n<pre><code class=\"lang-js\">ocr(&#39;./picture.jpg&#39;); /* 获取本地图像文件中的所有文本. */\n</code></pre>\n",
+              "desc": "<p><strong><code>6.3.0</code></strong> <strong><code>Overload [7-8]/9</code></strong></p>\n<ul>\n<li><strong>imgPath</strong> { <a href=\"dataTypes#string\">string</a> } - Image path</li>\n<li><strong>[ options ]</strong> { <a href=\"ocrOptionsType\">OcrOptions</a> } - OCR recognition options</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a><a href=\"dataTypes#array\">[]</a> }</li>\n</ul>\n<p>Recognizes all text contained in the image at the specified path and returns an array of text strings.</p>\n<p>If the specified path cannot be resolved to a wrapped image object, a <code>TypeError</code> exception will be thrown.</p>\n<p>Alias for <a href=\"#m-recognizetext\">ocr.recognizeText(imgPath, options?)</a>.</p>\n<pre><code class=\"lang-js\">ocr(&#39;./picture.jpg&#39;); /* Get all text from the local image file. */\n</code></pre>\n",
               "signatures": [
                 {
                   "params": [
@@ -99,7 +99,7 @@
               "textRaw": "ocr(imgPath, region)",
               "type": "method",
               "name": "ocr",
-              "desc": "<p><strong><code>6.3.0</code></strong> <strong><code>Overload 9/9</code></strong></p>\n<ul>\n<li><strong>imgPath</strong> { <a href=\"dataTypes#string\">string</a> } - 图像路径</li>\n<li><strong>region</strong> { <a href=\"omniTypes#omniregion\">OmniRegion</a> } - OCR 识别区域</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a><a href=\"dataTypes#array\">[]</a> }</li>\n</ul>\n<p>识别指定路径对应图像在指定区域内包含的所有文本, 返回文本数组.</p>\n<p>当指定路径无法解析为包装图像对象时, 将抛出 <code>TypeError</code> 异常.</p>\n<p><a href=\"#-ocr\">ocr(imgPath, { region: region })</a> 的便捷方法.</p>\n<p><a href=\"#m-recognizetext\">ocr.recognizeText(imgPath, region)</a> 的别名方法.</p>\n<pre><code class=\"lang-js\">/* 获取本地图像文件在区域 [ 0, 0, 100, 150 ] 内的所有文本. */\nocr(&#39;./picture.jpg&#39;, [ 0, 0, 100, 150 ]);\n</code></pre>\n<p>关于 OCR 区域参数 <code>region</code> 的更多用法, 参阅 <a href=\"ocrOptionsType#p-region\">OcrOptions#region</a> 小节.</p>\n",
+              "desc": "<p><strong><code>6.3.0</code></strong> <strong><code>Overload 9/9</code></strong></p>\n<ul>\n<li><strong>imgPath</strong> { <a href=\"dataTypes#string\">string</a> } - Image path</li>\n<li><strong>region</strong> { <a href=\"omniTypes#omniregion\">OmniRegion</a> } - OCR recognition region</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a><a href=\"dataTypes#array\">[]</a> }</li>\n</ul>\n<p>Recognizes all text contained in the specified region of the image at the given path and returns an array of text strings.</p>\n<p>If the specified path cannot be resolved to a wrapped image object, a <code>TypeError</code> exception will be thrown.</p>\n<p>Convenience method for <a href=\"#-ocr\">ocr(imgPath, { region: region })</a>.</p>\n<p>Alias for <a href=\"#m-recognizetext\">ocr.recognizeText(imgPath, region)</a>.</p>\n<pre><code class=\"lang-js\">/* Get all text from the local image file within the region [0, 0, 100, 150]. */\nocr(&#39;./picture.jpg&#39;, [0, 0, 100, 150]);\n</code></pre>\n<p>For more usage of the OCR region parameter <code>region</code>, see the <a href=\"ocrOptionsType#p-region\">OcrOptions#region</a> section.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -397,7 +397,7 @@
         }
       ],
       "type": "module",
-      "displayName": "光学字符识别 (OCR)"
+      "displayName": "OCR"
     }
   ]
 }

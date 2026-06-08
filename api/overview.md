@@ -1,50 +1,54 @@
-# 综述 (Overview)
+# Overview
 
 ---
 
-[AutoJs6](http://project.autojs6.com): 安卓平台 JavaScript 自动化工具.
+[AutoJs6](http://project.autojs6.com): JavaScript automation tool for the Android platform.
 
-- 脚本语言: [JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/)  
-- 脚本引擎: [Rhino](https://github.com/mozilla/rhino/)  
-- 支持特性: [ES5](https://262.ecma-international.org/5.1/) (全部), [ES6](https://262.ecma-international.org/6.0/) (部分)
+- Scripting language: [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/)
+- Script engine: [Rhino](https://github.com/mozilla/rhino/)
+- Supported features: [ES5](https://262.ecma-international.org/5.1/) (complete), [ES6](https://262.ecma-international.org/6.0/) (partial)
 
 ---
 
-扩展阅读:
+Further Reading:
 
-- 了解 JavaScript
-  - [MDN - JavaScript 基础](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/)
-  - [JavaScript.info - JavaScript 教程](https://zh.javascript.info/)
-- 查看 Rhino 引擎兼容性列表
+- Learn JavaScript
+  - [MDN - JavaScript Basics](https://developer.mozilla.org/en-US/docs/Web/JavaScript/)
+  - [JavaScript.info - JavaScript Tutorial](https://javascript.info/)
+- View the Rhino engine compatibility list
   - [Rhino ES2015 Support](https://mozilla.github.io/rhino/compat/engines.html)
-- 使用 PC (个人计算机) 开发
+- Develop with a PC (personal computer)
   - [AutoJs6 VSCode Extension](http://vscext-project.autojs6.com)
-- 使用 Node.js 开发
+- Develop with Node.js
   - [Auto.js Pro](https://pro.autojs.org/)
-- 使用 TypeScript 开发
+- Develop with TypeScript
   - [Auto.js DevTools](https://github.com/pboymt/autojs-dev/)
 
 ---
 
-阅读文档:
+Reading the Documentation:
 
-- 宽屏设备网页阅读
-  - 点击左侧边栏条目 - 阅读相关章节
-- 移动设备网页阅读
-  - 点击左下方抽屉按钮 - 展开侧边栏并点击条目 - 阅读相关章节
-- AutoJs6 应用内阅读
-  - 点击首页 "文档" 标签 - 点击条目 - 阅读相关章节
-  - 点击首页右上方 "搜索" 图标 - 在当前页面检索内容
-  - 文档页面左上方的导航链接可实现页面跳转:
-    - 点击 "索引" - 跳转至章节索引页面
-    - 点击 "查看全部" - 所有章节内容在同一页面列出
-  - 阅读文档时, "文档" 标签可作为快捷按钮使用:
-    - 点击 "文档" 标签 - 返回至当前页面顶部
-    - 长按 "文档" 标签 - 跳转至章节索引页面
-- 启动器快速启动阅读
-  - AutoJs6 设置页面 - 启动器快捷方式 - 点击 "文档" 图标
-  - 将 "文档" 快捷方式添加到启动器 (俗称 "桌面")
-  - 在启动器点击 "文档" 图标即可阅读文档
-  - 部分高版本安卓系统支持长按 AutoJs6 应用图标直接激活快捷方式或拖放添加到启动器
+- On wide-screen devices (web)
+  - Click items in the left sidebar to read the corresponding sections
+- On mobile devices (web)
+  - Tap the drawer button at the bottom left → expand the sidebar → tap an item to read the section
+- Inside the AutoJs6 app
+  - Tap the "Documentation" tab on the home screen → tap an item to read the section
+  - Tap the "Search" icon in the top right of the home screen to search within the current page
+  - The navigation links at the top left of a documentation page allow quick jumps:
+    - Tap "Index" to go to the chapter index page
+    - Tap "View all" to display all chapter contents on a single page
+  - While reading docs, the "Documentation" tab can be used as a shortcut button:
+    - Tap the "Documentation" tab to return to the top of the current page
+    - Long-press the "Documentation" tab to jump to the chapter index page
+- Quick start from the launcher
+  - AutoJs6 Settings → Launcher shortcuts → tap the "Documentation" icon
+  - Add the "Documentation" shortcut to your launcher (commonly called the "desktop")
+  - Tap the "Documentation" icon in the launcher to open the docs
+  - On some newer Android versions, long-pressing the AutoJs6 app icon directly activates shortcuts or allows dragging them to the launcher
 
-> 注: 初次阅读文档或首次使用 AutoJs6 建议从 [关于文档](documentation) 开始.
+> Note: When reading the documentation for the first time or using AutoJs6 for the first time, it is recommended to start with [About](documentation).
+
+---
+
+**Screenshot Note**: Some images and diagrams in this documentation still show the original Chinese user interface of the AutoJs6 application. English-localized screenshots are welcome as future contributions.

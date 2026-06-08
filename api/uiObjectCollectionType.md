@@ -1,6 +1,6 @@
-# 控件集合 (UiObjectCollection)
+# UiObjectCollection
 
-UiObjectCollection 代表 [控件节点 (UiObject)](uiObjectType) 的对象集合.
+UiObjectCollection represents a collection of [UiObject](uiObjectType) instances.
 
 ---
 
@@ -106,10 +106,10 @@ for (let w of wc) {
 }
 ```
 
-控件集合支持 [控件行为 (UiObject Action)](uiObjectActionsType).  
-如 [ click / longClick / imeEnter / setText / focus ] 等.
+UiObjectCollection supports [UiObject Actions](uiObjectActionsType).  
+Such as [click / longClick / imeEnter / setText / focus], etc.
 
-performAction 源码摘要:
+Source summary of performAction:
 
 ```kotlin
 /* Updated as of Nov 2, 2022. */
@@ -126,15 +126,15 @@ override fun performAction(action: Int, vararg arguments: ActionArgument): Boole
 }
 ```
 
-由源码摘要可知, 控件集合执行控件行为, 相当于使集合中所有控件依次执行一次控件行为:
+From the source summary, when a UiObjectCollection performs an action, it is equivalent to each control in the collection performing the action in turn:
 
 ```js
 let wc = contentMatch(/[^\s\S]/).find();
 
-/* 对控件集合执行 click 控件行为. */
+/* Perform the click action on the UiObjectCollection. */
 wc.click();
 
-/* 相当于对集合中每个控件元素执行控件行为. */
+/* Equivalent to performing the action on each control element in the collection. */
 wc.forEach(w => {
     if (w !== null) {
         w.click();
@@ -142,9 +142,9 @@ wc.forEach(w => {
 });
 ```
 
-执行控件行为后, 返回结果是 [boolean](dataTypes#boolean) 类型, 表示集合中所有控件在执行行为过程中未出现失败或异常.
+After performing the action, the return result is of type [boolean](dataTypes#boolean), indicating that no failure or exception occurred for any control in the collection during the action execution.
 
-常见相关方法或属性:
+Common related methods or properties:
 
 - [UiObject#find](uiObjectType#m-find)
 - [UiObject#children](uiObjectType#m-children)
@@ -202,7 +202,7 @@ wc.forEach(w => {
 
 - <ins>**returns**</ins> { [JavaArray](dataTypes#javaarray)<[UiObject](uiObjectType)> }
 
-转换集合为 [Java 数组](dataTypes#javaarray).
+Convert the collection to a [Java Array](dataTypes#javaarray).
 
 ## [m#] toList
 
@@ -212,7 +212,7 @@ wc.forEach(w => {
 
 - <ins>**returns**</ins> { [JavaArrayList](dataTypes#javaarraylist)<[UiObject](uiObjectType)> }
 
-转换集合为 [Java 数组列表](dataTypes#javaarraylist).
+Convert the collection to a [Java ArrayList](dataTypes#javaarraylist).
 
 ## [m#] get
 
@@ -222,9 +222,9 @@ wc.forEach(w => {
 
 - <ins>**returns**</ins> { [UiObject](uiObjectType) }
 
-按索引获取集合中的 UiObject 元素.
+Get the UiObject element at the specified index in the collection.
 
-已弃用, 建议使用数组下标形式访问元素.
+Deprecated, it is recommended to access elements using array subscript notation.
 
 ```js
 let wc = pickup(/.+/, '{}');
@@ -242,9 +242,9 @@ if (wc.length >= 2) {
 
 - <ins>**returns**</ins> { [UiObject](uiObjectType) }
 
-返回集合大小.
+Return the size of the collection.
 
-已弃用, 建议使用 length 属性.
+Deprecated, it is recommended to use the length property.
 
 ```js
 let wc = pickup(/.+/, '{}');
@@ -258,12 +258,12 @@ console.log(wc.length); // e.g. 23
 
 **`DEPRECATED`**
 
-- **consumer** { [(](dataTypes#function)w: [UiObject](uiObjectType)[)](dataTypes#function) [=>](dataTypes#function) [void](dataTypes#void) } - 消费者
+- **consumer** { [(](dataTypes#function)w: [UiObject](uiObjectType)[)](dataTypes#function) [=>](dataTypes#function) [void](dataTypes#void) } - Consumer
 - <ins>**returns**</ins> { [UiObjectCollection](uiObjectCollectionType) }
 
-对集合中每个元素执行一次消费.
+Execute consumption once for each element in the collection.
 
-已弃用, 建议使用 [forEach](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach).
+Deprecated, it is recommended to use [forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach).
 
 ```js
 let wc = pickup(/.+/, '{}');
@@ -277,25 +277,25 @@ wc.forEach(w => console.log(w.content()));
 
 **`A11Y`**
 
-- **selector** { [UiSelector](uiSelectorType) } - 选择器
+- **selector** { [UiSelector](uiSelectorType) } - Selector
 - <ins>**returns**</ins> { [UiObjectCollection](uiObjectCollectionType) }
 
-筛选新的控件集合.
+Filter a new UiObjectCollection.
 
-以集合中每一个元素为根节点, 依次按选择器筛选出所有满足条件的后代节点加入新集合, 将此新集合作为返回结果.
+Using each element in the current collection as the root node, sequentially filter all descendant nodes that satisfy the selector conditions and add them to a new collection, which is returned as the result.
 
 ```js
-/* 例如此集合中共有 3 个控件. */
+/* For example, this collection has 3 controls in total. */
 let wc = pickup(/.+/);
 console.log(wc.length); // 3
 
-/* 3 个控件作为根节点, 其所有的子孙节点分别有 10, 50, 200 个. */
+/* The 3 controls as root nodes have 10, 50, and 200 descendant nodes respectively. */
 console.log(wc.map(w => w.find().length)); // [ 10, 50, 200 ]
 
-/* 其中 clickable 为 true 的控件分别有 2, 3, 4 个. */
+/* Among them, the number of controls with clickable true are 2, 3, and 4 respectively. */
 console.log(wc.map(w => w.find().filter(c => c.clickable()).length)); // [ 2, 3, 4 ]
 
-/* 因此 wc.find(clickable(true)) 应返回 2 + 3 + 4 个. */
+/* Therefore wc.find(clickable(true)) should return 2 + 3 + 4. */
 console.log(wc.find(clickable(true)).length); // 9
 ```
 
@@ -305,38 +305,38 @@ console.log(wc.find(clickable(true)).length); // 9
 
 **`A11Y`**
 
-- **selector** { [UiSelector](uiSelectorType) } - 选择器
+- **selector** { [UiSelector](uiSelectorType) } - Selector
 - <ins>**returns**</ins> { [UiObject](uiObjectType) | [null](dataTypes#null) }
 
-筛选一个控件.
+Filter a single control.
 
-以集合中每一个元素为根节点, 遍历其所有后代节点, 当满足选择器的筛选条件时, 返回此控件并停止筛选.  
-无满足筛选条件的控件时返回 null.
+Using each element in the collection as the root node, traverse all its descendant nodes. When a node satisfying the selector's filter condition is found, return that control and stop filtering.  
+Return null if no control satisfies the filter condition.
 
 ```js
 let wc = pickup(/.+/);
-console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null. */
+console.log(wc.findOne(clickable(true))); /* Return a clickable control or null. */
 ```
 
 ## [m#] performAction
 
-用于执行控件集合的行为.
+Used to perform actions on the UiObjectCollection.
 
-集合中所有控件将全部执行指定的行为.
+All controls in the collection will perform the specified action.
 
 ### performAction(action, ...arguments)
 
 **`A11Y`**
 
-- **action** { [number](dataTypes#number) } - 行为的唯一标志符 (Action ID)
-- **arguments** { [...](documentation#可变参数)[ActionArgument](uiObjectActionsType#i-actionargument)[[]](documentation#可变参数) } - 行为参数, 用于给行为传递参数
+- **action** { [number](dataTypes#number) } - The unique identifier of the action (Action ID)
+- **arguments** { [...](documentation#varargs)[ActionArgument](uiObjectActionsType#i-actionargument)[[]](documentation#varargs) } - Action arguments, used to pass parameters to the action
 - <ins>**returns**</ins> { [boolean](dataTypes#boolean) }
 
-返回行为是否全部执行成功.
+Return whether all actions were executed successfully.
 
-> 注: 即使在执行过程中, 某一个控件执行失败, 后续控件依旧继续执行行为, 而非立即终止.
+> Note: Even if one control fails to execute during the process, subsequent controls will continue to perform the action instead of terminating immediately.
 
-> 参阅: [UiObjectActions](uiObjectActionsType) 章节.
+> See also: [UiObjectActions](uiObjectActionsType) chapter.
 
 ## [m#] click
 
@@ -344,9 +344,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`A11Y`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 点击 ] 行为](uiObjectActionsType#m-click).
+The UiObjectCollection performs the [[Click] action](uiObjectActionsType#m-click).
 
 ## [m#] longClick
 
@@ -354,9 +354,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`A11Y`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 长按 ] 行为](uiObjectActionsType#m-longclick).
+The UiObjectCollection performs the [[Long Click] action](uiObjectActionsType#m-longclick).
 
 ## [m#] accessibilityFocus
 
@@ -364,9 +364,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`A11Y`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 获取无障碍焦点 ] 行为](uiObjectActionsType#m-accessibilityfocus).
+The UiObjectCollection performs the [[Get Accessibility Focus] action](uiObjectActionsType#m-accessibilityfocus).
 
 ## [m#] clearAccessibilityFocus
 
@@ -374,9 +374,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`A11Y`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 清除无障碍焦点 ] 行为](uiObjectActionsType#m-clearaccessibilityfocus).
+The UiObjectCollection performs the [[Clear Accessibility Focus] action](uiObjectActionsType#m-clearaccessibilityfocus).
 
 ## [m#] focus
 
@@ -384,9 +384,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`A11Y`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 获取焦点 ] 行为](uiObjectActionsType#m-focus).
+The UiObjectCollection performs the [[Get Focus] action](uiObjectActionsType#m-focus).
 
 ## [m#] clearFocus
 
@@ -394,9 +394,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`A11Y`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 清除焦点 ] 行为](uiObjectActionsType#m-clearfocus).
+The UiObjectCollection performs the [[Clear Focus] action](uiObjectActionsType#m-clearfocus).
 
 ## [m#] dragStart
 
@@ -404,9 +404,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`** **`API>=32`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 拖放开始 ] 行为](uiObjectActionsType#m-dragstart).
+The UiObjectCollection performs the [[Drag Start] action](uiObjectActionsType#m-dragstart).
 
 ## [m#] dragDrop
 
@@ -414,9 +414,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`** **`API>=32`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 拖放放下 ] 行为](uiObjectActionsType#m-dragdrop).
+The UiObjectCollection performs the [[Drag Drop] action](uiObjectActionsType#m-dragdrop).
 
 ## [m#] dragCancel
 
@@ -424,9 +424,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`** **`API>=32`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 拖放取消 ] 行为](uiObjectActionsType#m-dragcancel).
+The UiObjectCollection performs the [[Drag Cancel] action](uiObjectActionsType#m-dragcancel).
 
 ## [m#] imeEnter
 
@@ -434,9 +434,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`** **`API>=30`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 输入法 ENTER 键 ] 行为](uiObjectActionsType#m-imeenter).
+The UiObjectCollection performs the [[IME Enter Key] action](uiObjectActionsType#m-imeenter).
 
 ## [m#] moveWindow
 
@@ -444,11 +444,11 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`** **`API>=26`**
 
-- **x** { [number](dataTypes#number) } - X 坐标
-- **y** { [number](dataTypes#number) } - Y 坐标
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- **x** { [number](dataTypes#number) } - X coordinate
+- **y** { [number](dataTypes#number) } - Y coordinate
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 移动窗口到新位置 ] 行为](uiObjectActionsType#m-movewindow).
+The UiObjectCollection performs the [[Move Window to New Position] action](uiObjectActionsType#m-movewindow).
 
 ## [m#] nextAtMovementGranularity
 
@@ -456,11 +456,11 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`**
 
-- **granularity** { [number](dataTypes#number) } - 粒度
-- **isExtendSelection** { [boolean](dataTypes#boolean) } - 是否扩展选则文本
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- **granularity** { [number](dataTypes#number) } - Granularity
+- **isExtendSelection** { [boolean](dataTypes#boolean) } - Whether to extend text selection
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 按粒度移至下一位置 ] 行为](uiObjectActionsType#m-nextatmovementgranularity).
+The UiObjectCollection performs the [[Move to Next Position by Granularity] action](uiObjectActionsType#m-nextatmovementgranularity).
 
 ## [m#] nextHtmlElement
 
@@ -468,10 +468,10 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`**
 
-- **element** { [string](dataTypes#string) } - 元素名称
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- **element** { [string](dataTypes#string) } - Element name
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 按元素移至下一位置 ] 行为](uiObjectActionsType#m-nexthtmlelement).
+The UiObjectCollection performs the [[Move to Next Position by Element] action](uiObjectActionsType#m-nexthtmlelement).
 
 ## [m#] pageLeft
 
@@ -479,9 +479,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`** **`API>=29`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 使视窗左移的翻页 ] 行为](uiObjectActionsType#m-pageleft).
+The UiObjectCollection performs the [[Page Left to Move View] action](uiObjectActionsType#m-pageleft).
 
 ## [m#] pageUp
 
@@ -489,9 +489,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`** **`API>=29`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 使视窗上移的翻页 ] 行为](uiObjectActionsType#m-pageup).
+The UiObjectCollection performs the [[Page Up to Move View] action](uiObjectActionsType#m-pageup).
 
 ## [m#] pageRight
 
@@ -499,9 +499,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`** **`API>=29`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 使视窗右移的翻页 ] 行为](uiObjectActionsType#m-pageright).
+The UiObjectCollection performs the [[Page Right to Move View] action](uiObjectActionsType#m-pageright).
 
 ## [m#] pageDown
 
@@ -509,9 +509,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`** **`API>=29`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 使视窗下移的翻页 ] 行为](uiObjectActionsType#m-pagedown).
+The UiObjectCollection performs the [[Page Down to Move View] action](uiObjectActionsType#m-pagedown).
 
 ## [m#] pressAndHold
 
@@ -519,9 +519,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`** **`API>=30`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 按住 ] 行为](uiObjectActionsType#m-pressandhold).
+The UiObjectCollection performs the [[Press and Hold] action](uiObjectActionsType#m-pressandhold).
 
 ## [m#] previousAtMovementGranularity
 
@@ -529,11 +529,11 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`**
 
-- **granularity** { [number](dataTypes#number) } - 粒度
-- **isExtendSelection** { [boolean](dataTypes#boolean) } - 是否扩展选则文本
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- **granularity** { [number](dataTypes#number) } - Granularity
+- **isExtendSelection** { [boolean](dataTypes#boolean) } - Whether to extend text selection
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 按粒度移至上一位置 ] 行为](uiObjectActionsType#m-previousatmovementgranularity).
+The UiObjectCollection performs the [[Move to Previous Position by Granularity] action](uiObjectActionsType#m-previousatmovementgranularity).
 
 ## [m#] previousHtmlElement
 
@@ -541,10 +541,10 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`**
 
-- **element** { [string](dataTypes#string) } - 元素名称
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- **element** { [string](dataTypes#string) } - Element name
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 按元素移至上一位置 ] 行为](uiObjectActionsType#m-previoushtmlelement).
+The UiObjectCollection performs the [[Move to Previous Position by Element] action](uiObjectActionsType#m-previoushtmlelement).
 
 ## [m#] showTextSuggestions
 
@@ -552,9 +552,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`** **`API>=33`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 显示文本建议 ] 行为](uiObjectActionsType#m-showtextsuggestions).
+The UiObjectCollection performs the [[Show Text Suggestions] action](uiObjectActionsType#m-showtextsuggestions).
 
 ## [m#] showTooltip
 
@@ -562,9 +562,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`** **`API>=28`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 显示工具提示信息 ] 行为](uiObjectActionsType#m-showtooltip).
+The UiObjectCollection performs the [[Show Tooltip] action](uiObjectActionsType#m-showtooltip).
 
 ## [m#] hideTooltip
 
@@ -572,9 +572,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`6.2.0`** **`A11Y`** **`API>=28`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 隐藏工具提示信息 ] 行为](uiObjectActionsType#m-hidetooltip).
+The UiObjectCollection performs the [[Hide Tooltip] action](uiObjectActionsType#m-hidetooltip).
 
 ## [m#] show
 
@@ -582,9 +582,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`A11Y`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 显示在视窗内 ] 行为](uiObjectActionsType#m-show).
+The UiObjectCollection performs the [[Show in View] action](uiObjectActionsType#m-show).
 
 ## [m#] dismiss
 
@@ -592,9 +592,9 @@ console.log(wc.findOne(clickable(true))); /* 返回一个可点击控件或 null
 
 **`A11Y`**
 
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - 是否行为已全部执行且执行过程中无异常
+- <ins>**returns**</ins> { [boolean](dataTypes#boolean) } - Whether the action was fully executed without exceptions during execution
 
-控件集合执行 [[ 消隐 ] 行为](uiObjectActionsType#m-dismiss).
+The UiObjectCollection performs the [[Dismiss] action](uiObjectActionsType#m-dismiss).
 
 ## [m#] copy
 

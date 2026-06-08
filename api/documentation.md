@@ -1,40 +1,40 @@
-# 关于文档 (About)
+# About the Documentation
 
 <!-- type=misc -->
 
-AutoJs6 文档, 包含模块 API 使用方法及用例.  
-项目复刻 (Fork) 自 [hyb1996/AutoJs-Docs](https://github.com/hyb1996/AutoJs-Docs/) (GitHub).  
-项目地址: [SuperMonster003/AutoJs6-Documentation](http://docs-project.autojs6.com) (GitHub).
+The AutoJs6 documentation includes usage instructions and examples for module APIs.  
+The project was forked from [hyb1996/AutoJs-Docs](https://github.com/hyb1996/AutoJs-Docs/) (GitHub).  
+Project repository: [SuperMonster003/AutoJs6-Documentation](http://docs-project.autojs6.com) (GitHub).
 
 ---
 
-## 文档阅读示例
+## Documentation Reading Examples
 
-### 基础
+### Basics
 
 #### device.height
 
-device 表示全局对象 (这里同时也是一个模块).  
-".height" 表示访问 device 对象的 height 成员变量.  
-如 console.log(device.height) 表示在控制台打印当前设备的高度数值.
+`device` represents a global object (which is also a module here).  
+`.height` means accessing the `height` member variable of the `device` object.  
+For example, `console.log(device.height)` prints the current device height to the console.
 
 #### colors.rgb(red, green, blue)
 
-colors 与 device 类似, 表示全局对象.  
-"rgb" 表示方法名称, ".rgb()" 表示调用 colors 的 rgb 方法, 括号内的 red 等表示方法参数.  
-如 console.log(colors.rgb(255, 128, 64)) 表示在控制台打印一个 RGB 分别为 255, 128 和 64 的颜色数值.
+Similar to `device`, `colors` is a global object.  
+`rgb` is the method name, and `.rgb()` calls the `rgb` method on `colors`. The parameters inside the parentheses (such as `red`) are the method arguments.  
+For example, `console.log(colors.rgb(255, 128, 64))` prints an RGB color value with red=255, green=128, and blue=64 to the console.
 
-> 注: 绝大多数情况, 文档不对 "[函数](https://developer.mozilla.org/zh-CN/docs/Glossary/Function/)" 与 "[方法](https://developer.mozilla.org/zh-CN/docs/Glossary/Method/)" 做明确区分.
+> Note: In most cases, the documentation does not make a strict distinction between "[function](https://developer.mozilla.org/en-US/docs/Glossary/Function)" and "[method](https://developer.mozilla.org/en-US/docs/Glossary/Method)".
 
-### 临时作用域对象
+### Temporary Scope Objects
 
-通常每个章节都以某个对象作为主题.
+Each chapter typically focuses on a specific object as its subject.
 
-例如上述 `colors.rgb(red, green, blue)` 位于 [Color - 颜色](color) 这个章节.  
-其中 colors 称为此章节的 "临时作用域对象",  
-它可能是一个对象, 函数, 甚至 "类", 在文档中使用 __`橙色粗体`__ 表示.
+For example, the earlier `colors.rgb(red, green, blue)` appears in the [Color](color) chapter.  
+Here, `colors` is called the "temporary scope object" for that chapter.  
+It can be an object, a function, or even a "class", and is displayed in the docs using __`orange bold`__.
 
-列举其后续的相关方法及属性时, 将不再重复书写对象本身:
+When listing related methods and properties that follow, the object name itself is no longer repeated:
 
 <p style="font: bold 1em sans-serif; color: #FF7043">colors</p>
 
@@ -44,9 +44,9 @@ rgb(red, green, blue)
 
 ... ...
 
-上述 `rgb` 表示 `colors.rgb`.
+In the example above, `rgb` stands for `colors.rgb`.
 
-### 参数类型
+### Parameter Types
 
 #### colors.rgb(red, green, blue)
 
@@ -54,13 +54,13 @@ rgb(red, green, blue)
 - **green** { [number](dataTypes#number) }
 - **blue** { [number](dataTypes#number) }
 
-参数后的 "{}" 内包含其类型.  
-上述示例表示需要传入三个 [number](dataTypes#number) 类型的参数.  
-如 colors.rgb(255, 128, 64) 合法, 而 colors.rgb("abc", 128, 64) 将可能导致非预期结果或出现异常.
+The content inside "{}" after a parameter describes its type.  
+The example above indicates that three parameters of type [number](dataTypes#number) must be provided.  
+`colors.rgb(255, 128, 64)` is valid, while `colors.rgb("abc", 128, 64)` may produce unexpected results or throw an exception.
 
-> 注: 点击类型对应的超链接 (如有) 可跳转至类型详情页面.
+> Note: Clicking a type hyperlink (if present) jumps to the type details page.
 
-### 返回值类型
+### Return Value Type
 
 #### colors.rgb(red, green, blue)
 
@@ -69,23 +69,23 @@ rgb(red, green, blue)
 - **blue** { [number](dataTypes#number) }
 - <ins>**returns**</ins> { [number](dataTypes#number) }
 
-returns 后的 "{}" 内包含返回值类型.  
-上述示例表示 colors.rgb 方法调用后将返回 [number](dataTypes#number) 类型数据.
+The content inside "{}" after `returns` describes the return type.  
+The example shows that calling the `colors.rgb` method returns data of type [number](dataTypes#number).
 
-### 属性类型
+### Property Types
 
 #### colors.RED
 
 - { [number](dataTypes#number) }
 
-属性类型包裹在一对花括号中.  
-上述示例表示 colors 的 RED 属性是 [number](dataTypes#number) 类型数据.
+Property types are wrapped in a pair of curly braces.  
+The example indicates that the `RED` property of `colors` holds data of type [number](dataTypes#number).
 
-对象字面量形式的类型则用一对双花括号表示:
+Object literal types are represented with double curly braces:
 
 - **properties** {{ name: [string](dataTypes#string); age: [number](dataTypes#number) }}
 
-多行形式:
+Multi-line form:
 
 - **properties** {{
     - name: [string](dataTypes#string);
@@ -93,41 +93,41 @@ returns 后的 "{}" 内包含返回值类型.
     - laugh(decibel?: [number](dataTypes#number));
 - }}
 
-一个符合上述示例期望的变量:
+An example variable matching the expectation above:
 
 ```js
 let o = { name: "David", age: 13 };
 ```
 
-可存取的属性在读取时如果有非 undefined 默认值, 则以一对方括号表示:
+Accessible properties that have a non-`undefined` default value are indicated with a pair of square brackets when read:
 
 - [ `1200` ] { [number](dataTypes#number) }
 
-上述示例表示一个默认值为 1200 的可存取属性.
+The example represents an accessible property with a default value of 1200.
 
-以一对双方括号表示常量:
+A pair of double square brackets denotes a constant:
 
 - [[ 0.5 ]] { [number](dataTypes#number) }
 
-上述示例表示一个值为 0.5 的常量属性.
+The example represents a constant property with the value 0.5.
 
-### 方法签名
+### Method Signatures
 
-形如上述 [返回值类型](#返回值类型) 小节的示例,  
-包含 [ 方法名称 + 参数类型 + 返回值类型 ] 的标志符, 称为 "方法签名".
+Similar to the example in the [Return Value Type](#return-value-type) section above,  
+an identifier that includes [method name + parameter types + return type] is called a "method signature".
 
-> 注: 上述 "方法签名" 定义只用于辅助读者对文档的理解, 并不保证名词解释的合理性.
+> Note: The definition of "method signature" above is only intended to help readers understand the documentation and does not guarantee the linguistic accuracy of the term.
 
-### 方法描述
+### Method Description
 
 #### colors.rgb(red, green, blue)
 
-- __red__ - R (红色) 通道数值  [ A ]
-- __green__ - G (绿色) 通道数值  [ A ]
-- __blue__ - B (蓝色) 通道数值  [ A ]
-- __@return__ - 颜色数值  [ B ]
+- __red__ - R (red) channel value  [ A ]
+- __green__ - G (green) channel value  [ A ]
+- __blue__ - B (blue) channel value  [ A ]
+- __@return__ - color value  [ B ]
 
-获取 R/G/B 通道组合后的颜色数值. [ C ]
+Obtains the combined color value from the R/G/B channels. [ C ]
 
 ```js
 [ D ]
@@ -137,28 +137,28 @@ colors.rgb(255, 128, 64) === colors.toInt("#FFFF8040"); // true
 colors.rgb(255, 128, 64) === colors.toInt("#FF8040"); // true
 ```
 
-上述示例包含的字母标注含义:
+Meaning of the letter annotations in the example:
 
-- [ A ] - 参数描述
-- [ B ] - 方法返回值描述
-- [ C ] - 方法描述
-- [ D ] - 方法使用示例
+- [ A ] - Parameter description
+- [ B ] - Return value description
+- [ C ] - Method description
+- [ D ] - Usage example
 
-### 可变参数
+### Variadic Parameters
 
 #### files.join(parent, ...child)
 
-上述示例的 child 参数是 "可变参数", 也称为 "可变长参数" 或 "变长参数".  
-可变参数可传入任意个 (包括 0 个) 参数:
+In the example above, the `child` parameter is a "variadic parameter" (also called "variable-length parameter" or "rest parameter").  
+A variadic parameter can accept any number of arguments (including zero):
 
 ```js
 let p = files.getSdcardPath();
-files.join(p); /* 0 个可变参数 */
-files.join(p, 'a'); /* 1 个可变参数 */
-files.join(p, 'a', 'b', 'c', 'd'); /* 4 个可变参数 */
+files.join(p); /* 0 variadic arguments */
+files.join(p, 'a'); /* 1 variadic argument */
+files.join(p, 'a', 'b', 'c', 'd'); /* 4 variadic arguments */
 ```
 
-文档采用 JSDoc 标准标注可变参数, 需额外注意 JSDoc 的尾数组标识代表容器, 用于容纳展开后的参数:
+The documentation follows the JSDoc standard for annotating variadic parameters. Pay special attention that the trailing array in JSDoc represents the container that holds the expanded arguments:
 
 ```js
 /**
@@ -171,7 +171,7 @@ function sum(x, y, others) {
 }
 ```
 
-上述示例 others 参数为可变参数, 其中 "...number[]" 代表 others 期望的参数类型为 number, 而非 number[], 最后的 "[]" 代表 "..." 的容器, "..." 与 "[]" 是配对出现的.
+In the example, the `others` parameter is variadic. `...number[]` means the expected type for each element in `others` is `number` (not `number[]`). The final `[]` represents the "..." container. "..." and "[]" always appear as a pair.
 
 ```js
 /**
@@ -184,7 +184,7 @@ function sum(x, y, others) {
 }
 ```
 
-上述示例 others 期望的参数类型为 number[], 而非 number[][], 同样最后的 "[]" 代表 "..." 的容器.
+Here `others` expects elements of type `number[]` (not `number[][]`). The final `[]` still represents the "..." container.
 
 ```js
 /**
@@ -197,55 +197,55 @@ function sum(x, y, others) {
 }
 ```
 
-上述示例 others 的参数类型标识方法 "...number" 也是合法的, 它其实是 "...number[]" 的省略形式.  
-文档为了避免歧义, 将全部采用完整写法.
+The annotation `...number` for the variadic parameter type is also valid; it is actually a shorthand for `...number[]`.  
+To avoid ambiguity, the documentation always uses the full form.
 
-作为强调, "...(SomeType)[]" 这样的可变参数表示方法, 需要把 "..." 和 "[]" 视为一个整体, 中间部分才是期望的参数类型.
+As a reminder: for a variadic parameter written as `...(SomeType)[],` treat `...` and `[]` as a single unit. Only the middle part is the expected element type.
 
-### 可选参数
+### Optional Parameters
 
 #### device.vibrate(text, delay?)
 
-上述示例的 delay 参数是可选的 (以 "?" 标注).  
-因此以下调用方式均被支持:
+In the example above, the `delay` parameter is optional (marked with `?`).  
+Therefore, both of the following calls are valid:
 
 ```js
-device.vibrate("hello", 2e3); /* 两秒钟延迟. */
-device.vibrate("hello"); /* 无延迟. */
+device.vibrate("hello", 2e3); /* 2-second delay. */
+device.vibrate("hello"); /* No delay. */
 ```
 
-可选参数描述时会以 "[]" 标注:
+Optional parameters are wrapped in `[]` in descriptions:
 
 - **[ delay ]** { [number](dataTypes#number) }
 
-如果可选参数包含默认值, 则会以 "=" 标注:
+If an optional parameter has a default value, it is marked with `=`:
 
 - **[ delay = 0 ]** { [number](dataTypes#number) }
 
-详见下述 [参数默认值](#参数默认值)
+See [Parameter Default Values](#parameter-default-values) below for details.
 
-### 参数默认值
+### Parameter Default Values
 
 #### device.vibrate(text, delay?)
 
-- **text** { [string](dataTypes#string) } - 需转换为摩斯码的文本
-- **[ delay = 0 ]** { [number](dataTypes#number) } - 振动延迟
+- **text** { [string](dataTypes#string) } - Text to be converted to Morse code
+- **[ delay = 0 ]** { [number](dataTypes#number) } - Vibration delay
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
-上述示例的 delay 参数是可选的 (以 "?" 标注) 且包含默认值 (以 "=" 标注).  
-因此以下两种调用方式等效:
+The `delay` parameter in the example is both optional (`?`) and has a default value (`=`).  
+Therefore the two calls below are equivalent:
 
 ```js
 device.vibrate("hello");
 device.vibrate("hello", 0);
 ```
 
-> 注: 上述示例的方法签名 (含默认值标注) 在 TypeScript 中并不合法, 此类签名仅限在文档中使用.
+> Note: Method signatures containing default value annotations (as shown) are not valid TypeScript syntax. Such signatures are only used within the documentation.
 >
-> 注: 以 "=" 标注的参数一定是可选的, 此时参数的 "?" 标注可能被省略, 尤其在重载签名拆写的情况下.  
-> 详情参阅下文的 "方法重载".
+> Note: A parameter marked with `=` is always optional. The `?` marker may be omitted in that case, especially when overload signatures are written separately.  
+> See "Method Overloads" below for more details.
 
-### 方法重载
+### Method Overloads
 
 __`Overload 1/17`__
 
@@ -269,60 +269,60 @@ __`Overload 17/17`__
 
 #### pickup()
 
-包含 "Overload m/n" 标签的方法, 表示重载方法的序数及总量.  
-如 "Overload 2/3" 表示当前方法签名描述第 2 个重载方法, 总计 3 个,  
-而 "Overload 5-6/17" 表示当前方法签名涵盖第 5 及 第 6 个重载方法, 总计 17 个.
+Methods tagged with `Overload m/n` indicate the ordinal and total count of overloaded variants.  
+For example, `Overload 2/3` means this signature describes the 2nd overload out of a total of 3,  
+while `Overload 5-6/17` means the current signature covers both the 5th and 6th overloads out of 17 total.
 
-重载方法可被简化:
+Overloaded methods can be written in a compacted form:
 
 ```text
-/* 拆写. */
+/* Separate form. */
 device.vibrate(text)
 device.vibrate(text, delay)
 
-/* 合写 (简化). */
+/* Combined (compacted) form. */
 device.vibrate(text, delay?)
 
-/* 可选参数通常会标注默认值. */
+/* Optional parameters usually include the default value. */
 device.vibrate(text, delay?)
 · [ delay = 0 ] { number }
 
-/* 即使没有 "?" 标注 (针对拆写). */
+/* Even without the "?" marker (for the separate form). */
 device.vibrate(text, delay)
 · [ delay = 0 ] { number }
 ```
 
-多数情况下, 文档采用拆写的方式描述重载方法.
+In most cases, the documentation describes overloaded methods in the separate (expanded) form.
 
-### 方法全局化
+### Globalized Methods
 
 __`Global`__
 
 #### images.requestScreenCapture(landscape)
 
-包含 "Global" 标签的方法, 表示支持全局化使用, 可省略模块对象调用.  
-因此以下两种调用方式等效:
+A method tagged with `Global` can be used globally; the module object prefix may be omitted.  
+Therefore the two calls below are equivalent:
 
 ```js
 images.requestScreenCapture(false);
 requestScreenCapture(false);
 ```
 
-### 方法标签
+### Method Tags
 
-用于简便表示方法的特性:
+Used as a concise way to express method characteristics:
 
-- `Global`: [方法全局化](#方法全局化) (可省略模块对象直接调用).
-- `Overload 2/3`: [方法重载](#方法重载) [ 第 2 个, 共 3 个 ].
-- `Non-UI`: 方法不能在 UI 模式下调用.
-- `6.2.0`: 方法对 AutoJs6 的版本要求 [ 不低于 6.2.0 ].
-- `[6.2.0]`: 与原同名方法相比, 方法的功能, 结果, 签名或使用方式发生变更的起始版本.
-- `API>=29`: 方法对 [API 级别](apiLevel) 的要求 [ 不低于 29 ], 当不满足时不抛出异常.
-- `API>=29!`: 方法对 [API 级别](apiLevel) 的要求 [ 不低于 29 ], 当不满足时将抛出异常.
-- `A11Y`: 方法依赖无障碍服务.
-- `A11Y?`: 方法可能会依赖无障碍服务.
-- `Async`: 异步执行的方法.
-- `Async?`: 可能异步执行的方法 (通过参数控制).
+- `Global`: [Globalized method](#globalized-methods) (the module object prefix can be omitted).
+- `Overload 2/3`: [Method overload](#method-overloads) [ the 2nd of 3 total ].
+- `Non-UI`: The method cannot be called in UI mode.
+- `6.2.0`: The method requires AutoJs6 version [ 6.2.0 or higher ].
+- `[6.2.0]`: The starting version in which the method's functionality, result, signature, or usage changed compared to the previous same-named method.
+- `API>=29`: The method requires [API level](apiLevel) [ 29 or higher ]. No exception is thrown if the requirement is not met.
+- `API>=29!`: The method requires [API level](apiLevel) [ 29 or higher ]. An exception **will** be thrown if the requirement is not met.
+- `A11Y`: The method depends on the Accessibility service.
+- `A11Y?`: The method may depend on the Accessibility service.
+- `Async`: The method executes asynchronously.
+- `Async?`: The method may execute asynchronously (controlled by a parameter).
 - `Getter`: 仅取值属性, 即使用 Getter 定义的对象属性.
 - `Setter`: 仅存值属性, 即使用 Setter 定义的对象属性.
 - `Getter/Setter`: 可存值且可取值属性, 即同时使用 Setter 及 Getter 定义的对象属性.

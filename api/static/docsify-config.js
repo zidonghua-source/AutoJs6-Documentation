@@ -11,8 +11,8 @@ window.$docsify = {
     search: {
         maxAge: 86400000, // Expiration time, the default one day
         paths: 'auto',
-        placeholder: '搜索文档',
-        noData: '无搜索结果',
+        placeholder: 'Search documentation...',
+        noData: 'No results found',
     },
     copyCode: {
         buttonText: 'Copy',

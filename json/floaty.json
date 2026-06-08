@@ -2,9 +2,9 @@
   "source": "..\\api\\floaty.md",
   "modules": [
     {
-      "textRaw": "悬浮窗 (Floaty)",
-      "name": "悬浮窗_(floaty)",
-      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<p>floaty模块提供了悬浮窗的相关函数, 可以在屏幕上显示自定义悬浮窗, 控制悬浮窗大小、位置等.</p>\n<p>悬浮窗在脚本停止运行时会自动关闭, 因此, 要保持悬浮窗不被关闭, 可以用一个空的setInterval来实现, 例如：</p>\n<pre><code>setInterval(()=&gt;{}, 1000);\n</code></pre>",
+      "textRaw": "Floating Window (Floaty)",
+      "name": "floating_window_(floaty)",
+      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">This chapter is pending supplementation or improvement...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<p>The <code>floaty</code> module provides functions related to floating windows. You can display custom floating windows on the screen and control their size, position, etc.</p>\n<p>Floating windows are automatically closed when the script stops running. Therefore, to keep a floating window from closing, you can use an empty <code>setInterval</code>, for example:</p>\n<pre><code class=\"lang-js\">setInterval(() =&gt; {}, 1000);\n</code></pre>\n",
       "methods": [
         {
           "textRaw": "floaty.window(layout)",
@@ -69,7 +69,7 @@
         }
       ],
       "type": "module",
-      "displayName": "悬浮窗 (Floaty)"
+      "displayName": "Floating Window (Floaty)"
     },
     {
       "textRaw": "FloatyWindow",

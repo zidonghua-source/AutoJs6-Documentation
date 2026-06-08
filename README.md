@@ -5,7 +5,7 @@
     <img src="https://s1.imagehub.cc/images/2023/03/07/a611060ac75cf0d48edacff319cc1666.png" alt="autojs6-documentation-banner_800×208_transparent" border="0" width="660"/>
   </p>
 
-  <p>AutoJs6 应用文档</p>
+  <p>AutoJs6 Documentation</p>
 
   <p>
     <a href="http://docs-project.autojs6.com/blob/master/project.json"><img alt="Version name" src="https://img.shields.io/badge/dynamic/json?color=1283C3&label=version&query=%24.versionName&url=https%3A%2F%2Fraw.githubusercontent.com%2FSuperMonster003%2FAutoJs6-Documentation%2Fmaster%2Fproject.json"/></a>
@@ -20,44 +20,44 @@
 
 ******
 
-### 简介
+### Introduction
 
 ******
 
-- [AutoJs6](http://project.autojs6.com) 应用文档
-- 克隆 (Clone) 自 [hyb1996/AutoJs-Docs](https://github.com/hyb1996/AutoJs-Docs/)
-- 模板 / 样式 / Generator 来自 [Node.js](https://github.com/nodejs/node/tree/master/doc/)
+- Documentation for the [AutoJs6](http://project.autojs6.com) application
+- Cloned from [hyb1996/AutoJs-Docs](https://github.com/hyb1996/AutoJs-Docs/)
+- Template / styles / generator adapted from [Node.js](https://github.com/nodejs/node/tree/master/doc/)
 
 ******
 
-### 阅读
+### Reading the Docs
 
 ******
 
-* [点此阅读 (网页版)](https://docs.autojs6.com)
+* [Read online (web version)](https://docs.autojs6.com)
 
 ******
 
-### 说明
+### Notes
 
 ******
 
-- 文档可能会随时更新
-- 部分文档与实际代码行为可能存在出入
-- 如有任何问题可在当前项目的 [议题 (Issues)](http://docs-project.autojs6.com/issues) 页面提交反馈
-- 如需快速了解文档的常见问题, 可参阅 [疑难解答](https://docs.autojs6.com/#/qa) 章节
+- The documentation may be updated at any time
+- Some sections may differ slightly from actual code behavior
+- For any issues, please submit feedback on the project's [Issues](http://docs-project.autojs6.com/issues) page
+- For quick answers to common questions, see the [Q & A](https://docs.autojs6.com/#/qa) section
 
 ******
 
-### 进度
+### Progress
 
 ******
 
-- 基于 `Auto.js 4.1.0` 文档修改完善, [部署进度](https://docs.autojs6.com/#/progress) 可能相对缓慢
+- Based on the `Auto.js 4.1.0` documentation with ongoing improvements. Deployment progress can be tracked on the [Progress](https://docs.autojs6.com/#/progress) page and may advance gradually
 
 ******
 
-### 版本历史
+### Version History
 
 ******
 
@@ -93,6 +93,6 @@
 
 - `优化` 完善 [控件节点](https://docs.autojs6.com/#/uiObjectType) 章节
 
-##### 更多版本历史可参阅
+##### For more version history, see
 
 * [CHANGELOG.md](http://docs-project.autojs6.com/blob/master/api/changelog.md)

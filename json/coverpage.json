@@ -14,7 +14,7 @@
       "textRaw": "[AutoJs6](http://project.autojs6.com)",
       "type": "method",
       "name": "[AutoJs6]",
-      "desc": "<p>安卓平台 JavaScript 自动化工具</p>\n<p><a href=\"http://download.autojs6.com\">下载应用</a>\n<a href=\"/overview\">阅读文档</a></p>\n",
+      "desc": "<p>Android JavaScript Automation Tool</p>\n<p><a href=\"http://download.autojs6.com\">Download App</a>\n<a href=\"/overview\">Read Documentation</a></p>\n",
       "signatures": [
         {
           "params": [

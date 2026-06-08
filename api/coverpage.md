@@ -2,7 +2,7 @@
 
 # [AutoJs6](http://project.autojs6.com)
 
-安卓平台 JavaScript 自动化工具
+Android JavaScript Automation Tool
 
-[下载应用](http://download.autojs6.com)
-[阅读文档](/overview)
+[Download App](http://download.autojs6.com)
+[Read Documentation](/overview)

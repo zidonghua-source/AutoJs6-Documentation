@@ -2,216 +2,218 @@
 
 ---
 
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
+<p style="font: italic 1em sans-serif; color: #78909C">This section is to be supplemented or improved...</p>
 <p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
 
 ---
 
-shell即Unix Shell, 在类Unix系统提供与操作系统交互的一系列命令.
+Shell refers to Unix Shell, which provides a series of commands for interacting with the operating system on Unix-like systems.
 
-很多程序可以用来执行shell命令, 例如终端模拟器.
+Many programs can be used to execute shell commands, such as terminal emulators.
 
-在Auto.js大致等同于用adb执行命令"adb shell". 其实现包括两种方式：
+In Auto.js, it is roughly equivalent to executing the command "adb shell" via adb. There are two implementation methods:
 
-* 通过`java.lang.Runtime.exec`执行(shell, Tap, Home等函数)
-* 通过内嵌终端模拟器执行(RootAutomator, Shell等对象)
+* Execution via `java.lang.Runtime.exec` (functions such as shell, Tap, Home, etc.)
+* Execution via the built-in terminal emulator (RootAutomator, Shell objects, etc.)
 
-# shell函数
+# shell function
 
 ## shell(cmd[, root])
 
-* cmd {string} 要执行的命令
-* root {Boolean} 是否以root权限运行, 默认为false.
+* cmd {string} The command to execute
+* root {Boolean} Whether to run with root privileges, default is false.
 
-一次性执行命令cmd, 并返回命令的执行结果. 返回对象的其属性如下:
+Executes the command cmd once and returns the execution result. The returned object has the following properties:
 
-* code {number} 返回码. 执行成功时为0, 失败时为非0的数字.
-* result {string} 运行结果(stdout输出结果)
-* error {string} 运行的错误信息(stderr输出结果). 例如执行需要root权限的命令但没有授予root权限会返回错误信息"Permission denied".
+* code {number} Return code. 0 on success, non-zero on failure.
+* result {string} Execution result (stdout output)
+* error {string} Error information from execution (stderr output). For example, if a command requiring root privileges is executed without granting root access, it returns the error "Permission denied".
 
-示例(强制停止微信) ：
+Example (force stop WeChat):
 
 ```
 var result = shell("am force-stop com.tencent.mm", true);
 log(result);
 console.show();
 if(result.code == 0){
-  toast("执行成功");
+  toast("Execution succeeded");
 }else{
-  toast("执行失败！请到控制台查看错误信息");
+  toast("Execution failed! Please check the error information in the console");
 }
 ```
 
 # Shell
 
-shell函数通过用来一次性执行单条命令并获取结果. 如果有多条命令需要执行, 用Shell对象的效率更高. 这是因为, 每次运行shell函数都会打开一个单独的shell进程并在运行结束后关闭他, 这个过程需要一定的时间；而Shell对象自始至终使用同一个shell进程.
+The shell function is used to execute a single command once and obtain the result. If multiple commands need to be executed, using a Shell object is more efficient. This is because each call to the shell function opens a separate shell process and closes it after execution, which takes some time; whereas the Shell object uses the same shell process from start to finish.
 
 ## new Shell(root)
 
-* root {Boolean} 是否以root权限运行一个shell进程, 默认为false. 这将会影响其后使用该Shell对象执行的命令的权限
+* root {Boolean} Whether to run a shell process with root privileges, default is false. This will affect the privileges of commands executed later using this Shell object.
 
-Shell对象的"构造函数".
+The "constructor" of the Shell object.
 
 ```
 var sh = new Shell(true);
-//强制停止微信
+// Force stop WeChat
 sh.exec("am force-stop com.tencent.mm");
 sh.exit();
 ```
 
 ## Shell.exec(cmd)
 
-* `cmd` {string} 要执行的命令
+* `cmd` {string} The command to execute
 
-执行命令cmd. 该函数不会返回任何值.
+Executes the command cmd. This function does not return any value.
 
-注意, 命令执行是"异步"的、非阻塞的. 也就是不会等待命令完成后才继续向下执行.
+Note that command execution is "asynchronous" and non-blocking. That is, it will not wait for the command to complete before continuing to the next line.
 
-尽管这样的设计使用起来有很多不便之处, 但受限于终端模拟器, 暂时没有解决方式；如果后续能找到解决方案, 则将提供`Shell.execAndWaitFor`函数.
+Although this design is somewhat inconvenient to use, it is limited by the terminal emulator and there is currently no solution. If a solution is found in the future, a `Shell.execAndWaitFor` function will be provided.
 
 ## Shell.exit()
 
-直接退出shell. 正在执行的命令会被强制退出.
+Exits the shell directly. Any currently executing command will be forcibly terminated.
 
 ## Shell.exitAndWaitFor()
 
-执行"exit"命令并等待执行命令执行完成、退出shell.
+Executes the "exit" command and waits for the command to finish executing and for the shell to exit.
 
-此函数会执行exit命令来正常退出shell.
+This function executes the exit command to exit the shell normally.
 
 ## Shell.setCallback(callback)
 
-* callback {Object} 回调函数
+* callback {Object} Callback function
 
-设置该Shell的回调函数, 以便监听Shell的输出. 可以包括以下属性：
+Sets the callback function for this Shell to monitor the Shell's output. It can include the following properties:
 
-* onOutput {Function} 每当shell有新的输出时便会调用该函数. 其参数是一个字符串.
-* onNewLine {Function} 每当shell有新的一行输出时便会调用该函数. 其参数是一个字符串(不包括最后的换行符).
+* onOutput {Function} Called whenever the shell has new output. Its parameter is a string.
+* onNewLine {Function} Called whenever the shell has a new line of output. Its parameter is a string (without the trailing newline).
 
-例如:
+Example:
 
 ```
 var sh = new Shell();
 sh.setCallback({
 	onNewLine: function(line){
-		//有新的一行输出时打印到控制台
+		// Print new lines of output to the console
 		log(line);
 	}
 })
 while(true){
-	//循环输入命令
-	var cmd = dialogs.rawInput("请输入要执行的命令, 输入exit退出");
+	// Loop to input commands
+	var cmd = dialogs.rawInput("Please enter the command to execute, type exit to quit");
 	if(cmd == "exit"){
 		break;
 	}
-	//执行命令
+	// Execute command
 	sh.exec(cmd);
 }
 sh.exit();
 ```
 
-# 附录: shell命令简介
+# Appendix: Brief Introduction to Shell Commands
 
-以下关于shell命令的资料来自[AndroidStudio用户指南：Shell命令](https://developer.android.com/studio/command-line/adb.html#shellcommands/).
+The following information about shell commands comes from the [Android Studio User Guide: Shell Commands](https://developer.android.com/studio/command-line/adb.html#shellcommands/).
 
-## am命令
+## am command
 
-am命令即Activity Manager命令, 用于管理应用程序活动、服务等.
+The am command is the Activity Manager command, used to manage application activities, services, etc.
 
-**以下命令均以"am "开头, 例如`shell('am start -p com.tencent.mm');`(启动微信)**
+**All the following commands start with "am ", for example `shell('am start -p com.tencent.mm');` (launch WeChat)**
 
 ### start [options] intent
 
-启动 intent 指定的 Activity(应用程序活动).   
-请参阅 [intent 参数的规范](#shell_intent).
+Starts the Activity (application activity) specified by the intent.   
+See [Intent parameter specification](#shell_intent).
 
-选项包括：
+Options include:
 
-* -D：启用调试.
-* -W：等待启动完成.
-* --start-profiler file：启动分析器并将结果发送到 file.
-* -P file：类似于 --start-profiler, 但当应用进入空闲状态时分析停止.
-* -R count：重复 Activity 启动 count 次数. 在每次重复前, 将完成顶部 Activity.
-* -S：启动 Activity 前强行停止目标应用.
-* --opengl-trace：启用 OpenGL 函数的跟踪.
-* --user user_id | current：指定要作为哪个用户运行；如果未指定, 则作为当前用户运行.
+* -D: Enable debugging.
+* -W: Wait for the launch to complete.
+* --start-profiler file: Start the profiler and send results to file.
+* -P file: Similar to --start-profiler, but profiling stops when the app becomes idle.
+* -R count: Repeat Activity launch count times. Before each repetition, finish the top Activity.
+* -S: Force stop the target app before starting the Activity.
+* --opengl-trace: Enable OpenGL function tracing.
+* --user user_id | current: Specify which user to run as; if not specified, run as the current user.
 
 ### startservice [options] intent
 
-启动 intent 指定的 Service(服务).   
-请参阅 [intent 参数的规范](#shell_intent).   
-选项包括：
+Starts the Service specified by the intent.   
+See [Intent parameter specification](#shell_intent).   
+Options include:
 
-* --user user_id | current：指定要作为哪个用户运行；如果未指定, 则作为当前用户运行.
+* --user user_id | current: Specify which user to run as; if not specified, run as the current user.
 
 ### force-stop package
 
-强行停止与 package（[应用包名](#应用包名)）关联的所有应用.
+Force stops all applications associated with the package ([application package name](#application-package-name)).
 
 ### kill [options] package
 
-终止与 package（[应用包名](#应用包名)）关联的所有进程. 此命令仅终止可安全终止且不会影响用户体验的进程.   
-选项包括：
+Terminates all processes associated with the package ([application package name](#application-package-name)). This command only terminates processes that can be safely terminated without affecting the user experience.   
+Options include:
 
-* --user user_id | all | current：指定将终止其进程的用户；如果未指定, 则终止所有用户的进程.
+* --user user_id | all | current: Specify the user whose processes will be terminated; if not specified, terminate processes for all users.
 
 ### kill-all
 
-终止所有后台进程.
+Terminates all background processes.
 
 ### broadcast [options] intent
 
-发出广播 intent.
-请参阅 [intent 参数的规范](#shell_intent).
+Sends a broadcast intent.
+See [Intent parameter specification](#shell_intent).
 
-选项包括：
+Options include:
 
-* [--user user_id | all | current]：指定要发送到的用户；如果未指定, 则发送到所有用户.
+* [--user user_id | all | current]: Specify the user to send to; if not specified, send to all users.
 
 ### instrument [options] component
 
-使用 Instrumentation 实例启动监控. 通常, 目标 component 是表单 test_package/runner_class.   
-选项包括：
+Start monitoring using an Instrumentation instance. Typically, the target component is of the form test_package/runner_class.   
+Options include:
 
-* -r：输出原始结果（否则对 report_key_streamresult 进行解码）. 与 [-e perf true] 结合使用以生成性能测量的原始输出.
-* -e name value：将参数 name 设为 value. 对于测试运行器, 通用表单为 -e testrunner_flag value[,value...].
-* -p file：将分析数据写入 file.
-* -w：先等待仪器完成, 然后再返回. 测试运行器需要使用此选项.
-* --no-window-animation：运行时关闭窗口动画.
-* --user user_id | current：指定仪器在哪个用户中运行；如果未指定, 则在当前用户中运行.
-* profile start process file 启动 process 的分析器, 将结果写入 file.
-* profile stop process 停止 process 的分析器.
+* -r: Output raw results (otherwise decode report_key_streamresult). Use with [-e perf true] to generate raw output for performance measurements.
+* -e name value: Set the parameter name to value. For test runners, the general form is -e testrunner_flag value[,value...].
+* -p file: Write profiling data to file.
+* -w: Wait for instrumentation to complete before returning. Test runners must use this option.
+* --no-window-animation: Disable window animations at runtime.
+* --user user_id | current: Specify the user in which the instrumentation runs; if not specified, run in the current user.
+* profile start process file: Start the profiler for process and write results to file.
+* profile stop process: Stop the profiler for process.
 
 ### dumpheap [options] process file
 
-转储 process 的堆, 写入 file.
+Dump the heap of process and write it to file.
 
-选项包括：
+Options include:
 
-* --user [user_id|current]：提供进程名称时, 指定要转储的进程用户；如果未指定, 则使用当前用户.
-* -n：转储原生堆, 而非托管堆.
-* set-debug-app [options] package 将应用 package 设为调试.
+* --user [user_id|current]: When a process name is provided, specify the user of the process to dump; if not specified, use the current user.
+* -n: Dump the native heap instead of the managed heap.
+* set-debug-app [options] package: Set the application package as debuggable.
 
-选项包括：
+Options include:
 
-* -w：应用启动时等待调试程序.
-* --persistent：保留此值.
-* clear-debug-app 使用 set-debug-app 清除以前针对调试用途设置的软件包.
+* -w: Wait for the debugger when the app starts.
+* --persistent: Retain this value.
+* clear-debug-app: Use set-debug-app to clear previously set packages for debugging purposes.
 
-### monitor [options]    启动对崩溃或 ANR 的监控.
+### monitor [options]
 
-选项包括：
+Start monitoring for crashes or ANRs.
 
-* --gdb：在崩溃/ANR 时在给定端口上启动 gdbserv.
+Options include:
+
+* --gdb: Start gdbserv on the given port during crash/ANR.
 
 ### screen-compat {on|off} package
 
-控制 package 的屏幕兼容性模式.
+Control the screen compatibility mode of package.
 
 ### display-size [reset|widthxheight]
 
-替换模拟器/设备显示尺寸. 此命令对于在不同尺寸的屏幕上测试您的应用非常有用, 它支持使用大屏设备模仿小屏幕分辨率（反之亦然）.   
-示例：
+Override the emulator/device display size. This command is very useful for testing your app on screens of different sizes; it supports using a large-screen device to emulate small-screen resolution (and vice versa).   
+Example:
 
 ```
 shell("am display-size 1280x800", true);
@@ -220,8 +222,8 @@ shell("am display-size 1280x800", true);
 
 ### display-density dpi
 
-替换模拟器/设备显示密度. 此命令对于在不同密度的屏幕上测试您的应用非常有用, 它支持使用低密度屏幕在高密度环境环境上进行测试（反之亦然）.   
-示例：
+Override the emulator/device display density. This command is very useful for testing your app on screens of different densities; it supports using a low-density screen to test in a high-density environment (and vice versa).   
+Example:
 
 ```
 shell("am display-density 480", true);
@@ -229,72 +231,72 @@ shell("am display-density 480", true);
 
 ### to-uri intent
 
-将给定的 intent 规范以 URI 的形式输出.
-请参阅  [intent 参数的规范](#shell_intent).
+Output the given intent specification in URI form.
+See [Intent parameter specification](#shell_intent).
 
 ### to-intent-uri intent
 
-将给定的 intent 规范以 intent:URI 的形式输出.
-请参阅 intent 参数的规范.
+Output the given intent specification in intent:URI form.
+See the intent parameter specification.
 
-### intent参数的规范
+### Intent parameter specification
 
-对于采用 intent 参数的 am 命令, 您可以使用以下选项指定 intent：
+For am commands that use intent parameters, you can use the following options to specify the intent:
 
 * -a action  
-  指定 intent 操作, 如“android.intent.action.VIEW”. 此指定只能声明一次.
+  Specify the intent action, such as “android.intent.action.VIEW”. This can be declared only once.
 * -d data_uri  
-  指定 intent 数据 URI, 如“content://contacts/people/1”. 此指定只能声明一次.
+  Specify the intent data URI, such as “content://contacts/people/1”. This can be declared only once.
 * -t mime_type  
-  指定 intent MIME 类型, 如“image/png”. 此指定只能声明一次.
+  Specify the intent MIME type, such as “image/png”. This can be declared only once.
 * -c category  
-  指定 intent 类别, 如“android.intent.category.APP_CONTACTS”.
+  Specify the intent category, such as “android.intent.category.APP_CONTACTS”.
 * -n component  
-  指定带有软件包名称前缀的组件名称以创建显式 intent, 如“com.example.app/.ExampleActivity”.
+  Specify the component name with package name prefix to create an explicit intent, such as “com.example.app/.ExampleActivity”.
 * -f flags  
-  将标志添加到 setFlags() 支持的 intent.
+  Add flags to the intent supported by setFlags().
 * --esn extra_key  
-  添加一个 null extra. URI intent 不支持此选项.
+  Add a null extra. Not supported for URI intents.
 * -e|--es extra_key extra_string_value  
-  添加字符串数据作为键值对.
+  Add string data as a key-value pair.
 * --ez extra_key extra_boolean_value  
-  添加布尔型数据作为键值对.
+  Add boolean data as a key-value pair.
 * --ei extra_key extra_int_value  
-  添加整数型数据作为键值对.
+  Add integer data as a key-value pair.
 * --el extra_key extra_long_value  
-  添加长整型数据作为键值对.
+  Add long integer data as a key-value pair.
 * --ef extra_key extra_float_value  
-  添加浮点型数据作为键值对.
+  Add float data as a key-value pair.
 * --eu extra_key extra_uri_value  
-  添加 URI 数据作为键值对.
+  Add URI data as a key-value pair.
 * --ecn extra_key extra_component_name_value  
-  添加组件名称, 将其作为 ComponentName 对象进行转换和传递.
+  Add component name, converted and passed as a ComponentName object.
 * --eia extra_key extra_int_value[,extra_int_value...]  
-  添加整数数组.
+  Add integer array.
 * --ela extra_key extra_long_value[,extra_long_value...]  
-  添加长整型数组.
+  Add long integer array.
 * --efa extra_key extra_float_value[,extra_float_value...]  
-  添加浮点型数组.
+  Add float array.
 * --grant-read-uri-permission  
-  包含标志 FLAG_GRANT_READ_URI_PERMISSION.
+  Include the FLAG_GRANT_READ_URI_PERMISSION flag.
 * --grant-write-uri-permission  
-  包含标志 FLAG_GRANT_WRITE_URI_PERMISSION.
+  Include the FLAG_GRANT_WRITE_URI_PERMISSION flag.
 * --debug-log-resolution  
-  包含标志 FLAG_DEBUG_LOG_RESOLUTION.
+  Include the FLAG_DEBUG_LOG_RESOLUTION flag.
 * --exclude-stopped-packages  
-  包含标志 FLAG_EXCLUDE_STOPPED_PACKAGES.
+  Include the FLAG_EXCLUDE_STOPPED_PACKAGES flag.
 * --include-stopped-packages  
-  包含标志 FLAG_INCLUDE_STOPPED_PACKAGES.
+  Include the FLAG_INCLUDE_STOPPED_PACKAGES flag.
 * --activity-brought-to-front  
-  包含标志 FLAG_ACTIVITY_BROUGHT_TO_FRONT.
+  Include the FLAG_ACTIVITY_BROUGHT_TO_FRONT flag.
 * --activity-clear-top  
-  包含标志 FLAG_ACTIVITY_CLEAR_TOP.
+  Include the FLAG_ACTIVITY_CLEAR_TOP flag.
 * --activity-clear-when-task-reset  
-  包含标志 FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET.
+  Include the FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET flag.
 * --activity-exclude-from-recents  
-  包含标志 FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS.
+  Include the FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS flag.
 * --activity-launched-from-history  
-  包含标志 FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY.
+  Include the FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY flag.
 * --activity-multiple-task  
   包含标志 FLAG_ACTIVITY_MULTIPLE_TASK.
 * --activity-no-animation  

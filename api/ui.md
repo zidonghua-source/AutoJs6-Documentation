@@ -1,95 +1,95 @@
-# 用户界面 (UI)
+# User Interface (UI)
 
 ---
 
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
+<p style="font: italic 1em sans-serif; color: #78909C">This chapter is pending supplementation or improvement...</p>
 <p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
 
 ---
 
-ui模块提供了编写用户界面的支持.
+The `ui` module provides support for writing user interfaces.
 
-    给Android开发者或者高阶用户的提醒, Auto.js的UI系统来自于Android, 所有属性和方法都能在Android源码中找到. 如果某些代码或属性没有出现在Auto.js的文档中, 可以参考Android的文档.
+    Reminder for Android developers or advanced users: Auto.js's UI system originates from Android. All properties and methods can be found in the Android source code. If certain code or properties do not appear in the Auto.js documentation, you may refer to the Android documentation.
     View: https://developer.android.google.cn/reference/android/view/View?hl=cn
     Widget: https://developer.android.google.cn/reference/android/widget/package-summary?hl=cn
 
-带有ui的脚本的的最前面必须使用`"ui";`指定ui模式, 否则脚本将不会以ui模式运行. 正确示范:s
+Scripts that use UI must start with `"ui";` to specify UI mode; otherwise, the script will not run in UI mode. Correct example:
 
 ```
 "ui";
 
-//脚本的其他代码
+// Other script code
 ```
 
-字符串"ui"的前面可以有注释、空行和空格**[v4.1.0新增]**, 但是不能有其他代码.
+Comments, blank lines, and spaces may appear before the string `"ui"` **[added in v4.1.0]**, but no other code is allowed.
 
-界面是由视图(View)组成的. View分成两种, 控件(Widget)和布局(Layout). 控件(Widget)用来具体显示文字、图片、网页等, 比如文本控件(text)用来显示文字, 按钮控件(button)则可以显示一个按钮并提供点击效果, 图片控件(img)则用来显示来自网络或者文件的图片, 除此之外还有输入框控件(input)、进度条控件(progressbar)、单选复选框控件(checkbox)等；布局(Layout)则是装着一个或多个控件的"容器", 用于控制在他里面的控件的位置, 比如垂直布局(vertical)会把他里面的控件从上往下依次显示(即纵向排列), 水平布局(horizontal)则会把他里面的控件从左往右依次显示(即横向排列), 以及帧布局(frame), 他会把他里面的控件直接在左上角显示, 如果有多个控件, 后面的控件会重叠在前面的控件上.
+An interface is composed of Views. Views are divided into two types: Widgets (controls) and Layouts. Widgets are used to display text, images, web pages, etc. For example, the text widget (`text`) displays text, the button widget (`button`) displays a button and provides click effects, the image widget (`img`) displays images from the network or files, and there are also input widgets (`input`), progress bar widgets (`progressbar`), checkbox widgets (`checkbox`), etc. Layouts are "containers" that hold one or more widgets and are used to control the position of the widgets inside them. For example, a vertical layout (`vertical`) displays its widgets from top to bottom (i.e., vertically arranged), a horizontal layout (`horizontal`) displays its widgets from left to right (i.e., horizontally arranged), and a frame layout (`frame`) displays its widgets directly in the upper-left corner. If there are multiple widgets, later widgets will overlap earlier ones.
 
-我们使用xml来编写界面, 并通过`ui.layout()`函数指定界面的布局xml. 举个例子：
+We use XML to write interfaces and specify the layout XML of the interface through the `ui.layout()` function. For example:
 
 ```
 "ui";
 $ui.layout(
     <vertical>
-        <button text="第一个按钮"/>
-        <button text="第二个按钮"/>
+        <button text="First button"/>
+        <button text="Second button"/>
     </vertical>
 );
 ```
 
-在这个例子中, 第3~6行的部分就是xml, 指定了界面的具体内容. 代码的第3行的标签`<vertical> ... </vertical>`表示垂直布局, 布局的标签通常以`<...>`开始, 以`</...>`结束, 两个标签之间的内容就是布局里面的内容, 例如`<frame> ... </frame>`. 在这个例子中第4, 5行的内容就是垂直布局(vertical)里面的内容. 代码的第4行是一个按钮控件(button), 控件的标签通常以`<...`开始, 以`/>`结束, 他们之间是控件的具体属性, 例如`<text ... />`. 在这个例子中`text="第一个按钮"`的部分就是按钮控件(button)的属性, 这个属性指定了这个按钮控件的文本内容(text)为"第一个按钮".
+In this example, lines 3~6 are the XML that specifies the specific content of the interface. The `<vertical> ... </vertical>` tag on line 3 represents a vertical layout. Layout tags usually start with `<...>` and end with `</...>`. The content between the two tags is the content inside the layout, for example `<frame> ... </frame>`. In this example, the content on lines 4 and 5 is the content inside the vertical layout. Line 4 is a button widget (`button`). Widget tags usually start with `<...` and end with `/>`. Between them are the specific properties of the widget, for example `<text ... />`. In this example, `text="First button"` is a property of the button widget that specifies the text content of this button.
 
-代码的第5行和第4行一样, 也是一个按钮控件, 只不过他的文本内容为"第二个按钮". 这两个控件在垂直布局中, 因此会纵向排列, 效果如图：
+Line 5 is the same as line 4 — also a button widget — except its text content is "Second button". These two widgets are inside the vertical layout, so they will be arranged vertically. The effect is shown below:
 
 ![ex1](images/ex1.png)
 
-如果我们把这个例子的垂直布局(vertical)改成水平布局(horizontal), 也即：
+If we change the vertical layout (`vertical`) in this example to a horizontal layout (`horizontal`), that is:
 
 ```
 "ui";
 ui.layout(
     <horizontal>
-        <button text="第一个按钮"/>
-        <button text="第二个按钮"/>
+        <button text="First button"/>
+        <button text="Second button"/>
     </horizontal>
 );
 ```
 
-则这两个按钮会横向排列, 效果如图：
+Then the two buttons will be arranged horizontally. The effect is shown below:
 
 ![ex1-horizontal](images/ex1-horizontal.png)
 
-一个控件可以指定多个属性(甚至可以不指定任何属性), 用空格隔开即可；布局同样也可以指定属性, 例如:
+A widget can specify multiple properties (or even none at all), separated by spaces. Layouts can also specify properties. For example:
 
 ```
 "ui";
 ui.layout(
     <vertical bg="#ff0000">
-        <button text="第一个按钮" textSize="20sp"/>
-        <button text="第二个按钮"/>
+        <button text="First button" textSize="20sp"/>
+        <button text="Second button"/>
     </vertical>
 );
 ```
 
-第三行`bg="#ff0000"`指定了垂直布局的背景色(bg)为"#ff0000", 这是一个RGB颜色, 表示红色(有关RGB的相关知识参见[RGB颜色对照表](http://tool.oschina.net/commons?type=3)). 第四行的`textSize="20sp"`则指定了按钮控件的字体大小(textSize)为"20sp", sp是一个字体单位, 暂时不用深入理会. 上述代码的效果如图：
+The third line `bg="#ff0000"` specifies that the background color (`bg`) of the vertical layout is "#ff0000", which is an RGB color representing red (for RGB-related knowledge, see the [RGB Color Reference Table](http://tool.oschina.net/commons?type=3)). The fourth line `textSize="20sp"` specifies that the font size (`textSize`) of the button widget is "20sp". "sp" is a font unit; there is no need to go deep into it for now. The effect of the above code is shown below:
 
 ![ex-properties](images/ex1-properties.png)
 
-一个界面便由一些布局和控件组成. 为了便于文档阅读, 我们再说明一下以下术语：
+An interface consists of some layouts and widgets. For easier document reading, we will explain the following terms:
 
-* 子视图, 子控件: 布局里面的控件是这个布局的子控件/子视图. 实际上布局里面不仅仅只能有控件, 还可以是嵌套的布局. 因此用子视图(Child View)更准确一些. 在上面的例子中, 按钮便是垂直布局的子控件.
-* 父视图, 父布局：直接包含一个控件的布局是这个控件的父布局/父视图(Parent View). 在上面的例子中, 垂直布局便是按钮的父布局.
+* Child view, child widget: The widgets inside a layout are the child widgets/child views of that layout. In fact, a layout can contain not only widgets but also nested layouts. Therefore, "child view (Child View)" is more accurate. In the example above, the buttons are child widgets of the vertical layout.
+* Parent view, parent layout: The layout that directly contains a widget is the parent layout / parent view (Parent View) of that widget. In the example above, the vertical layout is the parent layout of the buttons.
 
-# 视图: View
+# Views: View
 
-控件和布局都属于视图(View). 在这个章节中将介绍所有控件和布局的共有的属性和函数. 例如属性背景, 宽高等(所有控件和布局都能设置背景和宽高), 函数`click()`设置视图(View)被点击时执行的动作.
+Both widgets and layouts belong to Views. This chapter introduces the common properties and functions shared by all widgets and layouts. For example, the background property, width and height (all widgets and layouts can set background and width/height), and the `click()` function to set the action to execute when the View is clicked.
 
 ## attr(name, value)
 
-* `name` {string} 属性名称
-* `value` {string} 属性的值
+* `name` {string} Property name
+* `value` {string} Property value
 
-设置属性的值. 属性指定是View在xml中的属性. 例如可以通过语句`attr("text", "文本")`来设置文本控件的文本值.
+Set the value of a property. The property name refers to the attribute in the View's XML. For example, you can set the text value of a text widget using `attr("text", "text")`.
 
 ```javascript
 "ui";
@@ -100,25 +100,25 @@ $ui.layout(
     </frame>
 );
 
-// 5秒后执行
+// Execute after 5 seconds
 $ui.post(() => {
-    // 修改文本
+    // Modify text
     $ui.example.attr("text", "Hello, Auto.js UI");
-    // 修改背景
+    // Modify background
     $ui.example.attr("bg", "#ff00ff");
-    // 修改高度
+    // Modify height
     $ui.example.attr("h", "500dp");
 }, 5000);
 ```
 
-**注意：**并不是所有属性都能在js代码设置, 有一些属性只能在布局创建时设置, 例如style属性；还有一些属性虽然能在代码中设置, 但是还没支持；对于这些情况, 在Auto.js Pro 8.1.0+会抛出异常, 其他版本则不会抛出异常.
+**Note:** Not all properties can be set in JS code. Some properties can only be set when the layout is created, such as the `style` property. Some properties can be set in code but are not yet supported. In these cases, Auto.js Pro 8.1.0+ will throw an exception, while other versions will not.
 
 ## attr(name)
 
-* `name` {string} 属性名称
-* 返回 {string}
+* `name` {string} Property name
+* Returns {string}
 
-获取属性的值.
+Get the value of a property.
 
 ```javascript
 "ui";
@@ -132,15 +132,15 @@ $ui.layout(
 plusOne();
 
 function plusOne() {
-    // 获取文本
+    // Get text
     let text = $ui.example.attr("text");
-    // 解析为数字
+    // Parse as number
     let num = parseInt(text);
-    // 数字加1
+    // Add 1 to the number
     num++;
-    // 设置文本
+    // Set text
     $ui.example.attr("text", String(num));
-    // 1秒后继续
+    // Continue after 1 second
     $ui.post(plusOne, 1000);
 }
 
@@ -148,189 +148,189 @@ function plusOne() {
 
 ## w
 
-View的宽度, 是属性`width`的缩写形式. 可以设置的值为`*`, `auto`和具体数值. 其中`*`表示宽度**尽量**填满父布局, 而`auto`表示宽度将根据View的内容自动调整(自适应宽度). 例如：
+The width of the View, shorthand for the `width` property. Possible values are `*`, `auto`, and specific numbers. `*` means the width will **try its best** to fill the parent layout, while `auto` means the width will automatically adjust based on the View's content (adaptive width). For example:
 
 ```
 "ui";
 ui.layout(
     <horizontal>
-        <button w="auto" text="自适应宽度"/>
-        <button w="*" text="填满父布局"/>
+        <button w="auto" text="Adaptive width"/>
+        <button w="*" text="Fill parent layout"/>
     </horizontal>
 );
 ```
 
-在这个例子中, 第一个按钮为自适应宽度, 第二个按钮为填满父布局, 显示效果为：
+In this example, the first button has adaptive width, and the second button fills the parent layout. The display effect is:
 
 ![ex-w](images/ex-w.png)
 
-如果不设置该属性, 则不同的控件和布局有不同的默认宽度, 大多数为`auto`.
+If this property is not set, different widgets and layouts have different default widths, most of which are `auto`.
 
-宽度属性也可以指定一个具体数值. 例如`w="20"`, `w="20px"`等. 不加单位的情况下默认单位为dp, 其他单位包括px(像素), mm(毫米), in(英寸). 有关尺寸单位的更多内容, 参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension).
+The width property can also specify a specific value, such as `w="20"`, `w="20px"`, etc. Without a unit, the default unit is dp. Other units include px (pixels), mm (millimeters), and in (inches). For more information about dimension units, see [Dimension Units: Dimension](#ui_尺寸的单位_Dimension).
 
 ```
 "ui";
 ui.layout(
     <horizontal>
-        <button w="200" text="宽度200dp"/>
-        <button w="100" text="宽度100dp"/>
+        <button w="200" text="Width 200dp"/>
+        <button w="100" text="Width 100dp"/>
     </horizontal>
 );
 ```
 
 ## h
 
-View的高度, 是属性`height`的缩写形式. 可以设置的值为`*`, `auto`和具体数值. 其中`*`表示宽度**尽量**填满父布局, 而`auto`表示宽度将根据View的内容自动调整(自适应宽度).
+The height of the View, shorthand for the `height` property. Possible values are `*`, `auto`, and specific numbers. `*` means the height will **try its best** to fill the parent layout, while `auto` means the height will automatically adjust based on the View's content (adaptive height).
 
-如果不设置该属性, 则不同的控件和布局有不同的默认高度, 大多数为`auto`.
+If this property is not set, different widgets and layouts have different default heights, most of which are `auto`.
 
-宽度属性也可以指定一个具体数值. 例如`h="20"`, `h="20px"`等. 不加单位的情况下默认单位为dp, 其他单位包括px(像素), mm(毫米), in(英寸). 有关尺寸单位的更多内容, 参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension).
+The height property can also specify a specific value, such as `h="20"`, `h="20px"`, etc. Without a unit, the default unit is dp. Other units include px (pixels), mm (millimeters), and in (inches). For more information about dimension units, see [Dimension Units: Dimension](#ui_尺寸的单位_Dimension).
 
 ## id
 
-View的id, 用来区分一个界面下的不同控件和布局, 一个界面的id在同一个界面下通常是唯一的, 也就是一般不存在两个View有相同的id. id属性也是连接xml布局和JavaScript代码的桥梁, 在代码中可以通过一个View的id来获取到这个View, 并对他进行操作(设置点击动作、设置属性、获取属性等). 例如：
+The id of the View, used to distinguish different widgets and layouts within an interface. An interface's id is usually unique within that interface — generally, no two Views share the same id. The id property is also the bridge connecting the XML layout and JavaScript code. In code, you can retrieve a View using its id and perform operations on it (set click actions, set properties, get properties, etc.). For example:
 
 ```
 "ui";
 ui.layout(
     <frame>
-        <button id="ok" text="确定"/>
+        <button id="ok" text="OK"/>
     </frame>
 );
-//通过ui.ok获取到按钮控件
+// Retrieve the button widget via ui.ok
 toast(ui.ok.getText());
 ```
 
-这个例子中有一个按钮控件"确定", id属性为"ok", 那么我们可以在代码中使用`ui.ok`来获取他, 再通过`getText()`函数获取到这个按钮控件的文本内容.
-另外这个例子中使用帧布局(frame)是因为, 我们只有一个控件, 因此用于最简单的布局帧布局.
+This example has a button widget "OK" with id "ok". We can use `ui.ok` in code to retrieve it, and then use the `getText()` function to get the button's text content.
+Additionally, this example uses a frame layout because we only have one widget, making the simplest frame layout appropriate.
 
 ## gravity
 
-View的"重力". 用于决定View的内容相对于View的位置, 可以设置的值为:
+The "gravity" of the View. Used to determine the position of the View's content relative to the View itself. Possible values:
 
-* `left` 靠左
-* `right` 靠右
-* `top` 靠顶部
-* `bottom` 靠底部
-* `center` 居中
-* `center_vertical` 垂直居中
-* `center_horizontal` 水平居中
+* `left` — Align to the left
+* `right` — Align to the right
+* `top` — Align to the top
+* `bottom` — Align to the bottom
+* `center` — Center
+* `center_vertical` — Center vertically
+* `center_horizontal` — Center horizontally
 
-例如对于一个按钮控件, `gravity="right"`会使其中的文本内容靠右显示. 例如：
+For example, for a button widget, `gravity="right"` will make its text content align to the right. For example:
 
 ```
 "ui";
 ui.layout(
     <frame>
-        <button gravity="right" w="*" h="auto" text="靠右的文字"/>
+        <button gravity="right" w="*" h="auto" text="Right-aligned text"/>
     </frame>
 );
 ```
 
-显示效果为:
+The display effect is:
 
 ![ex-gravity](images/ex-gravity.png)
 
-这些属性是可以组合的, 例如`gravity="right|bottom"`的View他的内容会在右下角.
+These values can be combined, for example `gravity="right|bottom"` will place the View's content in the bottom-right corner.
 
 ## layout_gravity
 
-View在布局中的"重力", 用于决定View本身在他的**父布局**的位置, 可以设置的值和gravity属性相同. 注意把这个属性和gravity属性区分开来.
+The "gravity" of the View within its layout. Used to determine the position of the View itself within its **parent layout**. The possible values are the same as for the gravity property. Note the distinction between this property and the gravity property.
 
 ```
 "ui";
 ui.layout(
     <frame w="*" h="*">
-        <button layout_gravity="center" w="auto" h="auto" text="居中的按钮"/>
-        <button layout_gravity="right|bottom" w="auto" h="auto" text="右下角的按钮"/>
+        <button layout_gravity="center" w="auto" h="auto" text="Centered button"/>
+        <button layout_gravity="right|bottom" w="auto" h="auto" text="Bottom-right button"/>
     </frame>
 );
 ```
 
-在这个例子中, 我们让帧布局(frame)的大小占满整个屏幕, 通过给第一个按钮设置属性`layout_gravity="center"`来使得按钮在帧布局中居中, 通过给第二个按钮设置属性`layout_gravity="right|bottom"`使得他在帧布局中位于右下角. 效果如图：
+In this example, we make the frame layout fill the entire screen. By setting `layout_gravity="center"` on the first button, we center it within the frame layout. By setting `layout_gravity="right|bottom"` on the second button, we place it in the bottom-right corner of the frame layout. The effect is shown below:
 
 ![ex-layout-gravity](images/ex-layout-gravity.png)
 
-要注意的是, layout_gravity的属性不一定总是生效的, 具体取决于布局的类别. 例如不能让水平布局中的第一个子控件靠底部显示(否则和水平布局本身相违背).
+Note that the `layout_gravity` property does not always take effect — it depends on the type of layout. For example, you cannot make the first child widget in a horizontal layout align to the bottom (as that would contradict the nature of a horizontal layout itself).
 
 ## margin
 
-margin为View和其他View的间距, 即外边距. margin属性包括四个值:
+`margin` is the spacing between a View and other Views (i.e., outer margin). The margin property includes four values:
 
-* `marginLeft` 左外边距
-* `marginRight` 右外边距
-* `marginTop` 上外边距
-* `marginBottom` 下外边距
+* `marginLeft` — Left outer margin
+* `marginRight` — Right outer margin
+* `marginTop` — Top outer margin
+* `marginBottom` — Bottom outer margin
 
-而margin属性本身的值可以有三种格式:
+The value of the margin property itself can be specified in three formats:
 
-* `margin="marginAll"` 指定各个外边距都是该值. 例如`margin="10"`表示左右上下边距都是10dp.
-* `margin="marginLeft marginTop marginRight marginBottom"` 分别指定各个外边距. 例如`margin="10 20 30 40"`表示左边距为10dp, 上边距为20dp, 右边距为30dp, 下边距为40dp
-* `margin="marginHorizontal marginVertical"` 指定水平外边距和垂直外边距. 例如`margin="10 20"`表示左右边距为10dp, 上下边距为20dp.
+* `margin="marginAll"` — Sets all margins to the same value. For example, `margin="10"` means 10dp for left, right, top, and bottom.
+* `margin="marginLeft marginTop marginRight marginBottom"` — Sets each margin individually. For example, `margin="10 20 30 40"` means left=10dp, top=20dp, right=30dp, bottom=40dp.
+* `margin="marginHorizontal marginVertical"` — Sets horizontal and vertical margins. For example, `margin="10 20"` means left/right=10dp, top/bottom=20dp.
 
-用一个例子来具体理解外边距的含义：
+Here is an example to understand the meaning of margins:
 
 ```
 "ui";
 ui.layout(
     <horizontal>
-        <button margin="30" text="距离四周30"/>
-        <button text="普通的按钮"/>
+        <button margin="30" text="30dp from all sides"/>
+        <button text="Normal button"/>
     </horizontal>
 );
 ```
 
-第一个按钮的margin属性指定了他的边距为30dp, 也就是他与水平布局以及第二个按钮的间距都是30dp, 其显示效果如图:
+The first button's `margin` property sets its margin to 30dp, meaning 30dp spacing from the horizontal layout and from the second button. The display effect is:
 
 ![ex1-margin](images/ex1-margin.png)
 
-如果把`margin="30"`改成`margin="10 40"`那么第一个按钮的左右间距为10dp, 上下间距为40dp, 效果如图:
+If we change `margin="30"` to `margin="10 40"`, the first button will have 10dp horizontal margins and 40dp vertical margins. The effect is:
 
 ![ex2-margin](images/ex2-margin.png)
 
-有关margin属性的单位, 参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension).
+For units used with the margin property, see [Dimension Units: Dimension](#ui_尺寸的单位_Dimension).
 
 ## marginLeft
 
-View的左外边距. 如果该属性和margin属性指定的值冲突, 则在后面的属性生效, 前面的属性无效, 例如`margin="20" marginLeft="10"`的左外边距为10dp, 其他外边距为20dp.
+The left outer margin of the View. If this property conflicts with a value set by the margin property, the later property takes precedence and the earlier one is ignored. For example, with `margin="20" marginLeft="10"`, the left margin is 10dp and the other margins are 20dp.
 
 ```
 "ui";
 ui.layout(
     <horizontal>
-        <button marginLeft="50" text="距离左边50"/>
-        <button text="普通的按钮"/>
+        <button marginLeft="50" text="50dp from left"/>
+        <button text="Normal button"/>
     </horizontal>
 );
 ```
 
-第一个按钮指定了左外边距为50dp, 则他和他的父布局水平布局(horizontal)的左边的间距为50dp, 效果如图：
+The first button specifies a left margin of 50dp, so its distance from the left edge of its parent horizontal layout is 50dp. The effect is:
 
 ![ex-marginLeft](images/ex-marginLeft.png)
 
 ## marginRight
 
-View的右外边距. 如果该属性和margin属性指定的值冲突, 则在后面的属性生效, 前面的属性无效.
+The right outer margin of the View. If this property conflicts with a value set by the margin property, the later property takes precedence.
 
 ## marginTop
 
-View的上外边距. 如果该属性和margin属性指定的值冲突, 则在后面的属性生效, 前面的属性无效.
+The top outer margin of the View. If this property conflicts with a value set by the margin property, the later property takes precedence.
 
 ## marginBottom
 
-View的下外边距. 如果该属性和margin属性指定的值冲突, 则在后面的属性生效, 前面的属性无效.
+The bottom outer margin of the View. If this property conflicts with a value set by the margin property, the later property takes precedence.
 
 ## padding
 
-View和他的自身内容的间距, 也就是内边距. 注意和margin属性区分开来, margin属性是View之间的间距, 而padding是View和他自身内容的间距. 举个例子, 一个文本控件的padding也即文本控件的边缘和他的文本内容的间距, paddingLeft即文本控件的左边和他的文本内容的间距.
+The spacing between the View and its own content (i.e., inner padding). Note the difference from the margin property: margin is the spacing *between* Views, while padding is the spacing between a View and its own content. For example, the padding of a text widget is the distance between the widget's edges and its text content. `paddingLeft` is the distance between the left edge of the text widget and its text content.
 
-paddding属性的值同样有三种格式：
+The padding property supports the same three value formats:
 
-* `padding="paddingAll"` 指定各个内边距都是该值. 例如`padding="10"`表示左右上下内边距都是10dp.
-* `padding="paddingLeft paddingTop paddingRight paddingBottom"` 分别指定各个内边距. 例如`padding="10 20 30 40"`表示左内边距为10dp, 上内边距为20dp, 右内边距为30dp, 下内边距为40dp
-* `padding="paddingHorizontal paddingVertical"` 指定水平内边距和垂直内边距. 例如`padding="10 20"`表示左右内边距为10dp, 上下内边距为20dp.
+* `padding="paddingAll"` — Sets all inner margins to the same value. For example, `padding="10"` means 10dp for left, right, top, and bottom.
+* `padding="paddingLeft paddingTop paddingRight paddingBottom"` — Sets each padding individually. For example, `padding="10 20 30 40"`.
+* `padding="paddingHorizontal paddingVertical"` — Sets horizontal and vertical padding. For example, `padding="10 20"`.
 
-用一个例子来具体理解内边距的含义：
+Here is an example to understand padding:
 
 ```
 "ui";
@@ -341,338 +341,338 @@ ui.layout(
 );
 ```
 
-这个例子是一个居中的按钮(通过父布局的`gravity="center"`属性设置), 背景色为红色(`bg="#ff0000"`), 文本内容为"HelloWorld", 左边距为10dp, 上边距为20dp, 下边距为30dp, 右边距为40dp, 其显示效果如图：
+This example shows a centered text widget (using the parent layout's `gravity="center"`), with a red background (`bg="#ff0000"`), text content "HelloWorld", left padding 10dp, top padding 20dp, bottom padding 30dp, right padding 40dp. The effect is:
 
 ![ex-padding](images/ex-padding.png)
 
 ## paddingLeft
 
-View的左内边距. 如果该属性和padding属性指定的值冲突, 则在后面的属性生效, 前面的属性无效.
+The left inner padding of the View. If this property conflicts with a value set by the padding property, the later property takes precedence.
 
 ## paddingRight
 
-View的右内边距. 如果该属性和padding属性指定的值冲突, 则在后面的属性生效, 前面的属性无效.
+The right inner padding of the View. If this property conflicts with a value set by the padding property, the later property takes precedence.
 
 ## paddingTop
 
-View的上内边距. 如果该属性和padding属性指定的值冲突, 则在后面的属性生效, 前面的属性无效.
+The top inner padding of the View. If this property conflicts with a value set by the padding property, the later property takes precedence.
 
 ## paddingBottom
 
-View的下内边距. 如果该属性和padding属性指定的值冲突, 则在后面的属性生效, 前面的属性无效.
+The bottom inner padding of the View. If this property conflicts with a value set by the padding property, the later property takes precedence.
 
 ## bg
 
-View的背景. 其值可以是一个链接或路径指向的图片, 或者RGB格式的颜色, 或者其他背景. 具体参见[Drawables](#draw).
+The background of the View. Its value can be an image referenced by a link or path, an RGB color, or other background types. See [Drawables](#draw) for details.
 
-例如, `bg="#00ff00"`设置背景为绿色, `bg="file:///sdcard/1.png"`设置背景为图片"1.png", `bg="?attr/selectableItemBackground"`设置背景为点击时出现的波纹效果(可能需要同时设置`clickable="true"`才生效).
+For example, `bg="#00ff00"` sets a green background, `bg="file:///sdcard/1.png"` sets the background to the image "1.png", and `bg="?attr/selectableItemBackground"` sets a ripple effect on click (you may also need to set `clickable="true"` for it to take effect).
 
 ## alpha
 
-View的透明度, 其值是一个0~1之间的小数, 0表示完全透明, 1表示完全不透明. 例如`alpha="0.5"`表示半透明.
+The opacity of the View. The value is a decimal between 0 and 1. 0 means fully transparent, 1 means fully opaque. For example, `alpha="0.5"` means semi-transparent.
 
 ## foreground
 
-View的前景. 前景即在一个View的内容上显示的内容, 可能会覆盖掉View本身的内容. 其值和属性bg的值类似.
+The foreground of the View. The foreground is content displayed on top of the View's own content and may cover it. Its value is similar to the `bg` property.
 
 ## minHeight
 
-View的最小高度. 该值不总是生效的, 取决于其父布局是否有足够的空间容纳.
+The minimum height of the View. This value does not always take effect — it depends on whether the parent layout has enough space.
 
-例：`<text height="auto" minHeight="50"/>`
+Example: `<text height="auto" minHeight="50"/>`
 
-有关该属性的单位, 参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension).
+For units, see [Dimension Units: Dimension](#ui_尺寸的单位_Dimension).
 
 ## minWidth
 
-View的最小宽度. 该值不总是生效的, 取决于其父布局是否有足够的空间容纳.
+The minimum width of the View. This value does not always take effect — it depends on whether the parent layout has enough space.
 
-例：`<input width="auto" minWidth="50"/>`
+Example: `<input width="auto" minWidth="50"/>`
 
-有关该属性的单位, 参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension).
+For units, see [Dimension Units: Dimension](#ui_尺寸的单位_Dimension).
 
 ## visibility
 
-View的可见性, 该属性可以决定View是否显示出来. 其值可以为：
+The visibility of the View. This property determines whether the View is shown. Possible values:
 
-* `gone` 不可见.
-* `visible` 可见. 默认情况下View都是可见的.
-* `invisible` 不可见, 但仍然占用位置.
+* `gone` — Invisible (and does not take up space).
+* `visible` — Visible. By default, Views are visible.
+* `invisible` — Invisible, but still occupies space.
 
 ## rotation
 
-View的旋转角度. 通过该属性可以让这个View顺时针旋转一定的角度. 例如`rotation="90"`可以让他顺时针旋转90度.
+The rotation angle of the View. This property allows the View to be rotated clockwise by a certain angle. For example, `rotation="90"` rotates it 90 degrees clockwise.
 
-如果要设置旋转中心, 可以通过`transformPivotX`, `transformPivotY`属性设置. 默认的旋转中心为View的中心.
+To set the rotation center, use the `transformPivotX` and `transformPivotY` properties. The default rotation center is the center of the View.
 
 ## transformPivotX
 
-View的变换中心坐标x. 用于View的旋转、放缩等变换的中心坐标. 例如`transformPivotX="10"`.
+The x-coordinate of the View's transformation pivot. Used as the center for rotation, scaling, and other transformations. For example, `transformPivotX="10"`.
 
-该坐标的坐标系以View的左上角为原点. 也就是x值为变换中心到View的左边的距离.
+The coordinate system has its origin at the top-left corner of the View. That is, the x value is the distance from the transformation center to the left edge of the View.
 
-有关该属性的单位, 参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension).
+For units, see [Dimension Units: Dimension](#ui_尺寸的单位_Dimension).
 
 ## transformPivotY
 
-View的变换中心坐标y. 用于View的旋转、放缩等变换的中心坐标. 例如`transformPivotY="10"`.
+The y-coordinate of the View's transformation pivot. Used as the center for rotation, scaling, and other transformations. For example, `transformPivotY="10"`.
 
-该坐标的坐标系以View的左上角为原点. 也就是y值为变换中心到View的上边的距离.
+The coordinate system has its origin at the top-left corner of the View. That is, the y value is the distance from the transformation center to the top edge of the View.
 
-有关该属性的单位, 参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension).
+For units, see [Dimension Units: Dimension](#ui_尺寸的单位_Dimension).
 
 ## style
 
-设置View的样式. 不同控件有不同的可选的内置样式. 具体参见各个控件的说明.
+Sets the style of the View. Different controls have different optional built-in styles. See the documentation for each control for details.
 
-需要注意的是, style属性只支持安卓5.1及其以上.
+Note that the style property is only supported on Android 5.1 and above.
 
-# 文本控件: text
+# Text Widget: text
 
-文本控件用于显示文本, 可以控制文本的字体大小, 字体颜色, 字体等.
+The text widget is used to display text. You can control the font size, font color, font, etc.
 
-以下介绍该控件的主要属性和方法, 如果要查看他的所有属性和方法, 请阅读[TextView](http://www.zhdoc.net/android/reference/android/widget/TextView.html).
+The following introduces the main properties and methods of this widget. To see all its properties and methods, please read the [TextView](http://www.zhdoc.net/android/reference/android/widget/TextView.html) documentation.
 
 ## text
 
-设置文本的内容. 例如`text="一段文本"`.
+Sets the content of the text. For example, `text="some text"`.
 
 ## textColor
 
-设置字体的颜色, 可以是RGB格式的颜色(例如#ff00ff), 或者颜色名称(例如red, green等), 具体参见[颜色](#ui_颜色).
+Sets the font color. Can be an RGB color (e.g. #ff00ff) or a color name (e.g. red, green, etc.). See [Colors](#ui_颜色) for details.
 
-示例, 红色字体：`<text text="红色字体" textColor="red"/>`
+Example, red text: `<text text="red text" textColor="red"/>`
 
 ## textSize
 
-设置字体的大小, 单位一般是sp. 按照Material Design的规范, 正文字体大小为14sp, 标题字体大小为18sp, 次标题为16sp.
+Sets the font size. The unit is generally sp. According to Material Design guidelines, body text is 14sp, titles are 18sp, and subtitles are 16sp.
 
-示例, 超大字体: `<text text="超大字体" textSize="40sp"/>`
+Example, extra large font: `<text text="extra large font" textSize="40sp"/>`
 
 ## textStyle
 
-设置字体的样式, 比如斜体、粗体等. 可选的值为：
+Sets the font style, such as italic, bold, etc. Possible values:
 
-* bold 加粗字体
-* italic 斜体
-* normal 正常字体
+* bold — Bold font
+* italic — Italic font
+* normal — Normal font
 
-可以用或("|")把他们组合起来, 比如粗斜体为"bold|italic".
+You can combine them with "|" (pipe), for example bold italic is "bold|italic".
 
-例如, 粗体：`<text textStyle="bold" textSize="18sp" text="这是粗体"/>
+Example, bold: `<text textStyle="bold" textSize="18sp" text="This is bold"/>`
 
 ## lines
 
-设置文本控件的行数. 即使文本内容没有达到设置的行数, 控件也会留出相应的宽度来显示空白行；如果文本内容超出了设置的行数, 则超出的部分不会显示.
+Sets the number of lines for the text widget. Even if the text content does not reach the set number of lines, the widget will reserve space to display blank lines. If the text content exceeds the set number of lines, the excess will not be displayed.
 
-另外在xml中是不能设置多行文本的, 要在代码中设置. 例如:
+Also, multi-line text cannot be set directly in XML; it must be set in code. For example:
 
 ```
 "ui";
 ui.layout(
     <vertical>
-        <text id="myText" line="3">
+        <text id="myText" lines="3">
     </vertical>
 )
-//通过\n换行
-ui.myText.setText("第一行\n第二行\n第三行\n第四行");
+// Use \n for line breaks
+ui.myText.setText("First line\nSecond line\nThird line\nFourth line");
 ```
 
 ## maxLines
 
-设置文本控件的最大行数.
+Sets the maximum number of lines for the text widget.
 
 ## typeface
 
-设置字体. 可选的值为：
+Sets the font. Possible values:
 
-* `normal` 正常字体
-* `sans` 衬线字体
-* `serif` 非衬线字体
-* `monospace` 等宽字体
+* `normal` — Normal font
+* `sans` — Sans-serif font
+* `serif` — Serif font
+* `monospace` — Monospace font
 
-示例, 等宽字体: `<text text="等宽字体" typeface="monospace"/>`
+Example, monospace font: `<text text="monospace font" typeface="monospace"/>`
 
 ## ellipsize
 
-设置文本的省略号位置. 文本的省略号会在文本内容超出文本控件时显示. 可选的值为：
+Sets the position of the ellipsis for the text. The ellipsis appears when the text content exceeds the text widget. Possible values:
 
-* `end`   在文本末尾显示省略号
-* `marquee`   跑马灯效果, 文本将滚动显示
-* `middle`    在文本中间显示省略号
-* `none`    不显示省略号
-* `start`    在文本开头显示省略号
+* `end` — Show ellipsis at the end of the text
+* `marquee` — Marquee effect, text will scroll
+* `middle` — Show ellipsis in the middle of the text
+* `none` — Do not show ellipsis
+* `start` — Show ellipsis at the beginning of the text
 
 ## ems
 
-当设置该属性后,TextView显示的字符长度（单位是em）,超出的部分将不显示, 或者根据ellipsize属性的设置显示省略号.
+When this property is set, the TextView displays a character length (in em units). Excess content will not be shown or will display an ellipsis according to the ellipsize setting.
 
-例如, 限制文本最长为5em: `<text ems="5" ellipsize="end" text="很长很长很长很长很长很长很长的文本"/>
+Example, limit text to a maximum of 5em: `<text ems="5" ellipsize="end" text="a very very very very very very very long text"/>`
 
 ## autoLink
 
-控制是否自动找到url和电子邮件地址等链接, 并转换为可点击的链接. 默认值为“none”.
+Controls whether URLs, email addresses, and other links are automatically detected and converted into clickable links. The default value is "none".
 
-设置该值可以让文本中的链接、电话等变成可点击状态.
+Setting this value makes links, phone numbers, etc. in the text become clickable.
 
-可选的值为以下的值以其通过或("|")的组合：
+Possible values are any combination of the following joined by "|":
 
-* `all`    匹配所有连接、邮件、地址、电话
-* `email`    匹配电子邮件地址
-* `map`    匹配地图地址
-* `none`    不匹配 (默认)
-* `phone`    匹配电话号码
-* `web`    匹配URL地址
+* `all` — Match all links, emails, addresses, phones
+* `email` — Match email addresses
+* `map` — Match map addresses
+* `none` — Do not match (default)
+* `phone` — Match phone numbers
+* `web` — Match URLs
 
-示例：`<text autoLink="web|phone" text="百度: http://www.baidu.com 电信电话: 10000"/>`
+Example: `<text autoLink="web|phone" text="Baidu: http://www.baidu.com Telecom: 10000"/>`
 
-# 按钮控件: button
+# Button Widget: button
 
-按钮控件是一个特殊的文本控件, 因此所有文本控件的函数的属性都适用于按钮控件.
+The button widget is a special text widget, so all properties and functions of the text widget also apply to the button widget.
 
-除此之外, 按钮控件有一些内置的样式, 通过`style`属性设置, 包括：
+In addition, the button widget has some built-in styles that can be set via the `style` property, including:
 
-* Widget.AppCompat.Button.Colored 带颜色的按钮
-* Widget.AppCompat.Button.Borderless 无边框按钮
-* Widget.AppCompat.Button.Borderless.Colored 带颜色的无边框按钮
+* Widget.AppCompat.Button.Colored — Colored button
+* Widget.AppCompat.Button.Borderless — Borderless button
+* Widget.AppCompat.Button.Borderless.Colored — Colored borderless button
 
-这些样式的具体效果参见"示例/界面控件/按钮控件.js".
+For the specific effects of these styles, see the example "示例/界面控件/按钮控件.js".
 
-例如：`<button style="Widget.AppCompat.Button.Colored" text="漂亮的按钮"/>`
+Example: `<button style="Widget.AppCompat.Button.Colored" text="Nice button"/>`
 
-# 输入框控件: input
+# Input Widget: input
 
-输入框控件也是一个特殊的文本控件, 因此所有文本控件的函数的属性和函数都适用于按钮控件. 输入框控件有自己的属性和函数, 要查看所有这些内容, 阅读[EditText](http://www.zhdoc.net/android/reference/android/widget/EditText.html).
+The input widget is also a special text widget, so all properties and functions of the text widget also apply to the input widget. The input widget has its own properties and functions. To see all of them, read the [EditText](http://www.zhdoc.net/android/reference/android/widget/EditText.html) documentation.
 
-对于一个输入框控件, 我们可以通过text属性设置他的内容, 通过lines属性指定输入框的行数；在代码中通过`getText()`函数获取输入的内容. 例如：
+For an input widget, we can set its content via the text property and specify the number of lines via the lines property. In code, we can get the input content via the `getText()` function. For example:
 
 ```
 "ui";
 ui.layout(
     <vertical padding="16">
-        <text textSize="16sp" textColor="black" text="请输入姓名"/>
-        <input id="name" text="小明"/>
-        <button id="ok" text="确定"/>
+        <text textSize="16sp" textColor="black" text="Please enter your name"/>
+        <input id="name" text="Xiao Ming"/>
+        <button id="ok" text="OK"/>
     </vertical>
 );
-//指定确定按钮点击时要执行的动作
+// Specify the action to execute when the OK button is clicked
 ui.ok.click(function(){
-    //通过getText()获取输入的内容
+    // Get the input content via getText()
     var name = ui.name.getText();
-    toast(name + "您好!");
+    toast(name + " hello!");
 });
 ```
 
-效果如图：
+The effect is shown below:
 
 ![ex-input](ex-input.png)
 
-除此之外, 输入框控件有另外一些主要属性(虽然这些属性对于文本控件也是可用的但一般只用于输入框控件)：
+In addition, the input widget has some other main properties (although these properties are also available for text widgets, they are generally only used for input widgets):
 
 ## hint
 
-输入提示. 这个提示会在输入框为空的时候显示出来. 如图所示:
+Input hint. This hint is displayed when the input field is empty. As shown in the image:
 
 ![ex-hint](images/ex-hint.png)
 
-上面图片效果的代码为：
+The code for the above image effect is:
 
 ```
 "ui";
 ui.layout(
     <vertical>
-        <input hint="请输入姓名"/>
+        <input hint="Please enter your name"/>
     </vertical>
 )
 ```
 
 ## textColorHint
 
-指定输入提示的字体颜色.
+Specifies the font color of the input hint.
 
 ## textSizeHint
 
-指定输入提示的字体大小.
+Specifies the font size of the input hint.
 
 ## inputType
 
-指定输入框可以输入的文本类型. 可选的值为以下值及其用"|"的组合:
+Specifies the type of text that can be entered in the input field. Possible values are any combination of the following joined by "|":
 
-* `date`    用于输入日期.
-* `datetime`    用于输入日期和时间.
-* `none`    没有内容类型. 此输入框不可编辑.
-* `number`    仅可输入数字.
-* `numberDecimal`    可以与number和它的其他选项组合, 以允许输入十进制数(包括小数).
-* `numberPassword`    仅可输入数字密码.
-* `numberSigned`    可以与number和它的其他选项组合, 以允许输入有符号的数.
-* `phone`    用于输入一个电话号码.
-* `text`    只是普通文本.
-* `textAutoComplete`    可以与text和它的其他选项结合, 以指定此字段将做自己的自动完成, 并适当地与输入法交互.
-* `textAutoCorrect`    可以与text和它的其他选项结合, 以请求自动文本输入纠错.
-* `textCapCharacters`    可以与text和它的其他选项结合, 以请求大写所有字符.
-* `textCapSentences`    可以与text和它的其他选项结合, 以请求大写每个句子里面的第一个字符.
-* `textCapWords`    可以与text和它的其他选项结合, 以请求大写每个单词里面的第一个字符.
-* `textEmailAddress`    用于输入一个电子邮件地址.
-* `textEmailSubject`    用于输入电子邮件的主题.
-* `textImeMultiLine`    可以与text和它的其他选项结合, 以指示虽然常规文本视图不应为多行, 但如果可以, 则IME应提供多行支持.
-* `textLongMessage`    用于输入长消息的内容.
-* `textMultiLine`    可以与text和它的其他选项结合, 以便在该字段中允许多行文本. 如果未设置此标志, 则文本字段将被限制为单行.
-* `textNoSuggestions`    可以与text及它的其他选项结合, 以指示输入法不应显示任何基于字典的单词建议.
-* `textPassword`    用于输入密码.
-* `textPersonName`    用于输入人名.
-* `textPhonetic`    用于输入拼音发音的文本, 如联系人条目中的拼音名称字段.
-* `textPostalAddress`    用于输入邮寄地址.
-* `textShortMessage`    用于输入短的消息内容.
-* `textUri`    用于输入一个URI.
-* `textVisiblePassword`    用于输入可见的密码.
-* `textWebEditText`    用于输入在web表单中的文本.
-* `textWebEmailAddress`    用于在web表单里输入一个电子邮件地址.
-* `textWebPassword`    用于在web表单里输入一个密码.
-* `time`    用于输入时间.
+* `date` — For entering dates.
+* `datetime` — For entering date and time.
+* `none` — No content type. This input field is not editable.
+* `number` — Only numbers can be entered.
+* `numberDecimal` — Can be combined with number and its other options to allow decimal numbers (including fractions).
+* `numberPassword` — Only numeric passwords can be entered.
+* `numberSigned` — Can be combined with number and its other options to allow signed numbers.
+* `phone` — For entering a phone number.
+* `text` — Just plain text.
+* `textAutoComplete` — Can be combined with text and its other options to specify that this field will do its own auto-completion and interact appropriately with the input method.
+* `textAutoCorrect` — Can be combined with text and its other options to request automatic text input correction.
+* `textCapCharacters` — Can be combined with text and its other options to request capitalizing all characters.
+* `textCapSentences` — Can be combined with text and its other options to request capitalizing the first character of each sentence.
+* `textCapWords` — Can be combined with text and its other options to request capitalizing the first character of each word.
+* `textEmailAddress` — For entering an email address.
+* `textEmailSubject` — For entering the subject of an email.
+* `textImeMultiLine` — Can be combined with text and its other options to indicate that although the regular text view should not be multi-line, the IME should provide multi-line support if possible.
+* `textLongMessage` — For entering the content of a long message.
+* `textMultiLine` — Can be combined with text and its other options to allow multi-line text in this field. If this flag is not set, the text field will be limited to a single line.
+* `textNoSuggestions` — Can be combined with text and its other options to indicate that the input method should not show any dictionary-based word suggestions.
+* `textPassword` — For entering a password.
+* `textPersonName` — For entering a person's name.
+* `textPhonetic` — For entering text that is the phonetic pronunciation, such as the pinyin name field in a contact entry.
+* `textPostalAddress` — For entering a mailing address.
+* `textShortMessage` — For entering the content of a short message.
+* `textUri` — For entering a URI.
+* `textVisiblePassword` — For entering a visible password.
+* `textWebEditText` — For entering text in a web form.
+* `textWebEmailAddress` — For entering an email address in a web form.
+* `textWebPassword` — For entering a password in a web form.
+* `time` — For entering time.
 
-例如, 想指定一个输入框的输入类型为小数数字, 为: `<input inputType="number|numberDecimal"/>`
+For example, to specify that an input field accepts decimal numbers: `<input inputType="number|numberDecimal"/>`
 
 ## password
 
-指定输入框输入框是否为密码输入框. 默认为`false`.
+Specifies whether the input field is a password input field. Default is `false`.
 
-例如：`<input password="true"/>`
+Example: `<input password="true"/>`
 
 ## numeric
 
-指定输入框输入框是否为数字输入框. 默认为`false`.
+Specifies whether the input field is a numeric input field. Default is `false`.
 
-例如：`<input numeric="true"/>`
+Example: `<input numeric="true"/>`
 
 ## phoneNumber
 
-指定输入框输入框是否为电话号码输入框. 默认为`false`.
+Specifies whether the input field is a phone number input field. Default is `false`.
 
-例如：`<input phoneNumber="true"/>`
+Example: `<input phoneNumber="true"/>`
 
 ## digits
 
-指定输入框可以输入的字符. 例如, 要指定输入框只能输入"1234567890+-", 为`<input digits="1234567890+-"/>`.
+Specifies the characters that can be entered in the input field. For example, to restrict input to only "1234567890+-": `<input digits="1234567890+-"/>`.
 
 ## singleLine
 
-指定输入框是否为单行输入框. 默认为`false`. 您也可以通过`lines="1"`来指定单行输入框.
+Specifies whether the input field is a single-line input field. Default is `false`. You can also use `lines="1"` to specify a single-line input field.
 
-例如：`<input singleLine="true"/>`
+Example: `<input singleLine="true"/>`
 
-# 图片控件: img
+# Image Widget: img
 
-图片控件用于显示来自网络、本地或者内嵌数据的图片, 并可以指定图片以圆角矩形、圆形等显示. 但是不能用于显示gif动态图.
+The image widget is used to display images from the network, local files, or embedded data. It can also display the image as a rounded rectangle, circle, etc. However, it cannot display animated GIFs.
 
-这里只介绍他的主要方法和属性, 如果要查看他的所有方法和属性, 阅读[ImageView](http://www.zhdoc.net/android/reference/android/widget/ImageView.html).
+Only the main methods and properties are introduced here. To see all methods and properties, read [ImageView](http://www.zhdoc.net/android/reference/android/widget/ImageView.html).
 
 ## src
 
-使用一个Uri指定图片的来源. 可以是图片的地址(http://....), 本地路径(file://....)或者base64数据("data:image/png;base64,...").
+Uses a Uri to specify the image source. It can be an image URL (http://....), a local path (file://....), or base64 data ("data:image/png;base64,...").
 
-如果使用图片地址或本地路径, Auto.js会自动使用适当的缓存来储存这些图片, 减少下次加载的时间.
+If an image URL or local path is used, Auto.js will automatically use appropriate caching to store the images and reduce loading time on subsequent loads.
 
-例如, 显示百度的logo:
+Example, displaying Baidu's logo:
 
 ```
 "ui";
@@ -683,8 +683,8 @@ ui.layout(
 );
 ```
 
-再例如, 显示文件/sdcard/1.png的图片为 `<img src="file:///sdcard/1.png"/>`.
-再例如, 使base64显示一张钱包小图片为：
+Another example, displaying the image file at /sdcard/1.png: `<img src="file:///sdcard/1.png"/>`.
+Another example, displaying a small wallet image via base64:
 
 ```
 "ui";
@@ -697,77 +697,77 @@ ui.layout(
 
 ## tint
 
-图片着色, 其值是一个颜色名称或RGB颜色值. 使用该属性会将图片中的非透明区域都涂上同一颜色. 可以用于改变图片的颜色.
+Image tinting. The value is a color name or RGB color value. Using this property will paint all non-transparent areas of the image with the same color. Useful for changing the color of an image.
 
-例如, 对于上面的base64的图片: `<img w="40" h="40" tint="red" src="data:image/png;base64,..."/>`, 则钱包图标颜色会变成红色.
+For example, for the base64 image above: `<img w="40" h="40" tint="red" src="data:image/png;base64,..."/>` will turn the wallet icon red.
 
 ## scaleType
 
-控制图片根据图片控件的宽高放缩时的模式. 可选的值为：
+Controls how the image is scaled to fit the width and height of the image widget. Available values:
 
-* `center`    在控件中居中显示图像, 但不执行缩放.
-* `centerCrop`    保持图像的长宽比缩放图片, 使图像的尺寸 (宽度和高度) 等于或大于控件的相应尺寸 (不包括内边距padding)并且使图像在控件中居中显示.
-* `centerInside`    保持图像的长宽比缩放图片, 使图像的尺寸 (宽度和高度) 小于视图的相应尺寸 (不包括内边距padding)并且图像在控件中居中显示.
-* `fitCenter`    保持图像的长宽比缩放图片, 使图片的宽**或**高和控件的宽高相同并使图片在控件中居中显示
-* `fitEnd`    保持图像的长宽比缩放图片, 使图片的宽**或**高和控件的宽高相同并使图片在控件中靠右下角显示
-* `fitStart`    保持图像的长宽比缩放图片, 使图片的宽**或**高和控件的宽高相同并使图片在控件靠左上角显示
-* `fitXY`    使图片和宽高和控件的宽高完全匹配, 但图片的长宽比可能不能保持一致
-* `matrix`    绘制时使用图像矩阵进行缩放. 需要在代码中使用`setImageMatrix(Matrix)`函数才能生效.
+* `center` — Center the image inside the widget without scaling it.
+* `centerCrop` — Scale the image while preserving aspect ratio so its dimensions (width and height) are equal to or larger than the widget's (excluding padding) and center it inside the widget.
+* `centerInside` — Scale the image while preserving aspect ratio so its dimensions (width and height) are smaller than or equal to the widget's (excluding padding) and center it inside the widget.
+* `fitCenter` — Scale the image while preserving aspect ratio so that its width **or** height matches the widget's and center it.
+* `fitEnd` — Scale the image while preserving aspect ratio so that its width **or** height matches the widget's and align it to the bottom-right corner.
+* `fitStart` — Scale the image while preserving aspect ratio so that its width **or** height matches the widget's and align it to the top-left corner.
+* `fitXY` — Stretch the image to exactly fill the widget's width and height (aspect ratio may not be preserved).
+* `matrix` — Use a custom image matrix for scaling during drawing. Requires calling `setImageMatrix(Matrix)` in code to take effect.
 
-默认的scaleType为`fitCenter`；除此之外最常用的是`fitXY`,  他能使图片放缩到控件一样的大小, 但图片可能会变形.
+The default scaleType is `fitCenter`. Besides that, `fitXY` is the most commonly used — it scales the image to exactly the size of the widget, but the image may appear distorted.
 
 ## radius
 
-图片控件的半径. 如果设置为控件宽高的一半并且控件的宽高相同则图片将剪切为圆形显示；否则图片为圆角矩形显示, 半径即为四个圆角的半径, 也可以通过`radiusTopLeft`, `radiusTopRight`, `radiusBottomLeft`, `radiusBottomRight`等属性分别设置四个圆角的半径.
+The radius of the image widget. If set to half the width and height of the widget and the width equals the height, the image will be clipped as a circle; otherwise it will be displayed as a rounded rectangle. The radius is the radius of the four rounded corners. You can also set the four corner radii individually using `radiusTopLeft`, `radiusTopRight`, `radiusBottomLeft`, `radiusBottomRight`.
 
-例如, 圆角矩形的Auto.js图标：`<img w="100" h="100" radius="20" bg="white" src="http://www.autojs.org/assets/uploads/profile/3-profileavatar.png" />`
+Example, rounded rectangle Auto.js icon: `<img w="100" h="100" radius="20" bg="white" src="http://www.autojs.org/assets/uploads/profile/3-profileavatar.png" />`
 
-有关该属性的单位, 参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension).
+For the unit of this property, see [Dimension Units: Dimension](#ui_dimension-units-dimension).
 
 ## radiusTopLeft
 
-图片控件的左上角圆角的半径. 有关该属性的单位, 参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension).
+The top-left corner radius of the image widget. For the unit of this property, see [Dimension Units: Dimension](#ui_dimension-units-dimension).
 
 ## radiusTopRight
 
-图片控件的右上角圆角的半径. 有关该属性的单位, 参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension).
+The top-right corner radius of the image widget. For the unit of this property, see [Dimension Units: Dimension](#ui_dimension-units-dimension).
 
 ## radiusBottomLeft
 
-图片控件的左下角圆角的半径. 有关该属性的单位, 参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension).
+The bottom-left corner radius of the image widget. For the unit of this property, see [Dimension Units: Dimension](#ui_dimension-units-dimension).
 
 ## radiusBottomRight
 
-图片控件的右下角圆角的半径. 有关该属性的单位, 参见[尺寸的单位: Dimension](#ui_尺寸的单位_Dimension).
+The bottom-right corner radius of the image widget. For the unit of this property, see [Dimension Units: Dimension](#ui_dimension-units-dimension).
 
 ## borderWidth
 
-图片控件的边框宽度. 用于在图片外面显示一个边框, 边框会随着图片控件的外形(圆角等)改变而相应变化.
-例如, 圆角矩形带灰色边框的Auto.js图标：`<img w="100" h="100" radius="20" borderWidth="5" borderColor="gray" bg="white" src="http://www.autojs.org/assets/uploads/profile/3-profileavatar.png" />`
+The border width of the image widget. Used to display a border around the image; the border will change accordingly with the shape of the image widget (rounded corners, etc.).
+Example, rounded rectangle Auto.js icon with gray border: `<img w="100" h="100" radius="20" borderWidth="5" borderColor="gray" bg="white" src="http://www.autojs.org/assets/uploads/profile/3-profileavatar.png" />`
 
 ## borderColor
 
-图片控件的边框颜色.
+The border color of the image widget.
 
 ## circle
 
-指定该图片控件的图片是否剪切为圆形显示. 如果为`true`, 则图片控件会使其宽高保持一致(如果宽高不一致, 则保持高度等于宽度)并使圆形的半径为宽度的一半.
+Specifies whether the image of this image widget should be clipped to a circle. If `true`, the image widget will keep its width and height equal (if they are not equal, height will be set equal to width) and the circle's radius will be half the width.
 
-例如, 圆形的Auto.js图标：`<img w="100" h="100" circle="true" bg="white" src="http://www.autojs.org/assets/uploads/profile/3-profileavatar.png" />`
+Example, circular Auto.js icon: `<img w="100" h="100" circle="true" bg="white" src="http://www.autojs.org/assets/uploads/profile/3-profileavatar.png" />`
 
-# 垂直布局: vertical
+# Vertical Layout: vertical
 
-垂直布局是一种比较简单的布局, 会把在它里面的控件按照垂直方向依次摆放, 如下图所示：
+A vertical layout is a relatively simple layout that arranges the widgets inside it sequentially in the vertical direction, as shown below:
 
-垂直布局:
+Vertical layout:
 
 —————
 
-| 控件1 |
+| Widget 1 |
 
-| 控件2 |
+| Widget 2 |
 
-| 控件3 |
+| Widget 3 |
 
 | ............ |
 
@@ -775,174 +775,174 @@ ui.layout(
 
 ## layout_weight
 
-垂直布局中的控件可以通过`layout_weight`属性来控制控件高度占垂直布局高度的比例. 如果为一个控件指定`layout_weight`, 则这个控件的高度=垂直布局剩余高度 * layout_weight / weightSum；如果不指定weightSum, 则weightSum为所有子控件的layout_weight之和. 所谓"剩余高度", 指的是垂直布局中减去没有指定layout_weight的控件的剩余高度.
-例如:
+Widgets inside a vertical layout can use the `layout_weight` property to control what proportion of the vertical layout's height the widget occupies. If `layout_weight` is specified for a widget, then its height = (remaining height of the vertical layout) × layout_weight / weightSum. If weightSum is not specified, weightSum is the sum of the layout_weight values of all child widgets. "Remaining height" refers to the height left in the vertical layout after subtracting the heights of widgets that did not specify layout_weight.
+Example:
 
 ```
 "ui";
 ui.layout(
     <vertical h="100dp">
-        <text layout_weight="1" text="控件1" bg="#ff0000"/>
-        <text layout_weight="1" text="控件2" bg="#00ff00"/>
-        <text layout_weight="1" text="控件3" bg="#0000ff"/>
+        <text layout_weight="1" text="Widget 1" bg="#ff0000"/>
+        <text layout_weight="1" text="Widget 2" bg="#00ff00"/>
+        <text layout_weight="1" text="Widget 3" bg="#0000ff"/>
     </vertical>
 );
 ```
 
-在这个布局中, 三个控件的layout_weight都是1, 也就是他们的高度都会占垂直布局高度的1/3, 都是33.3dp.
-再例如：
+In this layout, all three widgets have layout_weight of 1, meaning each will occupy 1/3 of the vertical layout's height, i.e. 33.3dp.
+Another example:
 
 ```
 "ui";
 ui.layout(
     <vertical h="100dp">
-        <text layout_weight="1" text="控件1" bg="#ff0000"/>
-        <text layout_weight="2" text="控件2" bg="#00ff00"/>
-        <text layout_weight="1" text="控件3" bg="#0000ff"/>
+        <text layout_weight="1" text="Widget 1" bg="#ff0000"/>
+        <text layout_weight="2" text="Widget 2" bg="#00ff00"/>
+        <text layout_weight="1" text="Widget 3" bg="#0000ff"/>
     </vertical>
 );
 ```
 
-在这个布局中, 第一个控件高度为1/4, 第二个控件为2/4, 第三个控件为1/4.
-再例如：
+In this layout, the first widget is 1/4 height, the second is 2/4, and the third is 1/4.
+Another example:
 
 ```
 "ui";
 ui.layout(
     <vertical h="100dp" weightSum="5">
-        <text layout_weight="1" text="控件1" bg="#ff0000"/>
-        <text layout_weight="2" text="控件2" bg="#00ff00"/>
-        <text layout_weight="1" text="控件3" bg="#0000ff"/>
+        <text layout_weight="1" text="Widget 1" bg="#ff0000"/>
+        <text layout_weight="2" text="Widget 2" bg="#00ff00"/>
+        <text layout_weight="1" text="Widget 3" bg="#0000ff"/>
     </vertical>
 );
 ```
 
-在这个布局中, 因为指定了weightSum为5, 因此第一个控件高度为1/5, 第二个控件为2/5, 第三个控件为1/5.
-再例如：
+In this layout, because weightSum is specified as 5, the first widget is 1/5, the second is 2/5, and the third is 1/5.
+Another example:
 
 ```
 "ui";
 ui.layout(
     <vertical h="100dp">
-        <text h="40dp" text="控件1" bg="#ff0000"/>
-        <text layout_weight="2" text="控件2" bg="#00ff00"/>
-        <text layout_weight="1" text="控件3" bg="#0000ff"/>
+        <text h="40dp" text="Widget 1" bg="#ff0000"/>
+        <text layout_weight="2" text="Widget 2" bg="#00ff00"/>
+        <text layout_weight="1" text="Widget 3" bg="#0000ff"/>
     </vertical>
 );
 ```
 
-在这个布局中, 第一个控件并没有指定layout_weight, 而是指定高度为40dp, 因此不加入比例计算, 此时布局剩余高度为60dp. 第二个控件高度为剩余高度的2/3, 也就是40dp, 第三个控件高度为剩余高度的1/3, 也就是20dp.
+In this layout, the first widget did not specify layout_weight but instead specified a fixed height of 40dp, so it is excluded from the proportion calculation. The remaining height of the layout is therefore 60dp. The second widget takes 2/3 of the remaining height (40dp), and the third takes 1/3 of the remaining height (20dp).
 
-垂直布局的layout_weight属性还可以用于控制他的子控件高度占满剩余空间, 例如：
+The layout_weight property of a vertical layout can also be used to make a child widget fill the remaining space, for example:
 
 ```
 "ui";
 ui.layout(
     <vertical h="100dp">
-        <text h="40dp" text="控件1" bg="#ff0000"/>
-        <text h="40dp" text="控件2" bg="#00ff00"/>
-        <text layout_weight="1" text="控件3" bg="#0000ff"/>
+        <text h="40dp" text="Widget 1" bg="#ff0000"/>
+        <text h="40dp" text="Widget 2" bg="#00ff00"/>
+        <text layout_weight="1" text="Widget 3" bg="#0000ff"/>
     </vertical>
 );
 ```
 
-在这个布局中, 第三个控件的高度会占满除去控件1和控件2的剩余空间.
+In this layout, the third widget's height will fill all remaining space after Widget 1 and Widget 2.
 
-# 水平布局: horizontal
+# Horizontal Layout: horizontal
 
-水平布局是一种比较简单的布局, 会把在它里面的控件按照水平方向依次摆放, 如下图所示：
-水平布局:
+A horizontal layout is a relatively simple layout that arranges the widgets inside it sequentially from left to right, as shown below:
+Horizontal layout:
 ————————————————————————————
 
-| 控件1 | 控件2 | 控件3 | ... |
+| Widget 1 | Widget 2 | Widget 3 | ... |
 
 ————————————————————————————
 
 ## layout_weight
 
-水平布局中也可以使用layout_weight属性来控制子控件的**宽度**占父布局的比例. 和垂直布局中类似, 不再赘述.
+The layout_weight property can also be used in a horizontal layout to control the **width** proportion of child widgets relative to the parent layout. It works similarly to the vertical layout and will not be repeated here.
 
-# 线性布局: linear
+# Linear Layout: linear
 
-实际上, 垂直布局和水平布局都属于线性布局. 线性布局有一个orientation的属性, 用于指定布局的方向, 可选的值为`vertical`和`horizontal`.
+In fact, both vertical and horizontal layouts belong to linear layouts. A linear layout has an `orientation` property that specifies the direction of the layout. Possible values are `vertical` and `horizontal`.
 
-例如`<linear orientation="vertical"></linear>`相当于`<vertical></vertical>`.
+For example `<linear orientation="vertical"></linear>` is equivalent to `<vertical></vertical>`.
 
-线性布局的默认方向是横向的, 因此, 一个没有指定orientation属性的线性布局就是横向布局.
+The default orientation of a linear layout is horizontal. Therefore, a linear layout without the orientation attribute specified is a horizontal layout.
 
-# 帧布局: frame
+# Frame Layout: frame
 
-帧布局
+Frame layout
 
-# 相对布局: relative
+# Relative Layout: relative
 
-# 勾选框控件: checkbox
+# Checkbox Widget: checkbox
 
-# 选择框控件: radio
+# Radio Button Widget: radio
 
-# 选择框布局: radiogroup
+# Radio Group Layout: radiogroup
 
-# 开关控件: Switch
+# Switch Widget: Switch
 
-开关控件用于表示一个选项是否被选中.
+The switch widget is used to indicate whether an option is selected.
 
 ## checked
 
-表示开关是否被选中. 可选的值为：
+Indicates whether the switch is on. Possible values:
 
-* `true` 打开开关
-* `false` 关闭开关
+* `true` — turn the switch on
+* `false` — turn the switch off
 
 ## text
 
-对开关进行描述的文字.
+Text describing the switch.
 
-# 进度条控件: progressbar
+# Progress Bar Widget: progressbar
 
-# 拖动条控件: seekbar
+# Seek Bar Widget: seekbar
 
-# 下来菜单控件: spinner
+# Spinner (Dropdown Menu) Widget: spinner
 
-# 时间选择控件: timepicker
+# Time Picker Widget: timepicker
 
-# 日期选择控件: datepicker
+# Date Picker Widget: datepicker
 
-# 浮动按钮控件: fab
+# Floating Action Button Widget: fab
 
-# 标题栏控件: toolbar
+# Toolbar Widget: toolbar
 
-# 卡片: card
+# Card: card
 
-卡片控件是一个拥有圆角、阴影的控件.
+The card widget is a control with rounded corners and shadow.
 
 ## cardBackgroundColor
 
-卡片的背景颜色.
+The background color of the card.
 
 ## cardCornerRadius
 
-卡片的圆角半径.
+The corner radius of the card.
 
 ## cardElevation
 
-设置卡片在z轴上的高度, 来控制阴影的大小.
+Sets the elevation of the card on the z-axis to control the size of the shadow.
 
 ## contentPadding
 
-设置卡片的内边距. 该属性包括四个值：
+Sets the inner padding of the card. This property includes four values:
 
-* `contentPaddingLeft` 左内边距
-* `contentPaddingRight` 右内边距
-* `contentPaddingTop` 上内边距
-* `contentPaddingBottom` 下内边距
+* `contentPaddingLeft` — left padding
+* `contentPaddingRight` — right padding
+* `contentPaddingTop` — top padding
+* `contentPaddingBottom` — bottom padding
 
 ## foreground
 
-使用`foreground="?selectableItemBackground"`属性可以为卡片添加点击效果.
+Using the `foreground="?selectableItemBackground"` property can add a click effect to the card.
 
-# 抽屉布局: drawer
+# Drawer Layout: drawer
 
-# 列表: list
+# List: list
 
 # Tab: tab
 
@@ -950,13 +950,13 @@ ui.layout(
 
 ## ui.layout(xml)
 
-* `xml` {XML} | {string} 布局XML或者XML字符串
+* `xml` {XML} | {string} Layout XML or XML string
 
-将布局XML渲染为视图（View）对象,  并设置为当前视图.
+Renders the layout XML into a View object and sets it as the current view.
 
 ## ui.layoutFile(xmlFile)
 
-* `xml` {string} 布局XML文件的路径
+* `xmlFile` {string} Path to the layout XML file
 
 此函数和`ui.layout`相似, 只不过允许传入一个xml文件路径来渲染布局.
 

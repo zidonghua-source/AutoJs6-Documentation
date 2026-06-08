@@ -2,9 +2,9 @@
   "source": "..\\api\\threads.md",
   "modules": [
     {
-      "textRaw": "线程 (Threads)",
-      "name": "线程_(threads)",
-      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<p>threads模块提供了多线程支持, 可以启动新线程来运行脚本.</p>\n<p>脚本主线程会等待所有子线程执行完成后才停止执行, 因此如果子线程中有死循环, 请在必要的时候调用<code>exit()</code>来直接停止脚本或<code>threads.shutDownAll()</code>来停止所有子线程.</p>\n<p>通过<code>threads.start()</code>启动的所有线程会在脚本被强制停止时自动停止.</p>\n<p>由于JavaScript自身没有多线程的支持, 因此您可能会遇到意料之外的问题.</p>\n",
+      "textRaw": "Threads",
+      "name": "threads",
+      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">This chapter is pending supplementation or improvement...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<p>The <code>threads</code> module provides multi-threading support, allowing you to start new threads to run scripts.</p>\n<p>The main script thread waits for all child threads to finish before stopping. Therefore, if a child thread contains an infinite loop, make sure to call <code>exit()</code> to stop the script directly or <code>threads.shutDownAll()</code> to stop all child threads when necessary.</p>\n<p>All threads started with <code>threads.start()</code> will automatically stop when the script is forcibly terminated.</p>\n<p>Because JavaScript itself does not have built-in multi-threading support, you may encounter unexpected issues.</p>\n",
       "methods": [
         {
           "textRaw": "threads.start(action)",
@@ -12,17 +12,17 @@
           "name": "start",
           "signatures": [
             {
+              "return": {
+                "textRaw": "Returns [Thread](#threads_thread) ",
+                "name": "return",
+                "desc": "[Thread](#threads_thread)"
+              },
               "params": [
                 {
-                  "textRaw": "`action` {Function} 要在新线程执行的函数 ",
+                  "textRaw": "`action` {Function} The function to execute in the new thread ",
                   "name": "action",
                   "type": "Function",
-                  "desc": "要在新线程执行的函数"
-                },
-                {
-                  "textRaw": "返回 [Thread](#threads_thread) ",
-                  "name": "返回",
-                  "desc": "[Thread](#threads_thread)"
+                  "desc": "The function to execute in the new thread"
                 }
               ]
             },
@@ -34,7 +34,7 @@
               ]
             }
           ],
-          "desc": "<p>启动一个新线程并执行action.</p>\n<p>例如:</p>\n<pre><code>threads.start(function(){\n    //在新线程执行的代码\n    while(true){\n        log(&quot;子线程&quot;);\n    }\n});\nwhile(true){\n    log(&quot;脚本主线程&quot;);\n}\n</code></pre><p>通过该函数返回的<a href=\"#threads_thread\">Thread</a>对象可以获取该线程的状态, 控制该线程的运行中. 例如:</p>\n<pre><code>var thread = threads.start(function(){\n    while(true){\n        log(&quot;子线程&quot;);\n    }\n});\n//停止线程执行\nthread.interrupt();\n</code></pre><p>更多信息参见<a href=\"#threads_thread\">Thread</a>.</p>\n"
+          "desc": "<p>Starts a new thread and executes the given <code>action</code>.</p>\n<p>Example:</p>\n<pre><code class=\"lang-js\">threads.start(function(){\n    // Code to run in the new thread\n    while(true){\n        log(&quot;子线程&quot;);\n    }\n});\nwhile(true){\n    log(&quot;脚本主线程&quot;);\n}\n</code></pre>\n<p>通过该函数返回的<a href=\"#threads_thread\">Thread</a>对象可以获取该线程的状态, 控制该线程的运行中. 例如:</p>\n<pre><code>var thread = threads.start(function(){\n    while(true){\n        log(&quot;子线程&quot;);\n    }\n});\n//停止线程执行\nthread.interrupt();\n</code></pre><p>更多信息参见<a href=\"#threads_thread\">Thread</a>.</p>\n"
         },
         {
           "textRaw": "threads.shutDownAll()",
@@ -141,7 +141,7 @@
         }
       ],
       "type": "module",
-      "displayName": "线程 (Threads)"
+      "displayName": "Threads"
     },
     {
       "textRaw": "Thread",

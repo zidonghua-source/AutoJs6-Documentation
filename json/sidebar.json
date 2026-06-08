@@ -11,7 +11,7 @@
     },
     {
       "type": "text",
-      "text": "[Overview - 综述](overview)"
+      "text": "[Overview](overview)"
     },
     {
       "type": "list_item_end"
@@ -21,7 +21,7 @@
     },
     {
       "type": "text",
-      "text": "[About - 关于文档](documentation)"
+      "text": "[About](documentation)"
     },
     {
       "type": "list_item_end"
@@ -31,7 +31,7 @@
     },
     {
       "type": "text",
-      "text": "[Progress - 文档部署进度](progress)"
+      "text": "[Progress](progress)"
     },
     {
       "type": "list_item_end"
@@ -41,37 +41,7 @@
     },
     {
       "type": "text",
-      "text": "[Changelog - 文档更新日志](changelog)"
-    },
-    {
-      "type": "list_item_end"
-    },
-    {
-      "type": "loose_item_start"
-    },
-    {
-      "type": "text",
-      "text": "&ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash;"
-    },
-    {
-      "type": "list_item_end"
-    },
-    {
-      "type": "loose_item_start"
-    },
-    {
-      "type": "text",
-      "text": "[Manual - AutoJs6 使用手册](manual)"
-    },
-    {
-      "type": "list_item_end"
-    },
-    {
-      "type": "loose_item_start"
-    },
-    {
-      "type": "text",
-      "text": "[Q & A - 疑难解答](qa)"
+      "text": "[Changelog](changelog)"
     },
     {
       "type": "list_item_end"
@@ -91,7 +61,37 @@
     },
     {
       "type": "text",
-      "text": "[Global - 全局对象](global)"
+      "text": "[Manual](manual)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "loose_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[Q & A](qa)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "loose_item_start"
+    },
+    {
+      "type": "text",
+      "text": "&ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash;"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "loose_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[Global](global)"
     },
     {
       "type": "list_item_end"
@@ -101,7 +101,7 @@
     },
     {
       "type": "text",
-      "text": "[Automator - 自动化](automator)"
+      "text": "[Automator](automator)"
     },
     {
       "type": "list_item_end"
@@ -111,7 +111,7 @@
     },
     {
       "type": "text",
-      "text": "[AutoJs6 - 本体应用](autojs)"
+      "text": "[AutoJs6](autojs)"
     },
     {
       "type": "list_item_end"
@@ -121,7 +121,7 @@
     },
     {
       "type": "text",
-      "text": "[App - 通用应用](app)"
+      "text": "[App](app)"
     },
     {
       "type": "list_item_end"
@@ -131,7 +131,7 @@
     },
     {
       "type": "text",
-      "text": "[Color - 颜色](color)"
+      "text": "[Color](color)"
     },
     {
       "type": "list_item_end"
@@ -141,7 +141,7 @@
     },
     {
       "type": "text",
-      "text": "[Image - 图像](image)"
+      "text": "[Image](image)"
     },
     {
       "type": "list_item_end"
@@ -151,7 +151,7 @@
     },
     {
       "type": "text",
-      "text": "[OCR - 光学字符识别](ocr)"
+      "text": "[OCR](ocr)"
     },
     {
       "type": "list_item_end"
@@ -161,7 +161,7 @@
     },
     {
       "type": "text",
-      "text": "[Barcode - 条码](barcode)"
+      "text": "[Barcode](barcode)"
     },
     {
       "type": "list_item_end"
@@ -171,7 +171,7 @@
     },
     {
       "type": "text",
-      "text": "[QR Code - 二维码](qrcode)"
+      "text": "[QR Code](qrcode)"
     },
     {
       "type": "list_item_end"
@@ -181,7 +181,7 @@
     },
     {
       "type": "text",
-      "text": "[Keys - 按键](keys)"
+      "text": "[Keys](keys)"
     },
     {
       "type": "list_item_end"
@@ -191,7 +191,7 @@
     },
     {
       "type": "text",
-      "text": "[Device - 设备](device)"
+      "text": "[Device](device)"
     },
     {
       "type": "list_item_end"
@@ -201,7 +201,7 @@
     },
     {
       "type": "text",
-      "text": "[Storage - 储存](storages)"
+      "text": "[Storage](storages)"
     },
     {
       "type": "list_item_end"
@@ -211,7 +211,7 @@
     },
     {
       "type": "text",
-      "text": "[File - 文件](files)"
+      "text": "[File](files)"
     },
     {
       "type": "list_item_end"
@@ -221,7 +221,7 @@
     },
     {
       "type": "text",
-      "text": "[Engine - 引擎](engines)"
+      "text": "[Engine](engines)"
     },
     {
       "type": "list_item_end"
@@ -231,7 +231,7 @@
     },
     {
       "type": "text",
-      "text": "[Task - 任务](tasks)"
+      "text": "[Task](tasks)"
     },
     {
       "type": "list_item_end"
@@ -241,7 +241,7 @@
     },
     {
       "type": "text",
-      "text": "[Module - 模块](modules)"
+      "text": "[Module](modules)"
     },
     {
       "type": "list_item_end"
@@ -251,7 +251,7 @@
     },
     {
       "type": "text",
-      "text": "[Plugins - 插件](plugins)"
+      "text": "[Plugins](plugins)"
     },
     {
       "type": "list_item_end"
@@ -261,7 +261,7 @@
     },
     {
       "type": "text",
-      "text": "[Toast - 消息浮动框](toast)"
+      "text": "[Toast](toast)"
     },
     {
       "type": "list_item_end"
@@ -271,7 +271,7 @@
     },
     {
       "type": "text",
-      "text": "[Notice - 消息通知](notice)"
+      "text": "[Notice](notice)"
     },
     {
       "type": "list_item_end"
@@ -281,7 +281,7 @@
     },
     {
       "type": "text",
-      "text": "[Console - 控制台](console)"
+      "text": "[Console](console)"
     },
     {
       "type": "list_item_end"
@@ -311,7 +311,7 @@
     },
     {
       "type": "text",
-      "text": "[Media - 多媒体](media)"
+      "text": "[Media](media)"
     },
     {
       "type": "list_item_end"
@@ -321,7 +321,7 @@
     },
     {
       "type": "text",
-      "text": "[Sensor - 传感器](sensors)"
+      "text": "[Sensor](sensors)"
     },
     {
       "type": "list_item_end"
@@ -331,7 +331,7 @@
     },
     {
       "type": "text",
-      "text": "[Recorder - 记录器](recorder)"
+      "text": "[Recorder](recorder)"
     },
     {
       "type": "list_item_end"
@@ -341,7 +341,7 @@
     },
     {
       "type": "text",
-      "text": "[Timer - 定时器](timers)"
+      "text": "[Timer](timers)"
     },
     {
       "type": "list_item_end"
@@ -351,7 +351,7 @@
     },
     {
       "type": "text",
-      "text": "[Thread - 线程](threads)"
+      "text": "[Thread](threads)"
     },
     {
       "type": "list_item_end"
@@ -361,7 +361,7 @@
     },
     {
       "type": "text",
-      "text": "[Continuation - 协程](continuation)"
+      "text": "[Continuation](continuation)"
     },
     {
       "type": "list_item_end"
@@ -371,7 +371,7 @@
     },
     {
       "type": "text",
-      "text": "[Event - 事件监听](events)"
+      "text": "[Event](events)"
     },
     {
       "type": "list_item_end"
@@ -381,7 +381,7 @@
     },
     {
       "type": "text",
-      "text": "[Dialog - 对话框](dialogs)"
+      "text": "[Dialog](dialogs)"
     },
     {
       "type": "list_item_end"
@@ -391,7 +391,7 @@
     },
     {
       "type": "text",
-      "text": "[Floaty - 悬浮窗](floaty)"
+      "text": "[Floaty](floaty)"
     },
     {
       "type": "list_item_end"
@@ -401,7 +401,7 @@
     },
     {
       "type": "text",
-      "text": "[Canvas - 画布](canvas)"
+      "text": "[Canvas](canvas)"
     },
     {
       "type": "list_item_end"
@@ -411,7 +411,7 @@
     },
     {
       "type": "text",
-      "text": "[UI - 用户界面](ui)"
+      "text": "[UI](ui)"
     },
     {
       "type": "list_item_end"
@@ -421,7 +421,7 @@
     },
     {
       "type": "text",
-      "text": "[Web - 万维网](web)"
+      "text": "[Web](web)"
     },
     {
       "type": "list_item_end"
@@ -451,7 +451,7 @@
     },
     {
       "type": "text",
-      "text": "[Crypto - 密文](crypto)"
+      "text": "[Crypto](crypto)"
     },
     {
       "type": "list_item_end"
@@ -461,7 +461,7 @@
     },
     {
       "type": "text",
-      "text": "[OpenCC - 中文转换](opencc)"
+      "text": "[OpenCC](opencc)"
     },
     {
       "type": "list_item_end"
@@ -471,7 +471,7 @@
     },
     {
       "type": "text",
-      "text": "[Internationalization - 国际化](i18n)"
+      "text": "[Internationalization](i18n)"
     },
     {
       "type": "list_item_end"
@@ -481,7 +481,7 @@
     },
     {
       "type": "text",
-      "text": "[Standardization - 标准化](s13n)"
+      "text": "[Standardization](s13n)"
     },
     {
       "type": "list_item_end"
@@ -511,7 +511,7 @@
     },
     {
       "type": "text",
-      "text": "[UiSelector - 选择器](uiSelectorType)"
+      "text": "[UiSelector](uiSelectorType)"
     },
     {
       "type": "list_item_end"
@@ -521,7 +521,7 @@
     },
     {
       "type": "text",
-      "text": "[UiObject - 控件节点](uiObjectType)"
+      "text": "[UiObject](uiObjectType)"
     },
     {
       "type": "list_item_end"
@@ -531,7 +531,7 @@
     },
     {
       "type": "text",
-      "text": "[UiObjectCollection - 控件集合](uiObjectCollectionType)"
+      "text": "[UiObjectCollection](uiObjectCollectionType)"
     },
     {
       "type": "list_item_end"
@@ -541,7 +541,7 @@
     },
     {
       "type": "text",
-      "text": "[UiObjectActions - 控件节点行为](uiObjectActionsType)"
+      "text": "[UiObjectActions](uiObjectActionsType)"
     },
     {
       "type": "list_item_end"
@@ -551,7 +551,7 @@
     },
     {
       "type": "text",
-      "text": "[ImageWrapper - 包装图像类](imageWrapperType)"
+      "text": "[ImageWrapper](imageWrapperType)"
     },
     {
       "type": "list_item_end"
@@ -571,7 +571,7 @@
     },
     {
       "type": "text",
-      "text": "[App - 应用枚举类](appType)"
+      "text": "[App](appType)"
     },
     {
       "type": "list_item_end"
@@ -581,7 +581,7 @@
     },
     {
       "type": "text",
-      "text": "[Color - 颜色类](colorType)"
+      "text": "[Color](colorType)"
     },
     {
       "type": "list_item_end"
@@ -591,7 +591,7 @@
     },
     {
       "type": "text",
-      "text": "[Version - 版本工具类](versionType)"
+      "text": "[Version](versionType)"
     },
     {
       "type": "list_item_end"
@@ -601,7 +601,7 @@
     },
     {
       "type": "text",
-      "text": "[Polyfill - 代码填泥](polyfill)"
+      "text": "[Polyfill](polyfill)"
     },
     {
       "type": "list_item_end"
@@ -611,7 +611,7 @@
     },
     {
       "type": "text",
-      "text": "[Arrayx - Array 扩展](arrayx)"
+      "text": "[Arrayx](arrayx)"
     },
     {
       "type": "list_item_end"
@@ -621,7 +621,7 @@
     },
     {
       "type": "text",
-      "text": "[Numberx - Number 扩展](numberx)"
+      "text": "[Numberx](numberx)"
     },
     {
       "type": "list_item_end"
@@ -631,67 +631,7 @@
     },
     {
       "type": "text",
-      "text": "[Mathx - Math 扩展](mathx)"
-    },
-    {
-      "type": "list_item_end"
-    },
-    {
-      "type": "loose_item_start"
-    },
-    {
-      "type": "text",
-      "text": "&ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash;"
-    },
-    {
-      "type": "list_item_end"
-    },
-    {
-      "type": "loose_item_start"
-    },
-    {
-      "type": "text",
-      "text": "[Exceptions - 异常](exceptions)"
-    },
-    {
-      "type": "list_item_end"
-    },
-    {
-      "type": "list_item_start"
-    },
-    {
-      "type": "text",
-      "text": "[Intent - 意图](intentType)"
-    },
-    {
-      "type": "list_item_end"
-    },
-    {
-      "type": "list_item_start"
-    },
-    {
-      "type": "text",
-      "text": "[Runtime - 运行时](runtime)"
-    },
-    {
-      "type": "list_item_end"
-    },
-    {
-      "type": "list_item_start"
-    },
-    {
-      "type": "text",
-      "text": "[Context - 上下文](context)"
-    },
-    {
-      "type": "list_item_end"
-    },
-    {
-      "type": "loose_item_start"
-    },
-    {
-      "type": "text",
-      "text": "[Activity - 活动](activity)"
+      "text": "[Mathx](mathx)"
     },
     {
       "type": "list_item_end"
@@ -711,7 +651,7 @@
     },
     {
       "type": "text",
-      "text": "[Scripting Java - 脚本化 Java](scriptingJava)"
+      "text": "[Exceptions](exceptions)"
     },
     {
       "type": "list_item_end"
@@ -721,37 +661,7 @@
     },
     {
       "type": "text",
-      "text": "[Android API Level - 安卓 API 级别](apiLevel)"
-    },
-    {
-      "type": "list_item_end"
-    },
-    {
-      "type": "loose_item_start"
-    },
-    {
-      "type": "text",
-      "text": "[Color Table - 颜色列表](colorTable)"
-    },
-    {
-      "type": "list_item_end"
-    },
-    {
-      "type": "loose_item_start"
-    },
-    {
-      "type": "text",
-      "text": "&ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash;"
-    },
-    {
-      "type": "list_item_end"
-    },
-    {
-      "type": "loose_item_start"
-    },
-    {
-      "type": "text",
-      "text": "[Glossaries - 术语](glossaries)"
+      "text": "[Intent](intentType)"
     },
     {
       "type": "list_item_end"
@@ -761,7 +671,7 @@
     },
     {
       "type": "text",
-      "text": "[HttpHeader - HTTP 标头](httpHeaderGlossary)"
+      "text": "[Runtime](runtime)"
     },
     {
       "type": "list_item_end"
@@ -771,17 +681,7 @@
     },
     {
       "type": "text",
-      "text": "[HttpRequestMethods - HTTP 请求方法](httpRequestMethodsGlossary)"
-    },
-    {
-      "type": "list_item_end"
-    },
-    {
-      "type": "list_item_start"
-    },
-    {
-      "type": "text",
-      "text": "[MimeType - MIME 类型](mimeTypeGlossary)"
+      "text": "[Context](context)"
     },
     {
       "type": "list_item_end"
@@ -791,7 +691,7 @@
     },
     {
       "type": "text",
-      "text": "[NotificationChannel - 通知渠道](notificationChannelGlossary)"
+      "text": "[Activity](activity)"
     },
     {
       "type": "list_item_end"
@@ -811,7 +711,7 @@
     },
     {
       "type": "text",
-      "text": "[Data Types - 数据类型](dataTypes)"
+      "text": "[Scripting Java](scriptingJava)"
     },
     {
       "type": "list_item_end"
@@ -821,7 +721,37 @@
     },
     {
       "type": "text",
-      "text": "[Omnipotent Types - 全能类型](omniTypes)"
+      "text": "[Android API Level](apiLevel)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "loose_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[Color Table](colorTable)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "loose_item_start"
+    },
+    {
+      "type": "text",
+      "text": "&ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash;"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "loose_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[Glossaries](glossaries)"
     },
     {
       "type": "list_item_end"
@@ -831,7 +761,77 @@
     },
     {
       "type": "text",
-      "text": "[Storage - 存储类](storageType)"
+      "text": "[HttpHeader](httpHeaderGlossary)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "list_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[HttpRequestMethods](httpRequestMethodsGlossary)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "list_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[MimeType](mimeTypeGlossary)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "loose_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[NotificationChannel](notificationChannelGlossary)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "loose_item_start"
+    },
+    {
+      "type": "text",
+      "text": "&ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash;"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "loose_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[Data Types](dataTypes)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "list_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[Omnipotent Types](omniTypes)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "list_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[Storage](storageType)"
     },
     {
       "type": "space"
@@ -845,7 +845,7 @@
     {
       "type": "html",
       "pre": false,
-      "text": "<details>\n\n<summary style=\"padding-left: 1em\">Other Types - 其他类型</summary>\n\n* [AndroidBundle](androidBundleType)\n* [AndroidRect](androidRectType)\n* [CryptoCipherOptions](cryptoCipherOptionsType)\n* [CryptoKey](cryptoKeyType)\n* [CryptoKeyPair](cryptoKeyPairType)\n* [ConsoleBuildOptions](consoleBuildOptionsType)\n* [HttpRequestBuilderOptions](httpRequestBuilderOptionsType)\n* [HttpRequestHeaders](httpRequestHeadersType)\n* [HttpResponseBody](httpResponseBodyType)\n* [HttpResponseHeaders](httpResponseHeadersType)\n* [HttpResponse](httpResponseType)\n* [InjectableWebClient](injectableWebClientType)\n* [InjectableWebView](injectableWebViewType)\n* [NoticeOptions](noticeOptionsType)\n* [NoticeChannelOptions](noticeChannelOptionsType)\n* [NoticePresetConfiguration](noticePresetConfigurationType)\n* [NoticeBuilder](noticeBuilderType)\n* [Okhttp3HttpUrl](okhttp3HttpUrlType)\n* [OcrOptions](ocrOptionsType)\n* [Okhttp3Request](okhttp3RequestType)\n* [OpenCVPoint](opencvPointType)\n* [OpenCVRect](opencvRectType)\n* [OpenCVSize](opencvSizeType)\n* [OpenCCConversion](openCCConversionType)\n\n</details>\n\n"
+      "text": "<details>\n\n<summary style=\"padding-left: 1em\">Other Types</summary>\n\n* [AndroidBundle](androidBundleType)\n* [AndroidRect](androidRectType)\n* [CryptoCipherOptions](cryptoCipherOptionsType)\n* [CryptoKey](cryptoKeyType)\n* [CryptoKeyPair](cryptoKeyPairType)\n* [ConsoleBuildOptions](consoleBuildOptionsType)\n* [HttpRequestBuilderOptions](httpRequestBuilderOptionsType)\n* [HttpRequestHeaders](httpRequestHeadersType)\n* [HttpResponseBody](httpResponseBodyType)\n* [HttpResponseHeaders](httpResponseHeadersType)\n* [HttpResponse](httpResponseType)\n* [InjectableWebClient](injectableWebClientType)\n* [InjectableWebView](injectableWebViewType)\n* [NoticeOptions](noticeOptionsType)\n* [NoticeChannelOptions](noticeChannelOptionsType)\n* [NoticePresetConfiguration](noticePresetConfigurationType)\n* [NoticeBuilder](noticeBuilderType)\n* [Okhttp3HttpUrl](okhttp3HttpUrlType)\n* [OcrOptions](ocrOptionsType)\n* [Okhttp3Request](okhttp3RequestType)\n* [OpenCVPoint](opencvPointType)\n* [OpenCVRect](opencvRectType)\n* [OpenCVSize](opencvSizeType)\n* [OpenCCConversion](openCCConversionType)\n\n</details>\n\n"
     },
     {
       "type": "list_start",
@@ -867,7 +867,7 @@
     },
     {
       "type": "text",
-      "text": "[GitHub - 应用项目地址](http://project.autojs6.com)"
+      "text": "[GitHub - Project](http://project.autojs6.com)"
     },
     {
       "type": "list_item_end"
@@ -877,7 +877,7 @@
     },
     {
       "type": "text",
-      "text": "[GitHub - 文档项目地址](http://docs-project.autojs6.com)"
+      "text": "[GitHub - Documentation](http://docs-project.autojs6.com)"
     },
     {
       "type": "list_item_end"

@@ -2,35 +2,35 @@
   "source": "..\\api\\app.md",
   "modules": [
     {
-      "textRaw": "通用应用 (App)",
-      "name": "通用应用_(app)",
-      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<p>app模块提供一系列函数, 用于使用其他应用、与其他应用交互. 例如发送意图、打开文件、发送邮件等.</p>\n<p>同时提供了方便的进阶函数startActivity和sendBroadcast, 用他们可完成app模块没有内置的和其他应用的交互.</p>\n",
+      "textRaw": "App",
+      "name": "app",
+      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">This chapter is to be supplemented or improved...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<p>The <code>app</code> module provides a series of functions for launching other applications and interacting with them, such as sending intents, opening files, sending emails, etc.</p>\n<p>It also provides convenient advanced functions <code>startActivity</code> and <code>sendBroadcast</code>, which can be used to accomplish interactions with other apps that are not built into the <code>app</code> module.</p>\n",
       "properties": [
         {
           "textRaw": "`versionCode` {number} ",
           "type": "number",
           "name": "versionCode",
-          "desc": "<p>当前软件版本号, 整数值. 例如160, 256等.</p>\n<p>如果在Auto.js中运行则为Auto.js的版本号；在打包的软件中则为打包软件的版本号.</p>\n<pre><code>toastLog(app.versionCode);\n</code></pre>"
+          "desc": "<p>The version code of the current application, an integer value (e.g. 160, 256, etc.).</p>\n<p>If running in Auto.js, this is the version code of Auto.js; in a packaged application, this is the version code of the packaged app.</p>\n<pre><code class=\"lang-js\">toastLog(app.versionCode);\n</code></pre>\n"
         },
         {
           "textRaw": "`versionName` {string} ",
           "type": "string",
           "name": "versionName",
-          "desc": "<p>当前软件的版本名称, 例如&quot;3.0.0 Beta&quot;.</p>\n<p>如果在Auto.js中运行则为Auto.js的版本名称；在打包的软件中则为打包软件的版本名称.</p>\n<pre><code>toastLog(app.verionName);\n</code></pre>"
+          "desc": "<p>The version name of the current application (e.g. &quot;3.0.0 Beta&quot;).</p>\n<p>If running in Auto.js, this is the version name of Auto.js; in a packaged application, this is the version name of the packaged app.</p>\n<pre><code class=\"lang-js\">toastLog(app.versionName);\n</code></pre>\n"
         }
       ],
       "modules": [
         {
           "textRaw": "app.autojs.versionCode",
           "name": "app.autojs.versioncode",
-          "desc": "<ul>\n<li>{number}</li>\n</ul>\n<p>Auto.js版本号, 整数值. 例如160, 256等.</p>\n",
+          "desc": "<ul>\n<li>{number}</li>\n</ul>\n<p>Auto.js version code, an integer value (e.g. 160, 256, etc.).</p>\n",
           "type": "module",
           "displayName": "app.autojs.versionCode"
         },
         {
           "textRaw": "app.autojs.versionName",
           "name": "app.autojs.versionname",
-          "desc": "<ul>\n<li>{string}</li>\n</ul>\n<p>Auto.js版本名称, 例如&quot;3.0.0 Beta&quot;.</p>\n",
+          "desc": "<ul>\n<li>{string}</li>\n</ul>\n<p>Auto.js version name (e.g. &quot;3.0.0 Beta&quot;).</p>\n",
           "type": "module",
           "displayName": "app.autojs.versionName"
         }
@@ -44,10 +44,10 @@
             {
               "params": [
                 {
-                  "textRaw": "`appName` {string} 应用名称 ",
+                  "textRaw": "`appName` {string} Application name ",
                   "name": "appName",
                   "type": "string",
-                  "desc": "应用名称"
+                  "desc": "Application name"
                 }
               ]
             },
@@ -59,7 +59,7 @@
               ]
             }
           ],
-          "desc": "<p>通过应用名称启动应用. 如果该名称对应的应用不存在, 则返回false; 否则返回true. 如果该名称对应多个应用, 则只启动其中某一个.</p>\n<p>该函数也可以作为全局函数使用.</p>\n<pre><code>launchApp(&quot;Auto.js&quot;);\n</code></pre>"
+          "desc": "<p>Launches an application by its name. Returns <code>false</code> if no application with that name exists; otherwise returns <code>true</code>. If multiple applications match the name, only one will be launched.</p>\n<p>This function can also be used as a global function.</p>\n<pre><code class=\"lang-js\">launchApp(&quot;Auto.js&quot;);\n</code></pre>\n"
         },
         {
           "textRaw": "app.launch(packageName)",
@@ -69,10 +69,10 @@
             {
               "params": [
                 {
-                  "textRaw": "`packageName` {string} 应用包名 ",
+                  "textRaw": "`packageName` {string} Application package name ",
                   "name": "packageName",
                   "type": "string",
-                  "desc": "应用包名"
+                  "desc": "Application package name"
                 }
               ]
             },
@@ -84,7 +84,7 @@
               ]
             }
           ],
-          "desc": "<p>通过应用包名启动应用. 如果该包名对应的应用不存在, 则返回false；否则返回true.</p>\n<p>该函数也可以作为全局函数使用.</p>\n<pre><code>//启动微信\nlaunch(&quot;com.tencent.mm&quot;);\n</code></pre>"
+          "desc": "<p>Launches an application by its package name. Returns <code>false</code> if no application with that package name is installed; otherwise returns <code>true</code>.</p>\n<p>This function can also be used as a global function.</p>\n<pre><code class=\"lang-js\">// Launch WeChat\nlaunch(&quot;com.tencent.mm&quot;);\n</code></pre>\n"
         },
         {
           "textRaw": "app.launchPackage(packageName)",
@@ -94,10 +94,10 @@
             {
               "params": [
                 {
-                  "textRaw": "`packageName` {string} 应用包名 ",
+                  "textRaw": "`packageName` {string} Application package name ",
                   "name": "packageName",
                   "type": "string",
-                  "desc": "应用包名"
+                  "desc": "Application package name"
                 }
               ]
             },
@@ -109,7 +109,7 @@
               ]
             }
           ],
-          "desc": "<p>相当于<code>app.launch(packageName)</code>.</p>\n"
+          "desc": "<p>Equivalent to <code>app.launch(packageName)</code>.</p>\n"
         },
         {
           "textRaw": "app.getPackageName(appName)",
@@ -119,10 +119,10 @@
             {
               "params": [
                 {
-                  "textRaw": "`appName` {string} 应用名称 ",
+                  "textRaw": "`appName` {string} Application name ",
                   "name": "appName",
                   "type": "string",
-                  "desc": "应用名称"
+                  "desc": "Application name"
                 }
               ]
             },
@@ -134,7 +134,7 @@
               ]
             }
           ],
-          "desc": "<p>获取应用名称对应的已安装的应用的包名. 如果该找不到该应用, 返回null；如果该名称对应多个应用, 则只返回其中某一个的包名.</p>\n<p>该函数也可以作为全局函数使用.</p>\n<pre><code>var name = getPackageName(&quot;QQ&quot;); //返回&quot;com.tencent.mobileqq&quot;\n</code></pre>"
+          "desc": "<p>Gets the package name of an installed application by its name. Returns <code>null</code> if the application is not found. If multiple applications match the name, only one package name will be returned.</p>\n<p>This function can also be used as a global function.</p>\n<pre><code class=\"lang-js\">var name = getPackageName(&quot;QQ&quot;); // returns &quot;com.tencent.mobileqq&quot;\n</code></pre>\n"
         },
         {
           "textRaw": "app.getAppName(packageName)",
@@ -144,10 +144,10 @@
             {
               "params": [
                 {
-                  "textRaw": "`packageName` {string} 应用包名 ",
+                  "textRaw": "`packageName` {string} Application package name ",
                   "name": "packageName",
                   "type": "string",
-                  "desc": "应用包名"
+                  "desc": "Application package name"
                 }
               ]
             },
@@ -159,7 +159,7 @@
               ]
             }
           ],
-          "desc": "<p>获取应用包名对应的已安装的应用的名称. 如果该找不到该应用, 返回null.</p>\n<p>该函数也可以作为全局函数使用.</p>\n<pre><code>var name = getAppName(&quot;com.tencent.mobileqq&quot;); //返回&quot;QQ&quot;\n</code></pre>"
+          "desc": "<p>Gets the name of an installed application by its package name. Returns <code>null</code> if the application is not found.</p>\n<p>This function can also be used as a global function.</p>\n<pre><code class=\"lang-js\">var name = getAppName(&quot;com.tencent.mobileqq&quot;); // returns &quot;QQ&quot;\n</code></pre>\n"
         },
         {
           "textRaw": "app.openAppSetting(packageName)",
@@ -169,10 +169,10 @@
             {
               "params": [
                 {
-                  "textRaw": "`packageName` {string} 应用包名 ",
+                  "textRaw": "`packageName` {string} Application package name ",
                   "name": "packageName",
                   "type": "string",
-                  "desc": "应用包名"
+                  "desc": "Application package name"
                 }
               ]
             },
@@ -184,7 +184,7 @@
               ]
             }
           ],
-          "desc": "<p>打开应用的详情页(设置页). 如果找不到该应用, 返回false; 否则返回true.</p>\n<p>该函数也可以作为全局函数使用.</p>\n"
+          "desc": "<p>Opens the application&#39;s details page (settings page). Returns <code>false</code> if the application is not found; otherwise returns <code>true</code>.</p>\n<p>This function can also be used as a global function.</p>\n"
         },
         {
           "textRaw": "app.viewFile(path)",
@@ -194,10 +194,10 @@
             {
               "params": [
                 {
-                  "textRaw": "`path` {string} 文件路径 ",
+                  "textRaw": "`path` {string} File path ",
                   "name": "path",
                   "type": "string",
-                  "desc": "文件路径"
+                  "desc": "File path"
                 }
               ]
             },
@@ -209,7 +209,7 @@
               ]
             }
           ],
-          "desc": "<p>用其他应用查看文件. 文件不存在的情况由查看文件的应用处理.</p>\n<p>如果找不出可以查看该文件的应用, 则抛出<code>ActivityNotException</code>.</p>\n<pre><code>//查看文本文件\napp.viewFile(&quot;/sdcard/1.txt&quot;);\n</code></pre>"
+          "desc": "<p>Opens a file using another application. If the file does not exist, it will be handled by the viewing application.</p>\n<p>If no application capable of viewing the file can be found, an <code>ActivityNotFoundException</code> is thrown.</p>\n<pre><code class=\"lang-js\">// View a text file\napp.viewFile(&quot;/sdcard/1.txt&quot;);\n</code></pre>\n"
         },
         {
           "textRaw": "app.editFile(path)",
@@ -219,10 +219,10 @@
             {
               "params": [
                 {
-                  "textRaw": "`path` {string} 文件路径 ",
+                  "textRaw": "`path` {string} File path ",
                   "name": "path",
                   "type": "string",
-                  "desc": "文件路径"
+                  "desc": "File path"
                 }
               ]
             },
@@ -234,7 +234,7 @@
               ]
             }
           ],
-          "desc": "<p>用其他应用编辑文件. 文件不存在的情况由编辑文件的应用处理.</p>\n<p>如果找不出可以编辑该文件的应用, 则抛出<code>ActivityNotException</code>.</p>\n<pre><code>//编辑文本文件\napp.editFile(&quot;/sdcard/1.txt/);\n</code></pre>"
+          "desc": "<p>Opens a file for editing using another application. If the file does not exist, it will be handled by the editing application.</p>\n<p>If no application capable of editing the file can be found, an <code>ActivityNotFoundException</code> is thrown.</p>\n<pre><code>// Edit a text file\napp.editFile(&quot;/sdcard/1.txt&quot;);\n</code></pre>"
         },
         {
           "textRaw": "app.uninstall(packageName)",
@@ -244,10 +244,10 @@
             {
               "params": [
                 {
-                  "textRaw": "`packageName` {string} 应用包名 ",
+                  "textRaw": "`packageName` {string} Application package name ",
                   "name": "packageName",
                   "type": "string",
-                  "desc": "应用包名"
+                  "desc": "Application package name"
                 }
               ]
             },
@@ -259,7 +259,7 @@
               ]
             }
           ],
-          "desc": "<p>卸载应用. 执行后会会弹出卸载应用的提示框. 如果该包名的应用未安装, 由应用卸载程序处理, 可能弹出&quot;未找到应用&quot;的提示.</p>\n<pre><code>//卸载QQ\napp.uninstall(&quot;com.tencent.mobileqq&quot;);\n</code></pre>"
+          "desc": "<p>Uninstalls an application. A system prompt for uninstalling the app will appear after execution. If the application with the given package name is not installed, the uninstaller will handle it and may show a &quot;Application not found&quot; message.</p>\n<pre><code class=\"lang-js\">// Uninstall QQ\napp.uninstall(&quot;com.tencent.mobileqq&quot;);\n</code></pre>\n"
         },
         {
           "textRaw": "app.openUrl(url)",
@@ -269,10 +269,10 @@
             {
               "params": [
                 {
-                  "textRaw": "`url` {string} 网站的Url, 如果不以\"http://\"或\"https://\"开头则默认是\"http://\". ",
+                  "textRaw": "`url` {string} The URL of the website. If it does not start with \"http://\" or \"https://\", it defaults to \"http://\". ",
                   "name": "url",
                   "type": "string",
-                  "desc": "网站的Url, 如果不以\"http://\"或\"https://\"开头则默认是\"http://\"."
+                  "desc": "The URL of the website. If it does not start with \"http://\" or \"https://\", it defaults to \"http://\"."
                 }
               ]
             },
@@ -284,7 +284,7 @@
               ]
             }
           ],
-          "desc": "<p>用浏览器打开网站url.</p>\n<p>如果没有安装浏览器应用, 则抛出<code>ActivityNotException</code>.</p>\n"
+          "desc": "<p>Opens the given URL in a browser.</p>\n<p>If no browser application is installed, an <code>ActivityNotFoundException</code> is thrown.</p>\n"
         },
         {
           "textRaw": "app.sendEmail(options)",
@@ -294,46 +294,48 @@
             {
               "params": [
                 {
-                  "textRaw": "`options` {Object} 发送邮件的参数. 包括: ",
+                  "textRaw": "`options` {Object} Parameters for sending the email. Includes: ",
+                  "options": [
+                    {
+                      "textRaw": "`email` {string} | {Array} Recipient email address(es). Use an array for multiple recipients. ",
+                      "name": "email",
+                      "type": "string",
+                      "desc": "| {Array} Recipient email address(es). Use an array for multiple recipients."
+                    },
+                    {
+                      "textRaw": "`cc` {string} | {Array} CC recipient email address(es). ",
+                      "name": "cc",
+                      "type": "string",
+                      "desc": "| {Array} CC recipient email address(es)."
+                    },
+                    {
+                      "textRaw": "`bcc` {string} | {Array} BCC recipient email address(es). ",
+                      "name": "bcc",
+                      "type": "string",
+                      "desc": "| {Array} BCC recipient email address(es)."
+                    },
+                    {
+                      "textRaw": "`subject` {string} Email subject (title) ",
+                      "name": "subject",
+                      "type": "string",
+                      "desc": "Email subject (title)"
+                    },
+                    {
+                      "textRaw": "`text` {string} Email body ",
+                      "name": "text",
+                      "type": "string",
+                      "desc": "Email body"
+                    },
+                    {
+                      "textRaw": "`attachment` {string} Path to the attachment. ",
+                      "name": "attachment",
+                      "type": "string",
+                      "desc": "Path to the attachment."
+                    }
+                  ],
                   "name": "options",
                   "type": "Object",
-                  "desc": "发送邮件的参数. 包括:"
-                },
-                {
-                  "textRaw": "`email` {string} | {Array} 收件人的邮件地址. 如果有多个收件人, 则用字符串数组表示 ",
-                  "name": "email",
-                  "type": "string",
-                  "desc": "| {Array} 收件人的邮件地址. 如果有多个收件人, 则用字符串数组表示"
-                },
-                {
-                  "textRaw": "`cc` {string} | {Array} 抄送收件人的邮件地址. 如果有多个抄送收件人, 则用字符串数组表示 ",
-                  "name": "cc",
-                  "type": "string",
-                  "desc": "| {Array} 抄送收件人的邮件地址. 如果有多个抄送收件人, 则用字符串数组表示"
-                },
-                {
-                  "textRaw": "`bcc` {string} | {Array} 密送收件人的邮件地址. 如果有多个密送收件人, 则用字符串数组表示 ",
-                  "name": "bcc",
-                  "type": "string",
-                  "desc": "| {Array} 密送收件人的邮件地址. 如果有多个密送收件人, 则用字符串数组表示"
-                },
-                {
-                  "textRaw": "`subject` {string} 邮件主题(标题) ",
-                  "name": "subject",
-                  "type": "string",
-                  "desc": "邮件主题(标题)"
-                },
-                {
-                  "textRaw": "`text` {string} 邮件正文 ",
-                  "name": "text",
-                  "type": "string",
-                  "desc": "邮件正文"
-                },
-                {
-                  "textRaw": "`attachment` {string} 附件的路径. ",
-                  "name": "attachment",
-                  "type": "string",
-                  "desc": "附件的路径."
+                  "desc": "Parameters for sending the email. Includes:"
                 }
               ]
             },
@@ -345,7 +347,7 @@
               ]
             }
           ],
-          "desc": "<p>根据选项options调用邮箱应用发送邮件. 这些选项均是可选的.</p>\n<p>如果没有安装邮箱应用, 则抛出<code>ActivityNotException</code>.</p>\n<pre><code>//发送邮件给10086@qq.com和10001@qq.com.\napp.sendEmail({\n    email: [&quot;10086@qq.com&quot;, &quot;10001@qq.com&quot;],\n    subject: &quot;这是一个邮件标题&quot;,\n    text: &quot;这是邮件正文&quot;\n});\n</code></pre>"
+          "desc": "<p>Calls an email application to send mail according to the <code>options</code>. All options are optional.</p>\n<p>If no email application is installed, an <code>ActivityNotFoundException</code> is thrown.</p>\n<pre><code class=\"lang-js\">// Send email to 10086@qq.com and 10001@qq.com\napp.sendEmail({\n    email: [&quot;10086@qq.com&quot;, &quot;10001@qq.com&quot;],\n    subject: &quot;This is the email subject&quot;,\n    text: &quot;This is the email body&quot;\n});\n</code></pre>\n"
         },
         {
           "textRaw": "app.startActivity(name)",
@@ -355,22 +357,22 @@
             {
               "params": [
                 {
-                  "textRaw": "`name` {string} 活动名称, 可选的值为: ",
+                  "textRaw": "`name` {string} Activity name. Possible values: ",
                   "options": [
                     {
-                      "textRaw": "`console` 日志界面 ",
+                      "textRaw": "`console` - Console / log interface ",
                       "name": "console",
-                      "desc": "日志界面"
+                      "desc": "Console / log interface"
                     },
                     {
-                      "textRaw": "`settings` 设置界面 ",
+                      "textRaw": "`settings` - Settings interface ",
                       "name": "settings",
-                      "desc": "设置界面"
+                      "desc": "Settings interface"
                     }
                   ],
                   "name": "name",
                   "type": "string",
-                  "desc": "活动名称, 可选的值为:"
+                  "desc": "Activity name. Possible values:"
                 }
               ]
             },
@@ -382,7 +384,7 @@
               ]
             }
           ],
-          "desc": "<p>启动Auto.js的特定界面. 该函数在Auto.js内运行则会打开Auto.js内的界面, 在打包应用中运行则会打开打包应用的相应界面.</p>\n<pre><code>app.startActivity(&quot;console&quot;);\n</code></pre>"
+          "desc": "<p>Launches a specific Auto.js interface. When run inside Auto.js, it opens the corresponding interface within Auto.js. When run in a packaged app, it opens the corresponding interface of the packaged application.</p>\n<pre><code class=\"lang-js\">app.startActivity(&quot;console&quot;);\n</code></pre>\n"
         },
         {
           "textRaw": "app.intent(options)",
@@ -392,66 +394,66 @@
             {
               "params": [
                 {
-                  "textRaw": "`options` {Object} 选项, 包括： ",
+                  "textRaw": "`options` {Object} Options for constructing the Intent, including: ",
                   "options": [
                     {
-                      "textRaw": "`action` {string} 意图的Action, 指意图要完成的动作, 是一个字符串常量, 比如\"android.intent.action.SEND\". 当action以\"android.intent.action\"开头时, 可以省略前缀, 直接用\"SEND\"代替. 参见[Actions](https://developer.android.com/reference/android/content/Intent.html#standard-activity-actions/). ",
+                      "textRaw": "`action` {string} The Action of the intent — the action the intent should perform. It is a string constant such as `\"android.intent.action.SEND\"`. When the action starts with `\"android.intent.action\"`, the prefix can be omitted and `\"SEND\"` can be used directly. See [Actions](https://developer.android.com/reference/android/content/Intent.html#standard-activity-actions/). ",
                       "name": "action",
                       "type": "string",
-                      "desc": "意图的Action, 指意图要完成的动作, 是一个字符串常量, 比如\"android.intent.action.SEND\". 当action以\"android.intent.action\"开头时, 可以省略前缀, 直接用\"SEND\"代替. 参见[Actions](https://developer.android.com/reference/android/content/Intent.html#standard-activity-actions/)."
+                      "desc": "The Action of the intent — the action the intent should perform. It is a string constant such as `\"android.intent.action.SEND\"`. When the action starts with `\"android.intent.action\"`, the prefix can be omitted and `\"SEND\"` can be used directly. See [Actions](https://developer.android.com/reference/android/content/Intent.html#standard-activity-actions/)."
                     },
                     {
-                      "textRaw": "`type` {string} 意图的MimeType, 表示和该意图直接相关的数据的类型, 表示比如\"text/plain\"为纯文本类型. ",
+                      "textRaw": "`type` {string} The MimeType of the intent, indicating the type of data directly associated with the intent (e.g. `\"text/plain\"` for plain text). ",
                       "name": "type",
                       "type": "string",
-                      "desc": "意图的MimeType, 表示和该意图直接相关的数据的类型, 表示比如\"text/plain\"为纯文本类型."
+                      "desc": "The MimeType of the intent, indicating the type of data directly associated with the intent (e.g. `\"text/plain\"` for plain text)."
                     },
                     {
-                      "textRaw": "`data` {string} 意图的Data, 表示和该意图直接相关的数据, 是一个Uri, 可以是文件路径或者Url等. 例如要打开一个文件, action为\"android.intent.action.VIEW\", data为\"file:///sdcard/1.txt\". ",
+                      "textRaw": "`data` {string} The Data of the intent — a Uri representing the data associated with the intent (file path, URL, etc.). For example, to open a file: `action: \"VIEW\"`, `data: \"file:///sdcard/1.txt\"`. ",
                       "name": "data",
                       "type": "string",
-                      "desc": "意图的Data, 表示和该意图直接相关的数据, 是一个Uri, 可以是文件路径或者Url等. 例如要打开一个文件, action为\"android.intent.action.VIEW\", data为\"file:///sdcard/1.txt\"."
+                      "desc": "The Data of the intent — a Uri representing the data associated with the intent (file path, URL, etc.). For example, to open a file: `action: \"VIEW\"`, `data: \"file:///sdcard/1.txt\"`."
                     },
                     {
-                      "textRaw": "`category` {Array} 意图的类别. 比较少用. 参见[Categories](https://developer.android.com/reference/android/content/Intent.html#standard-categories/). ",
+                      "textRaw": "`category` {Array} Categories of the intent. Less commonly used. See [Categories](https://developer.android.com/reference/android/content/Intent.html#standard-categories/). ",
                       "name": "category",
                       "type": "Array",
-                      "desc": "意图的类别. 比较少用. 参见[Categories](https://developer.android.com/reference/android/content/Intent.html#standard-categories/)."
+                      "desc": "Categories of the intent. Less commonly used. See [Categories](https://developer.android.com/reference/android/content/Intent.html#standard-categories/)."
                     },
                     {
-                      "textRaw": "`packageName` {string} 目标包名 ",
+                      "textRaw": "`packageName` {string} Target package name ",
                       "name": "packageName",
                       "type": "string",
-                      "desc": "目标包名"
+                      "desc": "Target package name"
                     },
                     {
-                      "textRaw": "`className` {string} 目标Activity或Service等组件的名称 ",
+                      "textRaw": "`className` {string} Name of the target Activity, Service, or other component ",
                       "name": "className",
                       "type": "string",
-                      "desc": "目标Activity或Service等组件的名称"
+                      "desc": "Name of the target Activity, Service, or other component"
                     },
                     {
-                      "textRaw": "`extras` {Object} 以键值对构成的这个Intent的Extras(额外信息). 提供该意图的其他信息, 例如发送邮件时的邮件标题、邮件正文. 参见[Extras](https://developer.android.com/reference/android/content/Intent.html#standard-extra-data/). ",
+                      "textRaw": "`extras` {Object} Extras (additional information) of the Intent as key-value pairs. Used to provide extra data, such as email subject and body when sending mail. See [Extras](https://developer.android.com/reference/android/content/Intent.html#standard-extra-data/). ",
                       "name": "extras",
                       "type": "Object",
-                      "desc": "以键值对构成的这个Intent的Extras(额外信息). 提供该意图的其他信息, 例如发送邮件时的邮件标题、邮件正文. 参见[Extras](https://developer.android.com/reference/android/content/Intent.html#standard-extra-data/)."
+                      "desc": "Extras (additional information) of the Intent as key-value pairs. Used to provide extra data, such as email subject and body when sending mail. See [Extras](https://developer.android.com/reference/android/content/Intent.html#standard-extra-data/)."
                     },
                     {
-                      "textRaw": "`flags` {Array} intent的标识, 字符串数组, 例如`[\"activity_new_task\", \"grant_read_uri_permission\"]`. 参见[Flags](https://developer.android.com/reference/android/content/Intent.html#setFlags%28int%29/). **[v4.1.0新增]** ",
+                      "textRaw": "`flags` {Array} Intent flags as an array of strings, e.g. `[\"activity_new_task\", \"grant_read_uri_permission\"]`. See [Flags](https://developer.android.com/reference/android/content/Intent.html#setFlags(int)). **[Added in v4.1.0]** ",
                       "name": "flags",
                       "type": "Array",
-                      "desc": "intent的标识, 字符串数组, 例如`[\"activity_new_task\", \"grant_read_uri_permission\"]`. 参见[Flags](https://developer.android.com/reference/android/content/Intent.html#setFlags%28int%29/). **[v4.1.0新增]**"
+                      "desc": "Intent flags as an array of strings, e.g. `[\"activity_new_task\", \"grant_read_uri_permission\"]`. See [Flags](https://developer.android.com/reference/android/content/Intent.html#setFlags(int)). **[Added in v4.1.0]**"
                     },
                     {
-                      "textRaw": "`root` {Boolea} 是否以root权限启动、发送该intent. 使用该参数后, 不能使用`context.startActivity()`等方法, 而应该直接使用诸如`app.startActivity({...})`的方法. **[v4.1.0新增]** ",
+                      "textRaw": "`root` {boolean} Whether to start/send this intent with root privileges. When using this parameter, you should not use `context.startActivity()` etc., but call methods such as `app.startActivity({...})` directly. **[Added in v4.1.0]** ",
                       "name": "root",
-                      "type": "Boolea",
-                      "desc": "是否以root权限启动、发送该intent. 使用该参数后, 不能使用`context.startActivity()`等方法, 而应该直接使用诸如`app.startActivity({...})`的方法. **[v4.1.0新增]**"
+                      "type": "boolean",
+                      "desc": "Whether to start/send this intent with root privileges. When using this parameter, you should not use `context.startActivity()` etc., but call methods such as `app.startActivity({...})` directly. **[Added in v4.1.0]**"
                     }
                   ],
                   "name": "options",
                   "type": "Object",
-                  "desc": "选项, 包括："
+                  "desc": "Options for constructing the Intent, including:"
                 }
               ]
             },
@@ -463,7 +465,7 @@
               ]
             }
           ],
-          "desc": "<p>根据选项, 构造一个意图Intent对象.</p>\n<p>例如：</p>\n<pre><code>//打开应用来查看图片文件\nvar i = app.intent({\n    action: &quot;VIEW&quot;,\n    type: &quot;image/png&quot;,\n    data: &quot;file:///sdcard/1.png&quot;\n});\ncontext.startActivity(i);\n</code></pre><p>需要注意的是, 除非应用专门暴露Activity出来, 否则在没有root权限的情况下使用intent是无法跳转到特定Activity、应用的特定界面的. 例如我们能通过Intent跳转到QQ的分享界面, 是因为QQ对外暴露了分享的Activity；而在没有root权限的情况下, 我们无法通过intent跳转到QQ的设置界面, 因为QQ并没有暴露这个Activity.</p>\n<p>但如果有root权限, 则在intent的参数加上<code>&quot;root&quot;: true</code>即可. 例如使用root权限跳转到Auto.js的设置界面为：</p>\n<pre><code>app.startActivity({\n    packageName: &quot;org.autojs.autojs&quot;,\n    className: &quot;org.autojs.autojs.ui.settings.SettingsActivity_&quot;,\n    root: true\n});\n</code></pre><p>另外, 关于intent的参数如何获取的问题, 一些intent是意外发现并且在网络中传播的（例如跳转QQ聊天窗口是因为QQ给网页提供了跳转到客服QQ的方法）, 如果要自己获取活动的intent的参数, 可以通过例如&quot;intent记录&quot;, &quot;隐式启动&quot;等应用拦截内部intent或者查询暴露的intent. 其中拦截内部intent需要XPosed框架, 或者可以通过反编译等手段获取参数. 总之, 没有简单直接的方法.</p>\n<p>更多信息, 请百度<a href=\"https://www.baidu.com/s?wd=android%20Intent\">安卓Intent</a>或参考<a href=\"https://developer.android.com/guide/components/intents-filters.html#Types\">Android指南: Intent</a>.</p>\n"
+          "desc": "<p>Constructs an Intent object based on the provided options.</p>\n<p>Example:</p>\n<pre><code class=\"lang-js\">// Open an application to view an image file\nvar i = app.intent({\n    action: &quot;VIEW&quot;,\n    type: &quot;image/png&quot;,\n    data: &quot;file:///sdcard/1.png&quot;\n});\ncontext.startActivity(i);\n</code></pre>\n<p><strong>Note</strong>: Unless an application explicitly exposes an Activity, it is generally not possible to jump to a specific Activity or a specific screen of another app using an intent without root privileges. For example, we can jump to QQ&#39;s share screen via Intent because QQ exposes its share Activity publicly. However, without root, we cannot jump to QQ&#39;s settings screen via intent because QQ does not expose that Activity.</p>\n<p>If you have root privileges, simply add <code>&quot;root&quot;: true</code> to the intent parameters. For example, to jump to Auto.js settings with root:</p>\n<pre><code class=\"lang-js\">app.startActivity({\n    packageName: &quot;org.autojs.autojs&quot;,\n    className: &quot;org.autojs.autojs.ui.settings.SettingsActivity_&quot;,\n    root: true\n});\n</code></pre>\n<p>Additionally, regarding how to obtain intent parameters: some intents were discovered accidentally and spread online (for example, jumping to a QQ chat window works because QQ provides a way to jump to customer service QQ via web pages). To obtain parameters of active intents yourself, you can use apps such as &quot;Intent Recorder&quot; or &quot;Implicit Intent Launcher&quot; to intercept internal intents or query exposed ones. Intercepting internal intents typically requires the Xposed framework, or you can obtain parameters through decompilation. In short, there is no simple and direct method.</p>\n<p>For more information, search for <a href=\"https://www.baidu.com/s?wd=android%20Intent\">Android Intent</a> or refer to the <a href=\"https://developer.android.com/guide/components/intents-filters.html#Types\">Android Guide: Intents and Intent Filters</a>.</p>\n"
         },
         {
           "textRaw": "app.startActivity(options)",
@@ -473,10 +475,10 @@
             {
               "params": [
                 {
-                  "textRaw": "`options` {Object} 选项 ",
+                  "textRaw": "`options` {Object} Options ",
                   "name": "options",
                   "type": "Object",
-                  "desc": "选项"
+                  "desc": "Options"
                 }
               ]
             },
@@ -488,7 +490,7 @@
               ]
             }
           ],
-          "desc": "<p>根据选项构造一个Intent, 并启动该Activity.</p>\n<pre><code>app.startActivity({\n    action: &quot;SEND&quot;,\n    type: &quot;text/plain&quot;,\n    data: &quot;file:///sdcard/1.txt&quot;\n});\n</code></pre>"
+          "desc": "<p>Constructs an Intent based on the options and starts the Activity.</p>\n<pre><code class=\"lang-js\">app.startActivity({\n    action: &quot;SEND&quot;,\n    type: &quot;text/plain&quot;,\n    data: &quot;file:///sdcard/1.txt&quot;\n});\n</code></pre>\n"
         },
         {
           "textRaw": "app.sendBroadcast(options)",
@@ -498,10 +500,10 @@
             {
               "params": [
                 {
-                  "textRaw": "`options` {Object} 选项 ",
+                  "textRaw": "`options` {Object} Options ",
                   "name": "options",
                   "type": "Object",
-                  "desc": "选项"
+                  "desc": "Options"
                 }
               ]
             },
@@ -513,7 +515,7 @@
               ]
             }
           ],
-          "desc": "<p>根据选项构造一个Intent, 并发送该广播.</p>\n"
+          "desc": "<p>Constructs an Intent based on the options and sends the broadcast.</p>\n"
         },
         {
           "textRaw": "app.startService(options)",
@@ -523,10 +525,10 @@
             {
               "params": [
                 {
-                  "textRaw": "`options` {Object} 选项 ",
+                  "textRaw": "`options` {Object} Options ",
                   "name": "options",
                   "type": "Object",
-                  "desc": "选项"
+                  "desc": "Options"
                 }
               ]
             },
@@ -538,13 +540,13 @@
               ]
             }
           ],
-          "desc": "<p>根据选项构造一个Intent, 并启动该服务.</p>\n"
+          "desc": "<p>Constructs an Intent based on the options and starts the service.</p>\n"
         },
         {
           "textRaw": "app.sendBroadcast(name)",
           "type": "method",
           "name": "sendBroadcast",
-          "desc": "<p><strong>[v4.1.0新增]</strong></p>\n<ul>\n<li><code>name</code> {string} 特定的广播名称, 包括：<ul>\n<li><code>inspect_layout_hierarchy</code> 布局层次分析</li>\n<li><code>inspect_layout_bounds</code> 布局范围</li>\n</ul>\n</li>\n</ul>\n<p>发送以上特定名称的广播可以触发Auto.js的布局分析, 方便脚本调试. 这些广播在Auto.js发送才有效, 在打包的脚本上运行将没有任何效果.</p>\n<pre><code>app.sendBroadcast(&quot;inspect_layout_bounds&quot;);\n</code></pre>",
+          "desc": "<p><strong>[Added in v4.1.0]</strong></p>\n<ul>\n<li><code>name</code> {string} Specific broadcast name. Available values:<ul>\n<li><code>inspect_layout_hierarchy</code> — Layout hierarchy analysis</li>\n<li><code>inspect_layout_bounds</code> — Layout bounds</li>\n</ul>\n</li>\n</ul>\n<p>Sending a broadcast with one of the above specific names triggers Auto.js layout analysis, which is useful for script debugging. These broadcasts only take effect when sent from within Auto.js; they have no effect when running in a packaged script.</p>\n<pre><code class=\"lang-js\">app.sendBroadcast(&quot;inspect_layout_bounds&quot;);\n</code></pre>\n",
           "signatures": [
             {
               "params": [
@@ -559,7 +561,7 @@
           "textRaw": "app.intentToShell(options)",
           "type": "method",
           "name": "intentToShell",
-          "desc": "<p><strong>[v4.1.0新增]</strong></p>\n<ul>\n<li><code>options</code> {Object} 选项</li>\n</ul>\n<p>根据选项构造一个Intent, 转换为对应的shell的intent命令的参数.</p>\n<p>例如:</p>\n<pre><code>shell(&quot;am start &quot; + app.intentToShell({\n    packageName: &quot;org.autojs.autojs&quot;,\n    className: &quot;org.autojs.autojs.ui.settings.SettingsActivity_&quot;\n}), true);\n</code></pre><p>参见<a href=\"https://developer.android.com/studio/command-line/adb#IntentSpec/\">intent参数的规范</a>.</p>\n",
+          "desc": "<p><strong>[Added in v4.1.0]</strong></p>\n<ul>\n<li><code>options</code> {Object} Options</li>\n</ul>\n<p>Constructs an Intent based on the options and converts it into the corresponding parameters for a shell <code>am</code> intent command.</p>\n<p>Example:</p>\n<pre><code class=\"lang-js\">shell(&quot;am start &quot; + app.intentToShell({\n    packageName: &quot;org.autojs.autojs&quot;,\n    className: &quot;org.autojs.autojs.ui.settings.SettingsActivity_&quot;\n}), true);\n</code></pre>\n<p>See the <a href=\"https://developer.android.com/studio/command-line/adb#IntentSpec/\">Intent specification for the <code>am</code> command</a>.</p>\n",
           "signatures": [
             {
               "params": [
@@ -574,7 +576,7 @@
           "textRaw": "app.parseUri(uri)",
           "type": "method",
           "name": "parseUri",
-          "desc": "<p><strong>[v4.1.0新增]</strong></p>\n<ul>\n<li><code>uri</code> {string} 一个代表Uri的字符串, 例如&quot;file:///sdcard/1.txt&quot;, &quot;<a href=\"https://www.autojs.org&quot;\">https://www.autojs.org&quot;</a></li>\n<li>返回 {Uri} 一个代表Uri的对象, 参见<a href=\"https://developer.android.com/reference/android/net/Uri/\">android.net.Uri</a>.</li>\n</ul>\n<p>解析uri字符串并返回相应的Uri对象. 即使Uri格式错误, 该函数也会返回一个Uri对象, 但之后如果访问该对象的scheme, path等值可能因解析失败而返回<code>null</code>.</p>\n<p>需要注意的是, 在高版本Android上, 由于系统限制直接在Uri暴露文件的绝对路径, 因此如果uri字符串是文件<code>file://...</code>, 返回的Uri会是诸如<code>content://...</code>的形式.</p>\n",
+          "desc": "<p><strong>[Added in v4.1.0]</strong></p>\n<ul>\n<li><code>uri</code> {string} A string representing a Uri, e.g. <code>&quot;file:///sdcard/1.txt&quot;</code>, <code>&quot;https://www.autojs.org&quot;</code></li>\n<li><strong>returns</strong> {Uri} A Uri object. See <a href=\"https://developer.android.com/reference/android/net/Uri/\">android.net.Uri</a>.</li>\n</ul>\n<p>Parses a Uri string and returns the corresponding Uri object. Even if the Uri format is invalid, the function will still return a Uri object. However, accessing its <code>scheme</code>, <code>path</code>, etc. afterward may return <code>null</code> due to parse failure.</p>\n<p><strong>Note</strong>: On newer versions of Android, due to system restrictions that prevent exposing absolute file paths directly in Uris, if the input string is a <code>file://...</code> path, the returned Uri will be in the form <code>content://...</code>.</p>\n",
           "signatures": [
             {
               "params": [
@@ -589,7 +591,7 @@
           "textRaw": "app.getUriForFile(path)",
           "type": "method",
           "name": "getUriForFile",
-          "desc": "<p><strong>[v4.1.0新增]</strong></p>\n<ul>\n<li><code>path</code> {string} 文件路径, 例如&quot;/sdcard/1.txt&quot;</li>\n<li>返回 {Uri} 一个指向该文件的Uri的对象, 参见<a href=\"https://developer.android.com/reference/android/net/Uri/\">android.net.Uri</a>.</li>\n</ul>\n<p>从一个文件路径创建一个uri对象. 需要注意的是, 在高版本Android上, 由于系统限制直接在Uri暴露文件的绝对路径, 因此返回的Uri会是诸如<code>content://...</code>的形式.</p>\n",
+          "desc": "<p><strong>[Added in v4.1.0]</strong></p>\n<ul>\n<li><code>path</code> {string} File path, e.g. <code>&quot;/sdcard/1.txt&quot;</code></li>\n<li><strong>returns</strong> {Uri} A Uri object pointing to the file. See <a href=\"https://developer.android.com/reference/android/net/Uri/\">android.net.Uri</a>.</li>\n</ul>\n<p>Creates a Uri object from a file path. <strong>Note</strong>: On newer versions of Android, due to system restrictions that prevent exposing absolute file paths directly in Uris, the returned Uri will be in the form <code>content://...</code>.</p>\n",
           "signatures": [
             {
               "params": [
@@ -604,7 +606,7 @@
           "textRaw": "app.getInstalledApps([options])",
           "type": "method",
           "name": "getInstalledApps",
-          "desc": "<p><strong> [<a href=\"https://pro.autojs.org//\">Pro 8.0.0新增</a>] </strong></p>\n<ul>\n<li><code>options</code> {Object} 选项, 包括：<ul>\n<li><code>get</code>: 指定返回的应用信息中包含的信息<ul>\n<li><code>&quot;activities&quot;</code> 应用的Activity组件信息</li>\n<li><code>&quot;configurations&quot;</code> 应用的硬件配置</li>\n<li><code>&quot;gids&quot;</code> 应用的group id</li>\n<li><code>&quot;instrumentation&quot;</code> 应用的Instrumentation信息</li>\n<li><code>&quot;intent_filters&quot;</code> 应用的意图过滤</li>\n<li><code>&quot;meta_data&quot;</code> 应用的元信息（默认）</li>\n<li><code>&quot;permissions&quot;</code> 应用的权限信息</li>\n<li><code>&quot;providers&quot;</code> 应用的ContentProvider组件信息</li>\n<li><code>&quot;receivers&quot;</code> 应用的BroadcastReceiver组件信息</li>\n<li><code>&quot;services&quot;</code> 应用的Service组件信息</li>\n<li><code>&quot;shared_library_files&quot;</code> 应用的动态链接库文件信息</li>\n<li><code>&quot;signatures&quot;</code> 应用的签名信息（已弃用</li>\n<li><code>&quot;signing_certificates&quot;</code> 应用的签名信息</li>\n<li><code>&quot;uri_permission_patterns&quot;</code></li>\n<li><code>&quot;disabled_components&quot;</code> 被卸载的但保留了数据的应用</li>\n<li><code>&quot;disabled_until_used_components&quot;</code> 禁用直到被使用的组件</li>\n<li><code>&quot;uninstalled_packages&quot;</code> 被卸载的但保留了数据的应用</li>\n</ul>\n</li>\n<li><code>match</code>: 指定要匹配的应用列表<ul>\n<li><code>&quot;uninstalled_packages&quot;</code> 被卸载的但保留了数据的应用</li>\n<li><code>&quot;disabled_components&quot;</code> 被禁用的组件</li>\n<li><code>&quot;disabled_until_used_components&quot;</code> 禁用直到被使用的组件</li>\n<li><code>&quot;system_only&quot;</code> 只匹配系统应用</li>\n<li><code>&quot;factory_only&quot;</code> 只匹配预装应用</li>\n<li><code>&quot;apex&quot;</code> APEX应用</li>\n</ul>\n</li>\n</ul>\n</li>\n<li>返回 {Array\\&lt;ApplicationInfo>}</li>\n</ul>\n<p>返回为当前用户安装的所有应用程序包的列表. 如果设置了match选项 <code>uninstalled_packages</code>, 则包括被删除但保留了数据的应用程序.\n获取安装的应用列表.</p>\n<p>返回值是ApplicationInfo对象的数组.  如果没有安装任何应用, 则返回一个空数组.</p>\n<p>选项options的match选项用于指定要返回哪些应用程序, get选项用于指定返回的应用程序携带哪些信息.</p>\n<pre><code>let apps = $app.getInstalledApps({\n    matcg\n})\n</code></pre>",
+          "desc": "<p><strong>[<a href=\"https://pro.autojs.org/\">Pro 8.0.0+</a>]</strong></p>\n<ul>\n<li><code>options</code> {Object} Options, including:<ul>\n<li><code>get</code>: Specifies what information to include in the returned application data<ul>\n<li><code>&quot;activities&quot;</code> — Activity components of the application</li>\n<li><code>&quot;configurations&quot;</code> — Hardware configuration of the application</li>\n<li><code>&quot;gids&quot;</code> — Group IDs of the application</li>\n<li><code>&quot;instrumentation&quot;</code> — Instrumentation information</li>\n<li><code>&quot;intent_filters&quot;</code> — Intent filters</li>\n<li><code>&quot;meta_data&quot;</code> — Meta-data (default)</li>\n<li><code>&quot;permissions&quot;</code> — Permission information</li>\n<li><code>&quot;providers&quot;</code> — ContentProvider components</li>\n<li><code>&quot;receivers&quot;</code> — BroadcastReceiver components</li>\n<li><code>&quot;services&quot;</code> — Service components</li>\n<li><code>&quot;shared_library_files&quot;</code> — Shared library files</li>\n<li><code>&quot;signatures&quot;</code> — Signature information (deprecated)</li>\n<li><code>&quot;signing_certificates&quot;</code> — Signing certificate information</li>\n<li><code>&quot;uri_permission_patterns&quot;</code></li>\n<li><code>&quot;disabled_components&quot;</code> — Components that have been disabled</li>\n<li><code>&quot;disabled_until_used_components&quot;</code> — Components disabled until used</li>\n<li><code>&quot;uninstalled_packages&quot;</code> — Uninstalled packages that still have data</li>\n</ul>\n</li>\n<li><code>match</code>: Filters which applications to return<ul>\n<li><code>&quot;uninstalled_packages&quot;</code> — Uninstalled packages that still have data</li>\n<li><code>&quot;disabled_components&quot;</code> — Disabled components</li>\n<li><code>&quot;disabled_until_used_components&quot;</code> — Components disabled until used</li>\n<li><code>&quot;system_only&quot;</code> — System applications only</li>\n<li><code>&quot;factory_only&quot;</code> — Pre-installed applications only</li>\n<li><code>&quot;apex&quot;</code> — APEX applications</li>\n</ul>\n</li>\n</ul>\n</li>\n<li><strong>returns</strong> {Array<ApplicationInfo>}</li>\n</ul>\n<p>Returns a list of all application packages installed for the current user. If the <code>match</code> option <code>uninstalled_packages</code> is set, it also includes applications that have been uninstalled but still have data remaining.</p>\n<p>The return value is an array of <code>ApplicationInfo</code> objects. Returns an empty array if no applications are installed.</p>\n<p>The <code>match</code> option in <code>options</code> is used to specify which applications to return, while the <code>get</code> option specifies what information each returned application should carry.</p>\n<pre><code class=\"lang-js\">let apps = $app.getInstalledApps({\n    // ...\n});\n</code></pre>\n",
           "signatures": [
             {
               "params": [
@@ -618,7 +620,7 @@
         }
       ],
       "type": "module",
-      "displayName": "通用应用 (App)"
+      "displayName": "App"
     }
   ]
 }

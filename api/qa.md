@@ -1,218 +1,219 @@
-# 疑难解答 (Q & A)
+# Q & A
 
 ---
 
 ## AutoJs6
 
-### AutoJs6 功能简介
+### Introduction to AutoJs6 Features
 
-AutoJs6 是 Android 平台支持无障碍服务的 JavaScript 自动化工具.
+AutoJs6 is a JavaScript automation tool for the Android platform that supports the Accessibility service.
 
-可用作 JavaScript IDE, 支持 [ 代码补全 / 变量重命名 / 代码格式化 ] 等.
+It can be used as a JavaScript IDE, supporting features such as [code completion / variable renaming / code formatting], etc.
 
-AutoJs6 封装了丰富的 JavaScript 模块, 提供丰富功能, 内置实用工具:
+AutoJs6 bundles a rich set of JavaScript modules that provide extensive functionality along with many built-in utilities:
 
-功能
+**Features**
 
-- 图像处理 / 文字识别
-- 自动化操作 / 控件操作 / 应用操作
-- UI 交互 / 对话框交互 / 悬浮窗控件 / 画布控件
-- 多线程编程 / 协程 / 异步编程 / 事件监听
-- 文件处理 / 多媒体处理
-- 定时任务 / 消息通知
-- HTTP 请求
-- Shell 语句
-- 国际化
-- ... ...
+- Image processing / Text recognition (OCR)
+- Automation operations / Control operations / App operations
+- UI interaction / Dialog interaction / Floating window controls / Canvas controls
+- Multithreaded programming / Coroutines / Asynchronous programming / Event listeners
+- File handling / Multimedia processing
+- Scheduled tasks / Notifications
+- HTTP requests
+- Shell commands
+- Internationalization
+- ... and more
 
-工具
+**Utilities**
 
-- 设备信息 / 传感器信息 / 控件信息
-- Base64 编解码 / 密文生成
-- 数学运算 / 颜色转换
-- ... ...
+- Device information / Sensor information / Control information
+- Base64 encoding/decoding / Cryptography
+- Mathematical operations / Color conversion
+- ... and more
 
-### AutoJs6 如何使用
+### How to Use AutoJs6
 
-详见 [AutoJs6 使用手册](manual) 章节.
+See the [AutoJs6 User Manual](manual) chapter for details.
 
-### AutoJs6 是否免费
+### Is AutoJs6 Free?
 
-AutoJs6 永久免费, 它是基于开源版本 (Auto.js 4.1.1 alpha2) 二次开发的, 将保持开源免费.
+AutoJs6 is permanently free. It is a secondary development based on the open-source version (Auto.js 4.1.1 alpha2) and will remain open-source and free.
 
-### AutoJs6 目标
+### Goals of AutoJs6
 
-开源版本 (Auto.js 4.1.1 alpha2) 是非常好的学习资料, AutoJs6 之所以存在, 恰恰是因为站在巨人的肩膀上.
+The open-source version (Auto.js 4.1.1 alpha2) is excellent learning material. AutoJs6 exists precisely because it stands on the shoulders of giants.
 
-AutoJs6 的目标是对开源版本 (Auto.js 4.1.1 alpha2) 进行完善及扩展.
+The goal of AutoJs6 is to improve and extend the open-source version (Auto.js 4.1.1 alpha2).
 
-### AutoJs6 特色
+### Highlights of AutoJs6
 
-AutoJs6 对以下功能进行了十足的打磨:
+AutoJs6 has put significant effort into polishing the following features:
 
-- 夜间模式
-- 多语言
+- Dark mode (night mode)
+- Multi-language support
 
-同时对已有模块进行了精心优化及扩展:
+At the same time, existing modules have been carefully optimized and extended:
 
-- [颜色 (colors)](color)
-- [选择器 (UiSelector)](uiSelectorType)
-- [控件节点 (UiObject)](uiObjectType)
-- ... ...
+- [Color (colors)](color)
+- [Selector (UiSelector)](uiSelectorType)
+- [Control Node (UiObject)](uiObjectType)
+- ... and more
 
-其中尤其具备 AutoJs6 特色的, 当属 [pickup 选择器](uiSelectorType#m-pickup) 及 [compass 控件罗盘](uiObjectType#m-compass).
+Particularly characteristic of AutoJs6 are the [pickup selector](uiSelectorType#m-pickup) and the [compass control](uiObjectType#m-compass).
 
-关于 AutoJs6 的更多内容, 可参阅 [项目更新日志](http://changelog.autojs6.com).
+For more information about AutoJs6, see the [Project Changelog](http://changelog.autojs6.com).
 
-## 文档
+## Documentation
 
-### 文档格式不统一
+### Inconsistent Documentation Format
 
-AutoJs6 文档是在开源版本文档的基础上进行更新和修改的, 目前仅完成部分章节的更新, 未更新的章节依然保留原始文档内容, 因此会存在新旧不同的文档编写格式.  
-因文档编写需要耗费巨量的时间及精力, 文档更新速度会相对缓慢.  
-当全部章节完成编写及更新后, 文档将实现格式统一.
+The AutoJs6 documentation is built by updating and modifying the original open-source version's documentation. Currently, only some chapters have been updated. Unupdated chapters still retain the original content, resulting in a mix of old and new documentation styles.
 
-### 不支持夜间模式
+Because writing documentation requires a huge amount of time and effort, the update speed is relatively slow. Once all chapters are written and updated, the documentation format will be unified.
 
-使用 AutoJs6 查看文档时, 若开启夜间模式后文档依然是亮色主题, 需检查 WebView (或 Google Chrome 等浏览器) 的版本条件:
+### Night Mode Not Working
 
-- API 级别 29 (安卓 10) [Q] 及以上: 版本不低于 76
-- API 级别 28 (安卓 9) [P] 及以下: 版本不低于 105
+When viewing the documentation in AutoJs6 with night mode enabled, the docs may still appear in a light theme. Check the version requirements for WebView (or Google Chrome, etc.):
 
-### 内容难以理解
+- API level 29 (Android 10) [Q] and above: version 76 or higher
+- API level 28 (Android 9) [P] and below: version 105 or higher
 
-对于存在阅读障碍的文档内容, 可尝试暂时略过, 继续阅读后续内容.  
-当完整阅读一个章节或小节后, 可能对之前略过内容的进一步理解有所帮助.  
-也可提交反馈至 GitHub 项目页面, 开发者可能会根据提交的反馈适当调整文档内容.
+### Content Is Hard to Understand
 
-## 图像
+If you find certain documentation content difficult to understand, try skipping it temporarily and continue reading the following sections. After fully reading a chapter or section, you may gain a better understanding of the previously skipped content.
 
-### OCR 特性
+You can also submit feedback on the GitHub project page. Developers may adjust the documentation content based on the feedback received.
 
-AutoJs6 的 OCR 特性是基于 [Google ML Kit](https://developers.google.com/ml-kit?hl=zh-cn) 的 [文字识别 API](https://developers.google.com/ml-kit/vision/text-recognition/android?hl=zh-cn) 及 [Baidu PaddlePaddle](https://www.paddlepaddle.org.cn/) 的 [Paddle Lite](https://github.com/PaddlePaddle/Paddle-Lite) 实现的.
+## Images
 
-> 注:   
-> AutoJs6 基于 MLKit 引擎的 [OCR 实现源码](http://project.autojs6.com/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrMLKit.kt) 参考自 [TonyJiangWJ](https://github.com/TonyJiangWJ) 的 [Auto.js](https://github.com/TonyJiangWJ/Auto.js) 项目.  
-> AutoJs6 基于 Paddle Lite 引擎的 [OCR 实现源码](http://project.autojs6.com/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrPaddle.kt) 源自 [TonyJiangWJ](https://github.com/TonyJiangWJ) 的 [GitHub PR](http://pr.autojs6.com/120).
+### OCR Feature
 
-> 参阅: [光学字符识别 (OCR)](ocr) 模块
+AutoJs6's OCR feature is implemented based on [Google ML Kit](https://developers.google.com/ml-kit) [Text Recognition API](https://developers.google.com/ml-kit/vision/text-recognition/android) and [Baidu PaddlePaddle](https://www.paddlepaddle.org.cn/)'s [Paddle Lite](https://github.com/PaddlePaddle/Paddle-Lite).
 
-### 区域截图
+> Note:  
+> The [OCR implementation source code](http://project.autojs6.com/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrMLKit.kt) for AutoJs6 based on the MLKit engine references the [Auto.js](https://github.com/TonyJiangWJ/Auto.js) project by [TonyJiangWJ](https://github.com/TonyJiangWJ).  
+> The [OCR implementation source code](http://project.autojs6.com/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrPaddle.kt) for AutoJs6 based on the Paddle Lite engine comes from a [GitHub PR](http://pr.autojs6.com/120) by [TonyJiangWJ](https://github.com/TonyJiangWJ).
 
-AutoJs6 不支持区域截图.
+> See also: [Optical Character Recognition (OCR)](ocr) module
 
-可通过 [images.captureScreen](image#m-capturescreen) 截取屏幕后使用 [images.clip](image#m-clip) 等方法做进一步处理.
+### Region Capture (Partial Screenshot)
 
-## 定时任务
+AutoJs6 does not support region capture (partial screenshots).
 
-### 定时运行脚本
+You can use [images.captureScreen](image#m-capturescreen) to capture the full screen and then use methods such as [images.clip](image#m-clip) for further processing.
 
-脚本右侧菜单 -> 定时任务, 即可定时运行脚本.  
-需保持 AutoJs6 后台运行, 包括 [ 自启动白名单 / 忽略电池优化 / 忽略后台活动限制 / 系统多任务保留 ] 等.  
-在设备关屏情况下, 可使用 `device.wakeUp()` 唤醒屏幕.  
-但 AutoJs6 暂未提供解锁功能, 因此可能需要根据设备自行设计解锁代码.
+## Scheduled Tasks
 
-### 定时任务获取外部参数
+### Running Scripts on a Schedule
 
-若脚本由 intent (如网络状态变化等特定事件) 触发启动, 可通过 `engines.myEngine().execArgv.intent` 获取 intent, 进而获取外部参数.
+From the script's right-click menu → Scheduled Tasks, you can set up scheduled execution.  
+AutoJs6 must be allowed to run in the background, including being added to the [autostart whitelist / battery optimization ignore list / background activity restriction ignore list / system task retention list], etc.
 
-## 脚本执行差异
+When the device screen is off, you can use `device.wakeUp()` to wake the screen.  
+However, AutoJs6 does not currently provide an unlock feature, so you may need to implement unlock logic yourself depending on the device.
 
-同样的脚本, 在不同环境 (如设备或系统等) 可能出现执行结果差异, 甚至出现异常而无法正常运行.
+### Passing External Parameters to Scheduled Tasks
 
-### 不同的系统版本
+If a script is started by an intent (such as a network status change or other specific event), you can obtain the intent via `engines.myEngine().execArgv.intent` and then extract external parameters from it.
 
-AutoJs6 可以安装在 `Andoird API 24 (7.0) [N]` 及以上的操作系统.
+## Script Execution Differences
 
-然而不同操作系统 `API` 是有区别的, 有些 `API` 在某个系统版本之后 (甚至之前) 才能使用.
+The same script may produce different results or even fail with exceptions when run in different environments (different devices, systems, etc.).
 
-下面列出几个 AutoJs6 中受系统版本影响的方法或属性:
+### Different System Versions
 
-- [notice](notice) 模块的渠道相关功能只能在 `Android API 26 (8.0) [O]` 及以上起作用
-- [device.imei](device#p-imei) 只能在 `Android API 29 (10) [Q]` 及以下获取到设备 IMEI 值
-- [UiSelector#imeEnter](uiSelectorType#m-imeenter) 只能在 `Android API 30 (11) [R]` 及以上才能起作用
-- [UiSelector#dragStart](uiSelectorType#m-dragstart) 只能在 `Android API 32 (12.1) [S_V2]` 及以上才能起作用
-- [UiSelector#showTextSuggestions](uiSelectorType#m-showtextsuggestions) 只能在 `Android API 33 (13) [TIRAMISU]` 及以上才能起作用
-- ... ...
+AutoJs6 can be installed on operating systems with `Android API 24 (7.0) [N]` and above.
 
-### 不同的设备厂商
+However, different operating systems have differences in `API` availability. Some `API`s only become available (or become unavailable) after a certain system version.
 
-因不同设备厂商对操作系统进行了不同程度的定制和修改, 一些 `API` 可能发生变更.
+Here are some methods or properties in AutoJs6 that are affected by system version:
 
-下表列出了部分厂商及操作系统的信息 (排序无先后):
+- Channel-related features in the [notice](notice) module only work on `Android API 26 (8.0) [O]` and above
+- [device.imei](device#p-imei) can only retrieve the device IMEI on `Android API 29 (10) [Q]` and below
+- [UiSelector#imeEnter](uiSelectorType#m-imeenter) only works on `Android API 30 (11) [R]` and above
+- [UiSelector#dragStart](uiSelectorType#m-dragstart) only works on `Android API 32 (12.1) [S_V2]` and above
+- [UiSelector#showTextSuggestions](uiSelectorType#m-showtextsuggestions) only works on `Android API 33 (13) [TIRAMISU]` and above
+- ... and more
 
-| 厂商或品牌                            | 操作系统                    |
-|----------------------------------|-------------------------|
-| 魅族 (MEIZU)                       | Flyme OS                |
-| 欧珀 (OPPO / Realme)               | 	ColorOS                |
-| 小米 (XiaoMi / Redmi / BlackShark) | 	MIUI                   |
-| 一加 (OnePlus)                     | 氢OS / Oxygen OS         |
-| 维沃 (VIVO / IQOO)                 | 	Funtouch OS / OriginOS |
-| 华为 (Huawei / Honor) 	            | EMUI / HarmonyOS        |
-| 联想 (Lenovo)                      | 	ZUI                    |
-| 酷派 (Coolpad)                     | 	CoolOS                 |
-| 卓易 (Droi)                        | 	Freeme OS              |
-| 锤子科技 (Smartisan)                 | Smartisan OS            |
-| 中兴 (ZTE / 天机 / 远航 / Axon)        | MyOS                    |
-| 努比亚 (Nubia / 红魔)                 | REDMAGIC OS             |
-| Google Pixel                     | 原生                      |
-| AVD (安卓虚拟机)                      | 原生                      |
-| 索尼 (Sony / XPERIA)               | 类原生                     |
-| 三星 (Samsung)                     | 类原生                     |
-| 黑莓 (BlackBerry)                  | 类原生                     |
-| LG                               | 类原生                     |
-| 摩托罗拉 (Motorola)                  | 类原生                     |
-| 诺基亚 (Nokia)                      | 类原生 (仅限部分机型)            |
-| 华硕 (ASUS / ZenFone / ROG Phone)  | 类原生                     |
-| 宏达电 (HTC)                        | 类原生                     |
+### Different Device Manufacturers
 
-由此可见, 想要在众多不同的操作系统中实现完全无差别且无异常的脚本执行效果, 难度是巨大的.
+Because different manufacturers customize and modify the operating system to varying degrees, some `API`s may behave differently or be changed.
 
-往往需要在实际操作系统中进行功能测试并编写额外的兼容代码, 甚至可能需要查询定制操作系统的开放 `API` 文档 (如果有的话).
+The table below lists some manufacturers and their operating systems (in no particular order):
 
-> 注: 表格中的信息可能与实际存在出入, 仅供参考.
+| Manufacturer / Brand                     | Operating System              |
+|------------------------------------------|-------------------------------|
+| Meizu (MEIZU)                            | Flyme OS                      |
+| OPPO / Realme                            | ColorOS                       |
+| Xiaomi (XiaoMi / Redmi / BlackShark)     | MIUI                          |
+| OnePlus                                  | Hydrogen OS / Oxygen OS       |
+| VIVO / iQOO                              | Funtouch OS / OriginOS        |
+| Huawei / Honor                           | EMUI / HarmonyOS              |
+| Lenovo                                   | ZUI                           |
+| Coolpad                                  | CoolOS                        |
+| Droi                                     | Freeme OS                     |
+| Smartisan                                | Smartisan OS                  |
+| ZTE / Axon                               | MyOS                          |
+| Nubia / Red Magic                        | REDMAGIC OS                   |
+| Google Pixel                             | Stock Android                 |
+| AVD (Android Virtual Device)             | Stock Android                 |
+| Sony (Sony / XPERIA)                     | Near-stock                    |
+| Samsung                                  | Near-stock                    |
+| BlackBerry                               | Near-stock                    |
+| LG                                       | Near-stock                    |
+| Motorola                                 | Near-stock                    |
+| Nokia                                    | Near-stock (limited models)   |
+| ASUS (ASUS / ZenFone / ROG Phone)        | Near-stock                    |
+| HTC                                      | Near-stock                    |
 
-### 不同的 Auto.js 应用
+As can be seen, achieving completely identical and exception-free script execution results across many different operating systems is extremely difficult.
 
-不同的 Auto.js 应用对 [ JavaScript 封装模块 / Java 包名及类名 ] 等进行了不同程度的 [ 增添 / 修改 / 删减 ], 因此同样的脚本很难在不同 Auto.js 应用上达到同样的运行效果, 甚至出现无法运行的情况.
+It is often necessary to perform functional testing on actual devices and write additional compatibility code. In some cases, you may even need to consult the open `API` documentation of the customized operating system (if available).
 
-有以下几种可能的解决方案:
+> Note: The information in the table may differ from reality and is for reference only.
 
-- 继续使用之前编写脚本代码的 Auto.js 应用
-- 修改脚本代码以适应新 Auto.js 应用
-- 在脚本代码中加入不同 Auto.js 应用的检测, 在对应分支编写兼容代码
+### Different Auto.js Applications
 
-### 不同的 AutoJs6 版本
+Different Auto.js applications have added, modified, or removed [JavaScript wrapper modules / Java package and class names], etc., to varying degrees. Therefore, the same script is unlikely to achieve identical results across different Auto.js apps and may even fail to run.
 
-随着 AutoJs6 版本的更新, 一些 `API` 可能出现 [ 新增 / 修改 / 废弃 / 移除 ] 等操作.
+Possible solutions:
 
-当升级 AutoJs6 后, 某个或某些 `API` 出现异常时, 可查询应用文档并定位到相关章节, 根据文档的提示排查并解决上述问题.
+- Continue using the Auto.js application with which you originally wrote the scripts
+- Modify the script code to adapt to the new Auto.js application
+- Add detection for different Auto.js applications in your script and write compatibility code in the corresponding branches
 
-如问题仍未解决, 可在项目的 GitHub 议题页面提交 [反馈](#反馈).
+### Different AutoJs6 Versions
 
-## 打包应用
+As AutoJs6 versions are updated, some `API`s may be [added / modified / deprecated / removed].
 
-AutoJs6 打包功能尚不完善, 打包应用与 AutoJs6 主应用可能有较大的功能和界面差异.
+After upgrading AutoJs6, if one or more `API`s behave unexpectedly, you can consult the documentation, locate the relevant chapter, and troubleshoot according to the documentation.
 
-AutoJs6 开发者暂不考虑参与打包功能相关的开发工作, 目前以 [LZX284](https://github.com/LZX284) 为主要贡献者进行打包功能的开发及维护, 后续将继续由其他开发者贡献相关代码. 
+If the problem remains unresolved, submit [feedback](#feedback) on the project's GitHub Issues page.
 
-### 图片等资源共同打包及多脚本打包
+## Packaging Applications
 
-上述需求需使用 "项目" 功能.
+AutoJs6's packaging feature is still incomplete. Packaged apps may have significant functional and interface differences compared to the main AutoJs6 application.
 
-点击 AutoJs6 主页面 "+" 图标, 选择项目, 填写信息后可新建一个项目.  
-项目支持存放多个 [ 脚本 / 模块 / 资源文件 ].  
-项目工具栏的 APK 打包图标, 点击可打包一个项目.
+AutoJs6 developers are not currently participating in packaging-related development work. Currently, [LZX284](https://github.com/LZX284) is the main contributor maintaining the packaging feature, with other developers continuing to contribute code.
 
-例如:  
-脚本读取同目录 `1.png`: `images.read("./1.png")`.  
-UI 脚本图片控件引用同目录 `2.png`: `<img src="file://2.png"/>`.  
-AutoJs6 内置模块支持相对路径引用, 其他情况可能需借助 `files.path()` 转换为绝对路径.
+### Packaging Images/Resources and Multiple Scripts Together
 
-### 打包应用不显示主界面
+This requirement uses the "Project" feature.
 
-需使用 "项目" 功能.  
-新建项目后, 在项目目录 `project.json` 文件中增加以下条目:
+Click the "+" icon on the AutoJs6 main page, select Project, fill in the information, and create a new project.  
+Projects can store multiple [scripts / modules / resource files].  
+Click the APK packaging icon in the project toolbar to package the project.
+
+Example:  
+Script reads `1.png` in the same directory: `images.read("./1.png")`.  
+UI script image control references `2.png` in the same directory: `<img src="file://2.png"/>`.  
+AutoJs6 built-in modules support relative path references. In other cases, you may need to use `files.path()` to convert to an absolute path.
+
+### Packaged App Does Not Show Main Interface
+
+Use the "Project" feature.  
+After creating a new project, add the following entry to the `project.json` file in the project directory:
 
 ```json
 {
@@ -222,7 +223,7 @@ AutoJs6 内置模块支持相对路径引用, 其他情况可能需借助 `files
 }
 ```
 
-例如:
+Example:
 
 ```json
 {
@@ -237,11 +238,12 @@ AutoJs6 内置模块支持相对路径引用, 其他情况可能需借助 `files
 }
 ```
 
-## 代码转换
+## Code Conversion
 
-AutoJs6 支持直接调用 [ Java / Android / 扩展库 ] 等 API.  
-对于 AutoJs6 没有内置的功能, 可进行 Java 脚本化, 即直接参照 Java (或 Kotlin 等) 源码, 转换为 JavaScript 代码.  
-例如:
+AutoJs6 supports directly calling [Java / Android / extension library] APIs, etc.  
+For functionality not built into AutoJs6, you can perform Java scripting — that is, directly refer to Java (or Kotlin, etc.) source code and convert it into JavaScript code.
+
+Example:
 
 ```java
 import android.graphics.Bitmap;
@@ -256,7 +258,7 @@ public static Bitmap rotate(Bitmap src, int degrees, float px, float py) {
 }
 ```
 
-转换为 JavaScript 代码:
+Converted to JavaScript:
 
 ```js
 importClass(android.graphics.Bitmap);
@@ -271,14 +273,14 @@ function rotate(src, degrees, px, py) {
 }
 ```
 
-关于脚本化 Java 的更多信息, 参阅 [Scripting Java - 脚本化 Java](scriptingJava) 章节.
+For more information about scripting Java, see the [Scripting Java](scriptingJava) chapter.
 
-## 反馈
+## Feedback
 
-如有任何问题或建议, 可在 GitHub 项目议题页面发起新的反馈.
+If you have any questions or suggestions, you can open a new issue on the GitHub project page.
 
-关于 <strong>应用文档</strong> 的反馈:  
+For feedback regarding the **Application Documentation**:  
 http://docs-issues.autojs6.com
 
-关于 <strong>AutoJs6</strong> 的反馈:  
+For feedback regarding **AutoJs6** itself:  
 http://issues.autojs6.com

@@ -1,33 +1,33 @@
-# 异常 (Exceptions)
+# Exceptions
 
-当运行时发生错误, 新创建的 Error 对象会被抛出.  
-除通用的 Error 构造器外, JavaScript 还有其它类型的错误构造器, 详见下述 [JavaScript 错误类型](#javascript) 小节.
+When a runtime error occurs, a newly created Error object is thrown.  
+In addition to the general Error constructor, JavaScript also has other types of error constructors, see the [JavaScript Error Types](#javascript) section below.
 
-> 注: Java 有 Error (错误) 和 Exception (异常) 之分, 它们都扩展自 Throwable 类.  
-> JavaScript 有 Error (错误) 全局对象, 以及一系列细分 Error 对象 (如 TypeError 等).  
-> 虽然 JavaScript 没有 Exception (异常) 对象, 但章节标题依然采用 "异常" (而非 "错误").
+> Note: Java distinguishes between Error and Exception, both of which extend from the Throwable class.  
+> JavaScript has an Error global object, as well as a series of specialized Error objects (such as TypeError, etc.).  
+> Although JavaScript does not have an Exception object, the chapter title still uses "Exceptions" (rather than "Errors").
 
-用 `try...catch` 语句可以捕获并处理异常, 详见下述 [异常处理](#trycatch-语句) 小节.
+You can use `try...catch` statements to catch and handle exceptions, see the [Exception Handling](#trycatch-语句) section below.
 
-在 `catch {}` (即 `catch 块`) 中, `e` 对象可用于获取异常相关信息,  
-而 Rhino 引擎重新包装了 `e` 对象, 通过 [`e.javaException`](#p-javaexception) 和 [`e.rhinoException`](#p-rhinoexception) 可获取更多异常信息,  
-详见下述 [catch 块](#catch-块) 小节.
+In `catch {}` (i.e., the `catch` block), the `e` object can be used to obtain exception-related information.  
+The Rhino engine re-wraps the `e` object, and more exception information can be obtained via [`e.javaException`](#p-javaexception) and [`e.rhinoException`](#p-rhinoexception).  
+See the [catch Block](#catch-块) section below for details.
 
-# 错误类型
+# Error Types
 
 ## JavaScript
 
-以下内置错误类型在 Rhino 引擎中均得以实现, 在 AutoJs6 支持全局调用.  
-如需创建自定义错误类型, 参阅下述 [自定义错误类型](#自定义) 小节.
+The following built-in error types are all implemented in the Rhino engine and are globally callable in AutoJs6.  
+To create custom error types, see the [Custom Error Types](#自定义) section below.
 
 ### Error
 
-通用 Error 构造器.
+The general Error constructor.
 
-内置错误类型 TypeError, RangeError 等均扩展自 Error 构造器.  
-例如, 如果一个对象是 TypeError 的实例, 则也一定是 Error 的实例.
+Built-in error types such as TypeError, RangeError, etc. all extend from the Error constructor.  
+For example, if an object is an instance of TypeError, it is also necessarily an instance of Error.
 
-Error 实例的属性及方法可参阅 [Error 对象](#error-对象) 章节.
+For the properties and methods of Error instances, see the [Error Object](#error-对象) chapter.
 
 ```js
 try {
@@ -40,12 +40,12 @@ try {
 
 ### RangeError
 
-越界错误.
+Out-of-bounds error.
 
-RangeError 实例代表了当一个值不在其所允许的范围或者集合中的错误.
+A RangeError instance represents an error when a value is not within its allowed range or set.
 
 ```js
-/* 创建或应用. */
+/* Create or apply. */
 
 const check = function (num) {
     const MIN = 1;
@@ -59,17 +59,17 @@ try {
     check(523);
 } catch (e) {
     if (e instanceof RangeError) {
-        console.error("发生越界错误.");
+        console.error("Out of bounds error occurred.");
         throw e;
     }
 }
 
-/* 复现 (Array 构造器参数不合法). */
+/* Reproduce (invalid Array constructor argument). */
 
 // RangeError: Inappropriate array length.
 let a = Array(-1);
 
-/* 复现 (Number 部分实例方法参数不合法). */
+/* Reproduce (invalid arguments for some Number instance methods). */
 
 // RangeError: Precision -1 out of range. 
 let n = (23).toExponential(-1);
@@ -82,12 +82,12 @@ let n = (23).toPrecision(-3);
 
 ### ReferenceError
 
-引用错误.
+Reference error.
 
-ReferenceError 实例代表了当一个不存在或尚未初始化的变量被引用时发生的错误.
+A ReferenceError instance represents an error that occurs when a non-existent or uninitialized variable is referenced.
 
 ```js
-/* 创建或应用. */
+/* Create or apply. */
 
 const f = function (num, options) {
     if (typeof options === 'undefined') {

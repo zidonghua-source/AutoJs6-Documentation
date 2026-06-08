@@ -1,32 +1,32 @@
-# 控制台 (Console)
+# Console
 
-AutoJs6 的控制台类似 Web 浏览器的调试控制台, 用于信息输出或辅助代码调试.
+The AutoJs6 console is similar to the debugging console in web browsers. It is used for outputting information or assisting with code debugging.
 
-## 显示控制台
+## Showing the Console
 
-AutoJs6 支持以下几种方式显示控制台:
+AutoJs6 supports the following ways to display the console:
 
-- 点击 AutoJs6 应用主页右上区域 "日志" 图标 - 显示控制台 Activity 活动页面.
-- 使用代码 `console.launch()` - 显示控制台 Activity 活动页面.
-- 使用代码 `console.show()` - 显示控制台 `浮动窗口 (Floating Window)`.
+- Tap the "Log" icon in the top-right area of the AutoJs6 app home screen — opens the console Activity page.
+- Use the code `console.launch()` — opens the console Activity page.
+- Use the code `console.show()` — shows the console as a `Floating Window`.
 
-## 模块作用
+## Module Purpose
 
-console 模块的主要作用:
+The main purposes of the `console` module:
 
-- 控制台日志内容的管理 - [ 按分级显示内容 / 内容清空 / 时间跟踪 / 栈追踪 / 存入文件 ] 等
+- Management of console log content — [display by log level / clear content / time tracking / stack traces / save to file], etc.
     - [console.log](#m-log)
     - [console.setGlobalLogConfig](#m-setgloballogconfig)
-- 控制台浮动窗口的管理 - [ 窗口样式 / 文字样式 / 窗口显示与隐藏 / 窗口位置与尺寸 ] 等
+- Management of the console floating window — [window style / text style / show & hide / position & size], etc.
     - [console.show](#m-show)
-- 控制台 Activity 活动窗口管理
+- Management of the console Activity window
     - [console.launch](#m-launch)
 
-控制台浮动窗口的相关方法仅对浮动窗口有效, 而对 Activity 活动窗口无效:
+Methods related to the console floating window only affect the floating window and have no effect on the Activity window:
 
 ```js
-/* 浮动窗口日志文本字体大小修改为 23sp, */
-/* 但 Activity 活动窗口的日志字体不受影响. */
+/* Change the font size of log text in the floating window to 23sp, */
+/* but the log font in the Activity window is not affected. */
 
 console.setContentTextSize(23);
 console.show(); /* 浮动窗口日志字体 23sp. */
@@ -115,23 +115,23 @@ console.show();
 
 - <ins>**returns**</ins> { [this](console) }
 
-显示控制台浮动窗口.
+Displays the console floating window.
 
-窗口显示之前或之后, 均可设置浮动窗口的样式及空间状态.  
-如将窗口尺寸设置为 `500` × `800`:
+The floating window's style and spatial state can be configured either before or after it is shown.  
+For example, to set the window size to `500` × `800`:
 
 ```js
-/* 在 show 之前设置尺寸. */
+/* Set size before show. */
 
 console.setSize(500, 800);
 console.show();
 
-/* 在 show 之后设置尺寸. */
+/* Set size after show. */
 
 console.show();
 console.setSize(500, 800);
 
-/* 上述两个示例均支持链式调用. */
+/* Both examples above support method chaining. */
 console.show().setSize(500, 800);
 console.setSize(500, 800).show();
 ```
@@ -144,21 +144,21 @@ console.setSize(500, 800).show();
 
 - <ins>**returns**</ins> { [boolean](dataTypes#boolean) }
 
-返回控制台浮动窗口是否未处于隐藏状态.
+Returns whether the console floating window is not in a hidden state.
 
-未隐藏状态包含以下情况:
+Non-hidden states include:
 
-- 浮动窗口展开显示
-- 浮动窗口折叠显示 (最小化)
+- The floating window is expanded and visible
+- The floating window is collapsed (minimized)
 
 ```js
 console.show();
 console.isShowing(); // true
 
-console.collapse(); /* 折叠 (最小化) 浮动窗口. */
-console.isShowing(); /* 依然为 true. */
+console.collapse(); /* Collapse (minimize) the floating window. */
+console.isShowing(); /* Still returns true. */
 
-console.hide(); /* 隐藏浮动窗口. */
+console.hide(); /* Hide the floating window. */
 console.isShowing(); // false
 ```
 
@@ -170,9 +170,9 @@ console.isShowing(); // false
 
 - <ins>**returns**</ins> { [this](console) }
 
-隐藏控制台浮动窗口.
+Hides the console floating window.
 
-窗口隐藏后, 其样式及空间状态均被保留, 即使在脚本结束后:
+After hiding, the style and spatial state are preserved, even after the script ends:
 
 ```js
 console.show();
@@ -180,15 +180,15 @@ console.setSize(500, 800);
 console.hide();
 ```
 
-此时在另一个脚本运行如下代码:
+If you then run the following code in another script:
 
 ```js
 console.show();
 ```
 
-显示浮动窗口后, 窗口尺寸依然为 `500` × `800`, 之前的窗口配置被还原.
+The floating window will still appear with the size `500` × `800` — the previous configuration is restored.
 
-如需在显示之前恢复窗口配置默认值, 可使用 `console.reset()`:
+To restore default window configuration before showing, use `console.reset()`:
 
 ```js
 console.reset();
@@ -203,13 +203,13 @@ console.show();
 
 - <ins>**returns**</ins> { [this](console) }
 
-重置控制台浮动窗口的样式及空间状态, 恢复其默认值.
+Resets the style and spatial state of the console floating window to its default values.
 
-`reset` 方法在浮动窗口显示时也可使用:
+The `reset` method can also be used while the floating window is visible:
 
 ```js
 console.setSize(500, 800).show();
-setTimeout(console.reset, 2e3); /* 2 秒钟后重置. */
+setTimeout(console.reset, 2e3); /* Reset after 2 seconds. */
 ```
 
 ## [m] collapse
@@ -220,7 +220,7 @@ setTimeout(console.reset, 2e3); /* 2 秒钟后重置. */
 
 - <ins>**returns**</ins> { [this](console) }
 
-折叠显示控制台浮动窗口, 即最小化窗口.
+Collapses (minimizes) the console floating window.
 
 ## [m] expand
 
@@ -230,9 +230,9 @@ setTimeout(console.reset, 2e3); /* 2 秒钟后重置. */
 
 - <ins>**returns**</ins> { [this](console) }
 
-展开显示控制台浮动窗口.
+Expands the console floating window.
 
-使用 [console.show](#m-show) 显示窗口时, 默认为展开显示状态.
+When using [console.show](#m-show) to display the window, it is expanded by default.
 
 ## [m] launch
 
@@ -242,9 +242,9 @@ setTimeout(console.reset, 2e3); /* 2 秒钟后重置. */
 
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
-启动控制台 Activity 活动窗口.
+Launches the console Activity window.
 
-此方法相当于是 AutoJs6 首页右上区域点击 "日志" 图标的代码实现.
+This method is equivalent to tapping the "Log" icon in the top-right area of the AutoJs6 home screen.
 
 ## [m] build
 
@@ -252,31 +252,31 @@ setTimeout(console.reset, 2e3); /* 2 秒钟后重置. */
 
 **`6.3.0`**
 
-- **options** { [ConsoleBuildOptions](consoleBuildOptionsType) } - 构建器选项
+- **options** { [ConsoleBuildOptions](consoleBuildOptionsType) } - Builder options
 - <ins>**returns**</ins> {{ show(): [void](dataTypes#void) }}
 
-构建控制台浮动窗口的配置.
+Builds the configuration for the console floating window.
 
-构建后使用 `show` 方法显示控制台浮动窗口, 即 `console.build({ ... }).show()`.
+After building, call the `show` method to display the floating window: `console.build({ ... }).show()`.
 
-构建器支持一次性配置多个浮动窗口样式选项:
+The builder supports configuring multiple floating window style options at once:
 
 ```js
 console.build({
-    size: [ 0.8, 0.6 ], /* 窗口大小, 80% 屏幕宽度 × 60% 屏幕高度. */
-    position: [ 0.1, 0.15 ], /* 窗口位置, X 坐标 10% 屏幕宽度, Y 坐标 15% 屏幕高度. */
-    title: 'HELLO WORLD', /* 窗口标题文本. */
-    titleTextSize: 18, /* 窗口标题字号, 单位为 sp. */
-    contentTextSize: 16, /* 窗口日志字号, 单位 sp. */
-    backgroundColor: 'deep-orange-900', /* 窗口标题及日志区域的背景色, 900 号深橙色. */
-    titleBackgroundAlpha: 0.8, /* 窗口标题区域背景透明度, 90%. */
-    contentBackgroundAlpha: 0.5, /* 窗口日志区域背景透明度, 50%. */
-    exitOnClose: 6e3, /* 脚本运行结束时 6 秒钟后自动关闭窗口. */
-    touchable: true, /* true: 窗口正常响应点击事件; false: 点击将穿透窗口. */
-}).show(); /* 使用 show 方法显示浮动窗口. */
+    size: [ 0.8, 0.6 ], /* Window size: 80% screen width × 60% screen height. */
+    position: [ 0.1, 0.15 ], /* Window position: X = 10% screen width, Y = 15% screen height. */
+    title: 'HELLO WORLD', /* Window title text. */
+    titleTextSize: 18, /* Title font size in sp. */
+    contentTextSize: 16, /* Log font size in sp. */
+    backgroundColor: 'deep-orange-900', /* Background color for title and log areas (deep orange 900). */
+    titleBackgroundAlpha: 0.8, /* Title area background opacity: 80%. */
+    contentBackgroundAlpha: 0.5, /* Log area background opacity: 50%. */
+    exitOnClose: 6e3, /* Automatically close the window 6 seconds after the script ends. */
+    touchable: true, /* true: window responds to taps normally; false: taps pass through the window. */
+}).show(); /* Use the show method to display the floating window. */
 ```
 
-更多构建参数及使用方法, 参阅 [ConsoleBuildOptions](consoleBuildOptionsType) 类型章节.
+For more builder parameters and usage, see the [ConsoleBuildOptions](consoleBuildOptionsType) type chapter.
 
 ## [m] setSize
 
@@ -284,15 +284,15 @@ console.build({
 
 **`[6.3.0]`**
 
-- **width** { [number](dataTypes#number) } - 浮动窗口宽度值 (像素值/百分数)
-- **height** { [number](dataTypes#number) } - 浮动窗口高度值 (像素值/百分数)
+- **width** { [number](dataTypes#number) } - Floating window width (pixels or percentage)
+- **height** { [number](dataTypes#number) } - Floating window height (pixels or percentage)
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的尺寸.
+Sets the size of the console floating window.
 
 ```js
-console.setSize(0.8, 700).show(); /* 80% 屏幕宽度, 700 像素高度. */
-console.build({ size: [ 0.8, 700 ] }).show(); /* 效果同上. */
+console.setSize(0.8, 700).show(); /* 80% screen width, 700 pixels height. */
+console.build({ size: [ 0.8, 700 ] }).show(); /* Same effect. */
 ```
 
 ## [m] setPosition
@@ -301,15 +301,15 @@ console.build({ size: [ 0.8, 700 ] }).show(); /* 效果同上. */
 
 **`[6.3.0]`**
 
-- **x** { [number](dataTypes#number) } - 浮动窗口位置 X 坐标 (像素值/百分数)
-- **y** { [number](dataTypes#number) } - 浮动窗口位置 Y 坐标 (像素值/百分数)
+- **x** { [number](dataTypes#number) } - Floating window X coordinate (pixels or percentage)
+- **y** { [number](dataTypes#number) } - Floating window Y coordinate (pixels or percentage)
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的位置.
+Sets the position of the console floating window.
 
 ```js
-console.setPosition(0.1, 0.15).show(); /* X: 10% 屏幕宽度, Y: 15% 屏幕高度. */
-console.build({ position: [ 0.1, 0.15 ] }).show(); /* 效果同上. */
+console.setPosition(0.1, 0.15).show(); /* X: 10% screen width, Y: 15% screen height. */
+console.build({ position: [ 0.1, 0.15 ] }).show(); /* Same effect. */
 ```
 
 ## [m] setExitOnClose
@@ -318,32 +318,32 @@ console.build({ position: [ 0.1, 0.15 ] }).show(); /* 效果同上. */
 
 **`6.3.0`** **`Overload 1/2`**
 
-- [ `true` ] **exitOnClose** { [boolean](dataTypes#boolean) } - 浮动窗口是否自动关闭
+- [ `true` ] **exitOnClose** { [boolean](dataTypes#boolean) } - Whether the floating window closes automatically
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口在脚本结束时是否自动关闭.
+Sets whether the console floating window should automatically close when the script ends.
 
 ```js
-console.setExitOnClose(true).show(); /* 自动关闭启用, 脚本结束后 5 秒钟自动关闭浮动窗口. */
-console.setExitOnClose().show(); /* 省略参数, 效果同上. */
-console.build({ exitOnClose: true }).show(); /* 效果同上. */
+console.setExitOnClose(true).show(); /* Auto-close enabled: floating window closes 5 seconds after script ends. */
+console.setExitOnClose().show(); /* Parameter omitted, same effect. */
+console.build({ exitOnClose: true }).show(); /* Same effect. */
 
-console.setExitOnClose(false).show(); /* 禁用自动关闭. */
-console.build({ exitOnClose: false }).show(); /* 效果同上. */
+console.setExitOnClose(false).show(); /* Disable auto-close. */
+console.build({ exitOnClose: false }).show(); /* Same effect. */
 ```
 
 ### setExitOnClose(timeout)
 
 **`6.3.0`** **`Overload 2/2`**
 
-- **timeout** { [number](dataTypes#number) } - 浮动窗口自动关闭的超时时间 (毫秒)
+- **timeout** { [number](dataTypes#number) } - Timeout (in milliseconds) before the floating window auto-closes
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口在脚本结束时自动关闭的超时时间, 单位为毫秒.
+Sets the timeout (in milliseconds) after which the console floating window will automatically close when the script ends.
 
 ```js
-console.setExitOnClose(6e3).show(); /* 脚本结束后 6 秒钟自动关闭浮动窗口. */
-console.build({ exitOnClose: 6e3 }).show(); /* 效果同上. */
+console.setExitOnClose(6e3).show(); /* Floating window auto-closes 6 seconds after script ends. */
+console.build({ exitOnClose: 6e3 }).show(); /* Same effect. */
 ```
 
 ## [m] setTouchable
@@ -352,42 +352,42 @@ console.build({ exitOnClose: 6e3 }).show(); /* 效果同上. */
 
 **`6.5.0`**
 
-- [ `true` ] **touchable** { [boolean](dataTypes#boolean) } - 是否响应点击事件
+- [ `true` ] **touchable** { [boolean](dataTypes#boolean) } - Whether to respond to tap events
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口是否响应点击事件, 默认为 `true`.
+Sets whether the console floating window responds to tap events. Default is `true`.
 
-如需穿透点击, 可设置为 `false`.
+Set to `false` to make taps pass through the window.
 
 ```js
-console.setTouchable(false).show(); /* 点击事件将穿透控制台浮动窗口. */
-console.build({ touchable: false }).show(); /* 效果同上. */
+console.setTouchable(false).show(); /* Tap events will pass through the console floating window. */
+console.build({ touchable: false }).show(); /* Same effect. */
 ```
 
-当 `setTouchable` 传入 `false` 时, 浮动窗口顶部的关闭按钮将无法通过点击触发, 此时可借助 [hide](#m-hide) 或 [setExitOnClose](#m-setexitonclose) 等代码方式实现浮动窗口关闭:
+When `setTouchable` is set to `false`, the close button at the top of the floating window cannot be triggered by tapping. You can close the window programmatically using [hide](#m-hide) or [setExitOnClose](#m-setexitonclose):
 
 ```js
-/* 借助 setExitOnClose 实现脚本结束后自动关闭窗口. */
+/* Use setExitOnClose to auto-close the window after the script ends. */
 
 console
     .setTouchable(false)
     .setExitOnClose(true)
     .show();
 
-/* 使用 build 构建器写法. */
+/* Builder syntax. */
 
 console.build({
     touchable: false,
     exitOnClose: true,
 }).show();
 
-/* 使用音量键控制, 例如按下 "音量减" 键关闭窗口 (需要无障碍服务). */
+/* Use volume keys to close (requires Accessibility service). */
 
 events.observeKey();
 events.setKeyInterceptionEnabled(true);
 events.on('volume_down', () => {
     console.hide();
-    exit(); /* 退出脚本 (可选). */
+    exit(); /* Optional: exit the script. */
 });
 ```
 
@@ -397,14 +397,14 @@ events.on('volume_down', () => {
 
 **`[6.3.0]`**
 
-- **title** { [string](dataTypes#string) } - 浮动窗口标题文本
+- **title** { [string](dataTypes#string) } - Floating window title text
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的标题文本.
+Sets the title text of the console floating window.
 
 ```js
-console.setTitle('空调温度监测').show();
-console.build({ title: '空调温度监测' }).show(); /* 效果同上. */
+console.setTitle('Air Conditioner Temperature Monitor').show();
+console.build({ title: 'Air Conditioner Temperature Monitor' }).show(); /* Same effect. */
 ```
 
 ## [m] setTitleTextSize
@@ -413,14 +413,14 @@ console.build({ title: '空调温度监测' }).show(); /* 效果同上. */
 
 **`6.3.0`**
 
-- **size** { [number](dataTypes#number) } - 浮动窗口标题文本字体大小
+- **size** { [number](dataTypes#number) } - Floating window title font size
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的标题文本字体大小, 单位 `sp`.
+Sets the font size of the console floating window title (in `sp`).
 
 ```js
-console.setTitleTextSize(20).show(); /* 设置标题字体大小为 20sp. */
-console.build({ titleTextSize: 20 }).show(); /* 效果同上. */
+console.setTitleTextSize(20).show(); /* Set title font size to 20sp. */
+console.build({ titleTextSize: 20 }).show(); /* Same effect. */
 ```
 
 ## [m] setTitleTextColor
@@ -429,14 +429,14 @@ console.build({ titleTextSize: 20 }).show(); /* 效果同上. */
 
 **`6.3.0`**
 
-- **color** { [OmniColor](omniTypes#omnicolor) } - 浮动窗口标题文本字体颜色
+- **color** { [OmniColor](omniTypes#omnicolor) } - Floating window title text color
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的标题文本字体颜色.
+Sets the text color of the console floating window title.
 
 ```js
-console.setTitleTextColor('dark-orange').show(); /* 设置标题字体颜色为深橙色. */
-console.build({ titleTextColor: 'dark-orange' }).show(); /* 效果同上. */
+console.setTitleTextColor('dark-orange').show(); /* Set title color to dark orange. */
+console.build({ titleTextColor: 'dark-orange' }).show(); /* Same effect. */
 ```
 
 ## [m] setTitleBackgroundColor
@@ -445,21 +445,21 @@ console.build({ titleTextColor: 'dark-orange' }).show(); /* 效果同上. */
 
 **`6.3.0`**
 
-- **color** { [OmniColor](omniTypes#omnicolor) } - 浮动窗口标题显示区域背景颜色
+- **color** { [OmniColor](omniTypes#omnicolor) } - Background color of the floating window title area
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的标题显示区域背景颜色.
+Sets the background color of the console floating window's title area.
 
 ```js
-/* 设置标题显示区域背景颜色为深蓝色. */
+/* Set title area background to dark blue. */
 console.setTitleBackgroundColor('dark-blue').show();
-console.build({ titleBackgroundColor: 'dark-blue' }).show(); /* 效果同上. */
+console.build({ titleBackgroundColor: 'dark-blue' }).show(); /* Same effect. */
 
-/* 设置标题显示区域背景颜色为半透明深蓝色. */
+/* Set title area background to semi-transparent dark blue. */
 console.setTitleBackgroundColor(Color('dark-blue').setAlpha(0.5)).show();
-console.setTitleBackgroundColor('#8000008B').show(); /* 效果同上. */
+console.setTitleBackgroundColor('#8000008B').show(); /* Same effect. */
 
-/* 透明度也可使用 setTitleBackgroundAlpha 单独设置. */
+/* Opacity can also be set separately using setTitleBackgroundAlpha. */
 console
     .setTitleBackgroundColor('dark-blue')
     .setTitleBackgroundAlpha(0.5)
@@ -472,17 +472,17 @@ console
 
 **`6.3.0`**
 
-- **alpha** { [number](dataTypes#number) } - 浮动窗口标题显示区域背景颜色透明度
+- **alpha** { [number](dataTypes#number) } - Background opacity of the floating window title area
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的标题显示区域背景颜色透明度.
+Sets the background opacity of the console floating window's title area.
 
 ```js
-/* 设置标题显示区域背景颜色为半透明. */
+/* Set title area background to semi-transparent. */
 console.setTitleBackgroundAlpha(0.5).show();
-console.build({ titleBackgroundAlpha: 0.5 }).show(); /* 效果同上. */
+console.build({ titleBackgroundAlpha: 0.5 }).show(); /* Same effect. */
 
-/* 设置标题显示区域背景颜色为半透明深蓝色. */
+/* Set title area background to semi-transparent dark blue. */
 console
     .setTitleBackgroundColor('dark-blue')
     .setTitleBackgroundAlpha(0.5)
@@ -495,15 +495,15 @@ console
 
 **`6.3.0`**
 
-- **color** { [OmniColor](omniTypes#omnicolor) } - 浮动窗口操作按钮着色
+- **color** { [OmniColor](omniTypes#omnicolor) } - Tint color for floating window action buttons
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的操作按钮着色.
+Sets the tint color for the console floating window's action buttons.
 
 ```js
-/* 设置操作按钮着色为绿色. */
+/* Set action button tint to green. */
 console.setTitleIconsTint('green').show();
-console.build({ titleIconsTint: 'green' }).show(); /* 效果同上. */
+console.build({ titleIconsTint: 'green' }).show(); /* Same effect. */
 ```
 
 ## [m] setContentTextSize
@@ -512,15 +512,15 @@ console.build({ titleIconsTint: 'green' }).show(); /* 效果同上. */
 
 **`6.3.0`**
 
-- **param** { [number](dataTypes#number) } - 浮动窗口日志文本字体大小
+- **param** { [number](dataTypes#number) } - Floating window log text font size
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的日志文本字体大小, 单位 `sp`.
+Sets the font size of the console floating window log text (in `sp`).
 
 ```js
-/* 设置日志文本字体大小为 18sp. */
+/* Set log text font size to 18sp. */
 console.setContentTextSize(18).show();
-console.build({ contentTextSize: 18 }).show(); /* 效果同上. */
+console.build({ contentTextSize: 18 }).show(); /* Same effect. */
 ```
 
 ## [m] setContentTextColor
@@ -536,20 +536,20 @@ console.build({ contentTextSize: 18 }).show(); /* 效果同上. */
     - warn?: [OmniColor](omniTypes#omnicolor);
     - error?: [OmniColor](omniTypes#omnicolor);
     - assert?: [OmniColor](omniTypes#omnicolor);
-- }} - 浮动窗口日志文本字体颜色表
+- }} - Log text color map for the floating window
 
-设置控制台浮动窗口的日志文本字体颜色, 按日志等级设置一个或多个不同的字体颜色.
+Sets the log text colors of the console floating window. You can specify different colors for different log levels.
 
 ```js
-/* 设置 LOG 等级日志字体颜色为深橙色. */
+/* Set LOG level log text color to dark orange. */
 console.setContentTextColor({ log: 'dark-orange' }).show();
 console.log('content text color test for console.log');
 
-/* 设置 ERROR 等级日志字体颜色为深红色. */
+/* Set ERROR level log text color to dark red. */
 console.setContentTextColor({ error: 'dark-red' }).show();
 console.error('content text color test for console.error');
 
-/* 设置多个不同等级日志的字体颜色. */
+/* Set colors for multiple log levels. */
 console.setContentTextColor({
     verbose: 'gray',
     log: 'white',
@@ -566,15 +566,13 @@ console.setContentTextColor({
 
 **`6.3.0`** **`Overload 2/2`**
 
-- **colors** { [OmniColor](omniTypes#omnicolor) } - 浮动窗口日志文本字体统一颜色
+- **colors** { [OmniColor](omniTypes#omnicolor) } - Unified text color for all logs in the floating window
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的日志文本字体的统一颜色.
-
-此方法设置颜色时不区分日志等级, 统一设置所有日志的文本颜色.
+Sets a single unified text color for all log messages in the console floating window (does not distinguish between log levels).
 
 ```js
-/* 所有日志本文的颜色统一设置为深绿色. */
+/* Set all log text color to dark green. */
 console.setContentTextColor('dark-green').show();
 [ 'verbose', 'log', 'info', 'warn', 'error' ].forEach((fName) => {
     console[fName].call(console, `content text color test for console.${fName}`);
@@ -587,21 +585,21 @@ console.setContentTextColor('dark-green').show();
 
 **`6.3.0`**
 
-- **color** { [OmniColor](omniTypes#omnicolor) } - 浮动窗口日志显示区域背景颜色
+- **color** { [OmniColor](omniTypes#omnicolor) } - Background color of the floating window log display area
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的日志显示区域背景颜色.
+Sets the background color of the console floating window's log display area.
 
 ```js
-/* 设置日志显示区域背景颜色为深蓝色. */
+/* Set log display area background to dark blue. */
 console.setContentBackgroundColor('dark-blue').show();
-console.build({ contentBackgroundColor: 'dark-blue' }).show(); /* 效果同上. */
+console.build({ contentBackgroundColor: 'dark-blue' }).show(); /* Same effect. */
 
-/* 设置日志显示区域背景颜色为半透明深蓝色. */
+/* Set log display area background to semi-transparent dark blue. */
 console.setContentBackgroundColor(Color('dark-blue').setAlpha(0.5)).show();
-console.setContentBackgroundColor('#8000008B').show(); /* 效果同上. */
+console.setContentBackgroundColor('#8000008B').show(); /* Same effect. */
 
-/* 透明度也可使用 setContentBackgroundAlpha 单独设置. */
+/* Opacity can also be set separately using setContentBackgroundAlpha. */
 console
     .setContentBackgroundColor('dark-blue')
     .setContentBackgroundAlpha(0.5)
@@ -614,17 +612,17 @@ console
 
 **`6.3.0`**
 
-- **alpha** { [number](dataTypes#number) } - 浮动窗口日志显示区域背景颜色透明度
+- **alpha** { [number](dataTypes#number) } - Background opacity of the floating window log display area
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的日志显示区域背景颜色透明度.
+Sets the background opacity of the console floating window's log display area.
 
 ```js
-/* 设置日志显示区域背景颜色为半透明. */
+/* Set log display area background to semi-transparent. */
 console.setContentBackgroundAlpha(0.5).show();
-console.build({ contentBackgroundAlpha: 0.5 }).show(); /* 效果同上. */
+console.build({ contentBackgroundAlpha: 0.5 }).show(); /* Same effect. */
 
-/* 设置日志显示区域背景颜色为半透明深蓝色. */
+/* Set log display area background to semi-transparent dark blue. */
 console
     .setContentBackgroundColor('dark-blue')
     .setContentBackgroundAlpha(0.5)
@@ -637,17 +635,17 @@ console
 
 **`6.3.0`**
 
-- **size** { [number](dataTypes#number) } - 浮动窗口标题及日志文本字体大小
+- **size** { [number](dataTypes#number) } - Font size for both title and log text in the floating window
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的标题及日志文本字体大小, 单位 `sp`.
+Sets the font size (in `sp`) for both the title and log text of the console floating window.
 
-相当于 [setTitleTextSize](#m-settitletextsize) 和 [setContentTextSize](#m-setcontenttextsize) 的集成.
+This is a convenience method that combines [setTitleTextSize](#m-settitletextsize) and [setContentTextSize](#m-setcontenttextsize).
 
 ```js
-/* 设置标题及日志文本字体大小为 18sp. */
+/* Set both title and log text size to 18sp. */
 console.setTextSize(18).show();
-console.build({ textSize: 18 }).show(); /* 效果同上. */
+console.build({ textSize: 18 }).show(); /* Same effect. */
 ```
 
 ## [m] setTextColor
@@ -656,17 +654,17 @@ console.build({ textSize: 18 }).show(); /* 效果同上. */
 
 **`6.3.0`**
 
-- **color** [OmniColor](omniTypes#omnicolor) } - 浮动窗口标题及日志文本字体颜色
+- **color** [OmniColor](omniTypes#omnicolor) } - Text color for title and log text in the floating window
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的标题及日志文本字体颜色.
+Sets the text color for both the title and log text of the console floating window.
 
-对于日志文本, 不区分等级, 统一设置字体颜色.
+For log text, a single color is applied to all levels (no distinction between log levels).
 
-相当于 [setTitleTextColor](#m-settitletextcolor) 和 [setContentTextColor](#m-setcontenttextcolor) 的集成.
+This is a convenience method that combines [setTitleTextColor](#m-settitletextcolor) and [setContentTextColor](#m-setcontenttextcolor).
 
 ```js
-/* 所有标题及日志本文的颜色统一设置为浅蓝色. */
+/* Set all title and log text color to light blue. */
 console.setTextColor('light-blue').show();
 [ 'verbose', 'log', 'info', 'warn', 'error' ].forEach((fName) => {
     console[fName].call(console, ` text color test for console.${fName}`);
@@ -679,23 +677,23 @@ console.setTextColor('light-blue').show();
 
 **`6.3.0`**
 
-- **color** { [OmniColor](omniTypes#omnicolor) } - 浮动窗口标题及日志显示区域背景颜色
+- **color** { [OmniColor](omniTypes#omnicolor) } - Background color for title and log display areas
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的标题及日志显示区域背景颜色.
+Sets the background color for both the title and log display areas of the console floating window.
 
-相当于 [setTitleBackgroundColor](#m-settitlebackgroundcolor) 和 [setContentBackgroundColor](#m-setcontentbackgroundcolor) 的集成.
+This is a convenience method that combines [setTitleBackgroundColor](#m-settitlebackgroundcolor) and [setContentBackgroundColor](#m-setcontentbackgroundcolor).
 
 ```js
-/* 设置标题及日志显示区域背景颜色为浅黄色. */
+/* Set title and log display area background to light yellow. */
 console.setBackgroundColor('light-yellow').show();
-console.build({ backgroundColor: 'light-yellow' }).show(); /* 效果同上. */
+console.build({ backgroundColor: 'light-yellow' }).show(); /* Same effect. */
 
-/* 设置标题及日志显示区域背景颜色为半透明浅黄色. */
+/* Set title and log display area background to semi-transparent light yellow. */
 console.setBackgroundColor(Color('light-yellow').setAlpha(0.5)).show();
-console.setBackgroundColor('#80FFFFE0').show(); /* 效果同上. */
+console.setBackgroundColor('#80FFFFE0').show(); /* Same effect. */
 
-/* 透明度也可使用 backgroundAlpha 单独设置. */
+/* Opacity can also be set separately using backgroundAlpha. */
 console
     .setBackgroundColor('light-yellow')
     .setBackgroundAlpha(0.5)
@@ -708,19 +706,19 @@ console
 
 **`6.3.0`**
 
-- **alpha** { [number](dataTypes#number) } - 浮动窗口标题及日志显示区域背景颜色透明度
+- **alpha** { [number](dataTypes#number) } - Background opacity for title and log display areas
 - <ins>**returns**</ins> { [this](console) }
 
-设置控制台浮动窗口的标题及日志显示区域背景颜色透明度.
+Sets the background opacity for both the title and log display areas of the console floating window.
 
-相当于 [setTitleBackgroundAlpha](#m-settitlebackgroundalpha) 和 [setContentBackgroundAlpha](#m-setcontentbackgroundalpha) 的集成.
+This is a convenience method that combines [setTitleBackgroundAlpha](#m-settitlebackgroundalpha) and [setContentBackgroundAlpha](#m-setcontentbackgroundalpha).
 
 ```js
-/* 设置标题及日志显示区域背景颜色为半透明. */
+/* Set title and log display area background to semi-transparent. */
 console.setBackgroundAlpha(0.5).show();
-console.build({ backgroundAlpha: 0.5 }).show(); /* 效果同上. */
+console.build({ backgroundAlpha: 0.5 }).show(); /* Same effect. */
 
-/* 设置标题及日志显示区域背景颜色为半透明浅黄色. */
+/* Set title and log display area background to semi-transparent light yellow. */
 console
     .setBackgroundColor('light-yellow')
     .setBackgroundAlpha(0.5)
@@ -733,24 +731,24 @@ console
 
 **`Global`**
 
-- **data** { [string](dataTypes#string) } - 可包含占位符的待格式化对象
-- **args** { [...](documentation#可变参数)[any](dataTypes#any)[[]](documentation#可变参数) } - [占位符替换参数](glossaries#占位符替换参数)
+- **data** { [string](dataTypes#string) } - Object to format (may contain placeholders)
+- **args** { [...](documentation#可变参数)[any](dataTypes#any)[[]](documentation#可变参数) } - [Placeholder replacement arguments](glossaries#占位符替换参数)
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
-输出参数内容到控制台.
+Outputs the arguments to the console.
 
-主要用途: 测试消息 / 调试消息 / 重要性级别最低的消息
+Main uses: test messages / debug messages / lowest importance messages
 
-优先级: **verbose** < log < info < warn < error < assert
+Priority: **verbose** < log < info < warn < error < assert
 
-字体颜色:
+Text colors:
 
-- 浮动窗口 - [ <span style="color: #E0E0E0">◑</span> ] - #E0E0E0
-- Activity 活动窗口
-    - 亮色主题 - [ <span style="color: #C0C0C0">◑</span> ] - #DFC0C0C0
-    - 暗色主题 - [ <span style="color: #7F7F80">◑</span> ] - #7F7F80
+- Floating window — [ <span style="color: #E0E0E0">◑</span> ] — #E0E0E0
+- Activity window
+    - Light theme — [ <span style="color: #C0C0C0">◑</span> ] — #DFC0C0C0
+    - Dark theme — [ <span style="color: #7F7F80">◑</span> ] — #7F7F80
 
-> 注: 此方法将自动添加末尾换行符.
+> Note: This method automatically appends a newline at the end.
 
 ## [m] log
 
@@ -758,45 +756,45 @@ console
 
 **`Global`**
 
-- **data** { [string](dataTypes#string) } - 可包含占位符的待格式化对象
-- **args** { [...](documentation#可变参数)[any](dataTypes#any)[[]](documentation#可变参数) } - [占位符替换参数](glossaries#占位符替换参数)
+- **data** { [string](dataTypes#string) } - Object to format (may contain placeholders)
+- **args** { [...](documentation#可变参数)[any](dataTypes#any)[[]](documentation#可变参数) } - [Placeholder replacement arguments](glossaries#占位符替换参数)
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
-输出参数内容到控制台.
+Outputs the arguments to the console.
 
-主要用途: 普通消息
+Main uses: normal messages
 
-优先级: verbose < **log** < info < warn < error < assert
+Priority: verbose < **log** < info < warn < error < assert
 
-字体颜色:
+Text colors:
 
-- 浮动窗口 - [ <span style="color: #FFFFFF">◑</span> ] - #FFFFFF
-- Activity 活动窗口
-    - 亮色主题 - [ <span style="color: #000000">◑</span> ] - #CC000000
-    - 暗色主题 - [ <span style="color: #E0E0E0">◑</span> ] - #DFE0E0E0
+- Floating window — [ <span style="color: #FFFFFF">◑</span> ] — #FFFFFF
+- Activity window
+    - Light theme — [ <span style="color: #000000">◑</span> ] — #CC000000
+    - Dark theme — [ <span style="color: #E0E0E0">◑</span> ] — #DFE0E0E0
 
-> 注: 此方法将自动添加末尾换行符.
+> Note: This method automatically appends a newline at the end.
 
 ## [m] info
 
 ### info(data, ...args)
 
-- **data** { [string](dataTypes#string) } - 可包含占位符的待格式化对象
-- **args** { [...](documentation#可变参数)[any](dataTypes#any)[[]](documentation#可变参数) } - [占位符替换参数](glossaries#占位符替换参数)
+- **data** { [string](dataTypes#string) } - Object to format (may contain placeholders)
+- **args** { [...](documentation#可变参数)[any](dataTypes#any)[[]](documentation#可变参数) } - [Placeholder replacement arguments](glossaries#占位符替换参数)
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
-输出参数内容到控制台.
+Outputs the arguments to the console.
 
-主要用途: 重要消息 / 值得注意的消息
+Main uses: important messages / noteworthy messages
 
-优先级: verbose < log < **info** < warn < error < assert
+Priority: verbose < log < **info** < warn < error < assert
 
-字体颜色:
+Text colors:
 
-- 浮动窗口 - [ <span style="color: #DCEDC8">◑</span> ] - #DCEDC8
-- Activity 活动窗口 - [ <span style="color: #43A047">◑</span> ] - #43A047
+- Floating window — [ <span style="color: #DCEDC8">◑</span> ] — #DCEDC8
+- Activity window — [ <span style="color: #43A047">◑</span> ] — #43A047
 
-> 注: 此方法将自动添加末尾换行符.
+> Note: This method automatically appends a newline at the end.
 
 ## [m] warn
 
@@ -804,43 +802,43 @@ console
 
 **`Global`**
 
-- **data** { [string](dataTypes#string) } - 可包含占位符的待格式化对象
-- **args** { [...](documentation#可变参数)[any](dataTypes#any)[[]](documentation#可变参数) } - [占位符替换参数](glossaries#占位符替换参数)
+- **data** { [string](dataTypes#string) } - Object to format (may contain placeholders)
+- **args** { [...](documentation#可变参数)[any](dataTypes#any)[[]](documentation#可变参数) } - [Placeholder replacement arguments](glossaries#占位符替换参数)
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
-输出参数内容到控制台.
+Outputs the arguments to the console.
 
-主要用途: 警告消息 / 隐患消息
+Main uses: warning messages / potential issue messages
 
-优先级: verbose < log < info < **warn** < error < assert
+Priority: verbose < log < info < **warn** < error < assert
 
-字体颜色:
+Text colors:
 
-- 浮动窗口 - [ <span style="color: #B3E5FC">◑</span> ] - #B3E5FC
-- Activity 活动窗口 - [ <span style="color: #1976D2">◑</span> ] - #1976D2
+- Floating window — [ <span style="color: #B3E5FC">◑</span> ] — #B3E5FC
+- Activity window — [ <span style="color: #1976D2">◑</span> ] — #1976D2
 
-> 注: 此方法将自动添加末尾换行符.
+> Note: This method automatically appends a newline at the end.
 
 ## [m] error
 
 ### error(data, ...args)
 
-- **data** { [string](dataTypes#string) } - 可包含占位符的待格式化对象
-- **args** { [...](documentation#可变参数)[any](dataTypes#any)[[]](documentation#可变参数) } - [占位符替换参数](glossaries#占位符替换参数)
+- **data** { [string](dataTypes#string) } - Object to format (may contain placeholders)
+- **args** { [...](documentation#可变参数)[any](dataTypes#any)[[]](documentation#可变参数) } - [Placeholder replacement arguments](glossaries#占位符替换参数)
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
-输出参数内容到控制台.
+Outputs the arguments to the console.
 
-主要用途: 错误消息 / 异常消息
+Main uses: error messages / exception messages
 
-优先级: verbose < log < info < warn < **error** < assert
+Priority: verbose < log < info < warn < **error** < assert
 
-字体颜色:
+Text colors:
 
-- 浮动窗口 - [ <span style="color: #FFCDD2">◑</span> ] - #FFCDD2
-- Activity 活动窗口 - [ <span style="color: #C62828">◑</span> ] - #C62828
+- Floating window — [ <span style="color: #FFCDD2">◑</span> ] — #FFCDD2
+- Activity window — [ <span style="color: #C62828">◑</span> ] — #C62828
 
-> 注: 此方法将自动添加末尾换行符.
+> Note: This method automatically appends a newline at the end.
 
 ## [m] assert
 
@@ -848,57 +846,57 @@ console
 
 **`6.3.0`** **`Overload [1-2]/4`**
 
-- **bool** { [boolean](dataTypes#boolean) } - 断言值
-- **[ message ]** { [string](dataTypes#string) } - 断言失败时的消息
+- **bool** { [boolean](dataTypes#boolean) } - Assertion value
+- **[ message ]** { [string](dataTypes#string) } - Message to display if assertion fails
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
-断言 `bool` 参数为真.
+Asserts that the `bool` parameter is true.
 
-断言失败时, 脚本停止运行, 输出失败消息及调用栈信息到控制台.
+If the assertion fails, the script stops and outputs the failure message along with the call stack to the console.
 
-主要用途: 断言一个变量
+Main uses: asserting a variable
 
-优先级: verbose < log < info < warn < error < **assert**
+Priority: verbose < log < info < warn < error < **assert**
 
-字体颜色:
+Text colors:
 
-- 浮动窗口 - [ <span style="color: #FCE4EC">◑</span> ] - #FCE4EC
-- Activity 活动窗口 - [ <span style="color: #E254FF">◑</span> ] - #E254FF
+- Floating window — [ <span style="color: #FCE4EC">◑</span> ] — #FCE4EC
+- Activity window — [ <span style="color: #E254FF">◑</span> ] — #E254FF
 
 ```js
-console.assert(new Date().getSeconds() < 30, '断言失败, 当前时间秒数不小于 30');
+console.assert(new Date().getSeconds() < 30, 'Assertion failed: current time in seconds is not less than 30');
 ```
 
-> 注: 此方法将自动在控制台消息中添加末尾换行符.
+> Note: This method automatically appends a newline at the end of the console message.
 
 ### assert(func, message?)
 
 **`6.3.0`** **`Overload [3-4]/4`**
 
-- **func** { [() =>](#function) [boolean](dataTypes#boolean) } - 断言值
-- **[ message ]** { [string](dataTypes#string) } - 断言失败时的消息
+- **func** { [() =>](#function) [boolean](dataTypes#boolean) } - Assertion value
+- **[ message ]** { [string](dataTypes#string) } - Message to display if assertion fails
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
-断言 `func` 参数的执行结果为真.
+Asserts that the result of executing `func` is true.
 
-断言失败时, 脚本停止运行, 输出失败消息及调用栈信息到控制台.
+If the assertion fails, the script stops and outputs the failure message along with the call stack to the console.
 
-主要用途: 断言一个函数
+Main uses: asserting a function
 
-优先级: verbose < log < info < warn < error < **assert**
+Priority: verbose < log < info < warn < error < **assert**
 
-字体颜色:
+Text colors:
 
-- 浮动窗口 - [ <span style="color: #FCE4EC">◑</span> ] - #FCE4EC
-- Activity 活动窗口 - [ <span style="color: #E254FF">◑</span> ] - #E254FF
+- Floating window — [ <span style="color: #FCE4EC">◑</span> ] — #FCE4EC
+- Activity window — [ <span style="color: #E254FF">◑</span> ] — #E254FF
 
 ```js
 console.assert(function () {
     return new Date().getSeconds() < 30;
-}, '断言失败, 当前时间秒数不小于 30');
+}, 'Assertion failed: current time in seconds is not less than 30');
 ```
 
-> 注: 此方法将自动在控制台消息中添加末尾换行符.
+> Note: This method automatically appends a newline at the end of the console message.
 
 ## [m] clear
 
@@ -908,7 +906,7 @@ console.assert(function () {
 
 - <ins>**returns**</ins> { [this](console) }
 
-清空控制台日志内容.
+Clears all log content from the console.
 
 ## [m] print
 
@@ -916,13 +914,13 @@ console.assert(function () {
 
 **`Global`** **`DEPRECATED`**
 
-- **data** { [string](dataTypes#string) } - 可包含占位符的待格式化对象
-- **args** { [...](documentation#可变参数)[any](dataTypes#any)[[]](documentation#可变参数) } - [占位符替换参数](glossaries#占位符替换参数)
+- **data** { [string](dataTypes#string) } - Object to format (may contain placeholders)
+- **args** { [...](documentation#可变参数)[any](dataTypes#any)[[]](documentation#可变参数) } - [Placeholder replacement arguments](glossaries#占位符替换参数)
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
-等效于 [console.log](#m-log).
+Equivalent to [console.log](#m-log).
 
-> 注: AutoJs6 的 `print` 方法在功能上更接近其他语言的 `printLn`, 而且在浏览器中, 全局方法 `print` 用于打印当前页面. 因此 `print` 全局方法被弃用, 不推荐使用.
+> Note: In AutoJs6, the `print` method behaves more like `println` in other languages. Additionally, in browsers the global `print` method is used to print the current page. For these reasons, the global `print` method has been deprecated and is not recommended.
 
 ## [m] printAllStackTrace
 
@@ -930,25 +928,25 @@ console.assert(function () {
 
 **`6.3.0`**
 
-- **e** { [OmniThrowable](omniTypes#omnithrowable) } - 异常参数
+- **e** { [OmniThrowable](omniTypes#omnithrowable) } - Exception object
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
-在控制台打印详细的栈追踪信息.
+Prints detailed stack trace information to the console.
 
 ```js
 try {
     null.toString()
 } catch (e) {
-    /* 打印简单的错误消息. */
-    /* 通常只有 1 行消息. */
+    /* Print a simple error message. */
+    /* Usually only 1 line. */
     console.error(e.message);
 
-    /* 使用 exit 方法抛出异常. */
-    /* 通常有不到 10 行消息. */
+    /* Use the exit method to throw an exception. */
+    /* Usually fewer than 10 lines. */
     exit(e);
 
-    /* 使用 console.printAllStackTrace 打印完整栈追踪信息. */
-    /* 通常有几十行消息. */
+    /* Use console.printAllStackTrace to print the full stack trace. */
+    /* Usually dozens of lines. */
     console.printAllStackTrace(e);
 }
 ```
@@ -959,21 +957,21 @@ try {
 
 **`6.3.0`**
 
-- **message** { [string](dataTypes#string) } - 追踪消息
-- **[ level = "debug" ]** { `'verbose'` | `'debug'` | `'info'` | `'warn'` | `'error'` | [number](dataTypes#number) } - 消息输出等级
+- **message** { [string](dataTypes#string) } - Trace message
+- **[ level = "debug" ]** { `'verbose'` | `'debug'` | `'info'` | `'warn'` | `'error'` | [number](dataTypes#number) } - Output log level
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
-输出当前位置调用栈的追踪信息到控制台.
+Outputs the current call stack trace information to the console.
 
-`level` 参数接收由整形常量转化而来的字符串简化形式:
+The `level` parameter accepts string shortcuts derived from integer constants:
 
-| 字符串         | 整形常量                                                    | 简述                                                                             |
-|-------------|---------------------------------------------------------|--------------------------------------------------------------------------------|
-| 'verbose'   | <span style="white-space:nowrap">Log.VERBOSE = 2</span> | <span style="white-space:nowrap">对应 [console.verbose](#m-verbose) 输出等级.</span> |
-| **'debug'** | <span style="white-space:nowrap">Log.DEBUG = 3</span>   | <span style="white-space:nowrap">对应 [console.log](#m-log) 输出等级.</span>         |
-| 'info'      | <span style="white-space:nowrap">Log.INFO = 4</span>    | <span style="white-space:nowrap">对应 [console.info](#m-info) 输出等级.</span>       |
-| 'warn'      | <span style="white-space:nowrap">Log.WARN = 5</span>    | <span style="white-space:nowrap">对应 [console.warn](#m-warn) 输出等级.</span>       |
-| 'error'     | <span style="white-space:nowrap">Log.ERROR = 6</span>   | <span style="white-space:nowrap">对应 [console.error](#m-error) 输出等级.</span>     |
+| String      | Integer Constant                                        | Description                                                                 |
+|-------------|---------------------------------------------------------|-----------------------------------------------------------------------------|
+| 'verbose'   | <span style="white-space:nowrap">Log.VERBOSE = 2</span> | <span style="white-space:nowrap">Corresponds to [console.verbose](#m-verbose) level.</span> |
+| **'debug'** | <span style="white-space:nowrap">Log.DEBUG = 3</span>   | <span style="white-space:nowrap">Corresponds to [console.log](#m-log) level.</span>         |
+| 'info'      | <span style="white-space:nowrap">Log.INFO = 4</span>    | <span style="white-space:nowrap">Corresponds to [console.info](#m-info) level.</span>       |
+| 'warn'      | <span style="white-space:nowrap">Log.WARN = 5</span>    | <span style="white-space:nowrap">Corresponds to [console.warn](#m-warn) level.</span>       |
+| 'error'     | <span style="white-space:nowrap">Log.ERROR = 6</span>   | <span style="white-space:nowrap">Corresponds to [console.error](#m-error) level.</span>     |
 
 ```js
 function printMessages() {
@@ -993,7 +991,7 @@ function printMessages() {
     },
 }).init();
 
-// Error 等级的追踪信息输出样例:
+// Example of ERROR level trace output:
 // 20:46:00.709/E: This is an "error" message for test
 // 	at consoleTrace.js:5 (printMessages)
 // 	at consoleTrace.js:14

@@ -2,9 +2,9 @@
   "source": "..\\api\\dialogs.md",
   "modules": [
     {
-      "textRaw": "对话框 (Dialogs)",
-      "name": "对话框_(dialogs)",
-      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<p>dialogs 模块提供了简单的对话框支持, 可以通过对话框和用户进行交互. 最简单的例子如下：</p>\n<pre><code>alert(&quot;您好&quot;);\n</code></pre><p>这段代码会弹出一个消息提示框显示&quot;您好&quot;, 并在用户点击&quot;确定&quot;后继续运行. 稍微复杂一点的例子如下：</p>\n<pre><code>var clear = confirm(&quot;要清除所有缓存吗?&quot;);\nif(clear){\n    alert(&quot;清除成功!&quot;);\n}\n</code></pre><p><code>confirm()</code>会弹出一个对话框并让用户选择&quot;是&quot;或&quot;否&quot;, 如果选择&quot;是&quot;则返回true.</p>\n<p>需要特别注意的是, 对话框在ui模式下不能像通常那样使用, 应该使用回调函数或者<a href=\"https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/\">Promise</a>的形式. 理解这一点可能稍有困难. 举个例子:</p>\n<pre><code>&quot;ui&quot;;\n//回调形式\n confirm(&quot;要清除所有缓存吗?&quot;, function(clear){\n     if(clear){\n          alert(&quot;清除成功!&quot;);\n     }\n });\n//Promise形式\nconfirm(&quot;要清除所有缓存吗?&quot;)\n    .then(clear =&gt; {\n        if(clear){\n          alert(&quot;清除成功!&quot;);\n        }\n    });\n</code></pre>",
+      "textRaw": "Dialogs",
+      "name": "dialogs",
+      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">This chapter is pending supplementation or improvement...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<p>The <code>dialogs</code> module provides simple dialog support, allowing interaction with the user through dialogs. The simplest example is:</p>\n<pre><code class=\"lang-js\">alert(&quot;Hello&quot;);\n</code></pre>\n<p>This code will show a message dialog displaying &quot;Hello&quot;, and continue running after the user clicks &quot;OK&quot;. A slightly more complex example:</p>\n<pre><code class=\"lang-js\">var clear = confirm(&quot;Clear all cache?&quot;);\nif (clear) {\n    alert(&quot;Cleared successfully!&quot;);\n}\n</code></pre>\n<p><code>confirm()</code> shows a dialog and lets the user choose &quot;Yes&quot; or &quot;No&quot;. It returns <code>true</code> if &quot;Yes&quot; is selected.</p>\n<p><strong>Important note</strong>: In UI mode, dialogs cannot be used in the usual blocking way. You should use callback functions or <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise\">Promise</a> form instead. This can be a bit confusing at first. Example:</p>\n<pre><code class=\"lang-js\">&quot;ui&quot;;\n\n// Callback form\nconfirm(&quot;Clear all cache?&quot;, function(clear) {\n    if (clear) {\n        alert(&quot;Cleared successfully!&quot;);\n    }\n});\n\n// Promise form\nconfirm(&quot;Clear all cache?&quot;)\n    .then(clear =&gt; {\n        if (clear) {\n            alert(&quot;Cleared successfully!&quot;);\n        }\n    });\n</code></pre>\n",
       "methods": [
         {
           "textRaw": "dialogs.alert(title[, content, callback])",
@@ -14,23 +14,23 @@
             {
               "params": [
                 {
-                  "textRaw": "`title` {string} 对话框的标题. ",
+                  "textRaw": "`title` {string} Title of the dialog. ",
                   "name": "title",
                   "type": "string",
-                  "desc": "对话框的标题."
+                  "desc": "Title of the dialog."
                 },
                 {
-                  "textRaw": "`content` {string} 可选, 对话框的内容. 默认为空. ",
+                  "textRaw": "`content` {string} Optional. Content of the dialog. Default is empty. ",
                   "name": "content",
                   "type": "string",
-                  "desc": "可选, 对话框的内容. 默认为空.",
-                  "optional": true
+                  "optional": true,
+                  "desc": "Content of the dialog. Default is empty."
                 },
                 {
-                  "textRaw": "`callback` {Function} 回调函数, 可选. 当用户点击确定时被调用,一般用于ui模式. ",
+                  "textRaw": "`callback` {Function} Optional callback function, called when the user clicks OK (mainly used in UI mode). ",
                   "name": "callback",
                   "type": "Function",
-                  "desc": "回调函数, 可选. 当用户点击确定时被调用,一般用于ui模式.",
+                  "desc": "Optional callback function, called when the user clicks OK (mainly used in UI mode).",
                   "optional": true
                 }
               ]
@@ -51,7 +51,7 @@
               ]
             }
           ],
-          "desc": "<p>显示一个只包含“确定”按钮的提示对话框. 直至用户点击确定脚本才继续运行.</p>\n<p>该函数也可以作为全局函数使用.</p>\n<pre><code>alert(&quot;出现错误~&quot;, &quot;出现未知错误, 请联系脚本作者”);\n</code></pre><p>在ui模式下该函数返回一个<code>Promise</code>. 例如:</p>\n<pre><code>&quot;ui&quot;;\nalert(&quot;嘿嘿嘿&quot;).then(()=&gt;{\n    //当点击确定后会执行这里\n});\n</code></pre>"
+          "desc": "<p>Displays a prompt dialog containing only an &quot;OK&quot; button. The script will pause until the user clicks OK.</p>\n<p>This function can also be used globally.</p>\n<pre><code class=\"lang-js\">alert(&quot;An error occurred~&quot;, &quot;Unknown error, please contact the script author&quot;);\n</code></pre>\n<p>In UI mode, this function returns a <code>Promise</code>. For example:</p>\n<pre><code class=\"lang-js\">&quot;ui&quot;;\nalert(&quot;Hey hey hey&quot;).then(() =&gt; {\n    // Executes after clicking OK\n});\n</code></pre>\n"
         },
         {
           "textRaw": "dialogs.confirm(title[, content, callback])",
@@ -61,23 +61,23 @@
             {
               "params": [
                 {
-                  "textRaw": "`title` {string} 对话框的标题. ",
+                  "textRaw": "`title` {string} Title of the dialog. ",
                   "name": "title",
                   "type": "string",
-                  "desc": "对话框的标题."
+                  "desc": "Title of the dialog."
                 },
                 {
-                  "textRaw": "`content` {string} 可选, 对话框的内容. 默认为空. ",
+                  "textRaw": "`content` {string} Optional. Content of the dialog. Default is empty. ",
                   "name": "content",
                   "type": "string",
-                  "desc": "可选, 对话框的内容. 默认为空.",
-                  "optional": true
+                  "optional": true,
+                  "desc": "Content of the dialog. Default is empty."
                 },
                 {
-                  "textRaw": "`callback` {Function} 回调函数, 可选. 当用户点击确定时被调用,一般用于ui模式. ",
+                  "textRaw": "`callback` {Function} Optional callback. Called when the user clicks a button (mainly for UI mode). ",
                   "name": "callback",
                   "type": "Function",
-                  "desc": "回调函数, 可选. 当用户点击确定时被调用,一般用于ui模式.",
+                  "desc": "Optional callback. Called when the user clicks a button (mainly for UI mode).",
                   "optional": true
                 }
               ]
@@ -98,7 +98,7 @@
               ]
             }
           ],
-          "desc": "<p>显示一个包含“确定”和“取消”按钮的提示对话框. 如果用户点击“确定”则返回 <code>true</code> , 否则返回 <code>false</code> .</p>\n<p>该函数也可以作为全局函数使用.</p>\n<p>在ui模式下该函数返回一个<code>Promise</code>. 例如:</p>\n<pre><code>&quot;ui&quot;;\nconfirm(&quot;确定吗&quot;).then(value=&gt;{\n    //当点击确定后会执行这里, value为true或false, 表示点击&quot;确定&quot;或&quot;取消&quot;\n});\n</code></pre>"
+          "desc": "<p>Displays a dialog with &quot;OK&quot; and &quot;Cancel&quot; buttons. Returns <code>true</code> if the user clicks &quot;OK&quot;, otherwise <code>false</code>.</p>\n<p>This function can also be used globally.</p>\n<p>In UI mode, it returns a <code>Promise</code>. Example:</p>\n<pre><code class=\"lang-js\">&quot;ui&quot;;\nconfirm(&quot;Are you sure?&quot;).then(value =&gt; {\n    // Executes after clicking OK or Cancel. `value` is true or false.\n});\n</code></pre>\n"
         },
         {
           "textRaw": "dialogs.rawInput(title[, prefill, callback])",
@@ -108,23 +108,23 @@
             {
               "params": [
                 {
-                  "textRaw": "`title` {string} 对话框的标题. ",
+                  "textRaw": "`title` {string} Title of the dialog. ",
                   "name": "title",
                   "type": "string",
-                  "desc": "对话框的标题."
+                  "desc": "Title of the dialog."
                 },
                 {
-                  "textRaw": "`prefill` {string} 输入框的初始内容, 可选, 默认为空. ",
+                  "textRaw": "`prefill` {string} Optional initial content for the input box. Default is empty. ",
                   "name": "prefill",
                   "type": "string",
-                  "desc": "输入框的初始内容, 可选, 默认为空.",
+                  "desc": "Optional initial content for the input box. Default is empty.",
                   "optional": true
                 },
                 {
-                  "textRaw": "`callback` {Function} 回调函数, 可选. 当用户点击确定时被调用,一般用于ui模式. ",
+                  "textRaw": "`callback` {Function} Optional callback. Called when the user clicks OK (mainly for UI mode). ",
                   "name": "callback",
                   "type": "Function",
-                  "desc": "回调函数, 可选. 当用户点击确定时被调用,一般用于ui模式.",
+                  "desc": "Optional callback. Called when the user clicks OK (mainly for UI mode).",
                   "optional": true
                 }
               ]
@@ -145,13 +145,13 @@
               ]
             }
           ],
-          "desc": "<p>显示一个包含输入框的对话框, 等待用户输入内容, 并在用户点击确定时将输入的字符串返回. 如果用户取消了输入, 返回null.</p>\n<p>该函数也可以作为全局函数使用.</p>\n<pre><code>var name = rawInput(&quot;请输入您的名字&quot;, &quot;小明&quot;);\nalert(&quot;您的名字是&quot; + name);\n</code></pre><p>在ui模式下该函数返回一个<code>Promise</code>. 例如:</p>\n<pre><code>&quot;ui&quot;;\nrawInput(&quot;请输入您的名字&quot;, &quot;小明&quot;).then(name =&gt; {\n    alert(&quot;您的名字是&quot; + name);\n});\n</code></pre><p>当然也可以使用回调函数, 例如:</p>\n<pre><code>rawInput(&quot;请输入您的名字&quot;, &quot;小明&quot;, name =&gt; {\n     alert(&quot;您的名字是&quot; + name);\n});\n</code></pre>"
+          "desc": "<p>Shows a dialog containing an input box. Waits for the user to enter content and returns the entered string when they click OK. Returns <code>null</code> if the user cancels.</p>\n<p>This function can also be used globally.</p>\n<pre><code class=\"lang-js\">var name = rawInput(&quot;Please enter your name&quot;, &quot;Xiao Ming&quot;);\nalert(&quot;Your name is &quot; + name);\n</code></pre>\n<p>In UI mode, it returns a <code>Promise</code>. Example:</p>\n<pre><code class=\"lang-js\">&quot;ui&quot;;\nrawInput(&quot;Please enter your name&quot;, &quot;Xiao Ming&quot;).then(name =&gt; {\n    alert(&quot;Your name is &quot; + name);\n});\n</code></pre>\n<p>It can also be used with a callback:</p>\n<pre><code class=\"lang-js\">rawInput(&quot;Please enter your name&quot;, &quot;Xiao Ming&quot;, name =&gt; {\n    alert(&quot;Your name is &quot; + name);\n});\n</code></pre>\n"
         },
         {
           "textRaw": "dialogs.input(title[, prefill, callback])",
           "type": "method",
           "name": "input",
-          "desc": "<p>等效于 <code>eval(dialogs.rawInput(title, prefill, callback))</code>, 该函数和rawInput的区别在于, 会把输入的字符串用eval计算一遍再返回, 返回的可能不是字符串.</p>\n<p>可以用该函数输入数字、数组等. 例如：</p>\n<pre><code>var age = dialogs.input(&quot;请输入您的年龄&quot;, &quot;18&quot;);\n// new Date().getYear() + 1900 可获取当前年份\nvar year = new Date().getYear() + 1900 - age;\nalert(&quot;您的出生年份是&quot; + year);\n</code></pre><p>在ui模式下该函数返回一个<code>Promise</code>. 例如:</p>\n<pre><code>&quot;ui&quot;;\ndialogs.input(&quot;请输入您的年龄&quot;, &quot;18&quot;).then(age =&gt; {\n    var year = new Date().getYear() + 1900 - age;\n    alert(&quot;您的出生年份是&quot; + year);\n});\n</code></pre>",
+          "desc": "<p>Equivalent to <code>eval(dialogs.rawInput(title, prefill, callback))</code>. The difference from <code>rawInput</code> is that the input string is evaluated with <code>eval</code> before being returned (the result may not be a string).</p>\n<p>This function can be used to input numbers, arrays, etc. Example:</p>\n<pre><code class=\"lang-js\">var age = dialogs.input(&quot;Please enter your age&quot;, &quot;18&quot;);\n// new Date().getYear() + 1900 gets the current year\nvar year = new Date().getYear() + 1900 - age;\nalert(&quot;Your birth year is &quot; + year);\n</code></pre>\n<p>In UI mode, it returns a <code>Promise</code>. Example:</p>\n<pre><code class=\"lang-js\">&quot;ui&quot;;\ndialogs.input(&quot;Please enter your age&quot;, &quot;18&quot;).then(age =&gt; {\n    var year = new Date().getYear() + 1900 - age;\n    alert(&quot;Your birth year is &quot; + year);\n});\n</code></pre>\n",
           "signatures": [
             {
               "params": [
@@ -174,7 +174,7 @@
           "textRaw": "dialogs.prompt(title[, prefill, callback])",
           "type": "method",
           "name": "prompt",
-          "desc": "<p>相当于 <code>dialogs.rawInput()</code>;</p>\n",
+          "desc": "<p>Equivalent to <code>dialogs.rawInput()</code>.</p>\n",
           "signatures": [
             {
               "params": [
@@ -201,22 +201,22 @@
             {
               "params": [
                 {
-                  "textRaw": "`title` {string} 对话框的标题. ",
+                  "textRaw": "`title` {string} Title of the dialog. ",
                   "name": "title",
                   "type": "string",
-                  "desc": "对话框的标题."
+                  "desc": "Title of the dialog."
                 },
                 {
-                  "textRaw": "`items` {Array} 对话框的选项列表, 是一个字符串数组. ",
+                  "textRaw": "`items` {Array} List of options for the dialog (array of strings). ",
                   "name": "items",
                   "type": "Array",
-                  "desc": "对话框的选项列表, 是一个字符串数组."
+                  "desc": "List of options for the dialog (array of strings)."
                 },
                 {
-                  "textRaw": "`callback` {Function} 回调函数, 可选. 当用户点击确定时被调用,一般用于ui模式. ",
+                  "textRaw": "`callback` {Function} Optional callback. Called when the user makes a selection (mainly for UI mode). ",
                   "name": "callback",
                   "type": "Function",
-                  "desc": "回调函数, 可选. 当用户点击确定时被调用,一般用于ui模式."
+                  "desc": "Optional callback. Called when the user makes a selection (mainly for UI mode)."
                 }
               ]
             },
@@ -234,7 +234,7 @@
               ]
             }
           ],
-          "desc": "<p>显示一个带有选项列表的对话框, 等待用户选择, 返回用户选择的选项索引(0 ~ item.length - 1). 如果用户取消了选择, 返回-1.</p>\n<pre><code>var options = [&quot;选项A&quot;, &quot;选项B&quot;, &quot;选项C&quot;, &quot;选项D&quot;]\nvar i = dialogs.select(&quot;请选择一个选项&quot;, options);\nif(i &gt;= 0){\n    toast(&quot;您选择的是&quot; + options[i]);\n}else{\n    toast(&quot;您取消了选择&quot;);\n}\n</code></pre><p>在ui模式下该函数返回一个<code>Promise</code>. 例如:</p>\n<pre><code>&quot;ui&quot;;\ndialogs.select(&quot;请选择一个选项&quot;, [&quot;选项A&quot;, &quot;选项B&quot;, &quot;选项C&quot;, &quot;选项D&quot;])\n    .then(i =&gt; {\n        toast(i);\n    });\n</code></pre>"
+          "desc": "<p>Displays a dialog with a list of options and waits for the user to select one. Returns the index of the selected option (0 to items.length - 1). Returns -1 if the user cancels.</p>\n<pre><code class=\"lang-js\">var options = [&quot;Option A&quot;, &quot;Option B&quot;, &quot;Option C&quot;, &quot;Option D&quot;];\nvar i = dialogs.select(&quot;Please choose an option&quot;, options);\nif (i &gt;= 0) {\n    toast(&quot;You selected &quot; + options[i]);\n} else {\n    toast(&quot;You cancelled the selection&quot;);\n}\n</code></pre>\n<p>In UI mode, this function returns a <code>Promise</code>. Example:</p>\n<pre><code class=\"lang-js\">&quot;ui&quot;;\ndialogs.select(&quot;Please choose an option&quot;, [&quot;Option A&quot;, &quot;Option B&quot;, &quot;Option C&quot;, &quot;Option D&quot;])\n    .then(i =&gt; {\n        toast(i);\n    });\n</code></pre>\n"
         },
         {
           "textRaw": "dialogs.singleChoice(title, items[, index, callback])",
@@ -244,29 +244,30 @@
             {
               "params": [
                 {
-                  "textRaw": "`title` {string} 对话框的标题. ",
+                  "textRaw": "`title` {string} Title of the dialog. ",
                   "name": "title",
                   "type": "string",
-                  "desc": "对话框的标题."
+                  "desc": "Title of the dialog."
                 },
                 {
-                  "textRaw": "`items` {Array} 对话框的选项列表, 是一个字符串数组. ",
+                  "textRaw": "`items` {Array} List of options (array of strings). ",
                   "name": "items",
                   "type": "Array",
-                  "desc": "对话框的选项列表, 是一个字符串数组."
+                  "desc": "List of options (array of strings)."
                 },
                 {
-                  "textRaw": "`index` {number} 对话框的初始选项的位置, 默认为0. ",
+                  "textRaw": "`index` {number} Index of the initially selected option (default: 0). ",
                   "name": "index",
+                  "default": "0",
                   "type": "number",
-                  "desc": "对话框的初始选项的位置, 默认为0.",
+                  "desc": "Index of the initially selected option .",
                   "optional": true
                 },
                 {
-                  "textRaw": "`callback` {Function} 回调函数, 可选. 当用户点击确定时被调用,一般用于ui模式. ",
+                  "textRaw": "`callback` {Function} Optional callback (mainly for UI mode). ",
                   "name": "callback",
                   "type": "Function",
-                  "desc": "回调函数, 可选. 当用户点击确定时被调用,一般用于ui模式.",
+                  "desc": "Optional callback (mainly for UI mode).",
                   "optional": true
                 }
               ]
@@ -290,7 +291,7 @@
               ]
             }
           ],
-          "desc": "<p>显示一个单选列表对话框, 等待用户选择, 返回用户选择的选项索引(0 ~ item.length - 1). 如果用户取消了选择, 返回-1.</p>\n<p>在ui模式下该函数返回一个<code>Promise</code>.</p>\n"
+          "desc": "<p>Displays a single-choice list dialog. Returns the index of the selected option. Returns -1 if cancelled.</p>\n<p>In UI mode, it returns a <code>Promise</code>.</p>\n"
         },
         {
           "textRaw": "dialogs.multiChoice(title, items[, indices, callback])",
@@ -300,29 +301,29 @@
             {
               "params": [
                 {
-                  "textRaw": "`title` {string} 对话框的标题. ",
+                  "textRaw": "`title` {string} Title of the dialog. ",
                   "name": "title",
                   "type": "string",
-                  "desc": "对话框的标题."
+                  "desc": "Title of the dialog."
                 },
                 {
-                  "textRaw": "`items` {Array} 对话框的选项列表, 是一个字符串数组. ",
+                  "textRaw": "`items` {Array} List of options (array of strings). ",
                   "name": "items",
                   "type": "Array",
-                  "desc": "对话框的选项列表, 是一个字符串数组."
+                  "desc": "List of options (array of strings)."
                 },
                 {
-                  "textRaw": "`indices` {Array} 选项列表中初始选中的项目索引的数组, 默认为空数组. ",
+                  "textRaw": "`indices` {Array} Array of initially selected indices (default: empty array). ",
                   "name": "indices",
                   "type": "Array",
-                  "desc": "选项列表中初始选中的项目索引的数组, 默认为空数组.",
+                  "desc": "Array of initially selected indices (default: empty array).",
                   "optional": true
                 },
                 {
-                  "textRaw": "`callback` {Function} 回调函数, 可选. 当用户点击确定时被调用,一般用于ui模式. ",
+                  "textRaw": "`callback` {Function} Optional callback (mainly for UI mode). ",
                   "name": "callback",
                   "type": "Function",
-                  "desc": "回调函数, 可选. 当用户点击确定时被调用,一般用于ui模式.",
+                  "desc": "Optional callback (mainly for UI mode).",
                   "optional": true
                 }
               ]
@@ -346,7 +347,7 @@
               ]
             }
           ],
-          "desc": "<p>显示一个多选列表对话框, 等待用户选择, 返回用户选择的选项索引的数组. 如果用户取消了选择, 返回<code>[]</code>.</p>\n<p>在ui模式下该函数返回一个<code>Promise</code>.</p>\n"
+          "desc": "<p>Displays a multi-choice list dialog. Returns an array of selected indices. Returns <code>[]</code> if cancelled.</p>\n<p>In UI mode, it returns a <code>Promise</code>.</p>\n"
         },
         {
           "textRaw": "dialogs.build(properties)",
@@ -354,17 +355,17 @@
           "name": "build",
           "signatures": [
             {
+              "return": {
+                "textRaw": "Returns {Dialog} ",
+                "name": "return",
+                "type": "Dialog"
+              },
               "params": [
                 {
-                  "textRaw": "`properties` {Object} 对话框属性, 用于配置对话框. ",
+                  "textRaw": "`properties` {Object} Dialog properties used to configure the dialog. ",
                   "name": "properties",
                   "type": "Object",
-                  "desc": "对话框属性, 用于配置对话框."
-                },
-                {
-                  "textRaw": "返回 {Dialog} ",
-                  "name": "返回",
-                  "type": "Dialog"
+                  "desc": "Dialog properties used to configure the dialog."
                 }
               ]
             },
@@ -376,38 +377,75 @@
               ]
             }
           ],
-          "desc": "<p>创建一个可自定义的对话框, 例如：</p>\n<pre><code>dialogs.build({\n    //对话框标题\n    title: &quot;发现新版本&quot;,\n    //对话框内容\n    content: &quot;更新日志: 新增了若干了BUG&quot;,\n    //确定键内容\n    positive: &quot;下载&quot;,\n    //取消键内容\n    negative: &quot;取消&quot;,\n    //中性键内容\n    neutral: &quot;到浏览器下载&quot;,\n    //勾选框内容\n    checkBoxPrompt: &quot;不再提示&quot;\n}).on(&quot;positive&quot;, ()=&gt;{\n    //监听确定键\n    toast(&quot;开始下载....&quot;);\n}).on(&quot;neutral&quot;, ()=&gt;{\n    //监听中性键\n    app.openUrl(&quot;https://www.autojs.org&quot;);\n}).on(&quot;check&quot;, (checked)=&gt;{\n    //监听勾选框\n    log(checked);\n}).show();\n</code></pre><p>选项properties可供配置的项目为:</p>\n<ul>\n<li><code>title</code> {string} 对话框标题</li>\n<li><code>titleColor</code> {string} | {number} 对话框标题的颜色</li>\n<li><code>buttonRippleColor</code> {string} | {number} 对话框按钮的波纹效果颜色</li>\n<li><code>icon</code> {string} | {Image} 对话框的图标, 是一个URL或者图片对象</li>\n<li><code>content</code> {string} 对话框文字内容</li>\n<li><code>contentColor</code>{string} | {number} 对话框文字内容的颜色</li>\n<li><code>contentLineSpacing</code>{number} 对话框文字内容的行高倍数, 1.0为一倍行高</li>\n<li><code>items</code> {Array} 对话框列表的选项</li>\n<li><code>itemsColor</code> {string} | {number} 对话框列表的选项的文字颜色</li>\n<li><code>itemsSelectMode</code> {string} 对话框列表的选项选择模式, 可以为:<ul>\n<li><code>select</code> 普通选择模式</li>\n<li><code>single</code> 单选模式</li>\n<li><code>multi</code> 多选模式</li>\n</ul>\n</li>\n<li><code>itemsSelectedIndex</code> {number} | {Array} 对话框列表中预先选中的项目索引, 如果是单选模式为一个索引；多选模式则为数组</li>\n<li><code>positive</code> {string} 对话框确定按钮的文字内容(最右边按钮)</li>\n<li><code>positiveColor</code> {string} | {number} 对话框确定按钮的文字颜色(最右边按钮)</li>\n<li><code>neutral</code> {string} 对话框中立按钮的文字内容(最左边按钮)</li>\n<li><code>neutralColor</code> {string} | {number} 对话框中立按钮的文字颜色(最左边按钮)</li>\n<li><code>negative</code> {string} 对话框取消按钮的文字内容(确定按钮左边的按钮)</li>\n<li><code>negativeColor</code> {string} | {number} 对话框取消按钮的文字颜色(确定按钮左边的按钮)</li>\n<li><code>checkBoxPrompt</code> {string} 勾选框文字内容</li>\n<li><code>checkBoxChecked</code> {boolean} 勾选框是否勾选</li>\n<li><code>progress</code> {Object} 配置对话框进度条的对象：<ul>\n<li><code>max</code> {number} 进度条的最大值, 如果为-1则为无限循环的进度条</li>\n<li><code>horizontal</code> {boolean} 如果为true, 则对话框无限循环的进度条为水平进度条</li>\n<li><code>showMinMax</code> {boolean} 是否显示进度条的最大值和最小值</li>\n</ul>\n</li>\n<li><code>cancelable</code> {boolean} 对话框是否可取消, 如果为false, 则对话框只能用代码手动取消</li>\n<li><code>canceledOnTouchOutside</code> {boolean} 对话框是否在点击对话框以外区域时自动取消, 默认为true</li>\n<li><code>inputHint</code> {string} 对话框的输入框的输入提示</li>\n<li><code>inputPrefill</code> {string} 对话框输入框的默认输入内容</li>\n</ul>\n<p>通过这些选项可以自定义一个对话框, 并通过监听返回的Dialog对象的按键、输入事件来实现交互. 下面是一些例子.</p>\n<p>模拟alert对话框：</p>\n<pre><code>dialogs.build({\n    title: &quot;你好&quot;,\n    content: &quot;今天也要元气满满哦&quot;,\n    positive: &quot;好的&quot;\n}).show();\n</code></pre><p>模拟confirm对话框:</p>\n<pre><code>dialogs.build({\n    title: &quot;你好&quot;,\n    content: &quot;请问你是笨蛋吗?&quot;,\n    positive: &quot;是的&quot;,\n    negative: &quot;我是大笨蛋&quot;\n}).on(&quot;positive&quot;, ()=&gt;{\n    alert(&quot;哈哈哈笨蛋&quot;);\n}).on(&quot;negative&quot;, ()=&gt;{\n    alert(&quot;哈哈哈大笨蛋&quot;);\n}).show();\n</code></pre><p>模拟单选框:</p>\n<pre><code>dialogs.build({\n    title: &quot;单选&quot;,\n    items: [&quot;选项1&quot;, &quot;选项2&quot;, &quot;选项3&quot;, &quot;选项4&quot;],\n    itemsSelectMode: &quot;single&quot;,\n    itemsSelectedIndex: 3\n}).on(&quot;single_choice&quot;, (index, item)=&gt;{\n    toast(&quot;您选择的是&quot; + item);\n}).show();\n</code></pre><p>&quot;处理中&quot;对话框:</p>\n<pre><code>var d = dialogs.build({\n    title: &quot;下载中...&quot;,\n    progress: {\n        max: -1\n    },\n    cancelable: false\n}).show();\n\nsetTimeout(()=&gt;{\n    d.dismiss();\n}, 3000);\n</code></pre><p>输入对话框:</p>\n<pre><code>dialogs.build({\n    title: &quot;请输入您的年龄&quot;,\n    inputPrefill: &quot;18&quot;\n}).on(&quot;input&quot;, (input)=&gt;{\n    var age = parseInt(input);\n    toastLog(age);\n}).show();\n</code></pre><p>使用这个函数来构造对话框, 一个明显的不同是需要使用回调函数而不能像dialogs其他函数一样同步地返回结果；但也可以通过threads模块的方法来实现. 例如显示一个输入框并获取输入结果为：</p>\n<pre><code>var input = threads.disposable();\ndialogas.build({\n    title: &quot;请输入您的年龄&quot;,\n    inputPrefill: &quot;18&quot;\n}).on(&quot;input&quot;, text =&gt; {\n    input.setAndNotify(text);\n}).show();\nvar age = parseInt(input.blockedGet());\ntosatLog(age);\n</code></pre>"
+          "desc": "<p>Creates a customizable dialog. Example:</p>\n<pre><code class=\"lang-js\">dialogs.build({\n    // Dialog title\n    title: &quot;New version found&quot;,\n    // Dialog content\n    content: &quot;Changelog: Fixed several BUGs&quot;,\n    // Positive button text\n    positive: &quot;Download&quot;,\n    // Negative button text\n    negative: &quot;Cancel&quot;,\n    // Neutral button text\n    neutral: &quot;Download from browser&quot;,\n    // Checkbox text\n    checkBoxPrompt: &quot;Don&#39;t show again&quot;\n}).on(&quot;positive&quot;, () =&gt; {\n    // Listen for positive button\n    toast(&quot;Starting download....&quot;);\n}).on(&quot;neutral&quot;, () =&gt; {\n    // Listen for neutral button\n    app.openUrl(&quot;https://www.autojs.org&quot;);\n}).on(&quot;check&quot;, (checked) =&gt; {\n    // Listen for checkbox\n    log(checked);\n}).show();\n</code></pre>\n<p>Available properties for configuration:</p>\n<ul>\n<li><code>title</code> {string} Dialog title</li>\n<li><code>titleColor</code> {string} | {number} Color of the dialog title</li>\n<li><code>buttonRippleColor</code> {string} | {number} Ripple color for dialog buttons</li>\n<li><code>icon</code> {string} | {Image} Icon of the dialog (URL or Image object)</li>\n<li><code>content</code> {string} Dialog text content</li>\n<li><code>contentColor</code> {string} | {number} Color of the dialog content text</li>\n<li><code>contentLineSpacing</code> {number} Line height multiplier for dialog content text (1.0 = single line height)</li>\n<li><code>items</code> {Array} Options for the dialog list</li>\n<li><code>itemsColor</code> {string} | {number} Text color for list options</li>\n<li><code>itemsSelectMode</code> {string} Selection mode for the list. Can be:<ul>\n<li><code>select</code> — Normal selection mode</li>\n<li><code>single</code> — Single choice mode</li>\n<li><code>multi</code> — Multiple choice mode</li>\n</ul>\n</li>\n<li><code>itemsSelectedIndex</code> {number} | {Array} Pre-selected item index (single mode) or array of indices (multi mode)</li>\n<li><code>positive</code> {string} Text for the positive button (rightmost)</li>\n<li><code>positiveColor</code> {string} | {number} Text color for the positive button</li>\n<li><code>neutral</code> {string} Text for the neutral button (leftmost)</li>\n<li><code>neutralColor</code> {string} | {number} Text color for the neutral button</li>\n<li><code>negative</code> {string} Text for the negative button (button to the left of positive)</li>\n<li><code>negativeColor</code> {string} | {number} Text color for the negative button</li>\n<li><code>checkBoxPrompt</code> {string} Checkbox text</li>\n<li><code>checkBoxChecked</code> {boolean} Whether the checkbox is checked by default</li>\n<li><code>progress</code> {Object} Configuration object for the progress bar:<ul>\n<li><code>max</code> {number} Maximum value of the progress bar. Use -1 for an indeterminate (infinite) progress bar.</li>\n<li><code>horizontal</code> {boolean} If true, the indeterminate progress bar will be horizontal.</li>\n<li><code>showMinMax</code> {boolean} Whether to show min/max values for the progress bar.</li>\n</ul>\n</li>\n<li><code>cancelable</code> {boolean} Whether the dialog can be cancelled. If false, it can only be dismissed programmatically.</li>\n<li><code>canceledOnTouchOutside</code> {boolean} Whether the dialog is cancelled when tapping outside it (default: true)</li>\n<li><code>inputHint</code> {string} Hint text for the input box</li>\n<li><code>inputPrefill</code> {string} Default text in the input box</li>\n</ul>\n<p>Using these options, you can create highly customized dialogs and handle interactions by listening to events on the returned Dialog object. Here are some examples.</p>\n<p>Simulating an alert dialog:</p>\n<pre><code class=\"lang-js\">dialogs.build({\n    title: &quot;Hello&quot;,\n    content: &quot;Stay energetic today!&quot;,\n    positive: &quot;OK&quot;\n}).show();\n</code></pre>\n<p>Simulating a confirm dialog:</p>\n<pre><code class=\"lang-js\">dialogs.build({\n    title: &quot;Hello&quot;,\n    content: &quot;Are you an idiot?&quot;,\n    positive: &quot;Yes&quot;,\n    negative: &quot;I&#39;m a big idiot&quot;\n}).on(&quot;positive&quot;, () =&gt; {\n    alert(&quot;Hahaha idiot&quot;);\n}).on(&quot;negative&quot;, () =&gt; {\n    alert(&quot;Hahaha big idiot&quot;);\n}).show();\n</code></pre>\n<p>Simulating a single-choice dialog:</p>\n<pre><code class=\"lang-js\">dialogs.build({\n    title: &quot;Single Choice&quot;,\n    items: [&quot;Option 1&quot;, &quot;Option 2&quot;, &quot;Option 3&quot;, &quot;Option 4&quot;],\n    itemsSelectMode: &quot;single&quot;,\n    itemsSelectedIndex: 3\n}).on(&quot;single_choice&quot;, (index, item) =&gt; {\n    toast(&quot;You selected &quot; + item);\n}).show();\n</code></pre>\n<p>&quot;Processing&quot; dialog:</p>\n<pre><code class=\"lang-js\">var d = dialogs.build({\n    title: &quot;Downloading...&quot;,\n    progress: {\n        max: -1\n    },\n    cancelable: false\n}).show();\n\nsetTimeout(() =&gt; {\n    d.dismiss();\n}, 3000);\n</code></pre>\n<p>Input dialog:</p>\n<pre><code class=\"lang-js\">dialogs.build({\n    title: &quot;Please enter your age&quot;,\n    inputPrefill: &quot;18&quot;\n}).on(&quot;input&quot;, (input) =&gt; {\n    var age = parseInt(input);\n    toastLog(age);\n}).show();\n</code></pre>\n<p>One clear difference when using this function to build dialogs is that you must use callbacks instead of getting synchronous return values like the other <code>dialogs</code> functions. However, you can achieve similar behavior using the <code>threads</code> module. For example, showing an input dialog and retrieving the result:</p>\n<pre><code class=\"lang-js\">var input = threads.disposable();\ndialogs.build({\n    title: &quot;Please enter your age&quot;,\n    inputPrefill: &quot;18&quot;\n}).on(&quot;input&quot;, text =&gt; {\n    input.setAndNotify(text);\n}).show();\nvar age = parseInt(input.blockedGet());\ntoastLog(age);\n</code></pre>\n"
         }
       ],
       "type": "module",
-      "displayName": "对话框 (Dialogs)"
+      "displayName": "Dialogs"
     },
     {
       "textRaw": "Dialog",
       "name": "dialog",
-      "desc": "<p><code>dialogs.build()</code>返回的对话框对象, 内置一些事件用于响应用户的交互, 也可以获取对话框的状态和信息.</p>\n",
+      "desc": "<p>The dialog object returned by <code>dialogs.build()</code>. It has built-in events for responding to user interaction and methods to get the dialog&#39;s state and information.</p>\n",
+      "events": [
+        {
+          "textRaw": "Event: `show`",
+          "type": "event",
+          "name": "`show`",
+          "params": [],
+          "desc": "<p>Fired when the dialog is shown. Example:</p>\n<pre><code class=\"lang-js\">dialogs.build({\n    title: &quot;Title&quot;\n}).on(&quot;show&quot;, (dialog) =&gt; {\n    toast(&quot;Dialog is shown&quot;);\n}).show();\n</code></pre>\n"
+        },
+        {
+          "textRaw": "Event: `cancel`",
+          "type": "event",
+          "name": "`cancel`",
+          "params": [],
+          "desc": "<p>Fired when the dialog is cancelled. A dialog can be cancelled by the cancel button, back key, or tapping outside. Example:</p>\n<pre><code class=\"lang-js\">dialogs.build({\n    title: &quot;Title&quot;,\n    positive: &quot;OK&quot;,\n    negative: &quot;Cancel&quot;\n}).on(&quot;cancel&quot;, (dialog) =&gt; {\n    toast(&quot;Dialog was cancelled&quot;);\n}).show();\n</code></pre>\n"
+        },
+        {
+          "textRaw": "Event: `dismiss`",
+          "type": "event",
+          "name": "`dismiss`",
+          "params": [],
+          "desc": "<p>Fired when the dialog is dismissed (either cancelled or by calling <code>dialog.dismiss()</code> manually). Example:</p>\n<pre><code class=\"lang-js\">var d = dialogs.build({\n    title: &quot;Title&quot;,\n    positive: &quot;确定&quot;,\n    negative: &quot;取消&quot;\n}).on(&quot;dismiss&quot;, (dialog)=&gt;{\n    toast(&quot;对话框消失了&quot;);\n}).show();\n\nsetTimeout(()=&gt;{\n    d.dismiss();\n}, 5000);\n</code></pre>\n"
+        },
+        {
+          "textRaw": "Event: `item_select`",
+          "type": "event",
+          "name": "`item_select`",
+          "params": [],
+          "desc": "<p>Fired when an item in a normal list (<code>itemsSelectMode: &quot;select&quot;</code>) is clicked. Example:</p>\n<pre><code class=\"lang-js\">var d = dialogs.build({\n    title: &quot;Please select&quot;,\n    positive: &quot;OK&quot;,\n    negative: &quot;Cancel&quot;,\n    items: [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;],\n    itemsSelectMode: &quot;select&quot;\n}).on(&quot;item_select&quot;, (index, item, dialog) =&gt; {\n    toast(&quot;You selected item &quot; + (index + 1) + &quot;: &quot; + item);\n}).show();\n</code></pre>\n"
+        },
+        {
+          "textRaw": "Event: `single_choice`",
+          "type": "event",
+          "name": "`single_choice`",
+          "params": [],
+          "desc": "<p>Fired when an item in single-choice mode is selected and the user confirms. Example:</p>\n<pre><code class=\"lang-js\">var d = dialogs.build({\n    title: &quot;Please select&quot;,\n    positive: &quot;OK&quot;,\n    negative: &quot;Cancel&quot;,\n    items: [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;],\n    itemsSelectMode: &quot;singleChoice&quot;\n}).on(&quot;single_choice&quot;, (index, item, dialog) =&gt; {\n    toast(&quot;You selected item &quot; + (index + 1) + &quot;: &quot; + item);\n}).show();\n</code></pre>\n"
+        },
+        {
+          "textRaw": "Event: `multi_choice`",
+          "type": "event",
+          "name": "`multi_choice`",
+          "params": [],
+          "desc": "<p>Fired when items in multi-choice mode are selected and the user confirms. Example:</p>\n<pre><code class=\"lang-js\">var d = dialogs.build({\n    title: &quot;Please select&quot;,\n    positive: &quot;OK&quot;,\n    negative: &quot;Cancel&quot;,\n    items: [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;],\n    itemsSelectMode: &quot;multiChoice&quot;\n}).on(&quot;multi_choice&quot;, (indices, items, dialog) =&gt; {\n    toast(&quot;Selected indices: &quot; + indices + &quot;, items: &quot; + items);\n}).show();\n</code></pre>\n"
+        },
+        {
+          "textRaw": "Event: `input`",
+          "type": "event",
+          "name": "`input`",
+          "params": [],
+          "desc": "<p>Fired when the positive button is clicked on a dialog with an input field. Example:</p>\n<pre><code class=\"lang-js\">dialogs.build({\n    title: &quot;Please enter&quot;,\n    positive: &quot;OK&quot;,\n    negative: &quot;Cancel&quot;,\n    inputPrefill: &quot;&quot;\n}).on(&quot;input&quot;, (text, dialog) =&gt; {\n    toast(&quot;You entered: &quot; + text);\n}).show();\n</code></pre>\n"
+        },
+        {
+          "textRaw": "Event: `input_change`",
+          "type": "event",
+          "name": "`input_change`",
+          "params": [],
+          "desc": "<p>Fired when the text in the input box changes. Example:</p>\n<pre><code class=\"lang-js\">dialogs.build({\n    title: &quot;Please enter&quot;,\n    positive: &quot;OK&quot;,\n    negative: &quot;Cancel&quot;,\n    inputPrefill: &quot;&quot;\n}).on(&quot;input_change&quot;, (text, dialog) =&gt; {\n    toast(&quot;Current input: &quot; + text);\n}).show();\n</code></pre>\n"
+        }
+      ],
       "modules": [
-        {
-          "textRaw": "事件: `show`",
-          "name": "事件:_`show`",
-          "desc": "<ul>\n<li><code>dialog</code> {Dialog} 对话框</li>\n</ul>\n<p>对话框显示时会触发的事件. 例如：</p>\n<pre><code>dialogs.build({\n    title: &quot;标题&quot;\n}).on(&quot;show&quot;, (dialog)=&gt;{\n    toast(&quot;对话框显示了&quot;);\n}).show();\n</code></pre>",
-          "type": "module",
-          "displayName": "事件: `show`"
-        },
-        {
-          "textRaw": "事件: `cancel`",
-          "name": "事件:_`cancel`",
-          "desc": "<ul>\n<li><code>dialog</code> {Dialog} 对话框</li>\n</ul>\n<p>对话框被取消时会触发的事件. 一个对话框可能按取消按钮、返回键取消或者点击对话框以外区域取消. 例如：</p>\n<pre><code>dialogs.build({\n    title: &quot;标题&quot;,\n    positive: &quot;确定&quot;,\n    negative: &quot;取消&quot;\n}).on(&quot;cancel&quot;, (dialog)=&gt;{\n    toast(&quot;对话框取消了&quot;);\n}).show();\n</code></pre>",
-          "type": "module",
-          "displayName": "事件: `cancel`"
-        },
-        {
-          "textRaw": "事件: `dismiss`",
-          "name": "事件:_`dismiss`",
-          "desc": "<ul>\n<li><code>dialog</code> {Dialog} 对话框</li>\n</ul>\n<p>对话框消失时会触发的事件. 对话框被取消或者手动调用<code>dialog.dismiss()</code>函数都会触发该事件. 例如：</p>\n<pre><code>var d = dialogs.build({\n    title: &quot;标题&quot;,\n    positive: &quot;确定&quot;,\n    negative: &quot;取消&quot;\n}).on(&quot;dismiss&quot;, (dialog)=&gt;{\n    toast(&quot;对话框消失了&quot;);\n}).show();\n\nsetTimeout(()=&gt;{\n    d.dismiss();\n}, 5000);\n</code></pre>",
-          "type": "module",
-          "displayName": "事件: `dismiss`"
-        },
         {
           "textRaw": "事件: `positive`",
           "name": "事件:_`positive`",
@@ -435,41 +473,6 @@
           "desc": "<ul>\n<li><code>dialog</code> {Dialog} 对话框</li>\n<li><code>action</code> {string} 被点击的按钮, 可能的值为:<ul>\n<li><code>positive</code> 确定按钮</li>\n<li><code>negative</code> 取消按钮</li>\n<li><code>neutral</code> 中性按钮</li>\n</ul>\n</li>\n</ul>\n<p>任意按钮按下时触发的事件. 例如:</p>\n<pre><code>var d = dialogs.build({\n    title: &quot;标题&quot;,\n    positive: &quot;确定&quot;,\n    negative: &quot;取消&quot;,\n    neutral: &quot;稍后提示&quot;\n}).on(&quot;any&quot;, (action, dialog)=&gt;{\n    if(action == &quot;positive&quot;){\n        toast(&quot;你点击了确定&quot;);\n    }else if(action == &quot;negative&quot;){\n        toast(&quot;你点击了取消&quot;);\n    }\n}).show();\n</code></pre>",
           "type": "module",
           "displayName": "事件: `any`"
-        },
-        {
-          "textRaw": "事件: `item_select`",
-          "name": "事件:_`item_select`",
-          "desc": "<ul>\n<li><code>index</code> {number} 被选中的项目索引, 从0开始</li>\n<li><code>item</code> {Object} 被选中的项目</li>\n<li><code>dialog</code> {Dialog} 对话框</li>\n</ul>\n<p>对话框列表(itemsSelectMode为&quot;select&quot;)的项目被点击选中时触发的事件. 例如：</p>\n<pre><code>var d = dialogs.build({\n    title: &quot;请选择&quot;,\n    positive: &quot;确定&quot;,\n    negative: &quot;取消&quot;,\n    items: [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;],\n    itemsSelectMode: &quot;select&quot;\n}).on(&quot;item_select&quot;, (index, item, dialog)=&gt;{\n    toast(&quot;您选择的是第&quot; + (index + 1) + &quot;项, 选项为&quot; + item);\n}).show();\n</code></pre>",
-          "type": "module",
-          "displayName": "事件: `item_select`"
-        },
-        {
-          "textRaw": "事件: `single_choice`",
-          "name": "事件:_`single_choice`",
-          "desc": "<ul>\n<li><code>index</code> {number} 被选中的项目索引, 从0开始</li>\n<li><code>item</code> {Object} 被选中的项目</li>\n<li><code>dialog</code> {Dialog} 对话框</li>\n</ul>\n<p>对话框单选列表(itemsSelectMode为&quot;singleChoice&quot;)的项目被选中并点击确定时触发的事件. 例如：</p>\n<pre><code>var d = dialogs.build({\n    title: &quot;请选择&quot;,\n    positive: &quot;确定&quot;,\n    negative: &quot;取消&quot;,\n    items: [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;],\n    itemsSelectMode: &quot;singleChoice&quot;\n}).on(&quot;item_select&quot;, (index, item, dialog)=&gt;{\n    toast(&quot;您选择的是第&quot; + (index + 1) + &quot;项, 选项为&quot; + item);\n}).show();\n</code></pre>",
-          "type": "module",
-          "displayName": "事件: `single_choice`"
-        },
-        {
-          "textRaw": "事件: `multi_choice`",
-          "name": "事件:_`multi_choice`",
-          "desc": "<ul>\n<li><code>indices</code> {Array} 被选中的项目的索引的数组</li>\n<li><code>items</code> {Array} 被选中的项目的数组</li>\n<li><code>dialog</code> {Dialog} 对话框</li>\n</ul>\n<p>对话框多选列表(itemsSelectMode为&quot;multiChoice&quot;)的项目被选中并点击确定时触发的事件. 例如：</p>\n<pre><code>var d = dialogs.build({\n    title: &quot;请选择&quot;,\n    positive: &quot;确定&quot;,\n    negative: &quot;取消&quot;,\n    items: [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;],\n    itemsSelectMode: &quot;multiChoice&quot;\n}).on(&quot;item_select&quot;, (indices, items, dialog)=&gt;{\n    toast(util.format(&quot;您选择的项目为%o, 选项为%o&quot;, indices, items);\n}).show();\n</code></pre>",
-          "type": "module",
-          "displayName": "事件: `multi_choice`"
-        },
-        {
-          "textRaw": "事件: `input`",
-          "name": "事件:_`input`",
-          "desc": "<ul>\n<li><code>text</code> {string} 输入框的内容</li>\n<li><code>dialog</code> {Dialog} 对话框</li>\n</ul>\n<p>带有输入框的对话框当点击确定时会触发的事件. 例如：</p>\n<pre><code>dialogs.build({\n    title: &quot;请输入&quot;,\n    positive: &quot;确定&quot;,\n    negative: &quot;取消&quot;,\n    inputPrefill: &quot;&quot;\n}).on(&quot;input&quot;, (text, dialog)=&gt;{\n    toast(&quot;你输入的是&quot; + text);\n}).show();\n</code></pre>",
-          "type": "module",
-          "displayName": "事件: `input`"
-        },
-        {
-          "textRaw": "事件: `input_change`",
-          "name": "事件:_`input_change`",
-          "desc": "<ul>\n<li><code>text</code> {string} 输入框的内容</li>\n<li><code>dialog</code> {Dialog} 对话框</li>\n</ul>\n<p>对话框的输入框的文本发生变化时会触发的事件. 例如：</p>\n<pre><code>dialogs.build({\n    title: &quot;请输入&quot;,\n    positive: &quot;确定&quot;,\n    negative: &quot;取消&quot;,\n    inputPrefill: &quot;&quot;\n}).on(&quot;input_change&quot;, (text, dialog)=&gt;{\n    toast(&quot;你输入的是&quot; + text);\n}).show();\n</code></pre>",
-          "type": "module",
-          "displayName": "事件: `input_change`"
         }
       ],
       "methods": [

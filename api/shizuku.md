@@ -2,18 +2,18 @@
 
 ---
 
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
+<p style="font: italic 1em sans-serif; color: #78909C">This chapter is pending supplementation or improvement...</p>
 <p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 30, 2023.</p>
 
 ---
 
-通过 [Shizuku](https://shizuku.rikka.app/introduction/) 可以获得 ADB 特权并使用系统 API.
+Through [Shizuku](https://shizuku.rikka.app/introduction/) you can obtain ADB privileges and use system APIs.
 
-使用 Shizuku 需满足以下全部条件
+To use Shizuku, all of the following conditions must be met:
 
-- 设备已安装 [Shizuku 应用](https://github.com/RikkaApps/Shizuku/releases) (版本不低于 `11`)
-- Shizuku 服务已启动 (参阅 [Shizuku 用户手册](https://shizuku.rikka.app/guide/setup/#start-shizuku))
-- AutoJs6 首页抽屉开启 Shizuku 权限开关
+- The [Shizuku app](https://github.com/RikkaApps/Shizuku/releases) is installed on the device (version `11` or higher)
+- The Shizuku service is running (see the [Shizuku User Guide](https://shizuku.rikka.app/guide/setup/#start-shizuku))
+- The Shizuku permission switch is enabled in the AutoJs6 home screen drawer
 
 ---
 
@@ -23,7 +23,7 @@
 
 ## [@] shizuku
 
-shizuku 可作为全局对象使用:
+`shizuku` can be used as a global object:
 
 ```js
 typeof shizuku; // "function"
@@ -34,33 +34,33 @@ typeof shizuku.execCommand; // "function"
 
 **`6.4.0`** **`Overload 1/2`**
 
-- **cmd** { [string](dataTypes#string) } - 待执行命令
-- <ins>**returns**</ins> { [ShellResult](shellResultType) } - Shell 结果
+- **cmd** { [string](dataTypes#string) } - Command to execute
+- <ins>**returns**</ins> { [ShellResult](shellResultType) } - Shell result
 
-使用 Shizuku 执行命令.
+Executes a command using Shizuku.
 
 ```js
-/* 模拟返回键. */
+/* Simulate the back key. */
 shizuku('input keyevent 4');
-shizuku(`input keyevent ${KeyEvent.KEYCODE_BACK}`); /* 同上. */
+shizuku(`input keyevent ${KeyEvent.KEYCODE_BACK}`); /* Same as above. */
 
-/* 模拟电源键. */
+/* Simulate the power key. */
 shizuku('input keyevent 26');
-shizuku(`input keyevent ${KeyEvent.KEYCODE_POWER}`); /* 同上. */
+shizuku(`input keyevent ${KeyEvent.KEYCODE_POWER}`); /* Same as above. */
 
-/* 点击屏幕坐标 (100, 120). */
+/* Tap screen coordinates (100, 120). */
 shizuku("input tap 100 120");
 
-/* 授予 AutoJs6 "修改安全设置" 权限. */
+/* Grant AutoJs6 the "Modify secure settings" permission. */
 shizuku('pm grant org.autojs.autojs6 android.permission.WRITE_SECURE_SETTINGS');
 
-/* 授予 AutoJs6 "投影媒体" 权限. */
+/* Grant AutoJs6 the "Project media" permission. */
 shizuku('appops set org.autojs.autojs6 PROJECT_MEDIA allow');
 
-/* 启用 AutoJs6 "无障碍服务". */
+/* Enable the AutoJs6 Accessibility service. */
 shizuku('settings put secure enabled_accessibility_services org.autojs.autojs6/org.autojs.autojs.core.accessibility.AccessibilityServiceUsher');
 
-/* 获取当前时间. */
+/* Get the current time. */
 console.log(shizuku('date').result.trim());
 ```
 
@@ -68,14 +68,14 @@ console.log(shizuku('date').result.trim());
 
 **`6.4.0`** **`Overload 2/2`**
 
-- **cmdList** { [string](dataTypes#string)[[]](dataTypes#array) } - 待执行的多行命令
-- <ins>**returns**</ins> { [ShellResult](shellResultType) } - Shell 结果
+- **cmdList** { [string](dataTypes#string)[[]](dataTypes#array) } - List of commands to execute (one per line)
+- <ins>**returns**</ins> { [ShellResult](shellResultType) } - Shell result
 
-使用 Shizuku 一次性执行多行命令, 每行命令对应 `cmdList` 数组中的一个元素.
+Executes multiple commands at once using Shizuku. Each element in the `cmdList` array corresponds to one command.
 
 ```js
 shizuku([ 'cmd-a', 'cmd-b', 'cmd-c' ]);
-shizuku('cmd-a\ncmd-b\ncmd-c'); /* 同上. */
+shizuku('cmd-a\ncmd-b\ncmd-c'); /* Same as above. */
 ```
 
 [//]: # (```ts)
